@@ -5,7 +5,7 @@ title: KorGE Game Engine
 
 <img src="/i/logos/korge.svg" width="180" height="180" style="float:left;margin-right:16px;"/>
 
-**KorGE Game Engine** is an [Open Source](https://github.com/soywiz/korge) modern Game Engine created in [<img src="/about/kotlin.svg" style="width:1.4em;height:1.4em;margin-top:-0.2em;" />Kotlin programming language](https://kotlinlang.org/) designed to be extremely portable and really enjoyable to use.
+**KorGE Game Engine** is an [Open Source](https://github.com/soywiz/korge) modern Game Engine created in [<img src="/i/logos/kotlin.svg" style="width:1.4em;height:1.4em;margin-top:-0.2em;" />Kotlin programming language](https://kotlinlang.org/) designed to be extremely portable and really enjoyable to use.
 
 It works for **Desktop**, **Web** and **Mobile**. But allows to create other targets easily. And it is full asynchronous so it is nice to web.
 

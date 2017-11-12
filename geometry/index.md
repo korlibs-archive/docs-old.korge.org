@@ -3,7 +3,7 @@ layout: default
 title: "Geometry"
 ---
 
-<img src="/about/korma.png" style="float:left;" />
+<img src="/i/logos/korma.png" style="float:left;" />
 
 KorGE uses [KorMA](https://github.com/soywiz/korma) as geometry mathematical library.
 

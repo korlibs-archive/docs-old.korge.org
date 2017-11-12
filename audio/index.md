@@ -3,7 +3,7 @@ layout: default
 title: "Audio"
 ---
 
-<img src="/about/korau.png" style="float:left;" />
+<img src="/i/logos/korau.png" style="float:left;" />
 
 Korge uses **[KorAU](https://github.com/soywiz/korau)** for audio loading,
 and playback.
