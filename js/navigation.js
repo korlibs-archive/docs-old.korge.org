@@ -91,6 +91,10 @@ $(document).ready(function() {
 
     var newurlBase = this.href;
     var newurl = newurlBase.replace(/^https?:\/\//, '//')
+    if (newurlBase.substr(0, 8) == 'https://') {
+      document.location.href = newurlBase;
+      return true;
+    }
     console.log('changeTo:', newurlBase, newurl);
     history.pushState({ url: newurl }, "my page", newurl);
     return changeToPage(newurl, false);
