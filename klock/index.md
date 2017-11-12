@@ -29,7 +29,80 @@ compile "com.soywiz:klock-js:0.2.0" // js
 compile "com.soywiz:klock-common:0.2.0" // common (just expect 2 decls in Klock)
 ```
 
-## API:
+## User guide:
+
+### Getting the current unix time
+
+Klock allows you to get the current time from [unix epoch](https://en.wikipedia.org/wiki/Unix_time) in UTC by generating a date.
+
+`Klock.currentTimeMillis()` willd do the job. It is equivalent to Java's `System.currentTimeMillis()` or JS's `Date.now()`.
+
+If you do not want to generate garbage in targets without native long support, you can also use `Klock.currentTimeMillisDouble()`
+
+### Getting local timezone
+
+Klock mainly works using UTC, but supports timezones. In order to get the current minute-based local timezone offset for an specific instant, just call `Klock.getLocalTimezoneOffset(unixTimestamp: Long)`.
+
+### Constructing TimeSpan
+
+Klock provides some nice property extensions to generate TimeSpan instances that provide full unit information. So, no more "is this in milliseconds/seconds/ticks/frames or what?"
+
+And methods now can requires TimeSpan instead of milliseconds or seconds.
+
+```kotlin
+val oneSecond = 1.seconds
+val halfSeconds = 0.5.seconds
+val otherSecond = 1000.milliseconds
+```
+
+***Note:*** Using these extensions generate instances per call, so you will like to put them as constants on critical places.
+
+### Constructing dates
+
+`DateTime` instances support time offseting furthermore to UTC timezone.
+
+You can get a new DateTime instance representing now or an specific unix timestamp with:
+
+`DateTime.now()` or `DateTime.fromUnix(unix: Long)`
+
+And you have local-time variants:
+
+`DateTime.nowLocal()` or `DateTime.fromUnixLocal(unix: Long)`
+
+If you want to construct it from a specific date:
+
+`DateTime(2017, 12, 31, 23, 59, 59)`
+
+You can convert between utc and localtime with:
+
+```kotlin
+val time = DateTime(2017, 12, 31, 23, 59, 59)
+val utcTime = time.toUtc()
+val localTime = time.toLocal()
+val halfHourOffsetTime = time.toOffset(30)
+```
+
+### Modifying dates
+
+If you want to manipulate your DateTime instance, you can construct `TimeDistance` using `.months`, `.days`... extension properties, and use `+` and `-` operators:
+
+```kotlin
+val now = DateTime.now()
+val inAMonth = now + 1.months
+val tomorrow = now + 1.days
+val yeserday = now - 1.days
+```
+
+### Month and year methods
+
+Sometimes we will need to know if a year is leap or how much days has a month in a specific year. With Klock you can fetch that information:
+
+```kotlin
+val is2017leap = Year.isLeap(2017)
+val daysInJanuary2017 = Month.January.days(2017)
+```
+
+## Full API:
 
 ```kotlin
 object Klock {
