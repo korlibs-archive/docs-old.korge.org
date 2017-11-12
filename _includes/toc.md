@@ -11,7 +11,7 @@
 * [<i class="fa fa-files-o"></i> Korio Async I/O](/korio)
 * [<i class="fa fa-window-restore"></i> Korui UI](/korui)
 * [<i class="fa fa-gamepad" aria-hidden="true"></i> Korge Game Engine](/korge)
-  * [<i class="fa fa-check-square-o" aria-hidden="true"></i> Setup](/setup)
+  * [<i class="fa fa-check-square-o" aria-hidden="true"></i> Setup](/korge/setup)
   * [<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i> Basics](/basics)
     * [<i class="fa fa-object-ungroup"></i> Views](/basics/views)
     * [<i class="fa fa-archive"></i> Resources](/basics/resources)

@@ -15,8 +15,8 @@ It works for **Desktop**, **Web** and **Mobile**. But allows to create other tar
 
 KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up the environment here](/setup).
 
-<img src="/setup/gradle.svg" style="width:128px;height:128px;" />
-<img src="/setup/intellij.svg" style="width:128px;height:128px;" />
+<img src="/i/logos/gradle.svg" style="width:128px;height:128px;" />
+<img src="/i/logos/intellij.svg" style="width:128px;height:128px;" />
 
 ## Dependencies:
 
