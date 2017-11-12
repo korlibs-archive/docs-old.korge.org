@@ -7,4 +7,4 @@ title: "Kotlin cORoutines Template Engine"
 
 [https://github.com/korlibs/korte](https://github.com/korlibs/korte)
 
-Kotlin cORoutines Template Engine Edit
+Kotlin cORoutines Template Engine
