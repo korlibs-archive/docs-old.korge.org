@@ -12,10 +12,6 @@ It works for **Desktop**, **Web** and **Mobile**. But allows to create other tar
 
 <div style="clear:both;"></div>
 
-## Samples:
-
-<a href="https://samples.korge.soywiz.com/coffee" target="_blank"><img src="/i/samples/coffee.png" width="242" height="432" /></a>
-
 ## Tools:
 
 KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up the environment here](/setup).

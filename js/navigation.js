@@ -89,7 +89,9 @@ $(document).ready(function() {
   $(".sidebar-nav a").click(function() {
     if (this.target == "_blank") return true;
 
-    var newurl = this.href;
+    var newurlBase = this.href;
+    var newurl = newurlBase.replace(/^https?:\/\//, '//')
+    console.log('changeTo:', newurlBase, newurl);
     history.pushState({ url: newurl }, "my page", newurl);
     return changeToPage(newurl, false);
   });
