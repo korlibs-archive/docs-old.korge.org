@@ -97,6 +97,28 @@ val yeserday = now - 1.days
 
 Sometimes we will need to know if a year is leap or how much days has a month in a specific year. With Klock you can fetch that information:
 
+## Stringifying and parsing dates
+
+In order to convert dates into strings or parse thems, klock provides a class called `SimplerDateFormat`.
+
+```kotlin
+val format = SimplerDateFormat(“EEE, dd MMM yyyy HH:mm:ss z”)
+val str = format.format(DateTime.now())
+val date = format.parse(str)
+```
+
+Just like Java's DateFormat, you can use some strings to format the date:
+
+* EEE - day of the week (3 letter)
+* z, zzz - timezone (GMT)
+* d, dd - dat of the month
+* MM - (month numeric)
+* MMM - (month three letter english)
+* yyyy, YYYY - full year
+* HH - hour of day 24h
+* mm - minutes 00-59
+* ss - seconds 00-59
+
 ```kotlin
 val is2017leap = Year.isLeap(2017)
 val daysInJanuary2017 = Month.January.days(2017)
