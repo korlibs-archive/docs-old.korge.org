@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Korge: {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+  <base href="/">
+
+  <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/simple-sidebar.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/simple-sidebar2.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/font-awesome.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/font-mfizz.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
+  <link rel="icon" href="{{ "/i/icon.png" | prepend: site.baseurl }}" />
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+  <script src="{{ "/js/jquery.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ "/js/bootstrap.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ "/js/navigation.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+
+  <style type="text/css">
+
+  code.highlighter-rouge {
+    color: blue;
+  }
+
+  a code.highlighter-rouge {
+    color: red;
+  }
+	.navbar-default {
+		background: #e1dff1;
+	}
+	.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+		color: #6c5d8e;
+		background-color: #c4c0de;
+	}
+	.navbar-default .navbar-nav>li>a {
+		color: #68638e;
+	}
+
+	#sidebar-wrapper {
+		background: #2c2a38;
+    /*
+    overflow-y: hidden;
+    overflow-x: hidden;
+    */
+    overflow-y: scroll;
+    overflow-x: hidden;
+	}
+  #sidebar-wrapper .sidebar-nav {
+    /*
+    overflow-y: scroll;
+    overflow-x: hidden;
+    */
+  }
+	.sidebar-nav li {
+    list-style-type: none;
+  }
+	.sidebar-nav li a {
+		color: #6c6a82;
+	}
+	.sidebar-nav li a.active {
+		background: #6a6683;
+	}
+	.sidebar-nav li a:hover {
+		background: #525061;
+	}
+
+
+  #sidebar2-wrapper {
+		background: #2c2a38;
+	}
+  .sidebar2-nav li {
+    list-style-type: none;
+  }
+	.sidebar2-nav li a {
+		color: #6c6a82;
+	}
+	.sidebar2-nav li a.active {
+		background: #6a6683;
+	}
+	.sidebar2-nav li a:hover {
+		background: #525061;
+	}
+
+	#page-content-wrapper a:visited {
+		color: #cc208e;
+	}
+	#page-content-wrapper a {
+    /*
+    border-bottom: 1px dotted #ff9f9f;
+    */
+    text-decoration: underline;
+    color: #cc208e;
+	}
+  #page-content-wrapper a:hover {
+    /*
+    border-bottom: 1px solid red;
+    text-decoration: none;
+    */
+    color: red;
+  }
+  #page-content-wrapper a img {
+  }
+  #page-content-wrapper a img {
+    opacity: 0.9;
+    /*border: 1px dotted #ffa0a0;*/
+    padding: 4px;
+  }
+  #page-content-wrapper a:hover img {
+    opacity: 1.0;
+    padding: 2px;
+    border: 2px solid black;
+  }
+  h1, h2, h3, h4, h5 {
+    color: #4b17a9;
+  }
+  #page-content-wrapper p, #page-content-wrapper div {
+    color: #4b17a9;
+  }
+
+  </style>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/" style="padding:10px;">
+          <img alt="Brand" src="/i/logo.svg" width="32" height="32" style="display: inline;" />
+		  Korge
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+
+      <form class="collapse navbar-collapse navbar-form navbar-right" role="search" action="/search" style="padding-left:20px;">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" id="searchq" name="q" />
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/"><i class="fa fa-book" aria-hidden="true"></i> Documentation</a></li>
+		  {% if site.blog_url != "" %}
+          <li><a href="{{ site.blog_url }}" target="_blank"><i class="fa fa-wordpress" aria-hidden="true"></i> Blog</a></li>
+		  {% endif %}
+          <li><a href="{{ site.project_url }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+          <div class="sidebar-nav" style="padding-top:16px;margin-top:50px;" >
+            {% capture my_include %}{% include toc.md %}{% endcapture %}
+            {{ my_include | markdownify }}
+          </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" id="page-content2">
+                        <div id="page-content">
+                            <h1>{% if page.title_icon %}<i class="{{ page.title_icon }}" aria-hidden="true"></i> {% endif %}{{ page.title }} <a href="{{ site.doc_base_url }}/blob/master/docs/{{ page.path }}" style="color:#ddd;"><i class="fa fa fa-pencil" aria-hidden="true"></i></a></h1>
+                            {{ content }}
+                            <p>
+                                <a href="{{ site.doc_base_url }}/blob/master/{{ page.path }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page ({{ page.path }})</a>
+                            </p>
+                        </div>
+
+						{% if site.disqus_id %}
+							<div id="disqus_thread" style="margin-top:80px;"></div>
+							<script type="text/javascript" id="disqus-script">
+								var disqus_config = function () {
+									this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
+									this.page.identifier = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
+								};
+								(function() {
+									var d = document, s = d.createElement('script');
+									s.src = '//{{ site.disqus_id }}.disqus.com/embed.js';
+									s.setAttribute('data-timestamp', +new Date());
+									(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+						{% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div id="sidebar2-wrapper">
+              <div class="sidebar2-nav">
+                {% capture my_include %}{% include toc.md %}{% endcapture %}
+                {{ my_include | markdownify }}
+              </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+</body>
+
+</html>
