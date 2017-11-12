@@ -14,7 +14,7 @@ It works for **Desktop**, **Web** and **Mobile**. But allows to create other tar
 
 ## Samples:
 
-<a href="http://samples.korge.soywiz.com/coffee" target="_blank"><img src="http://samples.korge.soywiz.com/coffee.png" width="242" height="432" /></a>
+<a href="https://samples.korge.soywiz.com/coffee" target="_blank"><img src="/i/samples/coffee.png" width="242" height="432" /></a>
 
 ## Tools:
 
