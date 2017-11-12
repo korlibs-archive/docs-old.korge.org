@@ -3,11 +3,18 @@ layout: default
 title: "Imaging: Korim"
 ---
 
-<img src="/i/logos/korim.svg" width="256" height="256" />
+<img src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />
+
+**[KorIM](https://github.com/soywiz/korim)** is a library image loading, writting and processing. It allows to convert between image and color formats.
+
+This library is able to load PNG, JPEGs, BMPs, TGAs, PSDs. And SVG vector images.
+Also allows rendering vectorial images using native rasterizers. The rasterizing
+capabilities is used by the [Adobe Flash/Animate SWF loader](/animation/swf).
+Also allows to use native image loaders for fastest performance.
 
 [https://github.com/korlibs/korim](https://github.com/korlibs/korim)
 
-Korim: Kotlin cORoutines IMaging utilities depending on Korio for JVM, Android and JS
+<div style="clear:both;"></div>
 
 ### Bitmap classes
 
