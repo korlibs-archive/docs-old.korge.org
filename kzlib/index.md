@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "kzlib"
+title: "Compression: kzlib"
 ---
 
 [https://github.com/korlibs/kzlib](https://github.com/korlibs/kzlib)

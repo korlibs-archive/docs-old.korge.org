@@ -22,14 +22,16 @@ KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up t
 
 KorGE uses [Kotlin](https://kotlinlang.org/) several other [soywiz's Korlibs libraries](https://github.com/soywiz/korlibs) and optionally [JTransc](https://github.com/jtransc/jtransc) to work:
 
-<img src="/about/kotlin.svg" style="width:116px;height:116px;margin:6px;" />
-![](/about/korio.png)
-![](/about/korma.png)
-![](/about/korag.png)
-![](/about/korim.png)
-![](/about/korau.png)
-![](/about/korui.png)
-![](/about/jtransc.png)
+<img src="/i/logos/kotlin.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korlibs.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korio.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korma.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korag.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korim.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korau.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/korui.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/klock.svg" width="128" height="128" style="padding:4px;" />
+<img src="/i/logos/jtransc.svg" width="128" height="128" style="padding:4px;" />
 
 ## Targets:
 

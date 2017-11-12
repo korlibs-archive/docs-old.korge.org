@@ -1,6 +1,6 @@
 ---
 layout: default
-title: korinject
+title: "Async Injector: korinject"
 ---
 
 [https://github.com/korlibs/korinject](https://github.com/korlibs/korinject)
