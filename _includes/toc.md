@@ -9,6 +9,7 @@
 * [<i class="fa fa-cube"></i> Korag: Acc. Graphics](/korag)
 * [<i class="fa fa-volume-up"></i> Korau: Audio](/korau)
 * [<i class="fa fa-cog"></i> Korma: Mathematics](/korma)
+* [<i class="fa fa-connectdevelop"></i> Dynarek: JITtter](/dynarek)
 * [<i class="fa fa-files-o"></i> Korio Async I/O](/korio)
   * [<i class="fa fa-database"></i> Databases](/korio/db)
   * [<i class="fa fa-globe"></i> Web](/korio/web)
