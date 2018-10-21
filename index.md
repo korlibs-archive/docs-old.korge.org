@@ -15,3 +15,5 @@ It is suitable for building [backend servers or cli tools that run on JVM or Nod
 It's philosophy is: simple, small, powerful, cohesive, enjoyable, portable, multiplatform and asynchronous.
 
 Some of these libraries are tightly tied to provide an awesome experience.
+
+![](korlibs-deps.svg)
