@@ -16,5 +16,5 @@ It's philosophy is: simple, small, powerful, cohesive, enjoyable, portable, mult
 
 Some of these libraries are tightly tied to provide an awesome experience.
 
-<embed src="korlibs-deps.svg" />
+<embed src="korlibs-deps.svg" style="max-width:100%;" />
 
