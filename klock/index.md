@@ -158,6 +158,13 @@ val negatingTime = -time
 val twoHundredMillisecondsMore = time + 200.milliseconds
 ```
 
+### External Arithmetic
+
+```kotlin
+val now = DateTime.now()
+val inTenSeconds = now + 10.seconds
+```
+
 ### Comparison
 
 `TimeSpan` implements `Comparable<TimeSpan>` so you can compare times independently to the unit used to instantiate them:
@@ -197,6 +204,39 @@ MonthSpan allows to represent `month` and `year` durations (with month precissio
 val time = 1.months
 val time = 5.years
 ```
+
+### Arithmetic
+
+```kotlin
+val time: MonthSpan = 5.years + 2.months
+val time: MonthSpan = 5.years * 2
+val time: DateTimeSpan = 5.years + 5.days
+```
+
+### External Arithmetic
+
+```kotlin
+val now = DateTime.now()
+val inTwoMonths = now + 2.months
+```
+
+### Components
+
+```kotlin
+val time = 5.years + 2.months + 4.months
+
+val years : Int = time.years  // 5
+val months: Int = time.months // 6
+
+val totalYears : Double = time.totalYears  // 5.0
+val totalMonths: Int    = time.totalMonths // 5 * 12 + 6 = 66
+```
+
+## DateTimeSpan
+
+DateTimeSpan is a combination of `MonthSpan` and `TimeSpan`.
+
+This class is not inline, so whenever it is possible use `MonthSpan` or `TimeSpan` to alter `DateTime` directly.
 
 ## Date and Time ranges and distances
 
