@@ -70,9 +70,16 @@ To construct a UTC date from an Unix TimeStamp:
 val date = DateTime.fromUnix(unix)
 ```
 
+### TimeZones
+
+As for 1.0 Klock doesn't have direct TimeZone support. But support offseted DateTime using `DateTimeTz`.
+
+What Klock allows to do here is to get the UTC offset of the operating system TimeZone in a specific moment (having into account daylight changes when supported by the OS).
+
 ## Date Information
 
 Klock allows to get Date information: from how many days has a month, to whether a year is leap, to which month will be in three years and a six months.
+This UTC offset is represented by the class `TimezoneOffset` that just wraps the `TimeSpan` class.
 
 ### DayOfWeek enum
 
@@ -153,7 +160,7 @@ val twoHundredMillisecondsMore = time + 200.milliseconds
 
 ### Comparison
 
-`TimeSpan` implements `Comparable<TimeSpan>` so you can compare times independently to the unit used:
+`TimeSpan` implements `Comparable<TimeSpan>` so you can compare times independently to the unit used to instantiate them:
 
 ```kotlin
 val isTrue = 4001.milliseconds > 4.seconds
@@ -173,14 +180,27 @@ val value: Double = 1.seconds.hours // 1.seconds as hours (1.0/3_600)
 val value: Double = 1.seconds.days // 1.seconds as days (1.0/86_4000)
 ```
 
-For milliseconds there are a couple of additional properties to get as Long and Int:
+For milliseconds there are a couple of additional properties to get it as Long and Int:
 
 ```kotlin
 val value: Long = 1.seconds.millisecondsLong // 1.seconds as milliseconds (1000L)
 val value: Int  = 1.seconds.millisecondsInt  // 1.seconds as milliseconds (1000)
 ```
 
-## Date and Time distance
+## MonthSpan
+
+MonthSpan allows to represent `month` and `year` durations (with month precission) where `TimeSpan` simply can't work because month distance depends on specific moments to have into account leap years.
+
+### Constructing instances
+
+```kotlin
+val time = 1.months
+val time = 5.years
+```
+
+## Date and Time ranges and distances
+
+
 
 
 
@@ -188,4 +208,40 @@ val value: Int  = 1.seconds.millisecondsInt  // 1.seconds as milliseconds (1000)
 
 As for Klock 1.0, there are two relevant functionality: the `measureTime`, `measureTimeWithResult` functions and the `PerformanceCounter` class.
 
+### measureTime
 
+This function is inline and allocation-free, and can be used for expensive computations as well as for asynchronous blocks:
+
+```kotlin
+val time: TimeSpan = measureTime {
+    // expensive or asynchronous computation
+}
+```
+
+### measureTimeWithResult
+
+This function is inline and allocation-free, and can be used for expensive computations as well as for asynchronous blocks:
+
+```kotlin
+val timedResult: TimedResult<String> = measureTimeWithResult {
+    // expensive or asynchronous computation
+    "result"
+}
+val time: TimeSpan = timedResult.time
+val result: String = timedResult.result
+```
+
+### PerformanceCounter
+
+This class offers a performance counter that will increase over time but that cannot be used as reference in time. Only can be used as relative time to compute deltas:
+
+```kotlin
+val start: Double = PerformanceCounter.microseconds
+// ...
+val end: Double = PerformanceCounter.microseconds
+val elapsed: TimeSpan = (end - start).microseconds 
+```
+
+## TimeProvider
+
+Sometimes you will need a source of time that can be mocked. Klock includes a `TimeProvider` interface with a default implementation using `DateTime`.
