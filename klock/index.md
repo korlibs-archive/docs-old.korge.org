@@ -72,6 +72,42 @@ To construct a UTC date from an Unix TimeStamp:
 val date = DateTime.fromUnix(unix)
 ```
 
+### Components
+
+```kotlin
+val time = DateTime.now()
+
+val year: Year = time.year
+val year: Int = time.yearInt
+
+val month: Month = time.month
+val month0: Int = time.month0
+val month1: Int = time.month1
+
+val yearMonth: YearMonth = time.yearMonth
+val dayOfMonth: Int = time.dayOfMonth
+
+val dayOfWeek: DayOfWeek = time.dayOfWeek
+val dayOfWeek: Int = time.dayOfWeekInt
+
+val dayOfYear: Int = time.dayOfYear
+
+val hours: Int = time.hours
+val minutes: Int = time.minutes
+val seconds: Int = time.seconds
+val milliseconds: Int = time.milliseconds
+```
+
+### From DateTime to DateTimeTz 
+
+```kotlin
+time.localUnadjusted
+time.toOffsetUnadjusted(offset: TimezoneOffset)
+
+time.local
+time.toOffset(offset: TimezoneOffset)
+```
+
 ### TimeZones
 
 As for 1.0 Klock doesn't have direct TimeZone support. But support offseted DateTime using `DateTimeTz`.
