@@ -23,6 +23,8 @@ and to provide an API that is powerful, fun and easy to use.
 
 **Table of contents:**
 
+{::options toc_levels="1..2" /}
+
 * TOC
 {:toc}
 
@@ -260,7 +262,7 @@ val time: TimeSpan = measureTime {
 
 ### measureTimeWithResult
 
-This function is inline and allocation-free, and can be used for expensive computations as well as for asynchronous blocks:
+This function is inline but it allocates a TimedResult instance, so it is not suitable for critical places, but allows to return a result along the time:
 
 ```kotlin
 val timedResult: TimedResult<String> = measureTimeWithResult {
