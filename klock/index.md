@@ -124,7 +124,61 @@ Klock offers a `TimeSpan` inline class using a Double to be allocation-free on a
 It has millisecond precision up to `2 ** 52`, which means that it can represent up to **142808 years** with millisecond precision.
 It has a special `TimeSpan.NULL` value (internally represented as NaN) to represent an absence of time without having to use nullable types that are not allocation-free.
 
-### Constructing instances 
+### Constructing instances
+
+There are extension properties for `Number` to generate `TimeSpan` instances. The extensions use `Number`, but are inline, so no allocation is done. 
+
+```kotlin
+val time = 1_000_000_000.nanoseconds
+val time = 1_000_000.microseconds
+val time = 1_000.milliseconds
+val time = 1.seconds
+val time = 0.5.seconds
+val time = 60.minutes
+val time = 24.hours
+val time = 1.days
+val time = 1.weeks
+```
+
+You can represent from nanoseconds to weeks. Months and years are not included here but included as part of `MonthSpan` since months and years work different because leap years.
+
+### Arithmetic
+
+```kotlin
+val time = 4.seconds
+val doubleTheTime = time * 2
+val negatingTime = -time
+val twoHundredMillisecondsMore = time + 200.milliseconds
+```
+
+### Comparison
+
+`TimeSpan` implements `Comparable<TimeSpan>` so you can compare times independently to the unit used:
+
+```kotlin
+val isTrue = 4001.milliseconds > 4.seconds
+```
+
+### Converting between units
+
+`TimeSpan` has several properties to get the instance time interpreted in different units of measure:
+
+```kotlin
+val value: Double = 1.seconds.nanoseconds // 1.seconds as nanoseconds (1_000_000_000)
+val value: Double = 1.seconds.microseconds // 1.seconds as microseconds (1_000_000)
+val value: Double = 1.seconds.milliseconds // 1.seconds as milliseconds (1000)
+val value: Double = 1.seconds.seconds // 1.seconds as seconds (1)
+val value: Double = 1.seconds.minutes // 1.seconds as minutes (1.0/60)
+val value: Double = 1.seconds.hours // 1.seconds as hours (1.0/3_600)
+val value: Double = 1.seconds.days // 1.seconds as days (1.0/86_4000)
+```
+
+For milliseconds there are a couple of additional properties to get as Long and Int:
+
+```kotlin
+val value: Long = 1.seconds.millisecondsLong // 1.seconds as milliseconds (1000L)
+val value: Int  = 1.seconds.millisecondsInt  // 1.seconds as milliseconds (1000)
+```
 
 ## Date and Time distance
 
