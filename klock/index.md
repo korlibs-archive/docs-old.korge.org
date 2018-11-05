@@ -2,7 +2,7 @@
 layout: default
 title: Klock
 hide_title: true
-permalink: /klock
+permalink: /klock/
 ---
 
 <img src="/i/logos/klock.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="klock Date and Time" />
@@ -72,7 +72,29 @@ val date = DateTime.fromUnix(unix)
 
 ## Date Information
 
-Klock allows to get Date information: from how many days has a month, to whether a year is leap, to which is the next day of the week.
+Klock allows to get Date information: from how many days has a month, to whether a year is leap, to which month will be in three years and a six months.
+
+### DayOfWeek enum
+
+DayOfWeek is an enum with all seven days of the week: 
+`Sunday(0)`, `Monday(1)`, `Tuesday(2)`, `Wednesday(3)`, `Thursday(4)`, `Friday(5)`, `Saturday(6)`
+
+* Constructing a DayOfWeek from an integer where Sunday=0: `DayOfWeek[index0]`
+* Getting index0 (sunday=0) and index1 (sunday=1) representations: `dayOfWeek.index0`, `dayOfWeek.index1`
+
+### Month enum
+
+Month is an enum with all twelve months on it:
+`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`.
+
+Months are a set of 28-31 days. The number of days of each month is always the same, except for `February` that has 28 days in normal years, and 29 in leap years. 
+
+* Getting next and previous month (cyclic): `month.next`, `month.prev`
+* Getting the number of days in a common and leap year: `month.daysCommon`, `month.daysLeap`
+* Getting the number of days for a specific year or a leap year: `month.days(year)`, `month.days(leap = true)`
+* Getting a Month from a one-based representation (where January is 1 and December is 12), while wrapping outside numbers: `Month(month1)`
+* Getting the month zero-based (January=0) and one-based (January=1) representation: `month.index0`, `month.index1`
+* Add or subtract months: `month + 11`
 
 ### Year class
 
@@ -96,13 +118,16 @@ and can be useful to represent calendars.
 * Get the components year and the month: `yearMonth.year` and `yearMonth.month`
 * Add or subtract months of years: `yearMonth - 1.years + 1.months`
 
-### Month class
+## TimeSpan
 
-### DayOfWeek class
+Klock offers a `TimeSpan` inline class using a Double to be allocation-free on all targets, and it serves to represent durations without start references.
+It has millisecond precision up to `2 ** 52`, which means that it can represent up to **142808 years** with millisecond precision.
+It has a special `TimeSpan.NULL` value (internally represented as NaN) to represent an absence of time without having to use nullable types that are not allocation-free.
 
-## Durations
+### Constructing instances 
 
-To represent durations, klock
+## Date and Time distance
+
 
 
 ## Measuring time
