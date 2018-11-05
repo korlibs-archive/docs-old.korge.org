@@ -240,13 +240,42 @@ DateTimeSpan is a combination of `MonthSpan` and `TimeSpan`.
 
 This class is not inline, so whenever it is possible use `MonthSpan` or `TimeSpan` to alter `DateTime` directly.
 
-## Date and Time ranges and distances
+## DateTimeRange
 
+DateTimeRange is a range between two DateTime.
 
+### Constructing Instances
 
+```kotlin
+val today = DateTime.now()
+val tomorrow = DateTime.now() + 1.days
 
+val rangeOpen = today until tomorrow
+val rangeClosed = today .. tomorrow
+```
 
-## Measuring time
+### Contains
+
+```kotlin
+val inTenMinutes = now + 10.minutes
+val contains: Boolean = inTenMinutes in rangeOpen
+```
+
+### Span and Duration
+
+```kotlin
+val duration: TimeSpan     = rangeOpen.duration
+val span    : DateTimeSpan = rangeOpen.span
+```
+
+### Days Between two DateTime
+
+```kotlin
+val inFourMonths = today + 4.month
+val days = (today until inFourMonths).span.days
+``` 
+
+## Measuring Time
 
 As for Klock 1.0, there are two relevant functionality: the `measureTime`, `measureTimeWithResult` functions and the `PerformanceCounter` class.
 
