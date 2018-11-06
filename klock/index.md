@@ -108,6 +108,16 @@ time.local
 time.toOffset(offset: TimezoneOffset)
 ```
 
+### Formating and Parsing Dates
+
+The `DateFormat` interface allows to parse and format dates from/to Strings.
+
+```kotlin
+val dateFormat: DateFormat = DateFormat("EEE, dd MMM yyyy HH:mm:ss z") // Construct a new DateFormat from a String
+val date: DateTimeTz = dateFormat.parse("Sat, 08 Sep 2018 04:08:09 UTC") // Parse a Date from a String
+val dateStr: String = DateTime.now().format(dateFormat) // Format a Date using a specific DateFormat.
+```
+
 ### TimeZones
 
 As for 1.0 Klock doesn't have direct TimeZone support. But support offseted DateTime using `DateTimeTz`.
