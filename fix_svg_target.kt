@@ -3,8 +3,8 @@
 import java.io.*
 
 fun main(args: Array<String>) {
-    updateSvgTarget(File("korlibs-deps.svg"))
-    File("korlibs-deps.svg.tpl").writeText("---\nlayout: null\npermalink: /korlibs-deps-tpl.svg\nkmem_version: 0.9\n---\n" + File("korlibs-deps.svg").readText())
+    updateSvgTarget(File("korlibs-deps-tpl.svg"))
+    //File("korlibs-deps.svg.tpl").writeText("---\nlayout: null\npermalink: /korlibs-deps-tpl.svg\nkmem_version: 0.9\n---\n" + File("korlibs-deps.svg").readText())
 }
 
 // draw.io works pretty well, but doesn't set the target="_top" or target="_blank" for links, that is a problem when using <embed src="file.svg" />
