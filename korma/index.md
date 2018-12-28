@@ -419,6 +419,10 @@ val Shape2d.area: Double
 
 Korma provides a `Bezier` object with several methods to compute in a bezier curve (quadratic and cubic) their points, their length or their bounds.
 
+## Path Finding
+
+Usually in games you might want to find the shortest path between two points.
+
 ### AStar (A*)
 
 Korma includes an AStar implementation to find paths in bidimensional grids.
