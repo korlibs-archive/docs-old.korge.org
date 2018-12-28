@@ -46,31 +46,40 @@ dependencies {
 enableFeaturePreview('GRADLE_METADATA')
 ```
 
-## Path Finding
+## Math utils
 
-### AStar (A*)
-
-Korma includes an AStar implementation to find paths in bidimensional grids.
+### Clamping
 
 ```kotlin
-val points = AStar.find(
-    board = Array2("""
-        .#....
-        .#.##.
-        .#.#..
-        ...#..
-    """) { c, x, y -> c == '#' },
-    x0 = 0,
-    y0 = 0,
-    x1 = 4,
-    y1 = 2,
-    findClosest = false
-)
-println(points)
-// [(0, 0), (0, 1), (0, 2), (0, 3), (1, 3), (2, 3), (2, 2), (2, 1), (2, 0), (3, 0), (4, 0), (5, 0), (5, 1), (5, 2), (4, 2)]
+fun Long.clamp(min: Long, max: Long): Long
+fun Int.clamp(min: Int, max: Int): Int
+fun Double.clamp(min: Double, max: Double): Double
+fun Float.clamp(min: Float, max: Float): Float
 ```
 
-## genericSort
+### Interpolation
+
+Korma defines two interfaces for interpolable classes and provides several extension methods for `Double` (the ratio between 0 and 1) to interpolate several kind of types.
+
+```kotlin
+interface Interpolable<T> {
+    fun interpolateWith(ratio: Double, other: T): T
+}
+
+interface MutableInterpolable<T> {
+    fun setToInterpolated(ratio: Double, l: T, r: T): T
+}
+
+fun <T> Double.interpolateAny(min: T, max: T): T
+fun Double.interpolate(l: Float, r: Float): Float
+fun Double.interpolate(l: Double, r: Double): Double
+fun Double.interpolate(l: Int, r: Int): Int
+fun Double.interpolate(l: Long, r: Long): Long
+fun <T> Double.interpolate(l: Interpolable<T>, r: Interpolable<T>): T
+fun <T : Interpolable<T>> Double.interpolate(l: T, r: T): T
+```
+
+### genericSort
 
 genericSort allows to sort any array-like structure fully or partially without allocating and without having to reimplementing any sort algorithm again.
 You just have to implement a `compare` and `swap` methods that receive indices
@@ -104,38 +113,40 @@ object ArrayListSortOps : SortOps<ArrayList<Int>>() {
 }
 ```
 
-## Interpolation
+## Geometry
 
-Korma defines two interfaces for interpolable classes and provides several extension methods for `Double` (the ratio between 0 and 1) to interpolate several kind of types.
+### Angle
 
-```kotlin
-interface Interpolable<T> {
-    fun interpolateWith(ratio: Double, other: T): T
-}
-
-interface MutableInterpolable<T> {
-    fun setToInterpolated(ratio: Double, l: T, r: T): T
-}
-
-fun <T> Double.interpolateAny(min: T, max: T): T
-fun Double.interpolate(l: Float, r: Float): Float
-fun Double.interpolate(l: Double, r: Double): Double
-fun Double.interpolate(l: Int, r: Int): Int
-fun Double.interpolate(l: Long, r: Long): Long
-fun <T> Double.interpolate(l: Interpolable<T>, r: Interpolable<T>): T
-fun <T : Interpolable<T>> Double.interpolate(l: T, r: T): T
-```
-
-## Math utils
-
-### Clamping
+`Angle` is an inline class backed by a `Double` that represents an angle. It can be constructed from and converted to `degrees` and `radians` and offer several utilities and operators related to angles:
 
 ```kotlin
-fun Long.clamp(min: Long, max: Long): Long
-fun Int.clamp(min: Int, max: Int): Int
-fun Double.clamp(min: Double, max: Double): Double
-fun Float.clamp(min: Float, max: Float): Float
+fun cos(angle: Angle): Double
+fun sin(angle: Angle): Double
+fun tan(angle: Angle): Double
+
+inline val Number.degrees: Angle
+inline val Number.radians: Angle
+
+val Angle.degrees: Double
+val Angle.radians: Double
+
+val Angle.normalized: Angle
+
 ```
+
+### Point and Matrix
+
+`Point` and `Matrix` are classes holding doubles (to get consistency among targets including JavaScript) that represent a 2D Point (with x and y) and a 2D Affine Transform Matrix (with a, b, c, d, tx and ty).
+
+### Vector3D and Matrix3D
+
+### BoundsBuilder
+
+### PointArrayList
+
+### Rectangle, Size, Anchor, Orientation and ScaleMode
+
+## BinPacking
 
 ## Vector
 
@@ -149,18 +160,28 @@ fun Float.clamp(min: Float, max: Float): Float
 
 ### Extra: Bezier tools
 
-## Geometry
+## Path Finding
 
-### Angle
+### AStar (A*)
 
-### Point and Matrix
+Korma includes an AStar implementation to find paths in bidimensional grids.
 
-### Vector3D and Matrix3D
+```kotlin
+val points = AStar.find(
+    board = Array2("""
+        .#....
+        .#.##.
+        .#.#..
+        ...#..
+    """) { c, x, y -> c == '#' },
+    x0 = 0,
+    y0 = 0,
+    x1 = 4,
+    y1 = 2,
+    findClosest = false
+)
+println(points)
+// [(0, 0), (0, 1), (0, 2), (0, 3), (1, 3), (2, 3), (2, 2), (2, 1), (2, 0), (3, 0), (4, 0), (5, 0), (5, 1), (5, 2), (4, 2)]
+```
 
-### BoundsBuilder
-
-### PointArrayList
-
-### Rectangle, Size, Anchor, Orientation and ScaleMode
-
-## BinPacking
+### Path finding in
