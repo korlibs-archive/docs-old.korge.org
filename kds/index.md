@@ -383,6 +383,40 @@ assertEquals(false, v.binarySearch(11).found)
 assertEquals(2, v.binarySearch(21).nearIndex)
 ```
 
+### genericSort
+
+`genericSort` allows to sort any array-like structure fully or partially without allocating and without having to reimplementing any sort algorithm again.
+You just have to implement a `compare` and `swap` methods that receive indices
+in the array to compare and optionally a `shiftLeft` method (that fallbacks to use the `swap` one). The SortOps implementation is usually an `object` to prevent allocating.
+
+```kotlin
+fun <T> genericSort(subject: T, left: Int, right: Int, ops: SortOps<T>): T
+abstract class SortOps<T> {
+    abstract fun compare(subject: T, l: Int, r: Int): Int
+    abstract fun swap(subject: T, indexL: Int, indexR: Int)
+    open fun shiftLeft(subject: T, indexL: Int, indexR: Int)
+}
+```
+
+So a simple implementation that would sort any `MutableList` could be:
+
+```kotlin
+val result = genericSort(arrayListOf(10, 30, 20, 10, 5, 3, 40, 7), 0, 7, ArrayListSortOps)
+assertEquals(listOf(3, 5, 7, 10, 10, 20, 30, 40), result)
+
+object ArrayListSortOps : SortOps<ArrayList<Int>>() {
+    override fun compare(subject: ArrayList<Int>, l: Int, r: Int): Int {
+        return subject[l].compareTo(subject[r])
+    }
+
+    override fun swap(subject: ArrayList<Int>, indexL: Int, indexR: Int) {
+        val tmp = subject[indexA]
+        subject[indexA] = subject[indexB]
+        subject[indexB] = tmp
+    }
+}
+```
+
 ## mapWhile: `mapWhile`, `mapWhileArray`, `mapWhileInt`, `mapWhileFloat`, `mapWhileDouble`
 {: #mapWhile }
 
