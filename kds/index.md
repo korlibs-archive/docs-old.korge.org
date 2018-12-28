@@ -383,7 +383,7 @@ assertEquals(false, v.binarySearch(11).found)
 assertEquals(2, v.binarySearch(21).nearIndex)
 ```
 
-### genericSort
+## genericSort
 
 `genericSort` allows to sort any array-like structure fully or partially without allocating and without having to reimplementing any sort algorithm again.
 You just have to implement a `compare` and `swap` methods that receive indices
