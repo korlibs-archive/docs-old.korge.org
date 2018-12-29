@@ -88,6 +88,46 @@ fun <T> Double.interpolate(l: Interpolable<T>, r: Interpolable<T>): T
 fun <T : Interpolable<T>> Double.interpolate(l: T, r: T): T
 ```
 
+### Easing
+
+Korma defines some standard Easing functions and a way to include additional easing functions and combine them.
+
+```kotlin
+interface Easing {
+    operator fun invoke(it: Double): Double
+
+    companion object {
+        operator fun invoke(f: (Double) -> Double) = object : Easing
+
+        fun cubic(f: (t: Double, b: Double, c: Double, d: Double) -> Double): Easing
+        fun combine(start: Easing, end: Easing): Easing
+
+        val SMOOTH: Easing
+        val EASE_IN_ELASTIC: Easing
+        val EASE_OUT_ELASTIC: Easing
+        val EASE_OUT_BOUNCE: Easing
+        val LINEAR: Easing
+        val EASE_IN: Easing
+        val EASE_OUT: Easing
+        val EASE_IN_OUT: Easing
+        val EASE_OUT_IN: Easing
+        val EASE_IN_BACK: Easing
+        val EASE_OUT_BACK: Easing
+        val EASE_IN_OUT_BACK: Easing
+        val EASE_OUT_IN_BACK: Easing
+        val EASE_IN_OUT_ELASTIC: Easing
+        val EASE_OUT_IN_ELASTIC: Easing
+        val EASE_IN_BOUNCE: Easing
+        val EASE_IN_OUT_BOUNCE: Easing
+        val EASE_OUT_IN_BOUNCE: Easing
+        val EASE_IN_QUAD: Easing
+        val EASE_OUT_QUAD: Easing
+        val EASE_IN_OUT_QUAD: Easing
+        val EASE_SINE: Easing
+    }
+}
+```
+
 ## Geometry
 
 ### Angle
