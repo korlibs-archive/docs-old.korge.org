@@ -199,3 +199,21 @@ h1, h2, h3, h4, h5 {
 #markdown-toc {
   /*column-count: 2;*/
 }
+
+a.entry-item {
+  position: relative;
+}
+
+span.children::before {
+  //color: red;
+  position: absolute;
+  left: -1.2em;
+  font-size: 0.7em;
+}
+
+span.children.active::before {
+  content: '▼';
+}
+span.children.inactive::before {
+  content: '►';
+}

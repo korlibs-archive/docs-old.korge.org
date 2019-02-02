@@ -7,3 +7,4 @@ _site
 .jekyll-metadata
 /.gradle
 /.idea
+.DS_Store

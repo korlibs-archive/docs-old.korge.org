@@ -1,9 +1,30 @@
+function normalizeUrl(str) {
+  return ('' + str).replace(/\/+$/, '');
+}
+
 // This is a functions that scrolls to #{blah}link
 function goToByScrollCenter(query){
   $('#sidebar-wrapper').animate({
       scrollTop: $(query).offset().top - $('#sidebar-wrapper').height() / 2
   }, 0);
 }
+
+function updateSidebar(scroll) {
+  $('#searchq').val('');
+  $(".sidebar-nav a").each(function() {
+    var active = normalizeUrl(document.location.href) == normalizeUrl(this.href);
+    $(this).toggleClass('active', active);
+    if (scroll && active) {
+      goToByScrollCenter(this);
+    }
+  });
+}
+
+$(document).ready(function() {
+  updateSidebar(true);
+});
+
+/*
 
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
@@ -18,21 +39,6 @@ function getQueryVariable(variable) {
     return undefined;
 }
 
-function normalizeUrl(str) {
-  return ('' + str).replace(/\/+$/, '');
-}
-
-function updateSidebar(scroll) {
-  $('#searchq').val('');
-  $(".sidebar-nav a").each(function() {
-    //console.log(normalizeUrl(document.location.href) + " --- " + normalizeUrl(this.href));
-    var active = normalizeUrl(document.location.href) == normalizeUrl(this.href);
-    $(this).toggleClass('active', active);
-    if (scroll && active) {
-      goToByScrollCenter(this);
-    }
-  });
-}
 
 function fixExternalLinksTarget(element) {
   var base = document.location.protocol + '//' + document.location.host;
@@ -109,3 +115,4 @@ $(document).ready(function() {
     return changeToPage(document.location.href, true);
   });
 });
+*/

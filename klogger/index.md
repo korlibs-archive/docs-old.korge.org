@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "Logging: klogger"
+title: "Klogger"
+fa-icon: fa-bell
+priority: 15
 ---
 
 [https://github.com/korlibs/klogger](https://github.com/korlibs/klogger)

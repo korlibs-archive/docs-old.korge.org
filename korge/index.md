@@ -1,6 +1,9 @@
 ---
 layout: default
 title: KorGE Game Engine
+children: /korge/
+priority: -1
+fa-icon: fa-gamepad
 ---
 
 <img src="/i/logos/korge.svg" width="180" height="180" style="float:left;margin-right:16px;"/>

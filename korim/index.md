@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "Imaging: Korim"
+title: "KorIM"
+fa-icon: fa-picture-o
+priority: 60
 ---
 
 <img src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Audio"
+children: /korge/audio/
 ---
 
 <img src="/i/logos/korau.png" style="float:left;" />

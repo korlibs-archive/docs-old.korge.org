@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "Async Injector: korinject"
+title: "Korinject"
+fa-icon: fa-puzzle-piece
+priority: 970
 ---
 
 [https://github.com/korlibs/korinject](https://github.com/korlibs/korinject)

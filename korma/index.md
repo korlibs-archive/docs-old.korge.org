@@ -1,7 +1,9 @@
 ---
 layout: default
 hide_title: true
-title: "Maths: Korma"
+title: "KorMA"
+fa-icon: fa-cog
+priority: 50
 ---
 
 <img src="/i/logos/korma.svg" width="128" height="128" alt="Mathematic Library for Kotlin" style="float:left; margin: 0 16px 16px 0;" />

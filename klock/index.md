@@ -3,6 +3,8 @@ layout: default
 title: Klock
 hide_title: true
 permalink: /klock/
+fa-icon: fa-clock-o
+priority: 10
 ---
 
 <img src="/i/logos/klock.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="klock Date and Time" />

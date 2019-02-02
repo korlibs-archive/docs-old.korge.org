@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "Accelerated Graphics: korag"
+title: "KorAG"
+fa-icon: fa-cube
+priority: 80
 ---
 
 <img src="/i/logos/korag.svg" width="256" height="256" />

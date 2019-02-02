@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "Audio: Korau"
+title: "KorAU"
+fa-icon: fa-headphones
+priority: 70
 ---
 
 <img src="/i/logos/korau.svg" width="256" height="256" />
