@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Setup"
+priority: 0
 ---
 
 <img src="/i/logos/intellij.svg" width="160" height="160" />

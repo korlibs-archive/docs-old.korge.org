@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Kotlin cORoutines Template Engine"
+title: "KorTE"
 ---
 
 <img src="/i/logos/korte.svg" width="256" height="256" />
