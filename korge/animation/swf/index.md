@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Adobe Flash/Animate
+title: Adobe Animate
+fa-icon: fa-magic
 ---
 
 <img src="/animation/swf/logo.png" style="float: left;margin:0 16px 16px 0;" />

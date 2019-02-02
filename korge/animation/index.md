@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Animating
+children: /korge/animation/
+fa-icon: fa-play
 ---
 
 ![](/animation/animation.jpg)

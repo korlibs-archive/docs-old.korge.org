@@ -9,6 +9,12 @@ priority: 1000
 
 Yes. All these libraries are dual licensed under MIT and Apache 2.0, except some libraries that I have ported from other languages and were not licensed as MIT, that propagate their own license. But in any case, all the licenses used are free and permissive.
 
+## Where can I find the libraries?
+
+I publish all my libraries at bintray: <https://bintray.com/soywiz/soywiz>.
+
+There are plans to publish them on Maven Central too, but I need some time to update the build scripts to do so.
+
 ## Contributing
 
 This is an Opensource project.

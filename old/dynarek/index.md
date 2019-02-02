@@ -1,6 +1,6 @@
 ---
 layout: default
-title: dynarek
+title: Dynarek
 ---
 
 [https://github.com/korlibs/dynarek](https://github.com/korlibs/dynarek)

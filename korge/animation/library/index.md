@@ -1,6 +1,7 @@
 ---
 layout: default
 title: AnLibrary
+fa-icon: fa-film
 ---
 
 AnLibrary is your common interface to any kind of animation libraries. Either **SWF** files, or **ANI** files. Or any custom animation library you plug-in.
