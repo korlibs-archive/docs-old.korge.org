@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Setup"
+fa-icon: fa-check-square-o
 priority: 0
 ---
 

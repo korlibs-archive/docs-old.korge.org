@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Particles"
+fa-icon: fa-snowflake-o
 ---
 
 Particle system is compatible with [Starling's one](https://github.com/Gamua/Starling-Extension-Particle-System). Which is compatible with the following editors:

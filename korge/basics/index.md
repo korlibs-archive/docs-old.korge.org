@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Basics
-index_icon: <i class="fa fa-object-ungroup"></i>
+fa-icon: fa-sort-alpha-asc
 ---
 
 KorGE has a `Stage` like AS3 and HTML DOM and a [display tree with `View` nodes](/basics/views).

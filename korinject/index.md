@@ -5,9 +5,9 @@ fa-icon: fa-puzzle-piece
 priority: 970
 ---
 
-[https://github.com/korlibs/korinject](https://github.com/korlibs/korinject)
+Portable Kotlin Common library to do asynchronous dependency injection.
 
-Portable Kotlin Common library to do asynchronous dependency injection
+[https://github.com/korlibs/korinject](https://github.com/korlibs/korinject)
 
 ```kotlin
 class AsyncInjector(val parent: AsyncInjector? = null, val level: Int = 0) {
@@ -60,6 +60,16 @@ class AsyncInjector(val parent: AsyncInjector? = null, val level: Int = 0) {
 ```
 
 ```kotlin
+interface AsyncDependency {
+    suspend fun init(): Unit
+}
+
+interface InjectorAsyncDependency {
+    suspend fun init(injector: AsyncInjector): Unit
+}
+```
+
+```kotlin
 
 interface AsyncFactory<T> {
     suspend fun create(): T
@@ -70,14 +80,6 @@ interface InjectedHandler {
 }
 
 annotation class AsyncFactoryClass(val clazz: KClass<out AsyncFactory<*>>)
-
-interface AsyncDependency {
-    suspend fun init(): Unit
-}
-
-interface InjectorAsyncDependency {
-    suspend fun init(injector: AsyncInjector): Unit
-}
 
 interface AsyncObjectProvider<T> {
     suspend fun get(injector: AsyncInjector): T

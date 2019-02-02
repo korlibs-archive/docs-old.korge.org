@@ -11,5 +11,3 @@ and playback.
 
 This library is able to load MP3, OGG and WAV files in a portable way,
 and it is capable of using native audio loaders.
-
-<div style="clear:both;"></div>
