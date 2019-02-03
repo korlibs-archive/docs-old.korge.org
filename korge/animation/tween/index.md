@@ -7,11 +7,11 @@ fa-icon: fa-line-chart
 Games require tweening visual properties in order to be appealing.
 Korge provides a simple, yet powerful interface for creating tweens.
 
-![](/animation/tween/tween.png)
+![](tween.png)
 
 ### Simple interface
 
-![](/animation/animation.jpg)
+![](animation.jpg)
 
 `View` has an extension method called `View.tween` that allows you to do the magic. And has the following definition:
 
@@ -60,7 +60,7 @@ The tween execution will be attached as a component to the receiver View that ho
 Korge provides an Easing class with the most common easings. And allows
 you to create your own easings.
 
-![](/animation/tween/easing.png)
+![](easing.png)
 
 * Easings.EASE_IN_ELASTIC
 * Easings.EASE_OUT_ELASTIC
