@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Particles"
-fa-icon: fa-snowflake-o
+fa-icon: fa-snowflake
 ---
 
 Particle system is compatible with [Starling's one](https://github.com/Gamua/Starling-Extension-Particle-System). Which is compatible with the following editors:
@@ -12,4 +12,4 @@ Particle system is compatible with [Starling's one](https://github.com/Gamua/Sta
 [Korge's intelliJ plugin](/plugin/intelliJ) allows you to preview particles directly in your IDE.
 Just double-click a `.pex` file, and you are done.
 
-![](/particles/intellij.png)
+![](intellij.png)

@@ -2,7 +2,7 @@
 layout: default
 title: "Gradle Plugin"
 fa-icon: fa-arrow-alt-circle-right
-priority: 10
+priority: 1
 ---
 
 **Table of contents:**

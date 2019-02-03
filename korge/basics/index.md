@@ -2,8 +2,7 @@
 layout: default
 title: Basics
 fa-icon: fa-sort-alpha-down
-priority: 20
-children: /korge/basics/
+priority: 2
 ---
 
 KorGE has a `Stage` like AS3, Pixi and HTML DOM and a [display tree with `View` nodes](/korge/basics/views).

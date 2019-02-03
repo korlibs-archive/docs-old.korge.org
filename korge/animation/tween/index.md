@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tweens
-fa-icon: fa-line-chart
+fa-icon: fa-chart-line
 ---
 
 Games require tweening visual properties in order to be appealing.

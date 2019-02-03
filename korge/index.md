@@ -45,8 +45,8 @@ KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlib
 
 ## Where to start:
 
-You can start reading about the [setup](/korge/setup) and [the basics](/basics).
+You can start reading about the [setup](/korge/setup) and [the basics](/korge/basics).
 
 <!--
-You can start reading about the [setup](/korge/setup), [the basics](/basics), [reading tutorials](/korge/tutorials) or [watching video tutorials](/korge/tutorials).
+You can start reading about the [setup](/korge/setup), [the basics](/korge/basics), [reading tutorials](/korge/tutorials) or [watching video tutorials](/korge/tutorials).
 -->
