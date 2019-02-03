@@ -325,3 +325,160 @@ class NinePatchEx : View() {
     constructor(ninePatch: NinePatchBitmap32, width: Double = ninePatch.width.toDouble(), height: Double = ninePatch.height.toDouble()): NinePatchEx
 }
 ```
+
+### ScaleView
+
+`ScaleView` is a FixedSizeContainer where all its contents is renderized to a normal size into a texture and then scaled with or without filtering.
+This enables pixelated retro games.
+
+```kotlin
+inline fun Container.scaleView(
+	width: Int, height: Int, scale: Double = 2.0, filtering: Boolean = false,
+	callback: @ViewsDslMarker Container.() -> Unit = {}
+) = ScaleView(width, height, scale, filtering).addTo(this).apply(callback)
+
+class ScaleView(width: Int, height: Int, scale: Double = 2.0, var filtering: Boolean = false) : FixedSizeContainer(), View.Reference {
+	init {
+		this.width = width.toDouble()
+		this.height = height.toDouble()
+		this.scale = scale
+	}
+}
+```
+
+### Text
+
+`Text` is a view that renders texts with a BitmapFont. It supports a small set of HTML for formating.
+
+```kotlin
+inline fun Container.text(
+	text: String, textSize: Double = 16.0, font: BitmapFont = Fonts.defaultFont,
+	callback: @ViewsDslMarker Text.() -> Unit = {}
+)
+
+class Text : View(), IText, IHtml {
+	companion object {
+		operator fun invoke(
+			text: String,
+			textSize: Double = 16.0,
+			color: RGBA = Colors.WHITE,
+			font: BitmapFont = Fonts.defaultFont
+		): Text
+	}
+
+	val textBounds = Rectangle(0, 0, 1024, 1024)
+	var document: Html.Document? = null
+	var filtering = true
+	var bgcolor = Colors.TRANSPARENT_BLACK
+	val fonts = Fonts.fonts
+
+	fun setTextBounds(rect: Rectangle)
+	fun unsetTextBounds()
+	var format: Html.Format
+	var text: String
+	var html: String
+	fun relayout()
+}
+
+interface IText { var text: String }
+interface IHtml { var html: String }
+
+fun View?.setText(text: String) = run { this.foreachDescendant { if (it is IText) it.text = text } }
+fun View?.setHtml(html: String) = run { this.foreachDescendant { if (it is IHtml) it.html = html } }
+```
+
+## Filters
+
+Views can have filters attached.
+
+```kotlin
+var View.filter: Filter? = null
+```
+
+### ComposedFilter
+
+You can apply several filters to a view using this:
+
+```kotlin
+class ComposedFilter(val filters: List<Filter>) : Filter()
+```
+
+### ColorMatrixFilter
+
+```kotlin
+class ColorMatrixFilter(var colorMatrix: Matrix3D, var blendRatio: Double) : Filter() {
+    companion object {
+        val GRAYSCALE_MATRIX = Matrix3D.fromRows(
+            0.33f, 0.33f, 0.33f, 0f,
+            0.59f, 0.59f, 0.59f, 0f,
+            0.11f, 0.11f, 0.11f, 0f,
+            0f, 0f, 0f, 1f
+        )
+        
+        val IDENTITY_MATRIX = Matrix3D.fromRows(
+            1f, 0f, 0f, 0f,
+            0f, 1f, 0f, 0f,
+            0f, 0f, 1f, 0f,
+            0f, 0f, 0f, 1f
+        )
+    }
+}
+```
+
+### Convolute3Filter
+
+```kotlin
+class Convolute3Filter(var kernel: Matrix3D) : Filter() {
+    companion object {
+        val KERNEL_GAUSSIAN_BLUR: Matrix3D
+        val KERNEL_BOX_BLUR: Matrix3D
+        val KERNEL_IDENTITY: Matrix3D
+        val KERNEL_EDGE_DETECTION: Matrix3D
+    }
+}
+```
+
+### IdentityFilter
+
+This filter can be used to no apply filters at all. But serves for the subtree to be rendered in a texture.
+
+```kotlin
+object IdentityFilter : Filter()
+```
+
+### WaveFilter and PageFilter
+
+Can be used to simulate pages from books:
+
+```kotlin
+class PageFilter(
+    var hratio: Double = 0.5,
+    var hamplitude0: Double = 0.0,
+    var hamplitude1: Double = 10.0,
+    var hamplitude2: Double = 0.0,
+    var vratio: Double = 0.5,
+    var vamplitude0: Double = 0.0,
+    var vamplitude1: Double = 0.0,
+    var vamplitude2: Double = 0.0
+) : Filter()
+```
+
+```kotlin
+class WaveFilter(
+    var amplitudeX: Int = 10,
+    var amplitudeY: Int = 10,
+    var crestCountX: Double = 2.0,
+    var crestCountY: Double = 2.0,
+    var cyclesPerSecondX: Double = 1.0,
+    var cyclesPerSecondY: Double = 1.0,
+    var time: Double = 0.0
+) : Filter()
+```
+
+### SwizzleColorsFilter
+
+Serves to do component swizzling per pixel:
+
+```kotlin
+class SwizzleColorsFilter(var swizzle: String = "rgba") : Filter()
+```
