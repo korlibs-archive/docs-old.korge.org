@@ -2,6 +2,7 @@
 layout: default
 title: Views
 fa-icon: fa-object-ungroup
+priority: 0
 ---
 
 Korge's views works like [AS3's DisplayObject](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/DisplayObject.html) or the HTML DOM. It is intended for 2D rendering, though you can create custom views with 3D content rendering with KorAG.

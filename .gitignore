@@ -1,10 +1,10 @@
-.idea
+/.idea
+/_site
+/.sass-cache
+/.jekyll-metadata
+/.gradle
+/.idea
 *.iws
 *.iml
 *.ipr
-_site
-.sass-cache
-.jekyll-metadata
-/.gradle
-/.idea
 .DS_Store

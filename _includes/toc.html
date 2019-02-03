@@ -16,7 +16,7 @@
 
     {%- if current == include.context -%}
     <li class="{% if is_active %}active{% endif %}">
-        <a href="{{ entry.url | relative_url }}" class="{% if is_active %}active{% endif %} entry-item">
+        <a href="{{ entry.url | relative_url }}" class="{% if is_active %}active{% endif %} entry-item {% if entry.children and is_active %}active-children{% endif %}">
             <span class="{% if entry.children %}children{% endif %} {% if is_active %}active{% else %}inactive{% endif %}"></span>
             {%- if entry.fa-icon -%}
             <i class="fa {{ entry.fa-icon }}"></i>&nbsp;

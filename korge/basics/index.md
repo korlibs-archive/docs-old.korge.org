@@ -20,7 +20,7 @@ suspend fun main() = Korge { // this: Stage ->
 
 ## High Level
 
-But larger applications define a module, scenes and use the [asynchronous dependency injector](/korinject/):
+But larger applications define a module, scenes and use the [Korinject's asynchronous dependency injector](/korinject/):
 
 ```kotlin
 suspend fun main() = Korge(Korge.Config(module = MyModule))

@@ -78,7 +78,7 @@ h2 {
 
 h3 {
   font-style: italic;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 
@@ -102,6 +102,12 @@ h3 {
 }
 .sidebar-nav li a {
   color: #6c6a82;
+}
+.sidebar-nav li a.active-children {
+  color: #999;
+}
+.sidebar-nav li a.active-children.active {
+  color: #fff;
 }
 .sidebar-nav li a.active {
   background: #6a6683;
