@@ -1,5 +1,5 @@
 function normalizeUrl(str) {
-  return ('' + str).replace(/\/+$/, '');
+  return ('' + str).replace(/#.*$/, '').replace(/\/+$/, '');
 }
 
 // This is a functions that scrolls to #{blah}link
@@ -11,8 +11,12 @@ function goToByScrollCenter(query){
 
 function updateSidebar(scroll) {
   $('#searchq').val('');
+  let normalizedNavigatorUrl = normalizeUrl(document.location.href);
+  //console.log('aaaaaa');
   $(".sidebar-nav a").each(function() {
-    var active = normalizeUrl(document.location.href) == normalizeUrl(this.href);
+    let thisNormalizedUrl = normalizeUrl(this.href)
+    var active = normalizedNavigatorUrl == thisNormalizedUrl;
+    //console.log(normalizedNavigatorUrl, thisNormalizedUrl, this.href);
     $(this).toggleClass('active', active);
     if (scroll && active) {
       goToByScrollCenter(this);
