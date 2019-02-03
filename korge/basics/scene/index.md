@@ -33,6 +33,14 @@ object MyModule : Module() {
 }
 ```
 
+And you use the module with:
+
+```kotlin
+suspend fun main() = Korge(Korge.Config(module = MyModule))
+```
+
+You can create several mains in different classes and packages using different entry point modules.
+
 ## The `Scene` class
 
 The `Scene` class looks like this:
@@ -88,6 +96,7 @@ Usually the `get()` method won't require type parameters since it is generic and
 {:.note}
 
 ## The `SceneContainer` class
+{:#SceneContainer}
 
 The `SceneContainer` is a `View` that will contain the view of a `Scene`.
 
