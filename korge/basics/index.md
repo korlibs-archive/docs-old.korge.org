@@ -6,7 +6,7 @@ priority: 20
 children: /korge/basics/
 ---
 
-KorGE has a `Stage` like AS3, Pixi and HTML DOM and a [display tree with `View` nodes](/basics/views).
+KorGE has a `Stage` like AS3, Pixi and HTML DOM and a [display tree with `View` nodes](/korge/basics/views).
 
 ## Low Level
 
@@ -47,11 +47,11 @@ class MyScene1(val myDependency: MyDependency) : Scene() {
 KorGE defines `ResourcesRoot`, that is a mountable virtual file system that works with Korio's VfsFile.
 It allows to load all kind of resources asynchronously from different sources and mount points.
 
-* Using KorIO it can read ByteArray, Strings, XMLs, JSONs, YAMLs...
+* Using KorIO it can read `ByteArra`y, `String`s, `XML`s, `JSON`s, `YAML`s...
 * Using KorIM it can load images
-* And using KorAU can load sound files
+* And using KorAU can load sound and music files
 
-It [defines `Scene` that act as a controller](/basics/scene) and a way to split the application in smaller parts.
+It [defines `Scene` that act as a controller](/korge/basics/scene) and a way to split the application in smaller parts.
 It uses the `AsyncInjector` from Korio as an [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) mechanism to declare dependencies to Scenes.
 
 Optionally (not imposed) it can use the Korio's `Bus` for communicating different parts of the application.

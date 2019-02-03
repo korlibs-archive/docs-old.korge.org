@@ -21,12 +21,12 @@ Then when **KorAG performs the rendering**, it starts drawing from the bottom to
 
 * **x, y**
 * **scaleX, scaleY**
-* **rotation**
+* **rotation**: [Angle](/korma/#angle)
 * **skewX, skewY**
 * **visible**
 * **alpha**
 * **blendingMode**
-* **speed** -- controls the view's updating speed
+* **speed**: Double -- controls the view's updating speed (being a ratio where 1 is 1x, 0.5 is 0.5x and 2 is 2x the speed)
 
 ### Computed Properties
 

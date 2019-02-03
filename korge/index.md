@@ -1,6 +1,6 @@
 ---
 layout: default
-title: KorGE Game Engine
+title: KorGE
 children: /korge/
 priority: -1
 fa-icon: fa-gamepad

@@ -196,7 +196,7 @@ body {
 
 #page-content2 {
   margin-top: 50px;
-  line-height: 1.7em;
+  line-height: 2em;
 }
 
 .navbar-default {
@@ -230,19 +230,21 @@ div.highlight, div.highlighter-rouge {
   background: none !important;
 }
 
-pre.highlight {
-  color: #bfb6cf;
-  background: rgb(53, 50, 59) !important;
-  border: 1px solid rgb(114, 100, 119);
-  border-radius: 0.5em;
-  font-size: inherit;
-}
-
 code.highlighter-rouge {
   color: #bfb6cf;
   background: rgb(53, 50, 59) !important;
   border: 1px solid rgb(62, 54, 65);
   font-size: inherit;
+}
+
+pre.highlight {
+  color: #bfb6cf;
+  font-size: inherit;
+
+  background: rgb(53, 50, 59) !important;
+  border: none;
+  //border: 1px solid rgb(114, 100, 119);
+  //border-radius: 0.5em;
 }
 
 .form-control {
@@ -256,4 +258,12 @@ code.highlighter-rouge {
     color: #fff;
     background-color: #223;
   }
+}
+
+h2 {
+    margin-top: 1.1em;
+}
+
+h3 {
+    margin-top: 1em;
 }
