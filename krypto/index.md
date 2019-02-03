@@ -39,13 +39,16 @@ object MD5 : HashFactory
 object SHA1 : HashFactory
 object SHA256 : HashFactory
 
-open class HashFactory(val create: () -> Hash) {
-    fun digest(data: ByteArray): ByteArray
+open class HashFactory() {
+    fun create(): Hash
 }
+
+fun HashFactory.digest(data: ByteArray): ByteArray
 
 abstract class Hash {
     val chunkSize: Int
     val digestSize: Int
+    
     fun reset(): Hash
     fun update(data: ByteArray, offset: Int, count: Int): Hash
     fun digest(): ByteArray

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "KorIO"
-fa-icon: fa-files-o
+fa-icon: fa-copy
 priority: 40
 ---
 

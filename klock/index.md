@@ -2,8 +2,7 @@
 layout: default
 title: Klock
 hide_title: true
-permalink: /klock/
-fa-icon: fa-clock-o
+fa-icon: fa-clock
 priority: 10
 ---
 

@@ -1,45 +1,28 @@
 ---
 layout: default
 title: "Setup"
-fa-icon: fa-check-square-o
+fa-icon: fa-check-square
 priority: 0
 ---
 
-<img src="/i/logos/intellij.svg" width="160" height="160" />
-<img src="/i/logos/gradle.svg" width="160" height="160" />
+## Editor
 
-KorGE game engine uses [intelliJ IDEA Community or Ultimate](https://www.jetbrains.com/idea/download/) as IDE and [Gradle](https://gradle.org/) as building tool. Korge provides [plugins for both](/plugin) in order to generate all the required preprocessed resources.
+You can create KorGE applications with any editor of your preference that supports Kotlin.
+I suggest you to use either [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/) or [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download/).
+If you can afford it, the Ultimate version has [a lot more of features](https://www.jetbrains.com/idea/features/editions_comparison_matrix.html), and it is super sweet if you plan to do fullstack development using Kotlin.
 
-### Setup intelliJ
+I suggest you to configure IntelliJ IDEA to:
 
-> You have to visit [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/), and download an intelliJ IDEA IDE, either Community or Ultimate will work. Community is free, but Ultimate has tons of additional features, and allows you to use it as a really polyglot IDE.
+* Editor → Code Style → Kotlin → Imports → Use imports with '*'
+* Build, Execution, Deployment → Build Tools → Gradle → Runner → Delegate IDE build/run actions to gradle and Run tests using Gradle test runner
+* Editor → General → Code Completion → NO Match Case, show the parameter info popup in 0ms
 
-![](/korge/setup/download.png)
+## Gradle
 
-> After installing and launching, you have to go to `Configure -> Plugins`
+KorGE uses gradle as build system, and the only special requirement to build KorGE is any supported Java JDK.
 
-![](/korge/setup/plugins.png)
+The easiest way to get started is to download the template project that includes a Gradle 5.1.1 wrapper, a preconfigured build-script, and a small main and a test:
 
-> Then click the `Browse repositories...` button.
+### <a href="https://github.com/korlibs/korge-hello-world/archive/master.zip"><i class="fa fa-download"></i> Download Project Template</a>
 
-![](/korge/setup/browse_repositories.png)
-
-> Then search for `Korge` and click the `Install` green button. That will suggest you to restart the IDE. Do so.
-
-![](/korge/setup/korge_plugin.png)
-
-> After that, you should see the Korge menu when opening a project.
-> Depending on the version you will see `Korge` it in the main menu or in the `Tools -> Korge` menu.
-
-![](/korge/setup/korge_plugin_menu.png)
-
-> Korge will work on projects that include `korge-core` artifact.
-
-### Supported Artifacts
-
-* `com.soywiz:korge:$korVersion`
-* `com.soywiz:korge-ext-swf:$korVersion`
-* `com.soywiz:korge-ext-particle:$korVersion`
-* `com.soywiz:korge-ext-spriter:$korVersion`
-* `com.soywiz:korge-ext-tiled:$korVersion`
-* `com.soywiz:korge-ext-lipsync:$korVersion`
+To know how to configure the gradle plugin by yourself, check the [Gradle Plugin section](/korge/gradle-plugin).

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "KorIM"
-fa-icon: fa-picture-o
+fa-icon: fa-image
 priority: 60
 ---
 

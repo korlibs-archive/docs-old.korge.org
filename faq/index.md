@@ -11,7 +11,8 @@ Yes. All these libraries are dual licensed under MIT and Apache 2.0, except some
 
 ## Where can I find the libraries?
 
-I publish all my libraries at bintray: <https://bintray.com/soywiz/soywiz>.
+* You can find the source code of my libraries: <https://github.com/korlibs> and <https://github.com/soywiz>.
+* I publish all my library binaries at bintray: <https://bintray.com/soywiz/soywiz>.
 
 There are plans to publish them on Maven Central too, but I need some time to update the build scripts to do so.
 
