@@ -3,6 +3,7 @@ layout: default
 title: Animating
 children: /korge/animation/
 fa-icon: fa-play
+priority: 200
 ---
 
 ![](/animation/animation.jpg)

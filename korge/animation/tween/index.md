@@ -26,15 +26,6 @@ If you want to linearly interpolate `view.x` from `10.0` to `100.0` in one secon
 view.tween(view::x[10.0, 100.0], time = 1000)
 ```
 
-### Interpolating Colors
-
-Since in KorGE 1.0 (until [project valhalla](https://en.wikipedia.org/wiki/Project_Valhalla_(Java_language)) is available), colors are represented as RGBA Integers. Which are not directly interpolable.
-KorGE provides an extension method `V2.color():V2` to decorate interpolation with a color interpolation. You can use it:
-
-```
-view.tween(view::colorMul[Colors.WHITE, Colors.RED].color(), time = 1000)
-```
-
 ### delay + duration + easing
 
 You can control the start time, duration and easing per interpolated property. Using theesee V2 extensions:

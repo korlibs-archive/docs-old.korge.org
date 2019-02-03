@@ -4,7 +4,7 @@ title: Adobe Animate
 fa-icon: fa-magic
 ---
 
-<img src="/animation/swf/logo.png" style="float: left;margin:0 16px 16px 0;" />
+<img src="logo.png" style="float: left;margin:0 16px 16px 0;width:128px;height:128px;" />
 
 Korge Game Engine supports SWF animation files from Adobe Flash and Adobe Animate.
 It can either load SWF files directly, or preprocess them at compile-time in order
@@ -12,7 +12,7 @@ to generate an optimized atlas-based version of the animation using Gradle and i
 
 <div style="clear: both;"></div>
 
-![](/animation/swf/create-2d-animation_1408x792.jpg)
+![](create-2d-animation_1408x792.jpg)
 
 ### Supported features:
 
@@ -54,7 +54,7 @@ Coming soon...
 Adobe Flash/Animate just allows you to set instance names. But what if you could
 set custom properties to access them by code or to trigger behaviours?
 
-![Korge Adobe Animate/Flash Extension](/animation/swf/korge-pro-extension.png)
+![Korge Adobe Animate/Flash Extension](korge-pro-extension.png)
 
 KorgeEXT allows you to do exactly that. You can select any instance and define
 several properties (a set of key/value pairs or just keys).
@@ -75,7 +75,7 @@ You can download KorgeEXT extension here:
 With Adobe Flash Pro, you can install it with Extension Manager. And for newer versions,
 you have to use a custom installer like [ZXP Installer](http://zxpinstaller.com/).
 
-[![ZXP Installer](/animation/swf/zxpinstaller.png)](http://zxpinstaller.com/)
+[![ZXP Installer](zxpinstaller.png)](http://zxpinstaller.com/)
 
 ### Known issues
 
@@ -88,7 +88,7 @@ and reopen when you need to set custom properties.
 In order to be able to configure how the atlas is going to be generated, you can
 add a `.swf.config` file along your `.swf` file.
 
-![Animation Config](/animation/swf/swf-config.png)
+![Animation Config](swf-config.png)
 
 ```
 data class SWFExportConfig(
@@ -125,7 +125,7 @@ Description:
 
 You can preview ANI/SWF files (as they will look in runtime) right in intelliJ, using Korge's intelliJ plugin (*that uses Korge itself for rendering!*):
 
-![](/animation/korge-intellij-plugin-preview.png)
+![](korge-intellij-plugin-preview.png)
 
 Korge's gradle plugin will generate `ani` files for you automatically. So you can reference `.ani` files instead of `.swf` files and it will work.
 
@@ -135,12 +135,12 @@ Korge's intelliJ plugin will generate an cache `ani` files when you press *play*
 
 If you prefer to load SWF files at runtime instead of preprocessed ANI files, you can. You have to add `korge-ext-swf` as compile dependency.
 
-![](/animation/swf/korge-ext-swf.png)
+![](korge-ext-swf.png)
 
 Then you can load it injecting as a dependency to your scene using `@Path("path/to/file.swf")` and `: AnLibrary` type.
 
-![](/animation/swf/swf-loading.png)
+![](swf-loading.png)
 
 If prefer, you can also use the extension method `VfsFile.readSWF(views: Views)` that will load you the `AnLibrary` from an SWF file from any VfsFile.
 
-![](/animation/swf/VfsFile-readSWF.png)
+![](VfsFile-readSWF.png)

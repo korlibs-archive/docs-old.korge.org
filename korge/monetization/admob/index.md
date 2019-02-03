@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Admob
-fa-icon: fa-mobile
+fa-icon: fa-ad
 priority: 100
 ---
 
