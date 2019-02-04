@@ -2,6 +2,7 @@
 layout: default
 title: "Lipsync"
 fa-icon: fa-comments
+status: outdated
 ---
 
 KorGE is integrated with [Rhubarb Lip-Sync](https://github.com/DanielSWolf/rhubarb-lip-sync).

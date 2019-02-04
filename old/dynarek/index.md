@@ -2,6 +2,7 @@
 layout: default
 title: Dynarek
 fa-icon: fa-connectdevelop
+status: outdated
 ---
 
 [https://github.com/korlibs/dynarek](https://github.com/korlibs/dynarek)

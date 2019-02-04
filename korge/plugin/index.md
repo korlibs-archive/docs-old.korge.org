@@ -3,6 +3,7 @@ layout: default
 title: "Plugins"
 fa-icon: fa-plug
 priority: 900
+status: incomplete
 ---
 
 You can create KorGE plugins by creating a multiplatform artifact and creating a `.korge-plugin` file along the artifact and your `.pom`:

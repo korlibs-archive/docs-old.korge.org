@@ -2,6 +2,7 @@
 layout: default
 title: Adobe Animate
 fa-icon: fa-magic
+status: outdated
 ---
 
 <img src="logo.png" style="float: left;margin:0 16px 16px 0;width:128px;height:128px;" />

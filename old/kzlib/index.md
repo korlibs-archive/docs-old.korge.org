@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Compression: kzlib"
+status: outdated
 ---
 
 [https://github.com/korlibs/kzlib](https://github.com/korlibs/kzlib)

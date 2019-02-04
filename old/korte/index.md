@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "KorTE"
+status: outdated
 ---
 
 <img src="/i/logos/korte.svg" width="256" height="256" />

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "UI: Korui"
+status: outdated
 ---
 
 <img src="/i/logos/korui.svg" width="256" height="256" />
