@@ -28,6 +28,10 @@
 
 <body>
 
+{% capture toc %}
+{% include toc.html context="/" level=0 %}
+{% endcapture %}
+
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -66,7 +70,7 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper" class="print_hide">
           <div class="sidebar-nav" style="padding-top:16px;margin-top:50px;margin-bottom:1em;" >
-            {% include toc.html context="/" level=0 %}
+            {{ toc }}
           </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -120,7 +124,7 @@
             <!-- Sidebar -->
             <div id="sidebar2-wrapper" class="print_hide">
               <div class="sidebar2-nav">
-                {% include toc.html %}
+                {{ toc }}
               </div>
             </div>
             <!-- /#sidebar-wrapper -->
