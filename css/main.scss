@@ -215,7 +215,9 @@ body {
 .navbar-default {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  background: rgba(0, 0, 0, 0.2);
+  //background: rgba(0, 0, 0, 0.2);
+  //#232232
+  background: rgba(35, 34, 50, 0.6);
   border: none;
 
   .navbar-nav {
