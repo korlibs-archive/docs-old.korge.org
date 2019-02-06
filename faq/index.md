@@ -70,6 +70,12 @@ dependency {
 }
 ```
 
+## Why do you use a custom version of kotlinx-coroutines?
+
+I was not able to figure out how to get it working without gradle metadata,
+so I decided to publish a custom version based on 1.1.0 until I know how to
+include it in multiplatform projects without metadata on native without issues.
+
 ## Contributing
 
 This is an Opensource project.
