@@ -16,6 +16,60 @@ Yes. All these libraries are dual licensed under MIT and Apache 2.0, except some
 
 There are plans to publish them on Maven Central too, but I need some time to update the build scripts to do so.
 
+## How do I include these libraries in my multiplatform projects?
+
+Older versions (before february) just require one line + gradle metadata:
+
+```groovy
+commonMainApi "com.soywiz:library:$version"
+```
+
+Newer versions published after 6 february, do not include gradle metadata (that has a lot of known problems), but require adding dependencies for each target independently:
+
+```groovy
+def library = "klock"
+commonMainApi "com.soywiz:$library-metadata:$libraryVersion" // it is common on the left, and -metadata on the right
+jvmMainApi "com.soywiz:$library-jvm:$libraryVersion"
+jsMainApi "com.soywiz:$library-js:$libraryVersion"
+androidMainApi "com.soywiz:$library-android:$libraryVersion"
+iosX64MainApi "com.soywiz:$library-iosx64:$libraryVersion"
+iosArm32MainApi "com.soywiz:$library-iosarm32:$libraryVersion"
+iosArm64MainApi "com.soywiz:$library-iosarm64:$libraryVersion"
+macosX64MainApi "com.soywiz:$library-macosx64:$libraryVersion"
+linuxX64MainApi "com.soywiz:$library-linuxx64:$libraryVersion"
+mingwX64MainApi "com.soywiz:$library-mingwx64:$libraryVersion"
+```
+
+If you are using kotlin-dsl, I have made a small couple of functions for it:
+
+```kotlin
+val ALL_TARGETS = listOf("android", "iosArm64", "iosArm32", "iosX64", "js", "jvm", "linuxX64", "macosX64", "mingwX64", "metadata")
+
+fun DependencyHandler.addCommon(group: String, name: String, version: String, targets: List<String> = ALL_TARGETS) {
+    for (target in targets) {
+        val suffix = "-${target.toLowerCase()}"
+        val base = when (target) {
+            "metadata" -> "common"
+            else -> target
+        }
+
+        val packed = "$group:$name$suffix:$version"
+        add("${base}MainApi", packed)
+        add("${base}TestImplementation", packed)
+    }
+}
+
+fun DependencyHandler.addCommon(dependency: String, targets: List<String> = ALL_TARGETS) {
+    val (group, name, version) = dependency.split(":", limit = 3)
+    return addCommon(group, name, version, targets)
+}
+
+// Usage:
+dependency {
+    addCommon("com.soywiz:klock:$klockVersion")
+}
+```
+
 ## Contributing
 
 This is an Opensource project.
