@@ -7,6 +7,7 @@ status: new
 ---
 
 ## 1.1.1 (2019-02-19)
+{:#v111}
 
 ### Improvements
 
@@ -36,6 +37,7 @@ status: new
 * [KorGE plugin: Fix atlas packing](https://github.com/korlibs/korge/commit/2ebb52e1fa67a996d5555f661b802e6e508716d8)
 
 ## 1.1.0 (2019-02-11)
+{:#v110}
 
 ### New features
 
@@ -67,6 +69,7 @@ status: new
 * Added several more KorGE samples
 
 ## 1.0.3 (2019-02-03)
+{:#v103}
 
 ### Fixes
 
@@ -75,6 +78,7 @@ status: new
 * Fixed KorGE gradle plugin extension icon property being immutable
 
 ## 1.0.0 (2019-02-01)
+{:#v100}
 
 First public version
 
