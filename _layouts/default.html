@@ -90,12 +90,9 @@
                             <h1>{% if page.title_icon %}<i class="{{ page.title_icon }}" aria-hidden="true"></i> {% endif %}{{ page.title }}</h1>
                             {% endif %}
                             {% case page.status %}
-                              {% when 'todo' %}
-                                 <div class="alert alert-warning" role="alert">This page has to be written</div>
-                              {% when 'outdated' %}
-                                 <div class="alert alert-warning" role="alert">This page is outdated</div>
-                              {% when 'incomplete' %}
-                                <div class="alert alert-warning" role="alert">This page is incomplete</div>
+                              {% when 'todo' %}<div class="alert alert-warning" role="alert">This page has to be written</div>
+                              {% when 'outdated' %}<div class="alert alert-warning" role="alert">This page is outdated</div>
+                              {% when 'incomplete' %}<div class="alert alert-warning" role="alert">This page is incomplete</div>
                               {% else %}
                             {% endcase %}
                             {{ content }}
