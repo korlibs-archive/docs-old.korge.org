@@ -176,7 +176,7 @@ object AudioTone {
 }
 ```
 
-## NativeSoundProvider
+## NativeSound
 
 ```kotlin
 expect val nativeSoundProvider: NativeSoundProvider
@@ -216,8 +216,8 @@ suspend fun NativeSound.toStream(): AudioStream
 
 suspend fun NativeSound.playAndWait(progress: NativeSoundChannel.(current: TimeSpan, total: TimeSpan) -> Unit = { current, total -> }): Unit
 
-suspend fun VfsFile.readNativeSound(streaming: Boolean = false)
-suspend fun VfsFile.readNativeSoundOptimized(streaming: Boolean = false)
+suspend fun VfsFile.readNativeSound(streaming: Boolean = false): NativeSound
+suspend fun VfsFile.readNativeSoundOptimized(streaming: Boolean = false): NativeSound
 ```
 
 ## SoundUtils
