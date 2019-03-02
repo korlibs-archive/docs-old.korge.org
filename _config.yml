@@ -1,6 +1,12 @@
 title: Korlibs
 email: soywiz@gmail.com
 description: Modern Kotlin Common Libraries for Full Stack development
+exclude:
+  - ".gradle"
+  - ".idea"
+  - ".sass-cache"
+  - ".vscode"
+  - "@old"
 baseurl: ""
 url: "https://korlibs.soywiz.com"
 doc_base_url: https://github.com/korlibs/korlibs.github.io
