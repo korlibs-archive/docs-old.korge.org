@@ -6,6 +6,49 @@ priority: 10000
 status: new
 ---
 
+## 1.1.3 (2019-03-03)
+{:#v113}
+
+This version is focused on performance and also fixes a few bugs.
+
+### Fixes
+
+* [KorIM: Fixes bounds computing when using thickness in vector graphics](https://github.com/korlibs/korge/issues/17) [[Fix]](https://github.com/korlibs/korim/commit/0f880ddf3c65797e9ea6528c14f0e4b0b1df6b6b)
+* [KorAU: Now supports volume and panning properties on JS](https://github.com/korlibs/korau/commit/092f861e65ed875bbd40f7cd36f71b615fcc3ece)
+* [KorAU: Fixes audio leak on windows that produced crashes after a few audio playings](https://github.com/korlibs/korau/commit/88bb7120694c0542a9c67c645ec023ef3660a47b)
+* [KorGE: Fixes Android and iOS when using preprocessed resources, and android proper escaping when generating local.properties with the sdk path](https://github.com/korlibs/korge/commit/f5980c92afa228bbf8d56850d1cb934f3eac5283)
+
+### Optimizations
+
+* [KMEM: Reduces allocation on JVM when copying arrays](https://github.com/korlibs/kmem/commit/3bbc9d030738c699bb8c3c360553d84619183900)
+* Korio: Greatly reduces allocation pressure on all targets when using Signal and AsyncSignal [[1]](https://github.com/korlibs/korio/commit/b757d5b6e47e7d9790465fb7b2cbe35578b64b83) [[2]](https://github.com/korlibs/korio/commit/0e43f7d17a122ae6d78ebf0d48036b8d9f61150a) [[3]](https://github.com/korlibs/korio/commit/58a489cf4f87bc6e2093cfcf2d962a0472f812f2)
+* [Korio: General optimizations reducing allocations](https://github.com/korlibs/korio/commit/c23d736d8111b93b7f57bc46f85824a01f24ac5d)
+* KorGW and KorEV: Allocation optimizations [[1]](https://github.com/korlibs/korau/commit/88bb7120694c0542a9c67c645ec023ef3660a47b) [[2]](https://github.com/korlibs/korui/commit/eb69c417f20bd5527eaef7c955449aeb4090b5f3)
+* [KorGE and KorGE Dragonbones optimizations reducing allocations when iterating](https://github.com/korlibs/korge/commit/7dc52f449a73c2fba0117b9632cc8932235216c8)
+* [KorGE Plugin patches kotlin.js to improve isInheritanceFromInterface performance](https://github.com/korlibs/korge/commit/89b70963122fe54298431d5413d78fc6fff35a27)
+
+### Changes
+
+* [KorAU: Now uses joau on the JVM for audio, fixing performance problems when playing lots of sounds](https://github.com/korlibs/korau/commit/abf3388bb7e738e7da138c5fc489d3e771fbb57b)
+
+### New Features
+
+* [KorIM: Support encoding windows ICO and BMP files](https://github.com/korlibs/korim/commit/87a8aa23a4c47ef1abafbee4b5b06a5662996a0f)
+* [KDS: Added `getCyclic` variants for Two Dimensional structures](https://github.com/korlibs/kds/commit/13caf27a291771a494b11529c91ddfb3a20cf8d5)
+* KDS: Added allocation-free `fastForEach`, `fastForEachReverse`, `fastIterateRemove`, `fastForEachWithIndex` [[1]](https://github.com/korlibs/kds/commit/4faaea12859e8d3ab6b2680538ea6c88322e7c27) [[2]](https://github.com/korlibs/kds/commit/4ebe19c598e5e2099a931b360ea5a4a1970a9928)
+* KDS: Added allocation-free `fastKeyForEach`, `fastValueForEach`, `fastForEach` for `Fast*Map<T>` and `IntMap` variants [[1]](https://github.com/korlibs/kds/commit/b14e781fba8147faa7da889969e9186d05633809) [[2]](https://github.com/korlibs/kds/commit/1c51ff2321253c041ccd6fe397394c173a926b76)
+* [Korio: Added String.eachBuilder](https://github.com/korlibs/korio/commit/c23d736d8111b93b7f57bc46f85824a01f24ac5d)
+* [KorAU: Support panning property in AudioChannel with values between -1 and +1](https://github.com/korlibs/korau/commit/092f861e65ed875bbd40f7cd36f71b615fcc3ece)
+* [KorGE: Tilemaps now support repeating modes (NONE, REPEATING and MIRROR) per axis](https://github.com/korlibs/korge/commit/e7338a1825dd41942cfc0584fa6c6dee70213dab)
+* [KorGE: Tilemaps now support using IntArray2 from Kds](https://github.com/korlibs/korge/commit/45a2b8bba1e39bc8ae94275591827457ec4e848a)
+* [KorGE: Added color parameter when building text views](https://github.com/korlibs/korge/commit/e0e2a5c5219224be5d932e0343dcdd194f8ace57)
+
+### Extra
+
+* Kotlin [1.3.30-eap-1 was released](https://discuss.kotlinlang.org/t/kotlin-1-3-30-early-access-preview/11780/2) including async stacktraces.
+You can use the 1.3.30-eap-1 IDE version along any version of KorGE to debug with asynchronous stacktraces as long as you use the gradle plugin.
+
+
 ## 1.1.1 (2019-02-19)
 {:#v111}
 
