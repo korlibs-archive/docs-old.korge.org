@@ -6,6 +6,50 @@ priority: 10000
 status: new
 ---
 
+## 1.2.0 (2019-03-17)
+{:#v120}
+
+This version includes a preview of KorGE-3D 🎉.
+
+KorGE 3D is a new extension of KorGE allowing to mix 3D and 2D content, define 3D scenes with a DSL and load Collada
+scenes and models.
+
+The code is hold in the korge main repository as a library, but their classes are marked as experimental until stabilized:
+<https://github.com/korlibs/korge/tree/master/korge-3d>
+ 
+Please, try it out, and give feedback! :) PRs are also welcome.
+
+Check the sample here: <https://github.com/korlibs/korge-samples/tree/master/sample-3d>
+
+### Highlights
+
+* [New plugin system](/korge/plugin/): Now it is possible to create custom resource processors in your libraries and define android 
+* [New experimental KorGE-3D](/korge/3d). You can include it with `korge { supportExperimental3d() }` in your `build.gradle`
+
+### New Features
+
+* [Klock 1.3.1: Now supports generating local dates for several languages](https://github.com/korlibs/klock/pull/29) [[2]](https://github.com/korlibs/klock/pull/30)
+* [Kds: FastIdentityMap and IndexedTable classes](https://github.com/korlibs/kds/commit/4556965209409642ce4b658106a3b032866da1b6)  
+* [Korma: Added Quaternion and EulerRotation](https://github.com/korlibs/korma/commit/2793e3eda7bdb9c583bab4ee785bc938024556cc) [[2]](https://github.com/korlibs/korma/commit/c022f03873b27192ef0cb9d1eb38f5e75be48b13)
+* [Korma: Added (next/prev/is)MultipleOf tools](https://github.com/korlibs/korma/commit/c022f03873b27192ef0cb9d1eb38f5e75be48b13)
+
+### Fixes
+
+* [Klock: Fixes formatting with negative offsets](https://github.com/korlibs/klock/commit/f91b95008c731504d8e382492e59429cf45343ae)
+* Some viewport with retina display, and fixes for preventing scroll and pinching issues on iOS 
+
+### Performance improvements
+
+* [Korio: Greatly improved performance of Xml parsing](https://github.com/korlibs/korio/commit/12289d91c9886c4e5d0903c2f3234ac68c0c0cbf) [[2]](https://github.com/korlibs/korio/commit/d4e28b87234a5374a2f6139c58e16c9a014a5b1d) [[3]](https://github.com/korlibs/korio/commit/c2a6a40ad344c6492c935f37375746dca7b7a45b)
+
+### Improvements
+
+* [Korio: New methods for Xml reading and StrReader](https://github.com/korlibs/korio/commit/9492924357d4d6c811153817d443e350d50f21c6)
+* [Korma: Added Matrix3D setColumns*, setRows* variants using FloatArray](https://github.com/korlibs/korma/commit/c022f03873b27192ef0cb9d1eb38f5e75be48b13)
+* [Korgw: Support multisampling in the JVM and Native MacOS](https://github.com/korlibs/korui/commit/f3fae3f7b3f41cd350f5ec50ef735fb7a3c73151)
+* [Korag: Support uniform matrix arrays](https://github.com/korlibs/korui/commit/adf464a2c17be5d5f1fd6e90637a21ff33a5f577)
+* [Korim: Tools for converting RGBA to Vector3D](https://github.com/korlibs/korim/commit/c013e8131daadaf0ba622ab462aae35f97e8af59)
+
 ## 1.1.3 (2019-03-03)
 {:#v113}
 

@@ -3,41 +3,80 @@ layout: default
 title: "Plugins"
 fa-icon: fa-plug
 priority: 900
-status: incomplete
+status: new
 ---
 
-You can create KorGE plugins by creating a multiplatform artifact and creating a `.korge-plugin` file along the artifact and your `.pom`:
+KorGE allows to create compile-time extensions to process resources and to do special stuff
+like adding cordova plugins or describing the `AndroidManifest.xml` programmatically by just including
+a library.
 
-You have an example here: <https://github.com/korlibs/korge/blob/master/korge-admob/build.gradle.kts>
+### `ResourceProcessor` plugin
+
+The `ResourceProcessor` plugin, allows to process a resource, by generating another file out of it.
+It is usually used to reduce dependencies, to simplify what the game has to do for loading a file,
+or to group several resources.
+
+For example, when including the `korge-swf` library, the `swf` vectorial files will be processed
+and converted into `ani` files, that are simpler and have all the graphics rasterized. 
 
 ```kotlin
-afterEvaluate {
-    extensions.getByType<PublishingExtension>().apply {
-        val publication = publications["kotlinMultiplatform"] as MavenPublication
-        publication.artifact(File(buildDir, "korge-plugin.korge-plugin").apply {
-            val node = Node(null, "korge-plugin").apply {
-                appendNode("name").setValue("korge-admob")
-                appendNode("version").setValue(version)
-                appendNode("variables", mapOf("ADMOB_APP_ID" to "string"))
-                appendNode("android").apply {
-                    appendNode("init", mapOf("require" to "ADMOB_APP_ID")).setValue("try { com.google.android.gms.ads.MobileAds.initialize(com.soywiz.korio.android.androidContext(), \"\${ADMOB_APP_ID}\") } catch (e: Throwable) { e.printStackTrace() }")
-                    appendNode("manifest-application", mapOf("require" to "ADMOB_APP_ID")).setValue("<meta-data android:name=\"com.google.android.gms.ads.APPLICATION_ID\" android:value=\"\${ADMOB_APP_ID}\" />")
-                    
-                    appendNode("dependencies").apply {
-                        appendNode("dependency", mapOf("require" to "ADMOB_APP_ID")).setValue("com.google.android.gms:play-services-ads:$playServicesVersion")
-                    }
-                }
-                appendNode("cordova").apply {
-                    appendNode("plugins").apply {
-                        appendNode("cordova-plugin-admob-free", mapOf("ADMOB_APP_ID" to "\${ADMOB_APP_ID}"))
-                    }
-                }
-            }
-            writeText(XmlUtil.serialize(node))
-        })
-    }
+open class SwfResourceProcessor : ResourceProcessor("swf") {
+	companion object : SwfResourceProcessor()
+
+	override val version: Int = AniFile.VERSION
+	override val outputExtension: String = "ani"
+
+	override suspend fun processInternal(inputFile: VfsFile, outputFile: VfsFile) {
+		val viewsLog = ViewsLog(coroutineContext)
+		val lib = inputFile.readSWF(viewsLog.views)
+		val config = lib.swfExportConfig
+		lib.writeTo(outputFile, config.toAnLibrarySerializerConfig(compression = 1.0))
+	}
 }
 ```
 
-This file helps KorGE to identify what kind of things has to do at compile-time with Android or Cordova, in addition to which variables does the plugin need
-to work properly.
+To create a plugin of this kind in an external korge library, you have to:
+
+* Create a `src/jvmMain/kotlin` folder and place the `ResourceProcessor` subclass there (since ResourceProcessor is just defined on korge-jvm).
+* Create a `src/jvmMain/resources/META-INF/services/com.soywiz.korge.resources.ResourceProcessor` with a line including the fqname of your class. This is usually assisted by IntelliJ IDEA.
+
+Then you have to compile your artifact and use it in another project (since the plugin is loaded from a class loader, you won't be able to use it in that same project).
+
+```kotlin
+korge {
+    dependencyMulti("com.your.group:artifact-base-name:artifact-version")
+}
+```
+
+### `KorgePluginExtension` plugin
+
+In some cases, you will need to configure extra stuff like cordova plugins or the `AndroidManifest.xml`. 
+
+```kotlin
+class AdmobKorgePluginExtension : KorgePluginExtension(
+	AdmobKorgePluginExtension::ADMOB_APP_ID
+) {
+	lateinit var ADMOB_APP_ID: String
+
+	override fun getAndroidInit(): String? =
+		"""try { com.google.android.gms.ads.MobileAds.initialize(com.soywiz.korio.android.androidContext(), ${ADMOB_APP_ID.quoted}) } catch (e: Throwable) { e.printStackTrace() }"""
+
+	override fun getAndroidManifestApplication(): String? =
+		"""<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value=${ADMOB_APP_ID.quoted} >"""
+
+	override fun getAndroidDependencies() =
+		listOf("com.google.android.gms:play-services-ads:16.0.0")
+
+	override fun getCordovaPlugins(): List<CordovaPlugin> = listOf(
+		CordovaPlugin(
+			"cordova-plugin-admob-free", mapOf(
+				"ADMOB_APP_ID" to ADMOB_APP_ID
+			)
+		)
+	)
+}
+```
+
+To create this kind of plugin, check the ResourcesProcessor plugin section, but you will have to create the following file and include the fqname of your class:
+
+`src/jvmMain/resources/META-INF/services/com.soywiz.korge.plugin.KorgePluginExtension`

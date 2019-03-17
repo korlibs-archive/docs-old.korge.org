@@ -3,7 +3,7 @@ layout: default
 title: "Testing"
 fa-icon: fa-vial
 priority: 7500
-status: new
+#status: new
 ---
 
 KorGE provide mechanisms for testing views, scenes and suspending functions.
