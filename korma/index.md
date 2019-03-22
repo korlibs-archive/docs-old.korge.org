@@ -2,7 +2,7 @@
 layout: default
 hide_title: true
 title: "KorMA"
-fa-icon: fa-cog
+fa-icon: fa-calculator
 priority: 50
 ---
 
