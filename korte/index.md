@@ -219,7 +219,7 @@ You can also iterate maps and lists of pairs:
 {% for key, value in map %}{{ key }}={{ value }}{% endfor %}
 ```
 
-It is possible define an else block when to be executed when the iterable is empty:
+It is possible define an else block to be executed when the iterable is empty:
 
 ```liquid
 {% for item in expression %}
