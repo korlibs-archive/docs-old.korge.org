@@ -3,7 +3,7 @@ layout: default
 title: "3D"
 fa-icon: fa-cube
 priority: 40
-status: incomplete
+status: experimental
 ---
 
 KorGE-3D is currently a preview. The documentation will come soon.

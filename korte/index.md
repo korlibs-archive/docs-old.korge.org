@@ -19,10 +19,14 @@ But can also work on Native when using untyped model data or making models to im
 
 It allows to call suspend methods from within templates.
 
-<https://github.com/korlibs/korte>
+* <https://github.com/korlibs/korte>
 
 [![Build Status](https://travis-ci.org/korlibs/korte.svg?branch=master)](https://travis-ci.org/korlibs/korte)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/korte.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22korte%22)
+
+Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/blob/master/korte-sample-browser/src/main/kotlin/main.kt){:target="_blank"}:
+
+<embed src="https://korlibs.github.io/korte-samples/korte-sample-browser/web/" style="width: 100%;height:50vh;" />
 
 <div style="clear: both;"></div>
 **Table of contents:**
@@ -69,11 +73,12 @@ Managed with KorIO's Vfs and optional cache:
 ```kotlin
 import com.soywiz.korte.Templates
 
+//val myvfs = resourcesVfs["templates"] // To read templates from a 'templates' folder in the application resources
 val myvfs = MemoryVfsMix(
     "index.html" to "hello {{ who }}"
 )
 
-val templates = Templates(resourcesVfs, cache = true)
+val templates = Templates(myvfs, cache = true)
 val rendered = templates.render("index.html", mapOf("who" to "world"))
 assertEquals("hello world", rendered)
 ```
