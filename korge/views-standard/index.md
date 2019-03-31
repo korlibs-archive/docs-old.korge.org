@@ -16,7 +16,7 @@ Each kind of standard view provides a normal constructor, plus a DSL constructor
 
 ## Container & FixedSizeContainer
 
-Container is a View that can have childs:
+Container is a View that can have childeren:
 
 ```kotlin
 inline fun Container.container(callback: @ViewsDslMarker Container.() -> Unit = {})
