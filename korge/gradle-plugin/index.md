@@ -182,7 +182,7 @@ Using gradle tasks on the terminal:
 ./gradlew linkMainDebugExecutableMingwX64         # Outputs to /build/bin/mingwX64/mainDebugExecutable/main.exe
 ```
 
-#### Release Mode
+#### Make the file smaller!
 
 ```bash
 ./gradlew packageMacosX64AppRelease         # Outputs to /build/bin/macosX64/mainReleaseExecutable/main.kexe
