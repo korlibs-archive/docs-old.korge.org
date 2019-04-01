@@ -172,7 +172,7 @@ You can run your tests using Node.JS by calling `jsTest` or in a headless chrome
 
 #### Debug Mode
 
-Files produced by theese commands must have resources in the same directory, and are larger than they need to be
+Files will Be bigger when using this.
 
 Using gradle tasks on the terminal:
 
