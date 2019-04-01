@@ -46,7 +46,7 @@ class MyScene1(val myDependency: MyDependency) : Scene() {
 KorGE defines `ResourcesRoot`, that is a mountable virtual file system that works with Korio's VfsFile.
 It allows to load all kind of resources asynchronously from different sources and mount points.
 
-* Using KorIO it can read `ByteArra`y, `String`s, `XML`s, `JSON`s, `YAML`s...
+* Using KorIO it can read `ByteArray`s, `String`s, `XML`s, `JSON`s, `YAML`s...
 * Using KorIM it can load images
 * And using KorAU can load sound and music files
 

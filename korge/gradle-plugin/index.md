@@ -170,6 +170,10 @@ You can run your tests using Node.JS by calling `jsTest` or in a headless chrome
 
 ### Compiling for Native Desktop (Windows, Linux and macOS)
 
+#### Debug Mode
+
+Files will Be bigger when using this.
+
 Using gradle tasks on the terminal:
 
 ```bash
@@ -178,9 +182,21 @@ Using gradle tasks on the terminal:
 ./gradlew linkMainDebugExecutableMingwX64         # Outputs to /build/bin/mingwX64/mainDebugExecutable/main.exe
 ```
 
-Note that windows executables doesn't have icons bundled.
-You can use [ResourceHacker](http://www.angusj.com/resourcehacker/) to add an icon to the executable for the moment.
-Later this will be done automatically.
+##### Create a smaller file
+
+```bash
+./gradlew packageMacosX64AppRelease         # Outputs to /build/bin/macosX64/mainReleaseExecutable/main.kexe
+./gradlew packageLinuxX64AppRelease         # Outputs to /build/bin/linuxX64/mainReleaseExecutable/main.kexe
+./gradlew packageMingwX64AppRelease         # Outputs to /build/bin/mingwX64/mainReleaseExecutable/main.exe
+```
+#### Adding an icon
+
+Add an icon to your package by adding this to your `build.gradle`
+```kotlin
+korge {
+    icon = file("<youricon>.png")
+}
+```
 
 #### Cross-Compiling for Linux/Windows
 
