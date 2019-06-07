@@ -9,7 +9,7 @@ priority: 20
 
 <img src="/i/logos/kds.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="Data Structures" />
 
-Kds is a Date Structure library for Multiplatform Kotlin 1.3.
+Kds is a Data Structure library for Multiplatform Kotlin 1.3.
 
 
 [https://github.com/korlibs/kds](https://github.com/korlibs/kds)
