@@ -30,35 +30,31 @@ and to provide an API that is powerful, fun and easy to use.
 
 ## Using with gradle
 
-```
-def klockVersion = "1.0.0"
+### `build.gradle`
+
+```groovy
+def klockVersion = "1.5.1"
 
 repositories {
-    maven { url "https://dl.bintray.com/soywiz/soywiz" }
+    jcenter()
 }
 
-dependencies {
-    // For JVM
-    implementation "com.soywiz:klock-jvm:$klockVersion"
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation "com.soywiz.korlibs.klock:klock:$klockVersion" // Common 
+                //implementation "com.soywiz.korlibs.klock:klock-jvm:$klockVersion" // If we are just using JVM
+            }
+        }
+    }
 }
 ```
 
-For multiplatform projects:
+### `settings.gradle`
 
-```
-dependencies {
-    // For multiplatform projects, since klock is published without metadata
-    commonMainApi "com.soywiz:klock-metadata:$klockVersion" // Common 
-    jvmMainApi "com.soywiz:klock-jvm:$klockVersion" // JVM
-    jsMainApi "com.soywiz:klock-js:$klockVersion" // JavaScript
-    androidMainApi "com.soywiz:klock-android:$klockVersion" // Android
-    iosX64MainApi "com.soywiz:klock-iosx64:$libraryVersion" // iOS Simulator
-    iosArm32MainApi "com.soywiz:klock-iosarm32:$libraryVersion" // Older iOS 32-bit devices
-    iosArm64MainApi "com.soywiz:klock-iosarm64:$libraryVersion" // Newer iOS 64-bit devices
-    macosX64MainApi "com.soywiz:klock-macosx64:$libraryVersion" // MacOS
-    linuxX64MainApi "com.soywiz:klock-linuxx64:$libraryVersion" // Linux x64
-    mingwX64MainApin "com.soywiz:klock-mingwx64:$libraryVersion" // Windows x64
-}
+```groovy
+enableFeaturePreview('GRADLE_METADATA')
 ```
 
 ## Dates
