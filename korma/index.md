@@ -23,6 +23,7 @@ Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geo
 
 * TOC
 {:toc}
+{:.multicolumn}
 
 ## Using with gradle
 

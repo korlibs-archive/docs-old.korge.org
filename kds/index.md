@@ -25,6 +25,7 @@ Kds is a Data Structure library for Multiplatform Kotlin 1.3.
 
 * TOC
 {:toc}
+{:.multicolumn}
 
 ## Using with gradle
 

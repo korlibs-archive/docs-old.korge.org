@@ -3,7 +3,6 @@ layout: default
 title: "KorTE"
 fa-icon: far fa-file-code
 priority: 41
-status: new
 ---
 
 <img src="/i/logos/korte.svg" width="256" height="256" style="float: left;" />
@@ -35,6 +34,7 @@ Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/bl
 
 * TOC
 {:toc}
+{:.multicolumn}
 
 {% raw %}
 ## Using with gradle

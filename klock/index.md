@@ -27,6 +27,7 @@ and to provide an API that is powerful, fun and easy to use.
 
 * TOC
 {:toc}
+{:.multicolumn}
 
 ## Using with gradle
 

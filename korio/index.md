@@ -3,7 +3,6 @@ layout: default
 title: "KorIO"
 fa-icon: fa-copy
 priority: 40
-status: new
 ---
 
 <img src="/i/logos/korio.svg" width="256" height="256" style="float: left;" />
@@ -19,7 +18,7 @@ KorIO is a library for Charsets, Encodings, Checksums, Compression, I/O, Streams
 
 * TOC
 {:toc}
-{:style="column-count: 2;"}
+{:.multicolumn}
 
 ## Charset
 

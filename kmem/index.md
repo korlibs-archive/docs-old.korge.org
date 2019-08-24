@@ -24,6 +24,7 @@ Kmem is bit, array and fast memory utilities library for multiplatform Kotlin 1.
 
 * TOC
 {:toc}
+{:.multicolumn}
 
 ## Using with gradle
 
