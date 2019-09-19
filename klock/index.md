@@ -34,7 +34,7 @@ and to provide an API that is powerful, fun and easy to use.
 ### `build.gradle`
 
 ```groovy
-def klockVersion = "1.5.1"
+def klockVersion = "1.7.0"
 
 repositories {
     jcenter()
@@ -64,6 +64,11 @@ To represent instants with date and time information, there are two classes: `Da
 
 * `DateTime` class is used to represent instants in UTC time. This class is `inline` and it is represented internally as a `Double` in a way that it is allocation-free on all targets including JS.
 * `DateTimeTz` class is used to represent instants with an offset in a TimeZone. It includes a `DateTime` and a offset. And it is different from `DateTime` itself.
+
+Since 1.7.0:
+
+* `Date` class represent the Year+Month+Day part of an instant
+* `Time` class represent the Hour+Minute+Second+Millisecond part of an instant
 
 ### Current Time
 
@@ -111,6 +116,15 @@ val hours: Int = time.hours
 val minutes: Int = time.minutes
 val seconds: Int = time.seconds
 val milliseconds: Int = time.milliseconds
+```
+
+### From DateTime to Date & Time
+
+Since 1.7.0:
+
+```kotlin
+val date: Date = dateTime.date
+val time: Time = dateTime.time
 ```
 
 ### From DateTime to DateTimeTz 
@@ -335,6 +349,37 @@ val span    : DateTimeSpan = rangeOpen.span
 val inFourMonths = today + 4.month
 val days = (today until inFourMonths).span.days
 ``` 
+
+## DateTimeRangeSet
+
+The DateTimeRangeSet represents a non-overlapping sets of DateTimeRange.
+It can be used to measure availability ranges among other things.
+
+### Constructing Instances
+
+```kotlin
+val set: DateTimeRangeSet = DateTimeRangeSet(dateTimeRange1, dateTimeRange2, dateTimeRange3)
+```
+
+### Combining two instances (addition/union)
+
+It will combine all the ranges and generate a non-overlapping instance
+
+```kotlin
+val set = dateTimeRangeSet1 + dateTimeRangeSet2
+```
+
+### Substracting two time ranges
+
+```kotlin
+val set = dateTimeRangeSet1 - dateTimeRangeSet2
+```
+
+### Intersection between two ranges
+
+```kotlin
+val set = dateTimeRangeSet1.intersection(dateTimeRangeSet2)
+```
 
 ## Measuring Time
 
