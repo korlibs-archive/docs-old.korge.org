@@ -9,21 +9,21 @@
   <title>Korlibs: {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ "/css/simple-sidebar.css" | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ "/css/fontawesome-free-5.7.1-web/css/all.css" | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ "/css/font-mfizz.css" | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-  <link rel="stylesheet" media="print"  href="{{ "/css/print.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/css/simple-sidebar.css' | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/css/fontawesome-free-5.7.1-web/css/all.css' | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/css/font-mfizz.css' | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+  <link rel="stylesheet" media="print"  href="{{ '/css/print.css' | prepend: site.baseurl }}">
 
   <link rel="icon" href="{{ "/i/icon.png" | prepend: site.baseurl }}" />
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
 
-  <script src="{{ "/js/jquery-2.2.4.min.js" | prepend: site.baseurl }}" type="text/javascript"></script>
-  <script src="{{ "/js/bootstrap.js" | prepend: site.baseurl }}" type="text/javascript"></script>
-  <script src="{{ "/js/navigation.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript"></script>
 
 <style type="text/css">
 @media (max-width: 1100px) {
@@ -66,7 +66,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="https://korge.soywiz.com/"><i class="fa fa-gamepad" aria-hidden="true"></i> KorGE</a></li>
             <li class="active"><a href="/"><i class="fa fa-book" aria-hidden="true"></i> Docs</a></li>
-            <li><a href="https://forum.soywiz.com/"><i class="fa fa-comments" aria-hidden="true"></i> Forum</a></li>
+            <li><a href="/sponsor" style="color: #aa9258;"><i class="fa fa-star" aria-hidden="true"></i> Sponsor</a></li>
             <li><a href="https://slack.soywiz.com/"><i class="fab fa-slack" aria-hidden="true"></i> Slack</a></li>
             <li><a href="https://soywiz.com/"><i class="fab fa-wordpress" aria-hidden="true"></i> Blog</a></li>
             <li><a href="{{ site.project_url }}" target="_blank"><i class="fab fa-github" aria-hidden="true"></i> Github</a></li>
@@ -107,12 +107,13 @@
                             {{ content }}
                         </div>
 
+						{% unless hide_comments %}
 						{% if site.disqus_id %}
 							<div id="disqus_thread" class="print_hide" style="margin-top:80px;"></div>
 							<script type="text/javascript" id="disqus-script">
 								var disqus_config = function () {
-									this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
-									this.page.identifier = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
+									this.page.url = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";
+									this.page.identifier = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";
 								};
 								(function() {
 									var d = document, s = d.createElement('script');
@@ -123,6 +124,7 @@
 							</script>
 							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 						{% endif %}
+						{% endunless %}
                     </div>
                 </div>
             </div>

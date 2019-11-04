@@ -346,3 +346,15 @@ h2 {
 		color: #009b9b;
 	}
 }
+
+.entry-starred {
+  a {
+	color: #bf4a1e !important;
+  }
+  &.active {
+	a {
+	  color: #ffffff !important;
+	  background: #a9733c !important;
+	}
+  }
+}
