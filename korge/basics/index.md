@@ -62,4 +62,4 @@ some different programming strategies but without imposing anything.
 
 KorGE games can be easily debugged using IntelliJ, by running the `runJvm` task in debug mode.
 
-Additionnaly, KorGE allows you to debug the position and size of the components. Simply press `F7` while debugging your applications to toggle the display of borders around the views.
+Additionally, KorGE allows you to debug the position and size of the components. Simply press `F7` while debugging your applications to toggle the display of borders around the views.
