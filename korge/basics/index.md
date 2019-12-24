@@ -57,3 +57,9 @@ Optionally (not imposed) it can use the Korio's `Bus` for communicating differen
 
 You can do MVCS as Robot-legs. Or use your own way of programming. KorGE gives you some facilities for
 some different programming strategies but without imposing anything.
+
+## Debugging
+
+KorGE games can be easily debugged using IntelliJ, by running the `runJvm` task in debug mode.
+
+Additionally, KorGE allows you to debug the position and size of the components. Simply press `F7` while debugging your applications to toggle the display of borders around the views.
