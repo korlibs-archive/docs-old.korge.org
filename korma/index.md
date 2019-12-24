@@ -30,10 +30,10 @@ Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geo
 Requires `Gradle 4.7` (`JVM 8~10`) for building and `Kotlin >=1.3.11` for running:
 
 ```
-def kormaVersion = "1.0.0"
+def kormaVersion = "1.9.1"
 
 repositories {
-    maven { url "https://dl.bintray.com/soywiz/soywiz" }
+    maven { url "https://dl.bintray.com/korlibs/korlibs" }
 }
 
 dependencies {

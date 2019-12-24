@@ -32,10 +32,10 @@ Kds is a Data Structure library for Multiplatform Kotlin 1.3.
 Requires `Gradle 4.7` (`JVM 8~10`) for building and `Kotlin >=1.3.11` for running:
 
 ```
-def kdsVersion = "1.0.0"
+def kdsVersion = "1.9.2"
 
 repositories {
-    maven { url "https://dl.bintray.com/soywiz/soywiz" }
+    maven { url "https://dl.bintray.com/korlibs/korlibs" }
 }
 
 dependencies {

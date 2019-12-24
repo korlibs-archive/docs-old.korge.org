@@ -40,10 +40,10 @@ Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/bl
 ## Using with gradle
 
 ```
-def korteVersion = "1.0.0"
+def korteVersion = "1.2.3"
 
 repositories {
-    maven { url "https://dl.bintray.com/soywiz/soywiz" }
+    maven { url "https://dl.bintray.com/korlibs/korlibs" }
 }
 
 dependencies {

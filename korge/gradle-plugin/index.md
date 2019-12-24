@@ -77,7 +77,7 @@ In this file you include and configure the KorGE gradle plugin.
 
 The plugin does:
 
-* Choose and configure the right supported `kotlin-multiplatform`. At this point, it uses `1.3.20`.
+* Choose and configure the right supported `kotlin-multiplatform`. At this point, it uses `1.3.61`.
 * Include all the artifacts required for KorGE.
 * Add tasks to compile, install and run all the supported targets by the platform.
 * Enable a extension called `korge` where you can configure properties of your application (application title, id, icon...)
@@ -88,7 +88,7 @@ import com.soywiz.korge.gradle.*
 buildscript {
 	repositories {
 		mavenLocal()
-		maven { url = uri("https://dl.bintray.com/soywiz/soywiz") }
+		maven { url = uri("https://dl.bintray.com/korlibs/korlibs") }
 		maven { url = uri("https://plugins.gradle.org/m2/") }
 		mavenCentral()
 	}
@@ -104,7 +104,7 @@ korge {
 }
 ```
 
-Right now, the plugin is stored at my `bintray`, so you have to include this line for it to work: `maven { url = uri("https://dl.bintray.com/soywiz/soywiz") }`.
+Right now, the plugin is stored at my `bintray`, so you have to include this line for it to work: `maven { url = uri("https://dl.bintray.com/korlibs/korlibs") }`.
 
 Later I will publish the artifacts to `Maven Central` and the plugin to the `Gradle Plugins` repository.
 
