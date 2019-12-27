@@ -43,6 +43,6 @@ resourcesVfs["relative/path/to/sound.mp3"].readSound()
 ```
 
 All targets support `WAV` and `MP3`, except the JVM, where you have to include the
-`jvmMainApi "com.soywiz:korau-mp3:$korauVersion"` artifact for it to work.
+`jvmMainApi "com.soywiz.korlibs.korau:korau-mp3:$korauVersion"` artifact for it to work.
 
 It uses a `ServiceLoader`, so just including the artifact is enough, and requires no additional configuration.

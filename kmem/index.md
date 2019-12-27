@@ -39,12 +39,12 @@ repositories {
 
 dependencies {
     // For multiplatform projects
-    implementation "com.soywiz:kmem:$kmemVersion"
+    implementation "com.soywiz.korlibs.kmem:kmem:$kmemVersion"
     
     // For JVM/Android only
-    implementation "com.soywiz:kmem-jvm:$kmemVersion"
+    implementation "com.soywiz.korlibs.kmem:kmem-jvm:$kmemVersion"
     // For JS only
-    implementation "com.soywiz:kmem-js:$kmemVersion"
+    implementation "com.soywiz.korlibs.kmem:kmem-js:$kmemVersion"
 }
 
 // settigs.gradle

@@ -140,8 +140,8 @@ in the JVM.
 
 ```kotlin
 korge {
-	dependencyMulti("com.soywiz:korau-mp3:$korauVersion") // To be able to play mp3
-	dependencyMulti("com.soywiz:korau-ogg-vorbis:$korauVersion")
+	dependencyMulti("com.soywiz.korlibs.korau:korau-mp3:$korauVersion") // To be able to play mp3
+	dependencyMulti("com.soywiz.korlibs.korau:korau-ogg-vorbis:$korauVersion")
 }
 ```
 
