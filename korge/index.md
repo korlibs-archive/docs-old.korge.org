@@ -25,17 +25,32 @@ KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up t
 
 ## Dependencies:
 
-KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlibs libraries](https://github.com/soywiz/korlibs):
+KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlibs libraries](https://github.com/korlibs/korlibs):
 
-<img src="/i/logos/kotlin.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korlibs.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korio.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korma.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korag.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korim.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korau.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/korui.svg" width="128" height="128" style="padding:4px;" />
-<img src="/i/logos/klock.svg" width="128" height="128" style="padding:4px;" />
+<a href="https://kotlinlang.org/">
+  <img src="/i/logos/kotlin.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/korlibs">
+  <img src="/i/logos/korlibs.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/korio">
+  <img src="/i/logos/korio.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/korma">
+  <img src="/i/logos/korma.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/korim">
+  <img src="/i/logos/korim.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/korau">
+  <img src="/i/logos/korau.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/korgw">
+  <img src="/i/logos/korui.svg" width="128" height="128" style="padding:4px;" />
+</a>
+<a href="https://github.com/korlibs/klock">
+  <img src="/i/logos/klock.svg" width="128" height="128" style="padding:4px; background-color:white" />
+</a>
 
 ## Targets:
 
@@ -45,7 +60,7 @@ KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlib
 
 ## Where to start:
 
-You can start reading about the [setup](/korge/setup) and [the basics](/korge/basics).
+You can start reading about [the setup](/korge/setup) and [the basics](/korge/basics).
 
 <!--
 You can start reading about the [setup](/korge/setup), [the basics](/korge/basics), [reading tutorials](/korge/tutorials) or [watching video tutorials](/korge/tutorials).
