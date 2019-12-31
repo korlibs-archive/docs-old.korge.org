@@ -49,7 +49,7 @@ KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlib
   <img src="/i/logos/korui.svg" width="128" height="128" style="padding:4px;" />
 </a>
 <a href="https://github.com/korlibs/klock">
-  <img src="/i/logos/klock.svg" width="128" height="128" style="padding:4px; background-color:white" />
+  <img src="/i/logos/klock.svg" width="128" height="128" style="padding:4px;" />
 </a>
 
 ## Targets:
@@ -60,8 +60,8 @@ KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlib
 
 ## Where to start:
 
-You can start reading about [the setup](/korge/setup) and [the basics](/korge/basics).
+You can start reading about [setup](/korge/setup) and [basics](/korge/basics).
 
 <!--
-You can start reading about the [setup](/korge/setup), [the basics](/korge/basics), [reading tutorials](/korge/tutorials) or [watching video tutorials](/korge/tutorials).
+You can start reading about [setup](/korge/setup), [basics](/korge/basics), [reading tutorials](/korge/tutorials) or [watching video tutorials](/korge/tutorials).
 -->
