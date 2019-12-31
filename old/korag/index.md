@@ -2,7 +2,7 @@
 layout: default
 title: "KorAG"
 fa-icon: fa-cube
-priority: 80
+status: outdated
 ---
 
 <img src="/i/logos/korag.svg" width="256" height="256" />
