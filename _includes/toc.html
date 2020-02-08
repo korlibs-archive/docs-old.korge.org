@@ -21,6 +21,9 @@
             {%- if entry.fa-icon -%}
             <i class="fa {{ entry.fa-icon }}"></i>&nbsp;
             {%- endif -%}
+			{%- if entry.css-icon -%}
+			<i class="{{ entry.css-icon }}"></i>&nbsp;
+			{%- endif -%}
             {{ entry.title }}
             {% case entry.status %}
                 {% when "new" %}<span class="label label-success" style="opacity: 0.9">New</span>

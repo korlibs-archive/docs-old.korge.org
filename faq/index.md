@@ -2,8 +2,7 @@
 layout: default
 title: FAQ
 fa-icon: fa-question-circle
-priority: 1000
-status: new
+priority: 2000
 ---
 
 **Table of contents:**

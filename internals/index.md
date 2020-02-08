@@ -3,7 +3,6 @@ layout: default
 title: Internals
 fa-icon: fa-cogs
 priority: 999
-status: new
 ---
 
 **Table of contents:**
