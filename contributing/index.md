@@ -123,3 +123,17 @@ matching your project.
 Alternatively the `korge-gradle-plugin` checks your project `gradle.properties`
 searching for `korimVersion`, `korgeVersion` and so on. So you can force a specific korlib
 dependency version in your own project including a -SNAPSHOT version.
+
+## Unit testing using kotlin-test
+
+To test just the JVM tests, you can call:
+
+```shell script
+./gradlew jvmTest
+```
+
+**NOTE:** On IntelliJ as for this writing, there is a bug with the play icon gutter
+in multi-module multiplatform kotlin projects that doesn't put the right submodule
+to the generated configuration. 
+You can solve it [as described here](https://youtrack.jetbrains.com/issue/KT-35771)
+so you can easily debug and put breakpoints when running your tests.
