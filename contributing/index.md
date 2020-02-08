@@ -79,7 +79,7 @@ non-snapshot version in my `.m2` folder.
 This will compile all the targets and publish it to the `.m2` folder.
 Since it compiles Kotlin/Native too, it will take some time.
 
-```shell script
+```bash
 ./gradlew publishToMavenLocal
 ```
 
@@ -90,7 +90,7 @@ and try in your own projects without compiling the Kotlin/Native targets.
 
 In order to do so, you can execute the following command:
 
-```shell script
+```bash
 ./gradlew publishJvmPublicationToMavenLocal publishJsPublicationToMavenLocal publishMetadataPublicationToMavenLocal publishKotlinMultiplatformPublicationToMavenLocal
 ```
 
@@ -112,7 +112,7 @@ In fact, when making a patch in libraries other than korge itself, just a versio
 
 You can publish the `korge-plugins` gradle plugin by calling:
 
-```shell script
+```bash
 ./gradlew publishToMavenLocal
 ```
 
@@ -128,7 +128,7 @@ dependency version in your own project including a -SNAPSHOT version.
 
 To test just the JVM tests, you can call:
 
-```shell script
+```bash
 ./gradlew jvmTest
 ```
 
