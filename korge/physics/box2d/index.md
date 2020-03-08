@@ -9,7 +9,7 @@ You can use a port to Kotlin of the Box2D library:
 
 ```kotlin
 dependencies {
-    commonMainApi "com.soywiz:korge-box2d:$korgeVersion"
+    commonMainApi "com.soywiz.korlibs.korge:korge-box2d:$korgeVersion"
 }
 ```
 
