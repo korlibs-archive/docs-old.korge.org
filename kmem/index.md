@@ -26,30 +26,7 @@ Kmem is bit, array and fast memory utilities library for multiplatform Kotlin 1.
 {:toc}
 {:.multicolumn}
 
-## Using with gradle
-
-Requires `Gradle 4.7` (`JVM 8~10`) for building and `Kotlin >=1.3.11` for running:
-
-```
-def kmemVersion = "1.9.1"
-
-repositories {
-    maven { url "https://dl.bintray.com/korlibs/korlibs" }
-}
-
-dependencies {
-    // For multiplatform projects
-    implementation "com.soywiz.korlibs.kmem:kmem:$kmemVersion"
-    
-    // For JVM/Android only
-    implementation "com.soywiz.korlibs.kmem:kmem-jvm:$kmemVersion"
-    // For JS only
-    implementation "com.soywiz.korlibs.kmem:kmem-js:$kmemVersion"
-}
-
-// settigs.gradle
-enableFeaturePreview('GRADLE_METADATA')
-```
+{% include using_with_gradle.md name="kmem" %}
 
 ## arraycopy and arrayfill
 

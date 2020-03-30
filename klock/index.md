@@ -29,34 +29,7 @@ and to provide an API that is powerful, fun and easy to use.
 {:toc}
 {:.multicolumn}
 
-## Using with gradle
-
-### `build.gradle`
-
-```groovy
-def klockVersion = "1.7.0"
-
-repositories {
-    jcenter()
-}
-
-kotlin {
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation "com.soywiz.korlibs.klock:klock:$klockVersion" // Common 
-                //implementation "com.soywiz.korlibs.klock:klock-jvm:$klockVersion" // If we are just using JVM
-            }
-        }
-    }
-}
-```
-
-### `settings.gradle`
-
-```groovy
-enableFeaturePreview('GRADLE_METADATA')
-```
+{% include using_with_gradle.md name="klock" %}
 
 ## Dates
 

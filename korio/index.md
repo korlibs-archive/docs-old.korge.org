@@ -20,6 +20,8 @@ KorIO is a library for Charsets, Encodings, Checksums, Compression, I/O, Streams
 {:toc}
 {:.multicolumn}
 
+{% include using_with_gradle.md name="korio" %}
+
 ## Charset
 
 Only UTF8 supported at the moment.

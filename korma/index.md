@@ -25,37 +25,14 @@ Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geo
 {:toc}
 {:.multicolumn}
 
-## Using with gradle
-
-Requires `Gradle 4.7` (`JVM 8~10`) for building and `Kotlin >=1.3.11` for running:
+{% include using_with_gradle.md name="korma" %}
 
 ```
-def kormaVersion = "1.9.1"
-
-repositories {
-    maven { url "https://dl.bintray.com/korlibs/korlibs" }
-}
-
-dependencies {
-    // For multiplatform projects
-    implementation "com.soywiz.korlibs.korma:korma:$kormaVersion"
-    
-    // For JVM/Android only
-    implementation "com.soywiz.korlibs.korma:korma-jvm:$kormaVersion"
-    // For JS only
-    implementation "com.soywiz.korlibs.korma:korma-js:$kormaVersion"
-}
-
 // Additional funcionality using Clipper and poly2try code (with separate licenses):
-// - https://github.com/korlibs/korma/blob/master/korma-shape-ops/LICENSE
-// - https://github.com/korlibs/korma/blob/master/korma-triangulate-pathfind/LICENSE
+// - https://github.com/korlibs/korma/blob/master/korma-shape/LICENSE
 dependencies {
-    implementation "com.soywiz.korlibs.korma:korma-shape-ops:$kormaVersion"
-    implementation "com.soywiz.korlibs.korma:korma-triangulate-pathfind:$kormaVersion"
+    implementation "com.soywiz.korlibs.korma:korma-shape:$kormaVersion"
 }
-
-// settigs.gradle
-enableFeaturePreview('GRADLE_METADATA')
 ```
 
 ## Math utils

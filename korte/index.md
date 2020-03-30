@@ -36,23 +36,9 @@ Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/bl
 {:toc}
 {:.multicolumn}
 
+{% include using_with_gradle.md name="korte" %}
+
 {% raw %}
-## Using with gradle
-
-```
-def korteVersion = "1.2.3"
-
-repositories {
-    maven { url "https://dl.bintray.com/korlibs/korlibs" }
-}
-
-dependencies {
-    commonMainApi "com.soywiz:korte-metadata:$korteVersion"
-    jvmMainApi "com.soywiz:korte-jvm:$korteVersion"
-    jsMainApi "com.soywiz:korte-js:$korteVersion"
-    // ...
-}
-```
 
 ## Usage
 
