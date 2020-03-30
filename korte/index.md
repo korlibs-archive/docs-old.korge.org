@@ -23,7 +23,7 @@ It allows to call suspend methods from within templates.
 [![Build Status](https://travis-ci.org/korlibs/korte.svg?branch=master)](https://travis-ci.org/korlibs/korte)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/korte.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22korte%22)
 
-Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/blob/master/korte-sample-browser/src/main/kotlin/main.kt){:target="_blank"}:
+Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/blob/master/korte-sample-browser/src/main/kotlin/main.kt){:target="_blank",:rel="noopener"}:
 
 <embed src="https://korlibs.github.io/korte-samples/korte-sample-browser/web/" style="width: 100%;height:50vh;" />
 

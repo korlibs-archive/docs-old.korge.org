@@ -23,9 +23,9 @@ Krypto is a cryptography library for Multiplatform Kotlin 1.3.
 Krypto provides a `SecureRandom` class that extends the `kotlin.random.Random` class,
 but generating cryptographic secure values.
 
-It uses `SecureRandom` on the JVM + [`PRNGFixes`](https://android-developers.googleblog.com/2013/08/some-securerandom-thoughts.html){:target="_blank"} on Android.
+It uses `SecureRandom` on the JVM + [`PRNGFixes`](https://android-developers.googleblog.com/2013/08/some-securerandom-thoughts.html){:target="_blank",:rel="noopener"} on Android.
 On Native POSIX (including Linux, macOS and iOS), it uses `/dev/urandom`, on Windows
-[`BCryptGenRandom`](https://docs.microsoft.com/en-us/windows/desktop/api/bcrypt/nf-bcrypt-bcryptgenrandom){:target="_blank"}
+[`BCryptGenRandom`](https://docs.microsoft.com/en-us/windows/desktop/api/bcrypt/nf-bcrypt-bcryptgenrandom){:target="_blank",:rel="noopener"}
 
 ## Hash (MD5/SHA1/SHA256)
 
