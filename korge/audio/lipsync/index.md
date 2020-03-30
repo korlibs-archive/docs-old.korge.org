@@ -11,30 +11,30 @@ process using Rhubarb Lip-Sync, and generate lip synchronization files, that Kor
 
 You can use lipsync just including the maven module: [`com.soywiz:korge-ext-lipsync`](https://github.com/soywiz/korge/tree/master/korge-ext-lipsync)
 
-[![](/audio/lipsync/sample.jpg)](https://www.youtube.com/watch?v=OX_K387EKoI)
+[![](/korge/audio/lipsync/sample.jpg)](https://www.youtube.com/watch?v=OX_K387EKoI)
 
 ## Adobe Flash integration
 
 In order to integrate with Adobe Flash Player. Lipsync plugin provides an automatic handler for the property `lipsync`. Where the value is the *character* name.
 You should tag an instance that will hold a timeline with mouth shapes.
 
-![](/audio/lipsync/flash1.png)
+![](/korge/audio/lipsync/flash1.png)
 
 Inside that symbol, the timeline should have labels for each mouth shape:
 
-![](/audio/lipsync/flash2.png)
+![](/korge/audio/lipsync/flash2.png)
 
 **Label names:** ABCDEFGHX
 
-![A](/audio/lipsync/ken-A.png)
-![B](/audio/lipsync/ken-B.png)
-![C](/audio/lipsync/ken-C.png)
-![D](/audio/lipsync/ken-D.png)
-![E](/audio/lipsync/ken-E.png)
-![F](/audio/lipsync/ken-F.png)
-![G](/audio/lipsync/ken-G.png)
-![H](/audio/lipsync/ken-H.png)
-![X](/audio/lipsync/ken-X.png)
+![A](/korge/audio/lipsync/ken-A.png)
+![B](/korge/audio/lipsync/ken-B.png)
+![C](/korge/audio/lipsync/ken-C.png)
+![D](/korge/audio/lipsync/ken-D.png)
+![E](/korge/audio/lipsync/ken-E.png)
+![F](/korge/audio/lipsync/ken-F.png)
+![G](/korge/audio/lipsync/ken-G.png)
+![H](/korge/audio/lipsync/ken-H.png)
+![X](/korge/audio/lipsync/ken-X.png)
 
 You can find [the whole mouth shapes description here](https://github.com/DanielSWolf/rhubarb-lip-sync#mouth-shapes).
 

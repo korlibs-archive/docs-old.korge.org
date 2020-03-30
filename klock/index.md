@@ -19,16 +19,7 @@ and to provide an API that is powerful, fun and easy to use.
 [![Build Status](https://travis-ci.org/korlibs/klock.svg?branch=master)](https://travis-ci.org/korlibs/klock)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/klock.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22klock%22)
 
-<div style="clear: both;"></div>
-
-**Table of contents:**
-
-{::options toc_levels="1..2" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
-
+{% include toc_include.md %}
 {% include using_with_gradle.md name="klock" %}
 
 ## Dates

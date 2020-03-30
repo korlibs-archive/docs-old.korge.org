@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Views
+children: /korge/views/
 fa-icon: fa-object-ungroup
 priority: 5
 ---

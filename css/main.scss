@@ -247,6 +247,10 @@ body {
   }
 }
 
+pre.highlight {
+  overflow-x: auto;
+}
+
 div.highlight, div.highlighter-rouge {
   background: none !important;
 }
@@ -256,6 +260,10 @@ code.highlighter-rouge {
   background: rgb(53, 50, 59) !important;
   border: 1px solid rgb(62, 54, 65);
   font-size: inherit;
+}
+
+pre code {
+  white-space: pre;
 }
 
 h2 code.highlighter-rouge {

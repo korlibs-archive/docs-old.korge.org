@@ -6,6 +6,8 @@ priority: 10000
 status: new
 ---
 
+{% include toc_include.md %}
+
 ## 1.2.0 (2019-03-17)
 {:#v120}
 

@@ -136,6 +136,7 @@ class Camera : Container() {
 
 Mesh allows to render a raw set of points as triangles or triangle strips.
 Used for example by the skeleton-based animations with mesh deforms.
+{% include toc_include.md %}
 
 ```kotlin
 open class Mesh(

@@ -25,7 +25,7 @@ It supports the standard XML and FNT bitmap font formats.
 suspend fun VfsFile.readBitmapFont(imageFormat: ImageFormat = RegisteredImageFormats): BitmapFont
 ```
 
-You can use BitmapFonts with the [Text view](/korge/views-standard/#text):
+You can use BitmapFonts with the [Text view](/korge/views/standard/#text):
 
 ```
 text("Hello World", textSize = 32.0, font = myBitmapFont)
