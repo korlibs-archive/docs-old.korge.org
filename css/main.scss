@@ -3,7 +3,11 @@
 ---
 @charset "utf-8";
 
+@import "./bootstrap.css";
+@import "./simple-sidebar";
+@import "./fontawesome-free-5.7.1-web/css/all.css";
 
+@import "./font-mfizz";
 
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -209,8 +213,8 @@ body {
 }
 
 #page-content2 {
-  margin-top: 50px;
-  line-height: 2em;
+  margin-top: 10px;
+  line-height: 1.75em;
 }
 
 .navbar-default {
@@ -356,5 +360,11 @@ h2 {
 	  color: #ffffff !important;
 	  background: #a9733c !important;
 	}
+  }
+}
+
+@media print {
+  .print_hide {
+	display: none;
   }
 }

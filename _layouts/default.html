@@ -9,12 +9,7 @@
   <title>Korlibs: {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ '/css/simple-sidebar.css' | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ '/css/fontawesome-free-5.7.1-web/css/all.css' | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ '/css/font-mfizz.css' | prepend: site.baseurl }}">
   <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
-  <link rel="stylesheet" media="print"  href="{{ '/css/print.css' | prepend: site.baseurl }}">
 
   <link rel="icon" href="{{ "/i/icon.png" | prepend: site.baseurl }}" />
 
@@ -78,7 +73,7 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper" class="print_hide">
-          <div class="sidebar-nav" style="padding-top:16px;margin-top:50px;margin-bottom:1em;" >
+          <div class="sidebar-nav" style="padding-top:16px;margin-bottom:1em;" >
             {{ toc }}
           </div>
         </div>
@@ -129,12 +124,6 @@
                 </div>
             </div>
 
-            <!-- Sidebar -->
-            <div id="sidebar2-wrapper" class="print_hide">
-              <div class="sidebar2-nav">
-                {{ toc }}
-              </div>
-            </div>
             <!-- /#sidebar-wrapper -->
 
         </div>
