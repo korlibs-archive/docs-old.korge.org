@@ -10,7 +10,7 @@ KorGE allows to create compile-time extensions to process resources and to do sp
 like adding cordova plugins or describing the `AndroidManifest.xml` programmatically by just including
 a library.
 
-### `ResourceProcessor` plugin
+## `ResourceProcessor` plugin
 
 The `ResourceProcessor` plugin, allows to process a resource, by generating another file out of it.
 It is usually used to reduce dependencies, to simplify what the game has to do for loading a file,
@@ -48,7 +48,7 @@ korge {
 }
 ```
 
-### `KorgePluginExtension` plugin
+## `KorgePluginExtension` plugin
 
 In some cases, you will need to configure extra stuff like cordova plugins or the `AndroidManifest.xml`. 
 

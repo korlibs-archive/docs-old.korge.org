@@ -258,6 +258,11 @@ code.highlighter-rouge {
   font-size: inherit;
 }
 
+h2 code.highlighter-rouge {
+  background: none !important;
+  border: none !important;
+}
+
 pre.highlight {
   color: #bfb6cf;
   font-size: inherit;
