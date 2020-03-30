@@ -295,8 +295,12 @@ h3 {
 }
 
 h2 {
-    background: black;
-    padding: 4px 8px;
+  background: url('/i/header-background.jpg') black;
+  background-position: 0 50%;
+  background-size: 400px;
+  background-repeat: no-repeat no-repeat;
+  padding: 4px 8px;
+  text-shadow: 1px 0 3px #000;
 }
 
 
