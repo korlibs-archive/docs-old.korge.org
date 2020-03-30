@@ -29,10 +29,30 @@ class ComposedFilter(val filters: List<Filter>) : Filter()
 ## IdentityFilter
 
 This filter can be used to no apply filters at all. But serves for the subtree to be rendered in a texture.
+This is useful for example to change the alpha of a complex object as a whole,
+instead of affecting each alpha of the descendant views.
 
 ```kotlin
 object IdentityFilter : Filter()
 ```
+
+```kotlin
+container {
+	scale(0.8)
+	position(24, 24)
+	alpha = 0.25
+	filter = ColorMatrixFilter(ColorMatrixFilter.IDENTITY_MATRIX)
+	image(resourcesVfs["korge.png"].readBitmap())
+	image(resourcesVfs["korge.png"].readBitmap()) {
+		position(64, 64)
+	}
+}
+```
+
+<div style="display:flex;width:100%;max-width:100%;">
+<img src="/i/filters/identity_complex_off.png" style="max-width:50%;" />
+<img src="/i/filters/identity_complex_on.png" style="max-width:50%;" />
+</div>
 
 ## ColorMatrixFilter
 
@@ -56,6 +76,12 @@ class ColorMatrixFilter(var colorMatrix: Matrix3D, var blendRatio: Double) : Fil
 }
 ```
 
+```kotlin
+view.filter = ColorMatrixFilter(ColorMatrixFilter.GRAYSCALE_MATRIX)
+```
+
+![](/i/filters/color_matrix.png)
+
 ## Convolute3Filter
 
 ```kotlin
@@ -68,6 +94,12 @@ class Convolute3Filter(var kernel: Matrix3D) : Filter() {
     }
 }
 ```
+
+```kotlin
+view.filter = ComposedFilter((0 until 5).map { Convolute3Filter(Convolute3Filter.KERNEL_GAUSSIAN_BLUR) })
+```
+
+![](/i/filters/blur.png)
 
 ## WaveFilter and PageFilter
 
@@ -87,6 +119,12 @@ class PageFilter(
 ```
 
 ```kotlin
+view.filter = PageFilter(hamplitude1 = 64.0)
+```
+
+![](/i/filters/page.png)
+
+```kotlin
 class WaveFilter(
     var amplitudeX: Int = 10,
     var amplitudeY: Int = 10,
@@ -98,10 +136,18 @@ class WaveFilter(
 ) : Filter()
 ```
 
+![](/i/filters/wave.png)
+
 ## SwizzleColorsFilter
 
-Serves to do component swizzling per pixel:
+Serves to do component swizzling (RGBA) per pixel:
 
 ```kotlin
 class SwizzleColorsFilter(var swizzle: String = "rgba") : Filter()
 ```
+
+```kotlin
+view.filter = SwizzleColorsFilter.ProxySwizzle("bgra")
+```
+
+![](/i/filters/swizzle_color.png)
