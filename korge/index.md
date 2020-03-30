@@ -10,7 +10,7 @@ fa-icon: fa-gamepad
 
 **KorGE Game Engine** is an [Open Source](https://github.com/soywiz/korge) modern Game Engine created in [<img src="/i/logos/kotlin.svg" style="width:1.4em;height:1.4em;margin-top:-0.2em;" />Kotlin programming language](https://kotlinlang.org/) designed to be extremely portable and really enjoyable to use.
 
-It works on **Desktop**, **Web** and **Mobile**. And it is full asynchronous, so it is nice for the web.
+It works on **Desktop**, **Web** and **Mobile**. And it is full asynchronous, so it is also nice for the web.
 
 You can see a small presentation of KorGE here: <https://korge.soywiz.com/>
 
