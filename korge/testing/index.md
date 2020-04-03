@@ -111,7 +111,7 @@ sealed class Operation {
 }
 data class Transition(
     val prev: State,
-    val next: MyState,
+    val next: State,
     val operations: List<Operation>
 )
 sealed class UserAction {
