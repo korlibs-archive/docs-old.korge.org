@@ -203,7 +203,13 @@ body {
   h1, h2, h3, h4, h5, h6 {
     //color: #4b17a9;
     color: #ddd;
-    //margin-top: 30px;
+	//margin-top: 30px;
+  }
+  h1 {
+	text-shadow: 4px 1px 0px #000
+  }
+  h3 {
+	text-shadow: 2px 2px 0px #000
   }
   
   p, div {
