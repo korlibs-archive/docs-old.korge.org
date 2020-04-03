@@ -3,10 +3,13 @@ layout: default
 title: "Testing"
 fa-icon: fa-vial
 priority: 7500
+support_diagram: true
 #status: new
 ---
 
 KorGE provide mechanisms for testing views, scenes and suspending functions.
+
+{% include toc_include.md %}
 
 ## Basics
 
@@ -28,8 +31,8 @@ class MyTestClass {
 
 ## Views
 
-When testing views, scenes or transitions KorGE exposes the `ViewsForTesting` base class.
-When using this class, tweens and everything that happens in time will be executed immediately in order
+When testing views, scenes or transitions, KorGE exposes the `ViewsForTesting` base class.
+When using this class, tweens and everything that happens in time will be executed almost immediately and in order,
 so the tests can run super fast without having to wait for animations, so it is pretty convenient.
 
 ### Declaration
@@ -75,5 +78,69 @@ class MyTest : ViewsForTesting() {
         assertEquals(false, rect.isVisibleToUser())
         assertEquals(listOf("clicked"), log)
     }
+}
+```
+
+## Separating logic from presentation
+
+While KorGE allows to do headless, fast testing of views, it is recommended to separate
+your game logic from your presentation logic.
+
+When possible, your game should be playable from code using plain models and you should
+try to test as much as possible without using views at all.
+
+If you represent your game as states and state transitions, you can then display those
+actions with animations and tweens. And you can convert user interactions into actions.
+
+```nomnoml
+[States]
+[User Interactions] -> [User Actions]
+[User Actions] -> [State Transitions]
+[State Transitions] -> [View Animations]
+```
+
+For example:
+
+```kotlin
+data class State(...)
+sealed class Operation {
+    data class Create(...) : Operation()
+    data class Move(...) : Operation()
+    data class Compact(...) : Operation()
+    // ...
+}
+data class Transition(
+    val prev: State,
+    val next: MyState,
+    val operations: List<Operation>
+)
+sealed class UserAction {
+    data class RequestMove(...) : UserAction()
+    // ...
+}
+
+fun applyUserAction(state: State, action: UserAction): Transition {
+    // ... Here we compute the action, generating a new state and a set of internal operations
+}
+
+suspend fun animateTransition(transition: Transition) {
+    // ... Here we perform view animations, based on the options ...
+}
+
+// Testing the logic
+@Test
+fun testMoveRequest() {
+    val state = State()
+    val action = UserAction.RequestMove(...)
+    // ...
+    val transition = applyUserAction(state, action)
+    // ...
+    veritfy(transition)
+}
+
+// Testing animations and views
+@Test
+suspend fun testTransitions() = viewsTest {
+    // Here we actually test that the animations work as expected
 }
 ```
