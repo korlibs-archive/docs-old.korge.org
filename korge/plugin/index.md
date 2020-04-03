@@ -3,7 +3,7 @@ layout: default
 title: "Plugins"
 fa-icon: fa-plug
 priority: 900
-status: new
+#status: new
 ---
 
 KorGE allows to create compile-time extensions to process resources and to do special stuff

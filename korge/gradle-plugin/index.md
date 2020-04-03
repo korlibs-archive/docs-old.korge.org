@@ -15,7 +15,7 @@ priority: 1
 ## The `korge` extension
 
 The korge extension is a DSL to configure the application.
-For further reference you can find the source code [here](https://github.com/korlibs/korge/blob/master/plugins/korge-gradle-plugin/src/main/kotlin/com/soywiz/korge/gradle/KorgeExtension.kt).
+For further reference you can find the source code [here](https://github.com/korlibs/korge-plugins/blob/master/korge-gradle-plugin/src/main/kotlin/com/soywiz/korge/gradle/KorgeExtension.kt).
 
 ```kotlin
 korge {
@@ -59,7 +59,7 @@ korge {
 
 ## Project structure
 
-Three small files (plus gradle 5.1.1) is all you need to get started:
+Three small files (plus gradle {{ site.data.versions.gradle }}) is all you need to get started:
 
 ### settings.gradle.kts
 
