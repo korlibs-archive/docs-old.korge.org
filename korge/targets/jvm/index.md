@@ -6,16 +6,16 @@ priority: 0
 #status: new
 ---
 
-This should be the preferred target while developing.
+It supports **Java 8** and greater. This should be the preferred target while developing.
 
-It uses the Kotlin JVM backend, generating JVM bytecode and executing the code
+Uses the Kotlin JVM backend, generating JVM bytecode and executing the code
 on the Java Virtual Machine.
-
-It supports **Java 8** and greater.
 
 This integrates pretty well on the IDEs, have fast building and startup times,
 and provides a great tools like a better debugging experience. All these features
 makes it the best target for debugging and trying things fast.
+
+{% include toc_include.md %}
 
 ## Entrypoint
 
@@ -32,33 +32,31 @@ korge {
 }
 ```
 
-## Gradle Tasks
+## Executing
 
-### Executing
-
-For running:
+For running, use the gradle task:
 
 ```bash
 ./gradlew runJvm
 ```
 
-### Testing
+## Testing
 
-For executing tests on the JVM only:
+For executing tests on the JVM only, use the gradle task:
 
 ```bash
 ./gradlew jvmTest
 ```
 
-### Packaging
+## Packaging
 
-For creating a FatJAR:
+For creating a FatJAR, use the gradle task:
 
 ```bash
 ./gradlew packageJvmFatJar
 ```
 
-For creating a FatJAR using proguard for thinner sizes:
+For creating a FatJAR using proguard for thinner sizes, use the gradle task:
 
 ```bash
 ./gradlew packageJvmFatJarProguard

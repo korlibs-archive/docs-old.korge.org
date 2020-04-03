@@ -7,3 +7,5 @@ priority: 3
 ---
 
 WIP
+
+{% include toc_include.md %}
