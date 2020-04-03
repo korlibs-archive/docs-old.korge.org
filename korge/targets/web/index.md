@@ -20,4 +20,40 @@ Can also be used along the [Cordova Target](/korge/targets/cordova) to create fu
 
 {% include toc_include.md %}
 
-## Gradle Tasks
+## Executing
+
+To compile, start an http-server and open a browser, use the gradle task:
+
+```bash
+./gradlew runJs
+```
+
+## Packaging
+
+```bash
+./gradlew jsWeb            # Outputs to /build/web
+./gradlew jsWebMin         # Outputs to /build/web-min (applying Dead Code Elimination)
+./gradlew jsWebMinWebpack  # Outputs to /build/web-min-webpack (minimizing and grouping into a single bundle.js file)
+```
+
+You can use any HTTP server to serve the files in your browser.
+For example using: `npm -g install http-server` and then executing `hs build/web`.
+Or using live-server: `npm -g install live-server` and then executing `live-server build/web`.
+
+You can also use `./gradlew -t jsWeb` to continuously building the JS sources and running
+`hs build/web` in another terminal.
+Here you can find a `testJs.sh` script doing exactly this for convenience.
+
+You can run your tests using Node.JS by calling jsTest or in a headless chrome with jsTestChrome.
+
+## Application Configuration
+
+* The Application Icon would be rendered as a `favicon.ico`.
+* The Application Title as the `<title>` tag.
+
+## Recommendations: `runBlocking`
+
+Remember that the JS and the Common target doesn't support blocking calls neither the `runBlocking` construct.
+So when dealing with I/O you have to mark your functions as `suspend fun`.
+Fortunately Korlibs are designed to be asynchronous, and reading resources is already suspending.
+So you only have to propagate the suspend modifier when required and you are mostly safe here.
