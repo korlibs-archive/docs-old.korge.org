@@ -87,6 +87,24 @@ repositories {
 }
 ```
 
+## Links
+
+### Slack
+
+* <https://slack.soywiz.com/>
+
+### GitHub
+
+* <https://github.com/korlibs/>
+
+### GitHub Sponsors / Donations
+
+* <https://github.com/sponsors/soywiz/>
+
+### OpenCollective
+
+* <https://opencollective.com/korge>
+
 ## Contributing
 {:#contributing}
 
