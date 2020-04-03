@@ -9,12 +9,7 @@ Library for Big Numbers
 
 <https://github.com/korlibs/kbignum/>
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## KBigNum
 

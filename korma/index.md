@@ -6,7 +6,7 @@ fa-icon: fa-calculator
 priority: 50
 ---
 
-<img src="/i/logos/korma.svg" width="128" height="128" alt="Mathematic Library for Kotlin" style="float:left; margin: 0 16px 16px 0;" />
+# <img src="/i/logos/korma.svg" width="128" height="128" alt="KorMA" style="float:left; margin: 0 16px 16px 0;" />
 
 Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geometry.
 
@@ -15,15 +15,7 @@ Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geo
 [![Build Status](https://travis-ci.org/korlibs/korma.svg?branch=master)](https://travis-ci.org/korlibs/korma)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/korma.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22korma%22)
 
-<div style="clear: both;"></div>
-
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
+{% include toc_include.md %}
 
 {% include using_with_gradle.md name="korma" %}
 

@@ -6,26 +6,16 @@ fa-icon: fa-microchip
 priority: 30
 ---
 
-<img src="/i/logos/kmem.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="Data Structures" />
+# <img src="/i/logos/kmem.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="KMEM: Memory Utilities" />
 
 Kmem is bit, array and fast memory utilities library for multiplatform Kotlin 1.3
-
 
 [https://github.com/korlibs/kmem](https://github.com/korlibs/kmem)
 
 [![Build Status](https://travis-ci.org/korlibs/kmem.svg?branch=master)](https://travis-ci.org/korlibs/kmem)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/kmem.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22kmem%22)
 
-<div style="clear: both;"></div>
-
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
-
+{% include toc_include.md max_level="3" %}
 {% include using_with_gradle.md name="kmem" %}
 
 ## arraycopy and arrayfill

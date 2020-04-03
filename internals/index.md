@@ -5,13 +5,7 @@ fa-icon: fa-cogs
 priority: 999
 ---
 
-**Table of contents:**
-
-{::options toc_levels="1..2" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
+{% include toc_include.md %}
 
 ## `easy-kotlin-mpp-gradle-plugin`
 {:#easy-kotlin-mpp-gradle-plugin}

@@ -7,25 +7,16 @@ fa-icon: fa-tree
 priority: 20
 ---
 
-<img src="/i/logos/kds.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="Data Structures" />
+# <img src="/i/logos/kds.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="KDS: Data Structures" />
 
 Kds is a Data Structure library for Multiplatform Kotlin 1.3.
-
 
 [https://github.com/korlibs/kds](https://github.com/korlibs/kds)
 
 [![Build Status](https://travis-ci.org/korlibs/kds.svg?branch=master)](https://travis-ci.org/korlibs/kds)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/kds.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22kds%22)
 
-<div style="clear: both;"></div>
-
-**Table of contents:**
-
-{::options toc_levels="1..2" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
+{% include toc_include.md %}
 
 ## Using with gradle
 

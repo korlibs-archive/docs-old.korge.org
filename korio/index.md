@@ -1,25 +1,18 @@
 ---
 layout: default
 title: "KorIO"
+hide_title: true
 fa-icon: fa-copy
 priority: 40
 ---
 
-<img src="/i/logos/korio.svg" width="256" height="256" style="float: left;" />
+# <img alt="KorIO" src="/i/logos/korio.svg" width="128" height="128" style="float: left;" />
 
 KorIO is a library for Charsets, Encodings, Checksums, Compression, I/O, Streams, Virtual File System, Networking, Http, WebSockets, Serialization...
 
 [https://github.com/korlibs/korio](https://github.com/korlibs/korio)
 
-<div style="clear: both;"></div>
-**Table of contents:**
-
-{::options toc_levels="1..4" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
-
+{% include toc_include.md max_level="4" %}
 {% include using_with_gradle.md name="korio" %}
 
 ## Charset

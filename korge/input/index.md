@@ -6,12 +6,7 @@ fa-icon: fa-gamepad
 priority: 30
 ---
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## Raw Input
 

@@ -6,7 +6,7 @@ fa-icon: fa-clock
 priority: 10
 ---
 
-<img src="/i/logos/klock.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="klock Date and Time" />
+# <img src="/i/logos/klock.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="Klock Date and Time" />
 
 Klock is a Date & Time library for Multiplatform Kotlin 1.3.
 

@@ -11,12 +11,7 @@ Klogger is a logger library for multiplatform Kotlin
 
 This library provides a simple interface to do logging into suitable outputs like javascript's console, or stdout/stderr.
 
-**Table of contents:**
-
-{::options toc_levels="1..2" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## Console
 

@@ -12,12 +12,7 @@ Views can have filters attached that change how the view and its children are di
 var View.filter: Filter? = null
 ```
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## ComposedFilter
 

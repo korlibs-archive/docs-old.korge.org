@@ -6,13 +6,7 @@ priority: 1000
 status: new
 ---
 
-**Table of contents:**
-
-{::options toc_levels="1..2" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
+{% include toc_include.md %}
 
 ## Understanding versions and the `.m2` folder
 

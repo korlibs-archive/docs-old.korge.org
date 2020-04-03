@@ -11,12 +11,7 @@ On the rest of the targets this API is mocked and does nothing.
 
 To use it you have to include the KorGE plugin korge-admob:
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## build.gradle
 

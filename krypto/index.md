@@ -9,14 +9,7 @@ Krypto is a cryptography library for Multiplatform Kotlin 1.3.
 
 <https://github.com/korlibs/krypto>
 
-<div style="clear: both;"></div>
-
-**Table of contents:**
-
-{::options toc_levels="1..2" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## SecureRandom
 

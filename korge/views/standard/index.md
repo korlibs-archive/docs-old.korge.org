@@ -8,12 +8,7 @@ priority: 50
 
 Each kind of standard view provides a normal constructor, plus a DSL constructor that have `Container` as receiver.
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## Container & FixedSizeContainer
 

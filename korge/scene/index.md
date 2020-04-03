@@ -11,12 +11,7 @@ to follow some patterns and to be able to split your application effectively.
 
 KorGE includes an asynchronous dependency injector and some tools like the modules and scenes to do so.
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## Module
 

@@ -1,11 +1,12 @@
 ---
 layout: default
+hide_title: true
 title: "KorTE"
 fa-icon: far fa-file-code
 priority: 41
 ---
 
-<img src="/i/logos/korte.svg" width="256" height="256" style="float: left;" />
+# <img alt="KorTE" src="/i/logos/korte.svg" width="128" height="128" style="float: left;" />
 
 KorTE is a asynchronous template engine for Multiplatform Kotlin 1.3.
 
@@ -27,14 +28,7 @@ Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/bl
 
 <embed src="https://korlibs.github.io/korte-samples/korte-sample-browser/web/" style="width: 100%;height:50vh;" />
 
-<div style="clear: both;"></div>
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
-{:.multicolumn}
+{% include toc_include.md %}
 
 {% include using_with_gradle.md name="korte" %}
 

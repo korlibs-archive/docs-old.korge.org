@@ -6,12 +6,7 @@ fa-icon: fa-arrow-alt-circle-right
 priority: 1
 ---
 
-**Table of contents:**
-
-{::options toc_levels="1..3" /}
-
-* TOC
-{:toc}
+{% include toc_include.md %}
 
 ## The `korge` extension
 
