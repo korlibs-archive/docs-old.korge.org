@@ -121,6 +121,13 @@
 	<script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
 	<script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript"></script>
 	<script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+
+	{% if page.support_diagram %}
+	<script src="{{ '/js/lodash.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+	<script src="{{ '/js/dagre.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+	<script src="{{ '/js/nomnoml.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+	<script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+	{% endif %}
 </body>
 
 </html>
