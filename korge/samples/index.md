@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Samples"
+title_prefix: KorGE
 fa-icon: fa-chalkboard-teacher
 priority: 8000
 status: updated

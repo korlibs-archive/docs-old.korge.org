@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Monetization
+title_prefix: KorGE
 fa-icon: fa-dollar-sign
 priority: 100
 children: /korge/monetization/

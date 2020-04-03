@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Basics
+title_prefix: KorGE
 fa-icon: fa-sort-alpha-down
 priority: 2
 ---

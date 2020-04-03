@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Changelog"
+title_prefix: KorGE
 fa-icon: fa-newspaper
 priority: 10000
 status: new

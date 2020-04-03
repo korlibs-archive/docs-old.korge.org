@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Animating
+title_prefix: KorGE
 children: /korge/animation/
 fa-icon: fa-play
 priority: 200

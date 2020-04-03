@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Cordova (Legacy)"
+title_prefix: KorGE Targets
 fa-icon: fa-mobile
 priority: 10
 #status: new

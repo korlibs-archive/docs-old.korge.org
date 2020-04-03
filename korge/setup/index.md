@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Setup"
+title_prefix: KorGE
 fa-icon: fa-check-square
 priority: 0
 ---

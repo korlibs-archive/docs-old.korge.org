@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Web (JS)"
+title_prefix: KorGE Targets
 fa-icon: fa-window-restore
 priority: 2
 #status: new

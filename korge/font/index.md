@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Fonts"
+title_prefix: KorGE
 fa-icon: fa-font
 priority: 70
 ---

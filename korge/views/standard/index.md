@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Standard Views
+title_prefix: KorGE Views
 fa-icon: fa-object-ungroup
 priority: 50
 ---

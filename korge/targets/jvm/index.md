@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Desktop (JVM)"
+title_prefix: KorGE Targets
 fa-icon: fa-laptop
 priority: 0
 #status: new

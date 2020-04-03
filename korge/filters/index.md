@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Filters
+title_prefix: KorGE
 fa-icon: fa-adjust
 priority: 70
 ---

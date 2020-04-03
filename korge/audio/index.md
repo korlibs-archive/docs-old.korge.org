@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Audio"
+title_prefix: KorGE
 children: /korge/audio/
 fa-icon: fa-headphones
 priority: 31

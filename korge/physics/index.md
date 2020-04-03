@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Physics
+title_prefix: KorGE
 children: /korge/physics/
 fa-icon: fa-car-crash
 priority: 200

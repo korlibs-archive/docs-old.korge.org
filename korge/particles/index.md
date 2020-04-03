@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Particles"
+title_prefix: KorGE
 fa-icon: fa-snowflake
 priority: 300
 status: outdated

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tweens
+title_prefix: KorGE Animation
 fa-icon: fa-chart-line
 status: incomplete
 ---

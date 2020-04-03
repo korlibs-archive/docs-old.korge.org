@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Lipsync"
+title_prefix: KorGE Audio
 fa-icon: fa-comments
 status: outdated
 ---

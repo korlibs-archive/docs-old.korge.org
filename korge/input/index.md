@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Input
+title_prefix: KorGE
 fa-icon: fa-gamepad
 priority: 30
 ---

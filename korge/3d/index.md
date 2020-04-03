@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "3D"
+title_prefix: KorGE
 fa-icon: fa-cube
 priority: 40
 status: experimental

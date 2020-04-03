@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Scenes
+title_prefix: KorGE
 fa-icon: fa-images
 priority: 20
 ---

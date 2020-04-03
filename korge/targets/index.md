@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Targets"
+title_prefix: KorGE
 children: /korge/targets/
 fa-icon: fa-mobile
 priority: 7400

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Admob
+title_prefix: KorGE Monetization
 fa-icon: fa-ad
 priority: 100
 ---

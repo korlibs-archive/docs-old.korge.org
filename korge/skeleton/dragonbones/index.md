@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "DragonBones"
+title_prefix: KorGE Skeleton
 fa-icon: fa-child
 ---
 

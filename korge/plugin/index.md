@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Plugins"
+title_prefix: KorGE
 fa-icon: fa-plug
 priority: 900
 #status: new

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Tile Maps"
+title_prefix: KorGE
 fa-icon: fa-map
 priority: 100
 status: incomplete

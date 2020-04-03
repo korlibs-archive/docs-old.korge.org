@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Korlibs: {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>Korlibs: {{ page.title_prefix }} {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
@@ -47,17 +47,13 @@
 
       </div>
 
-      <form class="collapse navbar-collapse navbar-form navbar-right form-optional" role="search" action="/search" style="padding-left:20px;">
-        <div class="form-group form-optional">
-          <input type="text" class="form-control form-optional" placeholder="Search" id="searchq" name="q" />
-        </div>
-        <button type="submit" class="btn btn-default form-optional">Search</button>
-      </form>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li><a href="https://korge.soywiz.com/"><i class="fa fa-gamepad" aria-hidden="true"></i> KorGE</a></li>
             <li class="active"><a href="/"><i class="fa fa-book" aria-hidden="true"></i> Docs</a></li>
+			<!--
             <li><a href="/sponsor" style="color: #aa9258;"><i class="fa fa-star" aria-hidden="true"></i> Sponsor</a></li>
+            -->
             <li><a href="https://slack.soywiz.com/"><i class="fab fa-slack" aria-hidden="true"></i> Slack</a></li>
             <li><a href="https://soywiz.com/"><i class="fab fa-wordpress" aria-hidden="true"></i> Blog</a></li>
             <li><a href="{{ site.project_url }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Github</a></li>
@@ -68,7 +64,13 @@
 
     <div id="wrapper">
         <article id="page-content-wrapper">
-            <div class="container-fluid">
+			<aside style="margin-bottom:0.5em;">
+			<form role="search" action="/search">
+				<input type="search" class="form-control" placeholder="Search" id="searchq" name="q" />
+			</form>
+			</aside>
+
+			<div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id="page-content2">
                         <div id="page-content">
@@ -78,7 +80,7 @@
                                 </a>
                             </div>
                             {% if page.hide_title != true %}
-                            <h1>{% if page.title_icon %}<i class="{{ page.title_icon }}" aria-hidden="true"></i> {% endif %}{{ page.title }}</h1>
+                            <h1>{% if page.title_icon %}<i class="{{ page.title_icon }}" aria-hidden="true"></i> {% endif %}{{ page.title_prefix }} {{ page.title }}</h1>
                             {% endif %}
                             {% case page.status %}
                               {% when 'todo' %}<div class="alert alert-warning" role="alert">This page has to be written</div>
@@ -128,6 +130,22 @@
 	<script src="{{ '/js/nomnoml.js' | prepend: site.baseurl }}" type="text/javascript"></script>
 	<script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript"></script>
 	{% endif %}
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+	<script type="text/javascript">
+		docsearch({
+			apiKey: 'cab25d9fd75655af06ab7fda91cc79e6',
+			indexName: 'korlibs',
+			inputSelector: '#searchq',
+			debug: false // Set debug to true if you want to inspect the dropdown
+		});
+		document.addEventListener("keyup", (e) => {
+			if (e.key === 't') {
+				document.querySelector('#searchq').focus();
+			}
+		});
+	</script>
+
 </body>
 
 </html>

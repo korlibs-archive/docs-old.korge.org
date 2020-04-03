@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Adobe Animate
+title_prefix: KorGE Animation
 fa-icon: fa-magic
 status: outdated
 ---

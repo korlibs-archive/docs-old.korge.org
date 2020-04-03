@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Desktop (Native)"
+title_prefix: KorGE Targets
 fa-icon: fa-laptop
 priority: 1
 #status: new

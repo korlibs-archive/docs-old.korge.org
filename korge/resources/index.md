@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Resources
+title_prefix: KorGE
 fa-icon: fa-archive
 priority: 10
 ---

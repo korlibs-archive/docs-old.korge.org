@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Skeleton"
+title_prefix: KorGE
 fa-icon: fa-child
 children: /korge/skeleton/
 priority: 200

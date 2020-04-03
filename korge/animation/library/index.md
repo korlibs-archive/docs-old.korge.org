@@ -1,6 +1,7 @@
 ---
 layout: default
 title: AnLibrary
+title_prefix: KorGE Animation
 fa-icon: fa-film
 ---
 
