@@ -16,5 +16,8 @@ google_search_id: 001447907640164080602:ej0h0w0ufr0
 github_username:  korlibs
 disqus_id: "korlibs-documentation"
 markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    disable : true
 sass:
   sass_dir: css

@@ -1,14 +1,14 @@
 ## Using with gradle
 
-### `build.gradle`
+### `build.gradle.kts`
 
 Requires `Gradle 6.2.2` (`JVM 8~13`) for building and `Kotlin >=1.3.71` for running:
 
-```groovy
-def {{ include.name }}Version = "{{ site.data.versions[include.name] }}"
+```kotlin
+val {{ include.name }}Version = "{{ site.data.versions[include.name] }}"
 
 repositories {
-    maven { url "https://dl.bintray.com/korlibs/korlibs" }
+    maven { url("https://dl.bintray.com/korlibs/korlibs") }
     jcenter()
 }
 
@@ -17,7 +17,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation "com.soywiz.korlibs.{{ include.name }}:{{ include.name }}:${{ include.name }}Version" 
+                implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}:${{ include.name }}Version") 
             }
         }
     }
@@ -25,15 +25,15 @@ kotlin {
 
 dependencies {
     // For JVM/Android only
-    implementation "com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-jvm:${{ include.name }}Version" 
+    implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-jvm:${{ include.name }}Version") 
     // For JS only
-    implementation "com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-js:${{ include.name }}Version" 
+    implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-js:${{ include.name }}Version") 
 }
 
 ```
 
-### `settings.gradle`
+### `settings.gradle.kts`
 
-```groovy
-enableFeaturePreview('GRADLE_METADATA')
+```kotlin
+enableFeaturePreview("GRADLE_METADATA")
 ```

@@ -17,31 +17,7 @@ Kds is a Data Structure library for Multiplatform Kotlin 1.3.
 [![Maven Version](https://img.shields.io/github/tag/korlibs/kds.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22kds%22)
 
 {% include toc_include.md %}
-
-## Using with gradle
-
-Requires `Gradle 4.7` (`JVM 8~10`) for building and `Kotlin >=1.3.11` for running:
-
-```
-def kdsVersion = "1.9.2"
-
-repositories {
-    maven { url "https://dl.bintray.com/korlibs/korlibs" }
-}
-
-dependencies {
-    // For multiplatform projects
-    implementation "com.soywiz.korlibs.kds:kds:$kdsVersion"
-    
-    // For JVM/Android only
-    implementation "com.soywiz.korlibs.kds:kds-jvm:$kdsVersion"
-    // For JS only
-    implementation "com.soywiz.korlibs.kds:kds-js:$kdsVersion"
-}
-
-// settigs.gradle
-enableFeaturePreview('GRADLE_METADATA')
-```
+{% include using_with_gradle.md name="kds" %}
 
 ## ArrayList: `IntArrayList`, `FloatArrayList` and `DoubleArrayList`
 {: #ArrayList }

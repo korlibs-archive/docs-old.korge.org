@@ -121,6 +121,12 @@
 	<script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
 	<script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
 	<script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
+	<script src="{{ '/js/highlight/highlight.pack.js' | prepend: site.baseurl }}" type="text/javascript" async defer onload="
+	  document.querySelectorAll('pre code').forEach((block) => {
+	  	//console.log('pre code', block);
+		hljs.highlightBlock(block);
+	  });
+	"></script>
 
 	{% if page.support_diagram %}
 	<script src="{{ '/js/lodash.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>

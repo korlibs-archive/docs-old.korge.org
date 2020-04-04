@@ -248,6 +248,25 @@ code.highlighter-rouge {
   font-size: inherit;
 }
 
+pre {
+  background: #211f24;
+  border: none;
+}
+
+code {
+  color: #bfb6cf;
+  background: #35323b;
+  border: 1px solid rgb(62, 54, 65);
+  font-size: inherit;
+}
+
+pre code {
+  color: #bfb6cf;
+  background: inherit;
+  border: none;
+  font-size: inherit;
+}
+
 pre code {
   white-space: pre;
 }
@@ -329,6 +348,16 @@ h2 {
 	.multicolumn {
 		column-count: 4;
 	}
+}
+
+.hljs {
+  .hljs-keyword { color: #676b88; font-weight: bold; }
+  .hljs-string { color: #dd7e97; }
+  .hljs-comment { color: #998; font-style: italic; }
+  .hljs-title { color: #b87878; font-weight: bold; }
+  .hljs-type { color: #696f88; font-weight: bold; }
+  .hljs-built_in { color: #696f88; font-weight: bold; }
+  .hljs-number { color: #099; }
 }
 
 .highlight {
