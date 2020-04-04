@@ -2,16 +2,25 @@ body {
   overflow-y: hidden;
 }
 
+$scrollBarWidth: 12px;
+$scrollBarColorBg: #494755;
+$scrollBarColorFg: #757688;
+$scrollBarColorFgH: #89879a;
+
+@mixin customScrollbar {
+  &::-webkit-scrollbar { width: $scrollBarWidth; }
+  &::-webkit-scrollbar-track { background: $scrollBarColorBg; }
+  &::-webkit-scrollbar-thumb { background: $scrollBarColorFg; border-radius: 5px; border: 2px solid $scrollBarColorBg; }
+  &::-webkit-scrollbar-thumb:hover { background: $scrollBarColorFgH; }
+}
+
+body {
+  @include customScrollbar
+}
+
 #wrapper {
   display: flex;
   flex-direction: row-reverse;
-
-  #sidebar-wrapper {
-	margin-top:50px;
-	width: 250px;
-	flex-shrink: 0;
-	height: calc(100vh - 50px);
-  }
 
   #page-content-wrapper {
 	box-sizing: border-box;
@@ -34,6 +43,16 @@ body {
 	height: calc(100% - 58px);
 	overflow-x: hidden;
 	overflow-y: scroll;
+
+	@include customScrollbar
+  }
+
+  #sidebar-wrapper {
+	margin-top:50px;
+	width: 250px;
+	flex-shrink: 0;
+	height: calc(100vh - 50px);
+	@include customScrollbar
   }
 
   &.toggled {
