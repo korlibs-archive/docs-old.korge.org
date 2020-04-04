@@ -143,8 +143,13 @@
 	"></script>
 	<script type="text/javascript">
 		document.addEventListener('keyup', (e) => {
-			if (e.key === 't') {
+			const isInput = document.activeElement.tagName.toUpperCase() === 'INPUT';
+			if (e.key === 'Escape' && isInput) {
+				document.activeElement.blur();
+			}
+			if (e.key === 't' && !isInput) {
 				document.querySelector('#searchq').focus();
+				document.querySelector('#searchq').select();
 			}
 		});
 		document.querySelector('#searchq').addEventListener('focus', () => {
