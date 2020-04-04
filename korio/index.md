@@ -1687,6 +1687,8 @@ myByteArray.chunked(64).joinToString("\n")
 
 ### Hex
 
+The Hex utilities, allows you to encode and decode Hexadecimal from/to ByteArray and Strings.
+
 ```kotlin
 val List<String>.unhexIgnoreSpaces: ByteArray
 val String.unhexIgnoreSpaces: ByteArray
@@ -1712,7 +1714,9 @@ object Hex {
 }
 ```
 
-### CType
+### CType
+
+Utility classes for getting information about characters.
 
 ```kotlin
 fun Char.isWhitespaceFast(): Boolean // Faster than isWhitepsace specially on javascript because do not use regular expressions
