@@ -200,6 +200,8 @@ val twoHundredMillisecondsMore = time + 200.milliseconds
 
 ### External Arithmetic
 
+Adding or subtracting time to a date 
+
 ```kotlin
 val now = DateTime.now()
 val inTenSeconds = now + 10.seconds
@@ -247,6 +249,8 @@ val time = 5.years
 
 ### Arithmetic
 
+Adding or subtracting month-based spans
+
 ```kotlin
 val time: MonthSpan = 5.years + 2.months
 val time: MonthSpan = 5.years * 2
@@ -254,6 +258,8 @@ val time: DateTimeSpan = 5.years + 5.days
 ```
 
 ### External Arithmetic
+
+Adding or subtracting months to a date
 
 ```kotlin
 val now = DateTime.now()
