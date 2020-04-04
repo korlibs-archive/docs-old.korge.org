@@ -22,8 +22,8 @@ and it is capable of using native audio loaders.
 For games, the recommended way of loading sounds and music files is to use the `NativeSound` facility. Typically the `VfsFile.readNativeSound`:
 
 ```kotlin
-val sound: NativeSound = resourcesVfs["sound.mp3"].readNativeSound()
-val music: NativeSound = resourcesVfs["music.mp3"].readNativeSound(streaming = true)
+val sound = resourcesVfs["sound.mp3"].readSound()
+val music = resourcesVfs["music.mp3"].readMusic()
 ```
 
 The streaming argument instructs KorAU to not fully load the sound at the beginning but to decode it as required.
