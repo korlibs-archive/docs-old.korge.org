@@ -1,12 +1,11 @@
 ---
 layout: default
 title: "KorAU"
-hide_title: true
 fa-icon: fa-headphones
 priority: 70
 ---
 
-# <img alt="KorAU" src="/i/logos/korau.svg" width="128" height="128" style="float: left;margin-right:1em;" />
+<img alt="KorAU" src="/i/logos/korau.svg" width="128" height="128" style="float: left;margin-right:1em;" />
 
 [KorAU](https://github.com/korlibs/korau), Kotlin cORoutines AUdio - Audio playing, and sound file decoding
 

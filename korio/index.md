@@ -1,12 +1,11 @@
 ---
 layout: default
 title: "KorIO"
-hide_title: true
 fa-icon: fa-copy
 priority: 40
 ---
 
-# <img alt="KorIO" src="/i/logos/korio.svg" width="128" height="128" style="float: left;" />
+<img alt="KorIO" src="/i/logos/korio.svg" width="128" height="128" style="float: left;" />
 
 KorIO is a library for Charsets, Encodings, Checksums, Compression, I/O, Streams, Virtual File System, Networking, Http, WebSockets, Serialization...
 

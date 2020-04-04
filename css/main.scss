@@ -403,3 +403,14 @@ h2 {
 }
 
 @import "./algolia";
+
+.form-control[type=search] {
+  color: #ccc !important;
+  &::placeholder {
+	color: #999 !important;;
+  }
+}
+
+h1.hide_title {
+  display: none;
+}

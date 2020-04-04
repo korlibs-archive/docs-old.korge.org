@@ -5,7 +5,8 @@ $c_cccccc: #262530;
 $c_f8f8f8: #262530;
 $c_ddd: #262530;
 $c_458ee1: #4a99f2;
-$c_174d8c: #2376d6;
+$c_174d8c: #aebcff;
+$highlight_bg: rgba(69, 142, 225, 0.30);
 
 .algolia-autocomplete {
   width: 100%;
@@ -261,11 +262,11 @@ $c_174d8c: #2376d6;
 }
 
 .algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion.suggestion-layout-simple {
-  background-color: rgba(69, 142, 225, 0.05);
+  background-color: $highlight_bg;
 }
 
 .algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
-  background-color: rgba(69, 142, 225, 0.05);
+  background-color: $highlight_bg;
 }
 
 .algolia-autocomplete .ds-dropdown-menu [class^='ds-dataset-'] {

@@ -1,12 +1,11 @@
 ---
 layout: default
 title: Kmem
-hide_title: true
 fa-icon: fa-microchip
 priority: 30
 ---
 
-# <img src="/i/logos/kmem.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="KMEM: Memory Utilities" />
+<img src="/i/logos/kmem.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="KMEM: Memory Utilities" />
 
 Kmem is bit, array and fast memory utilities library for multiplatform Kotlin 1.3
 

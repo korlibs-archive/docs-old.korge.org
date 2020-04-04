@@ -1,12 +1,11 @@
 ---
 layout: default
-hide_title: true
 title: "KorMA"
 fa-icon: fa-calculator
 priority: 50
 ---
 
-# <img src="/i/logos/korma.svg" width="128" height="128" alt="KorMA" style="float:left; margin: 0 16px 16px 0;" />
+<img src="/i/logos/korma.svg" width="128" height="128" alt="KorMA" style="float:left; margin: 0 16px 16px 0;" />
 
 Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geometry.
 

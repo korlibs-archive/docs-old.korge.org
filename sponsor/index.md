@@ -1,6 +1,5 @@
 ---
 layout: default
-hide_title: true
 hide_comments: true
 title: "Sponsor Korlibs"
 fa-icon: fa-star 

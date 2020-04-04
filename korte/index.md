@@ -1,12 +1,11 @@
 ---
 layout: default
-hide_title: true
 title: "KorTE"
 fa-icon: far fa-file-code
 priority: 41
 ---
 
-# <img alt="KorTE" src="/i/logos/korte.svg" width="128" height="128" style="float: left;" />
+<img alt="KorTE" src="/i/logos/korte.svg" width="128" height="128" style="float: left;" />
 
 KorTE is a asynchronous template engine for Multiplatform Kotlin 1.3.
 

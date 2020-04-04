@@ -1,12 +1,11 @@
 ---
 layout: default
 title: "KorIM"
-hide_title: true
 fa-icon: fa-image
 priority: 60
 ---
 
-# <img alt="KorIM" src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />
+<img alt="KorIM" src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />
 
 **[KorIM](https://github.com/soywiz/korim)** is a library for image loading, writting and processing. It allows to convert between image and color formats. Also include tools for vector images and fonts.
 
