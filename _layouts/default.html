@@ -53,13 +53,13 @@
   </nav>
 
     <div id="wrapper">
-        <article id="page-content-wrapper">
-			<aside style="margin-bottom:0.5em;">
+		<div id="page-content-wrapper">
+		<aside id="page-content-search" style="margin-bottom:0.5em;">
 			<form role="search" action="/search">
 				<input type="search" class="form-control" placeholder="Search... (press 't' to focus)" id="searchq" name="q" />
 			</form>
-			</aside>
-
+		</aside>
+        <article id="page-content-wrapper2">
 			<div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id="page-content2">
@@ -101,6 +101,7 @@
                 </div>
             </div>
         </article>
+		</div>
 		<aside id="sidebar-wrapper" class="print_hide">
 			<div class="sidebar-nav" style="padding-top:16px;margin-bottom:1em;" >
 				{{ toc }}
@@ -129,15 +130,19 @@
 {% endif %}
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" defer onload="
-		window.addEventListener('DOMContentLoaded', () => {
-			docsearch({
-				apiKey: 'cab25d9fd75655af06ab7fda91cc79e6',
-				indexName: 'korlibs',
-				inputSelector: '#searchq',
-				debug: false // Set debug to true if you want to inspect the dropdown
-			});
+	window.addEventListener('DOMContentLoaded', () => {
+		// https://docsearch.algolia.com/docs/behavior/
+		window.algoliaSearch = docsearch({
+			apiKey: 'cab25d9fd75655af06ab7fda91cc79e6',
+			indexName: 'korlibs',
+			inputSelector: '#searchq',
+			debug: false,
+			algoliaOptions: {
+				hitsPerPage: 7,
+			},
 		});
-	"></script>
+	});
+"></script>
 <script type="text/javascript">
 	window.addEventListener('DOMContentLoaded', () => {
 		document.addEventListener('keyup', (e) => {

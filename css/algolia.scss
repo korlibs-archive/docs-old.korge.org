@@ -196,22 +196,30 @@ $highlight_bg: rgba(69, 142, 225, 0.30);
   }
 }
 
+/*
 .algolia-autocomplete.algolia-autocomplete-right .ds-dropdown-menu {
   right: 0 !important;
   left: inherit !important;
-}
-
-.algolia-autocomplete.algolia-autocomplete-right .ds-dropdown-menu:before {
-  right: 48px;
+  &:before {
+	right: 48px;
+  }
 }
 
 .algolia-autocomplete.algolia-autocomplete-left .ds-dropdown-menu {
   left: 0 !important;
   right: inherit !important;
+  &:before {
+	left: 48px;
+  }
 }
+*/
 
-.algolia-autocomplete.algolia-autocomplete-left .ds-dropdown-menu:before {
-  left: 48px;
+.algolia-autocomplete.algolia-autocomplete-right .ds-dropdown-menu, .algolia-autocomplete.algolia-autocomplete-left .ds-dropdown-menu {
+  left: 0 !important;
+  right: inherit !important;
+  &:before {
+	left: 48px;
+  }
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
