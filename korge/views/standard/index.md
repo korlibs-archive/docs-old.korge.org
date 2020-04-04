@@ -194,8 +194,8 @@ inline fun Container.ninePatch(
 )
 
 class NinePatchEx : View() {
-	var smoothing = true
-
+    var smoothing = true
+    
     constructor(ninePatch: NinePatchBitmap32, width: Double = ninePatch.width.toDouble(), height: Double = ninePatch.height.toDouble()): NinePatchEx
 }
 ```
