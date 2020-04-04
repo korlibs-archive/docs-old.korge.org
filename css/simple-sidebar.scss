@@ -2,18 +2,6 @@ body {
   overflow-y: hidden;
 }
 
-$scrollBarWidth: 12px;
-$scrollBarColorBg: #494755;
-$scrollBarColorFg: #757688;
-$scrollBarColorFgH: #89879a;
-
-@mixin customScrollbar {
-  &::-webkit-scrollbar { width: $scrollBarWidth; }
-  &::-webkit-scrollbar-track { background: $scrollBarColorBg; }
-  &::-webkit-scrollbar-thumb { background: $scrollBarColorFg; border-radius: 5px; border: 2px solid $scrollBarColorBg; }
-  &::-webkit-scrollbar-thumb:hover { background: $scrollBarColorFgH; }
-}
-
 body {
   @include customScrollbar
 }

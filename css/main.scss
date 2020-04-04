@@ -233,10 +233,6 @@ body {
   }
 }
 
-pre.highlight {
-  overflow-x: auto;
-}
-
 div.highlight, div.highlighter-rouge {
   background: none !important;
 }
@@ -248,12 +244,6 @@ code.highlighter-rouge {
   font-size: inherit;
 }
 
-pre {
-  background: #211f24;
-  tab-size: 4;
-  border: none;
-}
-
 code {
   color: #bfb6cf;
   background: #35323b;
@@ -261,16 +251,23 @@ code {
   font-size: inherit;
 }
 
-pre code {
-  color: #bfb6cf;
-  background: inherit;
+pre {
+  background: #211f24;
+  tab-size: 4;
   border: none;
-  font-size: inherit;
+  border-radius: 0.5em;
+  box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.35);
+  padding: 1em;
+  @include customScrollbar;
+  code {
+	color: #bfb6cf;
+	background: inherit;
+	border: none;
+	font-size: inherit;
+	white-space: pre;
+  }
 }
 
-pre code {
-  white-space: pre;
-}
 
 h2 code.highlighter-rouge {
   background: none !important;
