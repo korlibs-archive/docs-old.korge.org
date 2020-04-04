@@ -2,27 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Korlibs: {{ page.title_prefix }} {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<title>Korlibs: {{ page.title_prefix }} {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+	<link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
 
-  <link rel="icon" href="{{ "/i/icon.png" | prepend: site.baseurl }}" />
+	<link rel="icon" href="{{ "/i/icon.png" | prepend: site.baseurl }}" />
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
-
-<style type="text/css">
-@media (max-width: 1100px) {
-  .form-optional {
-    display: none !important;
-  }
-}
-</style>
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
 </head>
 
 <body>
@@ -116,32 +108,38 @@
 		</aside>
     </div>
 
-	<script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	<script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	<script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	<script src="{{ '/js/highlight/highlight.pack.js' | prepend: site.baseurl }}" type="text/javascript" async defer onload="
-	  document.querySelectorAll('pre code').forEach((block) => {
-	  	//console.log('pre code', block);
-		hljs.highlightBlock(block);
-	  });
-	"></script>
 
-	{% if page.support_diagram %}
-	<script src="{{ '/js/lodash.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	<script src="{{ '/js/dagre.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	<script src="{{ '/js/nomnoml.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	<script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
-	{% endif %}
-
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" async defer onload="
-		docsearch({
-			apiKey: 'cab25d9fd75655af06ab7fda91cc79e6',
-			indexName: 'korlibs',
-			inputSelector: '#searchq',
-			debug: false // Set debug to true if you want to inspect the dropdown
+<script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+<script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+<script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+<script src="{{ '/js/highlight/highlight.pack.js' | prepend: site.baseurl }}" type="text/javascript" defer onload="
+		window.addEventListener('DOMContentLoaded', () => {
+			document.querySelectorAll('pre code').forEach((block) => {
+				//console.log('pre code', block);
+				hljs.highlightBlock(block);
+			});
 		});
 	"></script>
-	<script type="text/javascript">
+
+{% if page.support_diagram %}
+<script src="{{ '/js/lodash.min.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+<script src="{{ '/js/dagre.min.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+<script src="{{ '/js/nomnoml.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+<script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
+{% endif %}
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" defer onload="
+		window.addEventListener('DOMContentLoaded', () => {
+			docsearch({
+				apiKey: 'cab25d9fd75655af06ab7fda91cc79e6',
+				indexName: 'korlibs',
+				inputSelector: '#searchq',
+				debug: false // Set debug to true if you want to inspect the dropdown
+			});
+		});
+	"></script>
+<script type="text/javascript">
+	window.addEventListener('DOMContentLoaded', () => {
 		document.addEventListener('keyup', (e) => {
 			const isInput = document.activeElement.tagName.toUpperCase() === 'INPUT';
 			if (e.key === 'Escape' && isInput) {
@@ -158,7 +156,9 @@
 		document.querySelector('#searchq').addEventListener('blur', () => {
 			document.querySelector('#searchq').placeholder = 'Search... (press \'t\' to focus)';
 		});
-	</script>
+	})
+</script>
+
 </body>
 
 </html>
