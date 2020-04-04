@@ -118,32 +118,32 @@
 		</aside>
     </div>
 
-	<script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
-	<script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript"></script>
-	<script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+	<script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
+	<script src="{{ '/js/bootstrap.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
+	<script src="{{ '/js/navigation.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
 
 	{% if page.support_diagram %}
-	<script src="{{ '/js/lodash.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
-	<script src="{{ '/js/dagre.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
-	<script src="{{ '/js/nomnoml.js' | prepend: site.baseurl }}" type="text/javascript"></script>
-	<script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+	<script src="{{ '/js/lodash.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
+	<script src="{{ '/js/dagre.min.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
+	<script src="{{ '/js/nomnoml.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
+	<script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript" async defer></script>
 	{% endif %}
 
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" async defer onload="
 		docsearch({
 			apiKey: 'cab25d9fd75655af06ab7fda91cc79e6',
 			indexName: 'korlibs',
 			inputSelector: '#searchq',
 			debug: false // Set debug to true if you want to inspect the dropdown
 		});
-		document.addEventListener("keyup", (e) => {
+	"></script>
+	<script type="text/javascript">
+		document.addEventListener('keyup', (e) => {
 			if (e.key === 't') {
 				document.querySelector('#searchq').focus();
 			}
 		});
 	</script>
-
 </body>
 
 </html>
