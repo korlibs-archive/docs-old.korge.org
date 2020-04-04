@@ -105,6 +105,13 @@ repositories {
 
 * <https://opencollective.com/korge>
 
+## How are issues prioritized?
+
+In normal circumstances, bugs and sponsored tickets coming from sponsors are done first.
+
+There is a Kanban board at GitHub here where you can see the progress and the current prioritization:
+<https://github.com/orgs/korlibs/projects/1>
+
 ## Contributing
 {:#contributing}
 
