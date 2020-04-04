@@ -37,7 +37,7 @@ container {
 	scale(0.8)
 	position(24, 24)
 	alpha = 0.25
-	filter = ColorMatrixFilter(ColorMatrixFilter.IDENTITY_MATRIX)
+	filter = IdentityFilter
 	image(resourcesVfs["korge.png"].readBitmap())
 	image(resourcesVfs["korge.png"].readBitmap()) {
 		position(64, 64)

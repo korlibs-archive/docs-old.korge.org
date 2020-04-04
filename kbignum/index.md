@@ -13,6 +13,8 @@ Library for Big Numbers
 
 ## KBigNum
 
+This class allow to represent precise Big Numbers (fixed point numbers) that do not overflow.
+
 ```kotlin
 object KBigNum {
     val VERSION: String
@@ -36,6 +38,8 @@ val String.bn get() = BigNum(this)
 ```
 
 ## BigInt
+
+This class allow to represent precise Big Integers that do not overflow.
 
 ```kotlin
 // Constructors
