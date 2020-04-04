@@ -6,6 +6,11 @@ fa-icon: fa-arrow-alt-circle-right
 priority: 1
 ---
 
+The KorGE Gradle Plugin is the in handle of exposing all the tasks
+that allow to run and build the targets.
+
+Its development happens here: <https://github.com/korlibs/korge-plugins>{:target="_blank",:rel="noopener"}
+
 {% include toc_include.md %}
 
 ## The `korge` extension
