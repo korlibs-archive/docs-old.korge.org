@@ -3,7 +3,7 @@ layout: default
 title: Contributing
 css-icon: fab fa-github
 priority: 1000
-status: new
+#status: new
 ---
 
 {% include toc_include.md %}

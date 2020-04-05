@@ -3,6 +3,7 @@ layout: default
 title: KMiniOrm
 fa-icon: fa-database
 priority: 100
+status: new
 ---
 
 KMiniOrm is a ORM (only JVM at the moment).
@@ -52,3 +53,43 @@ table.where { it::value ge 20L }.limit(10).collect {
 ```
 
 {% include using_with_gradle.md name="kminiorm" %}
+
+## Defining Tables
+
+You can use normal Kotlin properties for defining columns.
+And can use `@DbName` on classes and properties to overwrite
+its internal name representation.
+
+When a column is added or removed to/from your model,
+or an index annotation added, the table structure is updated.
+The table creation/migration happens when you request
+the table with `val table = db.table<ModelClass>()`. This
+'table' instance acts as a model repository. 
+
+### Single-column indices
+
+You can use `@DbPrimary`, `@DbUnique` and `@DbIndex` annotations
+to annotate single properties.
+
+```kotlin
+data class MyTable(
+    @DbPrimary val key: String,
+    @DbIndex val value: Long
+) : DbBaseModel
+```
+
+### Multi-column indices
+
+When using the index annotations with a repeated name string,
+it creates a compound index with those columns together.
+
+```kotlin
+data class MyTable(
+    @DbUnique("a_b") val a: String,
+    @DbUnique("a_b") val b: String
+) : DbBaseModel
+```
+
+## TODO
+
+This document is under construction.
