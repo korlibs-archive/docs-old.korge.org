@@ -3,20 +3,17 @@ layout: default
 title: "Setup"
 title_prefix: KorGE
 fa-icon: fa-check-square
+children: /korge/setup/
 priority: 0
 ---
 
 ## Editor
 
-You can create KorGE applications with any editor of your preference that supports Kotlin.
-I suggest you to use either [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/) or [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download/).
-If you can afford it, the Ultimate version has [a lot more features](https://www.jetbrains.com/idea/features/editions_comparison_matrix.html) and it is super sweet if you plan to do fullstack development using Kotlin.
+KorGE provides an IntelliJ plugin, that allows you to create KorGE projects among other things.
 
-I suggest you to configure IntelliJ IDEA with:
+### <a href="/korge/setup/intellij-plugin"><i class="fa far fa-lightbulb"></i> Setup IntelliJ Pugin</a>
 
-* Editor → Code Style → Kotlin → Imports → Use imports with '*'
-* Build, Execution, Deployment → Build Tools → Gradle → Runner → Delegate IDE build/run actions to gradle and Run tests using Gradle test runner
-* Editor → General → Code Completion → Match Case - NO, Show the parameter info popup in 0 ms
+{% include picture.html alt="intellij3b" src="/korge/setup/plugin.png" %}
 
 ## Gradle
 
@@ -26,4 +23,4 @@ The easiest way to get started is to download the template project that includes
 
 ### <a href="https://github.com/korlibs/korge-hello-world/archive/master.zip"><i class="fa fa-download"></i> Download Project Template</a>
 
-To know how to configure the gradle plugin by yourself, check the [Gradle Plugin section](/korge/gradle-plugin).
+To know how to configure the gradle plugin by yourself, check the [Gradle Plugin section](/korge/setup/gradle-plugin).

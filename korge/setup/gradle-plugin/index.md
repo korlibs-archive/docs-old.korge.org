@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Gradle Plugin"
-title_prefix: KorGE
+title_prefix: Setup KorGE
 fa-icon: fa-arrow-alt-circle-right
 priority: 2
 ---
