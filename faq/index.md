@@ -87,6 +87,15 @@ repositories {
 }
 ```
 
+## How do I get the current's device resolution on KorGE?
+{:#korge-device-resolution}
+
+KorGE doesn't provide a direct way of getting the device resolution.
+This is intended to simplify your code. Instead you use a Virtual Resolution,
+and an Extended Virtual Resolution when your virtual Aspect Ratio doesn't match
+the one's from the device. Similar to OpenGL and some engines default (-1,+1)
+screen coordinates, but with the dimensions defined by you.
+
 ## Links
 
 ### Slack
@@ -98,6 +107,7 @@ repositories {
 * <https://github.com/korlibs/>
 
 ### GitHub Sponsors / Donations
+{:#github-sponsors}
 
 * <https://github.com/sponsors/soywiz/>
 
