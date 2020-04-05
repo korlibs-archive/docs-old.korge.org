@@ -3,7 +3,7 @@ layout: default
 title: "Gradle Plugin"
 title_prefix: KorGE
 fa-icon: fa-arrow-alt-circle-right
-priority: 1
+priority: 2
 ---
 
 The KorGE Gradle Plugin is the in handle of exposing all the tasks
