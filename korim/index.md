@@ -3,6 +3,7 @@ layout: default
 title: "KorIM"
 fa-icon: fa-image
 priority: 60
+children: /korim/
 ---
 
 <img alt="KorIM" src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />
@@ -17,6 +18,10 @@ Also allows to use native image loaders for fastest performance.
 [https://github.com/korlibs/korim](https://github.com/korlibs/korim)
 
 {% include toc_include.md %}
+
+## Pages:
+
+{% include toc.html context="/korim/" %}
 
 ### Bitmap classes
 
