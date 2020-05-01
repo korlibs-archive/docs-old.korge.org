@@ -24,8 +24,10 @@ kotlin {
 }
 
 dependencies {
-    // For JVM/Android only
+    // For JVM only
     implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-jvm:${{ include.name }}Version") 
+    // For Android only
+    implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-android:${{ include.name }}Version") 
     // For JS only
     implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-js:${{ include.name }}Version") 
 }
