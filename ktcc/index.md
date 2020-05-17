@@ -10,4 +10,4 @@ KTCC is a C Compiler and small IDE written in Kotlin that generates Kotlin. You 
 * <https://github.com/soywiz/ktcc>
 * <https://soywiz.github.io/ktcc/>
 
-<embed src="https://soywiz.github.io/ktcc/" style="width: 100%;height:70vh;" />
+<embed src="https://korlibs.github.io/ktcc/" style="width: 100%;height:70vh;" />
