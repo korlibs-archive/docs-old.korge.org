@@ -14,6 +14,8 @@ It works on **Desktop**, **Web** and **Mobile**. And it is full asynchronous, so
 
 You can see a small presentation of KorGE here: <https://korge.soywiz.com/>
 
+{% include stars.html project="korge" %}
+
 <div style="clear:both;"></div>
 
 ## Tools:

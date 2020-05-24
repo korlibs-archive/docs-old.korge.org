@@ -11,6 +11,8 @@ Kmem is bit, array and fast memory utilities library for multiplatform Kotlin 1.
 
 [https://github.com/korlibs/kmem](https://github.com/korlibs/kmem)
 
+{% include stars.html project="kmem" %}
+
 [![Build Status](https://travis-ci.org/korlibs/kmem.svg?branch=master)](https://travis-ci.org/korlibs/kmem)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/kmem.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22kmem%22)
 

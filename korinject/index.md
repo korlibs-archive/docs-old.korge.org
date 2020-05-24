@@ -9,6 +9,8 @@ Portable Kotlin Common library to do asynchronous dependency injection.
 
 [https://github.com/korlibs/korinject](https://github.com/korlibs/korinject)
 
+{% include stars.html project="korinject" %}
+
 ```kotlin
 class AsyncInjector(val parent: AsyncInjector? = null, val level: Int = 0) {
     suspend inline fun <reified T : Any> getWith(vararg instances: Any): T

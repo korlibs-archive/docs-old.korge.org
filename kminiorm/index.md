@@ -18,6 +18,8 @@ on most databases. While still providing raw Query support on SQL-based implemen
 
 <https://github.com/korlibs/kminiorm/>{:target="_blank",:rel="noopener"}
 
+{% include stars.html project="kminiorm" %}
+
 {% include toc_include.md max_level="3" %}
 
 ## Small sample

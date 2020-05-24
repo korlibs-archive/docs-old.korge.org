@@ -9,6 +9,8 @@ Library for Big Numbers
 
 <https://github.com/korlibs/kbignum/>
 
+{% include stars.html project="kbignum" %}
+
 {% include toc_include.md %}
 
 ## KBigNum

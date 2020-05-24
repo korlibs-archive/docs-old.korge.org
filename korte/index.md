@@ -18,7 +18,9 @@ But can also work on Native when using untyped model data or making models to im
 
 It allows to call suspend methods from within templates.
 
-* <https://github.com/korlibs/korte>
+<https://github.com/korlibs/korte>
+
+{% include stars.html project="korte" %}
 
 [![Build Status](https://travis-ci.org/korlibs/korte.svg?branch=master)](https://travis-ci.org/korlibs/korte)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/korte.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22korte%22)

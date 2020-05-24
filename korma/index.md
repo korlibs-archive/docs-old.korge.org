@@ -11,6 +11,8 @@ Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geo
 
 [https://github.com/korlibs/korma](https://github.com/korlibs/korma)
 
+{% include stars.html project="korma" %}
+
 [![Build Status](https://travis-ci.org/korlibs/korma.svg?branch=master)](https://travis-ci.org/korlibs/korma)
 [![Maven Version](https://img.shields.io/github/tag/korlibs/korma.svg?style=flat&label=maven)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22korma%22)
 

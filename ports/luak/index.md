@@ -8,4 +8,6 @@ status: todo
 
 **WIP** Port of luaj to multiplatform kotlin.
 
+{% include stars.html project="luak" %}
+
 * <https://github.com/korlibs/luak>

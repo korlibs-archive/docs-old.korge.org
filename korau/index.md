@@ -11,6 +11,8 @@ priority: 70
 
 It supports playing sounds, creating dynamic audio streams and decoding audio file formats: wav, mp3 and ogg.
 
+{% include stars.html project="korau" %}
+
 {% include toc_include.md %}
 
 ## AudioFormat

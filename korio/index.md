@@ -11,6 +11,8 @@ KorIO is a library for Charsets, Encodings, Checksums, Compression, I/O, Streams
 
 [https://github.com/korlibs/korio](https://github.com/korlibs/korio)
 
+{% include stars.html project="korio" %}
+
 {% include toc_include.md max_level="4" %}
 {% include using_with_gradle.md name="korio" %}
 
