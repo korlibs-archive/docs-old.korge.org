@@ -273,7 +273,7 @@ IF / ELSEIF / ELSE syntax:
     {% case "a" %}Case a
     {% case "b" %}Case b
     {% default %}Other cases
-{% endif %}
+{% endswitch %}
 ```
 
 ### SET
