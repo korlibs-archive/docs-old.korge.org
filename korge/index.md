@@ -12,7 +12,7 @@ fa-icon: fa-gamepad
 
 It works on **Desktop**, **Web** and **Mobile**. And it is full asynchronous, so it is also nice for the web.
 
-You can see a small presentation of KorGE here: <https://korge.soywiz.com/>
+You can see a small presentation of KorGE here: <https://korge.org/>
 
 {% include stars.html project="korge" %}
 
