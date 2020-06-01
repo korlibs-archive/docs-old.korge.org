@@ -8,3 +8,4 @@ status: todo
 ---
 
 TO-DO
+In the meantime, do check out the code samples in Github at https://github.com/korlibs/korge-samples
