@@ -11,7 +11,7 @@ priority: 0
 
 KorGE provides an IntelliJ plugin, that allows you to create KorGE projects among other things.
 
-### <a href="/korge/setup/intellij-plugin"><i class="fa far fa-lightbulb"></i> Setup IntelliJ Pugin</a>
+### <a href="/korge/setup/intellij-plugin"><i class="fa far fa-lightbulb"></i> Setup IntelliJ Plugin</a>
 
 {% include picture.html alt="intellij3b" src="/korge/setup/plugin.png" %}
 
