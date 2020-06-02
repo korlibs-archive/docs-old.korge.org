@@ -19,6 +19,33 @@ Yes. All these libraries are dual licensed under MIT and Apache 2.0, except some
 * I publish all my library binaries at bintray: <https://bintray.com/korlibs/korlibs>.
 * The libraries are also synchronized to jcenter automatically
 
+## I get an error: unable to find library -lGL on Linux
+
+Since linux doesn't include graphic or audio libraries by default,
+you might get this error if you try to compile a korge application
+with `./gradlew runNativeDebug`.
+
+```
+> Task :linkDebugExecutableLinuxX64 FAILED
+e: /home/parallels/.konan/dependencies/clang-llvm-8.0.0-linux-x86-64/bin/ld.lld invocation reported errors
+
+The /home/parallels/.konan/dependencies/clang-llvm-8.0.0-linux-x86-64/bin/ld.lld command returned non-zero exit code: 1.
+output:
+ld.lld: error: unable to find library -lGL
+ld.lld: error: unable to find library -lGLU
+ld.lld: error: unable to find library -lglut
+ld.lld: error: unable to find library -lopenal
+```
+
+If you are using Ubuntu or other Debian-based distro, you can execute
+the following command to install the required libraries:
+
+```bash
+sudo apt-get -y install freeglut3-dev libopenal-dev
+```
+
+You can find this command in the [Targets -> Desktop](/targets/desktop) section.
+
 ## How do I include these libraries in my multiplatform projects?
 {:#include-multi}
 
@@ -131,6 +158,7 @@ The whole project stack is opensource, so you can contribute to this project its
 
 Think that this is a huge project that has been initially developed by a single person, and that requires a lot of time.
 So probably it will have some rough edges. But you can help to improve it!
+
 
 ### Contributing to the documentation
 {:#contributing-docs}
