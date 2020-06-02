@@ -80,6 +80,8 @@ view.filter = ColorMatrixFilter(ColorMatrixFilter.GRAYSCALE_MATRIX)
 
 ## Convolute3Filter
 
+Allows to apply 3x3 convolution filters (also called [Kernel](https://en.wikipedia.org/wiki/Kernel_(image_processing))) in realtime to the View.
+
 ```kotlin
 class Convolute3Filter(var kernel: Matrix3D) : Filter() {
     companion object {
@@ -93,6 +95,22 @@ class Convolute3Filter(var kernel: Matrix3D) : Filter() {
 
 ```kotlin
 view.filter = ComposedFilter((0 until 5).map { Convolute3Filter(Convolute3Filter.KERNEL_GAUSSIAN_BLUR) })
+```
+
+![](/i/filters/blur.png)
+
+## BlurFilter
+
+Allows to apply a blur filter with an adjustable radius using the [Kawase](https://software.intel.com/content/www/us/en/develop/videos/improving-real-time-gpu-based-image-blur-algorithms-kawase-blur-and-moving-box-averages.html?language=es)
+approximation algorithm.
+
+```kotlin
+class BlurFilter(initialRadius: Double = 1.0) : Filter {
+    var radius: Double
+}
+```
+```kotlin
+view.filter = BlurFilter(16.0)
 ```
 
 ![](/i/filters/blur.png)
