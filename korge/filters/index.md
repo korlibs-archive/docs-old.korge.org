@@ -94,10 +94,10 @@ class Convolute3Filter(var kernel: Matrix3D) : Filter() {
 ```
 
 ```kotlin
-view.filter = ComposedFilter((0 until 5).map { Convolute3Filter(Convolute3Filter.KERNEL_GAUSSIAN_BLUR) })
+view.filter = Convolute3Filter(Convolute3Filter.KERNEL_EDGE_DETECTION)
 ```
 
-![](/i/filters/blur.png)
+![](/i/filters/edge_detection.png)
 
 ## BlurFilter
 
@@ -110,7 +110,7 @@ class BlurFilter(initialRadius: Double = 1.0) : Filter {
 }
 ```
 ```kotlin
-view.filter = BlurFilter(16.0)
+view.filter = BlurFilter(8.0)
 ```
 
 ![](/i/filters/blur.png)
@@ -161,7 +161,7 @@ class SwizzleColorsFilter(var swizzle: String = "rgba") : Filter()
 ```
 
 ```kotlin
-view.filter = SwizzleColorsFilter.ProxySwizzle("bgra")
+view.filter = SwizzleColorsFilter("bgra")
 ```
 
 ![](/i/filters/swizzle_color.png)
