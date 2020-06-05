@@ -159,6 +159,11 @@ The whole project stack is opensource, so you can contribute to this project its
 Think that this is a huge project that has been initially developed by a single person, and that requires a lot of time.
 So probably it will have some rough edges. But you can help to improve it!
 
+### e: Unable to compile C bridges
+
+```shell script
+sudo apt install libncurses5
+```
 
 ### Contributing to the documentation
 {:#contributing-docs}
