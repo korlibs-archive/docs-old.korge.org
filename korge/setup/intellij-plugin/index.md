@@ -11,7 +11,7 @@ The plugin works on Android Studio and IntelliJ IDEA Community and Ultimate.
 
 {% include toc_include.md %}
 
-## Youtube video
+## Video-tutorial
 
 {% include youtube.html video_id="ANMiHx3z_No" %}
 

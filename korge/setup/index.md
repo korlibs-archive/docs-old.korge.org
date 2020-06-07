@@ -7,6 +7,10 @@ children: /korge/setup/
 priority: 0
 ---
 
+## Video-tutorial
+
+{% include youtube.html video_id="ANMiHx3z_No" %}
+
 ## Editor
 
 KorGE provides an IntelliJ plugin, that allows you to create KorGE projects among other things.
