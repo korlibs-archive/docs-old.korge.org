@@ -50,7 +50,7 @@ how do you handle different aspect ratios or windows resizes gracefully?
 With the default configuration KorGE will place "black bars" (clip your content) to a container that is centered,
 filling the window keeping the aspect ratio.
 
-This behaviour is defined by the `scaleAnchor` and `scaleMode` parameters in the game initialization:
+This behaviour is defined by the `scaleAnchor`, `scaleMode` and `clipBorders` parameters in the game initialization:
 
 ```kotlin
 suspend fun main() = Korge(scaleAnchor = Anchor.MIDDLE_CENTER, scaleMode = ScaleMode.SHOW_ALL, clipBorders = true) {
@@ -62,6 +62,9 @@ suspend fun main() = Korge(scaleAnchor = Anchor.MIDDLE_CENTER, scaleMode = Scale
 With the default `scaleMode = ScaleMode.SHOW_ALL` but setting `clipBorders = false`, your get your content centered
 keeping the aspect ratio, and filling all the available space. But now, pixels that would go in the border are being
 displayed.
+
+You can use the `dockedTo` component / view decorator to automatically update the view position when a resize
+or rotation happens.
 
 ```kotlin
 val container = container {
@@ -75,7 +78,7 @@ container.dockedTo(anchor = Anchor.TOP_RIGHT, scaleMode = ScaleMode.NO_SCALE)
 
 ## Dealing with resize events
 
-Whenever the mouse is moved or resized, a `ReshapeEvent` is triggered to the stage.
+Whenever the window is moved or resized, a `ReshapeEvent` is triggered to the stage.
 
 ```kotlin
 stage.addEventListener<ReshapeEvent> { e -> // e.x, e.y, e.width, e.height
