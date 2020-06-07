@@ -17,7 +17,7 @@ It is updated once per frame. You can get it from the `Views` or the `Stage` sin
 val input = views.input
 ```
 
-Mouse:
+### Mouse
 
 ```kotlin
 view.addUpdater {
@@ -26,7 +26,7 @@ view.addUpdater {
 }
 ``` 
 
-Multi-touching:
+### Multi-touch
 
 ```kotlin
 view.addUpdater {
@@ -36,7 +36,7 @@ view.addUpdater {
 }
 ``` 
 
-Keys:
+### Keys
 
 ```kotlin
 view.addHrUpdater { dt ->
@@ -48,7 +48,7 @@ view.addHrUpdater { dt ->
 }
 ```
 
-Gamepads:
+### Gamepads
 
 ```kotlin
 view.addUpdater {
@@ -79,51 +79,6 @@ or
 view.onClick { /*...*/ } // suspending block
 ```
 
-API:
-
-```kotlin
-// Configuring MouseEvents
-val View.mouse: MouseEvents
-inline fun <T> View.mouse(callback: MouseEvents.() -> T): T = mouse.run(callback)
-
-// Shortcuts
-inline fun <T : View?> T.onClick(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onOver(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onOut(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onDown(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onDownFromOutside(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onUp(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onUpOutside(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onUpAnywhere(noinline handler: suspend (MouseEvents) -> Unit): T
-inline fun <T : View?> T.onMove(noinline handler: suspend (MouseEvents) -> Unit): T
-
-class MouseEvents(override val view: View) : MouseComponent, UpdateComponentWithViews {
-    val click = Signal<MouseEvents>()
-    val over = Signal<MouseEvents>()
-    val out = Signal<MouseEvents>()
-    val down = Signal<MouseEvents>()
-    val downFromOutside = Signal<MouseEvents>()
-    val up = Signal<MouseEvents>()
-    val upOutside = Signal<MouseEvents>()
-    val upAnywhere = Signal<MouseEvents>()
-    val move = Signal<MouseEvents>()
-    val moveAnywhere = Signal<MouseEvents>()
-    val moveOutside = Signal<MouseEvents>()
-    val exit = Signal<MouseEvents>()
-    
-    val startedPos = Point()
-    val lastPos = Point()
-    val currentPos = Point()
-    
-    val hitTest: View?
-    
-    var downPos = Point()
-    var upPos = Point()
-    var clickedCount = 0
-    val isOver: Boolean
-}
-```
-
 ### Keys Events
 
 For example:
@@ -142,55 +97,17 @@ view.keys {
 view.onKeyDown { e -> /*...*/ } // suspending block
 ```
 
-```kotlin
-// Configuring KeysEvents
-val View.keys: KeysEvents
-inline fun <T> View.keys(callback: KeysEvents.() -> T): T
-
-// Shortcuts
-inline fun <T : View?> T?.onKeyDown(noinline handler: suspend (KeyEvent) -> Unit)
-inline fun <T : View?> T?.onKeyUp(noinline handler: suspend (KeyEvent) -> Unit)
-inline fun <T : View?> T?.onKeyTyped(noinline handler: suspend (KeyEvent) -> Unit)
-
-class KeysEvents(override val view: View) : KeyComponent {
-    val onKeyDown = AsyncSignal<KeyEvent>()
-    val onKeyUp = AsyncSignal<KeyEvent>()
-    val onKeyTyped = AsyncSignal<KeyEvent>()
-    
-    // Handlers for a specific Key 
-    fun down(key: Key, callback: (key: Key) -> Unit): Closeable
-    fun up(key: Key, callback: (key: Key) -> Unit): Closeable
-    fun typed(key: Key, callback: (key: Key) -> Unit): Closeable
-    
-    // Handlers for any keys
-    fun down(callback: (key: Key) -> Unit): Closeable
-    fun up(callback: (key: Key) -> Unit): Closeable
-    fun typed(callback: (key: Key) -> Unit): Closeable
-}
-```
-
 ### Gamepad Events
 
 ```kotlin
-// Configuring GamePadEvents
-val View.gamepad: GamePadEvents
-inline fun <T> View.gamepad(callback: GamePadEvents.() -> T): T
-
-class GamePadEvents(override val view: View) : GamepadComponent {
-	val stick = Signal<GamePadStickEvent>()
-	val button = Signal<GamePadButtonEvent>()
-	val connection = Signal<GamePadConnectionEvent>()
-
-	fun stick(playerId: Int, stick: GameStick, callback: (x: Double, y: Double) -> Unit)
-	fun down(playerId: Int, button: GameButton, callback: () -> Unit)
-	fun up(playerId: Int, button: GameButton, callback: () -> Unit)
-	fun connected(playerId: Int, callback: () -> Unit)
-	fun disconnected(playerId: Int, callback: () -> Unit)
-	override fun onGamepadEvent(views: Views, event: GamePadButtonEvent)
-	override fun onGamepadEvent(views: Views, event: GamePadStickEvent)
-	override fun onGamepadEvent(views: Views, event: GamePadConnectionEvent)
+view.gamepad {
+    val playerId = 0
+    connected { playerId -> /*...*/ }
+    disconnected { playerId -> /*...*/ }
+    stick(playerId, GameStick.LEFT) { x, y -> /*...*/ }
+    button(playerId) { pressed, button, value -> /*...*/ }
+    down(playerId, GameButton.BUTTON0) { /*...*/ }
 }
-
 ```
 
 ## Handling RAW events via Components
@@ -259,3 +176,104 @@ Available event types:
 * `GamePadUpdateEvent`
 * `GamePadButtonEvent`
 * `GamePadStickEvent`
+
+## APIs
+
+### Mouse
+
+```kotlin
+// Configuring MouseEvents
+val View.mouse: MouseEvents
+inline fun <T> View.mouse(callback: MouseEvents.() -> T): T = mouse.run(callback)
+
+// Shortcuts
+inline fun <T : View?> T.onClick(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onOver(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onOut(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onDown(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onDownFromOutside(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onUp(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onUpOutside(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onUpAnywhere(noinline handler: suspend (MouseEvents) -> Unit): T
+inline fun <T : View?> T.onMove(noinline handler: suspend (MouseEvents) -> Unit): T
+
+class MouseEvents(override val view: View) : MouseComponent, UpdateComponentWithViews {
+    val click = Signal<MouseEvents>()
+    val over = Signal<MouseEvents>()
+    val out = Signal<MouseEvents>()
+    val down = Signal<MouseEvents>()
+    val downFromOutside = Signal<MouseEvents>()
+    val up = Signal<MouseEvents>()
+    val upOutside = Signal<MouseEvents>()
+    val upAnywhere = Signal<MouseEvents>()
+    val move = Signal<MouseEvents>()
+    val moveAnywhere = Signal<MouseEvents>()
+    val moveOutside = Signal<MouseEvents>()
+    val exit = Signal<MouseEvents>()
+    
+    val startedPos = Point()
+    val lastPos = Point()
+    val currentPos = Point()
+    
+    val hitTest: View?
+    
+    var downPos = Point()
+    var upPos = Point()
+    var clickedCount = 0
+    val isOver: Boolean
+}
+```
+
+### Keys
+
+
+```kotlin
+// Configuring KeysEvents
+val View.keys: KeysEvents
+inline fun <T> View.keys(callback: KeysEvents.() -> T): T
+
+// Shortcuts
+inline fun <T : View?> T?.onKeyDown(noinline handler: suspend (KeyEvent) -> Unit)
+inline fun <T : View?> T?.onKeyUp(noinline handler: suspend (KeyEvent) -> Unit)
+inline fun <T : View?> T?.onKeyTyped(noinline handler: suspend (KeyEvent) -> Unit)
+
+class KeysEvents(override val view: View) : KeyComponent {
+    val onKeyDown = AsyncSignal<KeyEvent>()
+    val onKeyUp = AsyncSignal<KeyEvent>()
+    val onKeyTyped = AsyncSignal<KeyEvent>()
+    
+    // Handlers for a specific Key 
+    fun down(key: Key, callback: (key: Key) -> Unit): Closeable
+    fun up(key: Key, callback: (key: Key) -> Unit): Closeable
+    fun typed(key: Key, callback: (key: Key) -> Unit): Closeable
+    
+    // Handlers for any keys
+    fun down(callback: (key: Key) -> Unit): Closeable
+    fun up(callback: (key: Key) -> Unit): Closeable
+    fun typed(callback: (key: Key) -> Unit): Closeable
+}
+```
+
+### Gamepad
+
+```kotlin
+// Configuring GamePadEvents
+val View.gamepad: GamePadEvents
+inline fun <T> View.gamepad(callback: GamePadEvents.() -> T): T
+
+class GamePadEvents(override val view: View) : GamepadComponent {
+	val stick = Signal<GamePadStickEvent>()
+	val button = Signal<GamePadButtonEvent>()
+	val connection = Signal<GamePadConnectionEvent>()
+
+	fun stick(playerId: Int, stick: GameStick, callback: (x: Double, y: Double) -> Unit)
+	fun down(playerId: Int, button: GameButton, callback: () -> Unit)
+	fun up(playerId: Int, button: GameButton, callback: () -> Unit)
+	fun connected(playerId: Int, callback: () -> Unit)
+	fun disconnected(playerId: Int, callback: () -> Unit)
+	override fun onGamepadEvent(views: Views, event: GamePadButtonEvent)
+	override fun onGamepadEvent(views: Views, event: GamePadStickEvent)
+	override fun onGamepadEvent(views: Views, event: GamePadConnectionEvent)
+}
+
+```
