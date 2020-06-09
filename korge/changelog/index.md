@@ -9,6 +9,47 @@ status: new
 
 {% include toc_include.md %}
 
+## [1.13.0.1 (2020-06-09)](https://github.com/korlibs/korge-plugins/releases/tag/1.13.0.1)
+
+* Fixes issue with `lineWidth` + scale context when `stroke` on all the targets except JVM (that have fixed). Now it should be consisent with JS's context2d
+* Fiixed an issue with Macos that caused inconsistent and super fast framerate
+
+## [1.13.0.0 (2020-06-08)](https://github.com/korlibs/korge-plugins/releases/tag/1.13.0.0)
+
+* Reduced micro stuttering
+* Support `addHrUpdater` with microsecond precission
+* Improved `readAtlas`
+* Allow to construct a `SpriteAnimation` from an `Atlas` with `Atlas.getSpriteAnimation`
+* Allow to get mouse button on `onClick` and other mouse events
+* Fixed `Circle` and `Graphics` anchor that was ignored
+* Added `View.hitShape: VectorPath?`
+* `Graphics.hitTest` now uses the defined shapes instead of bounding box by default
+* Added `collidesWithShape` that uses shape information to check if two or more views are colliding
+* Fixes a few issues with Tillesets
+* Now tilesets margin and spacing is taking into account
+* Fixes a render bug with tic-tac-toe-swf sample. `strokeWidth` was not being scaled with the current transform
+
+## [1.12.14.0 (2020-06-04)](https://github.com/korlibs/korge-plugins/releases/tag/1.12.14.0)
+
+* `Text` hitTest implementation to be able to add mouse events to Text views
+* `Text` .textSize, .font and .color extensions simplifying its format usage
+
+## [1.5.6.2 (2020-02-09)](https://github.com/korlibs/korge-plugins/releases/tag/1.5.6.2)
+
+* Some work on <https://github.com/korlibs/korge.soywiz.com/issues/1>
+
+## [1.5.4.0 (2020-01-12)](https://github.com/korlibs/korge-plugins/releases/tag/1.5.4.0)
+
+* This version fixes a few issues (`ColorMatrixFilter`, issues with PNGs with bpp < 8)
+* Support icons in most targets
+* Do not require a `launchImmediately` in the main
+* Includes a `androidPermission`  and `supportVibration`  to the gradle plugin
+* Includes lots of new api documentation
+* Includes box2d `convertPixelToWorld` and `convertWorldToPixel`
+* Include `Filter` api adjustments (mostly to simplify implementors) and deprecates the old `EffectView`s  (now only `Filter`s should be used)
+* Supports tweening / interpolating `TimeSpan`
+* Includes new code from korim including the new `buildShape` API
+
 ## 1.2.0 (2019-03-17)
 {:#v120}
 
