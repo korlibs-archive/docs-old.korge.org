@@ -8,7 +8,7 @@ priority: 4
 
 KorGE has a `Stage` like AS3, Pixi and HTML DOM and a [display tree with `View` nodes](/korge/views).
 
-## Low Level
+## DSL
 
 The very basic Hello World in Korge, looks like this:
 
@@ -18,7 +18,7 @@ suspend fun main() = Korge { // this: Stage ->
 }
 ```
 
-## High Level
+## Module+Scene-based
 
 But larger applications define a module, scenes and use the [Korinject's asynchronous dependency injector](/korinject/):
 

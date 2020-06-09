@@ -1,10 +1,37 @@
 ---
 layout: default
-title: Adobe Animate
+title: SWF support
 title_prefix: KorGE Animation
-fa-icon: fa-magic
-status: outdated
+fa-icon: fa-film
+priority: 800
 ---
+
+AnLibrary is your common interface to any kind of animation libraries. Either **SWF** files, or **ANI** files. Or any custom animation library you plug-in.
+
+### Basic interface
+
+```
+class AnLibrary() {
+  val views: Views
+
+  val width: Int
+  val height: Int
+
+  val fps: Double
+  val msPerFrameDouble: Double
+  val msPerFrame: Int
+  var bgcolor: Int
+  var defaultSmoothing = true
+
+  fun createMainTimeLine(): AnMovieClip
+  fun create(name: String): AnElement
+  fun createShape(name: String): AnShape
+  fun createMovieClip(name: String): AnMovieClip
+}
+```
+
+## SWF
+
 
 <img src="logo.png" style="float: left;margin:0 16px 16px 0;width:128px;height:128px;" />
 

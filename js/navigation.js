@@ -2,6 +2,14 @@ function normalizeUrl(str) {
   return ('' + str).replace(/#.*$/, '').replace(/\/+$/, '');
 }
 
+$(() => {
+	//console.warn('ready!')
+	$('h1, h2, h3, h4, h5, h6').click((e) => {
+		document.location.hash = $(e.target).attr('id')
+		//console.warn()
+	})
+})
+
 // This is a functions that scrolls to #{blah}link
 function goToByScrollCenter(query){
   $('#sidebar-wrapper').animate({

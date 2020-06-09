@@ -2,9 +2,8 @@
 layout: default
 title: "Audio"
 title_prefix: KorGE
-children: /korge/audio/
 fa-icon: fa-headphones
-priority: 31
+priority: 36
 ---
 
 <img src="/i/logos/korau.png" style="float:left;" />
