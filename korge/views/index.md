@@ -10,6 +10,10 @@ Korge's views works like [AS3's DisplayObject](https://help.adobe.com/en_US/Flas
 
 {% include toc_include.md %}
 
+## Video-tutorial
+
+{% include youtube.html video_id="nR_cCs_8wF8" %}
+
 ## Rendering
 
 ![](table.gif)
