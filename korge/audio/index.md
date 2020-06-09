@@ -19,15 +19,16 @@ and it is capable of using native audio loaders.
 
 ## Loading sounds and music files
 
-For games, the recommended way of loading sounds and music files is to use the `NativeSound` facility. Typically the `VfsFile.readNativeSound`:
+For games, the recommended way of loading sounds and music files is to use the `NativeSound` facility.
+Typically the `VfsFile.readSound` and `VfsFile.readMusic()` methods:
 
 ```kotlin
 val sound = resourcesVfs["sound.mp3"].readSound()
 val music = resourcesVfs["music.mp3"].readMusic()
 ```
 
-The streaming argument instructs KorAU to not fully load the sound at the beginning but to decode it as required.
-The streaming option is useful for playing music or voices that are just played once.  
+The difference between Sound and Music is that a `Sound` is fully decoded and stored at memory, while
+the `Music` file is being streamed and decoded on the fly while playing.
 
 ## Playing sounds
 
@@ -35,6 +36,8 @@ To play a sound, you just have to call the play method:
 
 ```kotlin
 val channel = sound.play()
+val channel = sound.play(3.times)
+val channel = sound.play(infiniteTimes)
 ```
 
 It returns a channel, that you can wait for:
@@ -76,7 +79,7 @@ class NativeSoundChannel {
 
 ## Audio Streams
 
-KorAU also supports dynamic audio generation (though some targets might have limited support):
+KorAU also supports dynamic audio generation:
 
 ```kotlin
 // You have first to create a PlatformAudioOutput:
@@ -105,6 +108,8 @@ class PlatformAudioOutput {
 
 ## Platform Format support and considerations
 
+All the targets support `WAV` and `MP3` files by default. 
+
 ### JS
 
 JavaScript uses the WebAudio API. Almost all the browsers limit this API after a first interaction.
@@ -126,6 +131,12 @@ On native platforms there is WAV, OGG and MP3 support out of the box. Using publ
 * MP3: [minimp3](https://github.com/lieff/minimp3)
 * OGG Vorbis: [stb_vorbis](https://github.com/nothings/stb/blob/master/stb_vorbis.c)
 
+On linux you need to install the OpenAL development libraries:
+```shell script
+sudo apt-get install -y libopenal-dev
+```
+{:.note} 
+
 ### Android
 
 On Android KorAU uses the Android's MediaPlayer:
@@ -136,19 +147,4 @@ On Android KorAU uses the Android's MediaPlayer:
 
 On the JVM KorAU uses `javax.sound.sampled` APIs.
 
-Since this API only support WAV files by default, you have to include separate artifacts to be able to play other formats
-in the JVM.
-
-```kotlin
-korge {
-	dependencyMulti("com.soywiz.korlibs.korau:korau-mp3:$korauVersion") // To be able to play mp3
-	dependencyMulti("com.soywiz.korlibs.korau:korau-ogg-vorbis:$korauVersion")
-}
-```
-
-This artifact includes a `ServiceLoader`, so you won't have to register them manually.
-They are not included with KorGE directly since they have separate licenses (LGPL) that would force
-me to propagate the license to the rest of the libraries.
-<https://github.com/korlibs/korau/blob/master/korau-mp3/LICENSE> and
-<https://github.com/korlibs/korau/blob/master/korau-ogg-vorbis/COPYING.LIB>
-{:.note}
+This API supports WAV and MP3 files by default.

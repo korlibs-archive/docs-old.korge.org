@@ -18,6 +18,9 @@ a thing called batch rendering (each batch is one communication with the GPU),
 when using fragments of a single big image
 you can reduce the number of those batches and making the game to perform much better.
 
+Also atlases usually put some space between images, that's because when doing mipmaping
+or linear sampling, sometimes near pixels are interpolated / mixed.
+
 ![](/korge/atlas/atlas.png)
 
 ![](/korge/atlas/logos.atlas.png)
