@@ -3,7 +3,6 @@ layout: default
 title: "Sprites"
 title_prefix: KorGE
 fa-icon: fas fa-walking
-children: /korge/sprites/
 priority: 30
 ---
 
