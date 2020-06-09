@@ -5,13 +5,17 @@ title_prefix: KorGE
 fa-icon: fas fa-expand-arrows-alt
 priority: 35
 ---
-`
+
 {% include toc_include.md %}
 
 ## Overview
-`
+
 <!-- https://docs.google.com/drawings/d/1Zoql1LIfBDdp44reYey5dfPyThOd89rFyCeRw9GUMfc/edit?usp=sharing -->
 ![](/korge/resolutions/virtual-size.png)
+
+## Video-tutorial
+
+{% include youtube.html video_id="81IG0ld5w-8" %}
 
 ## Resolution
 
