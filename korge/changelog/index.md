@@ -9,6 +9,7 @@ status: new
 
 {% include toc_include.md %}
 
+
 ## [1.13.0.1 (2020-06-09)](https://github.com/korlibs/korge-plugins/releases/tag/1.13.0.1)
 
 * Fixes issue with `lineWidth` + scale context when `stroke` on all the targets except JVM (that have fixed). Now it should be consisent with JS's context2d
