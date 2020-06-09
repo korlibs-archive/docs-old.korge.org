@@ -66,12 +66,24 @@ The events are only triggered when the associated View is attached to the stage.
 
 ### Mouse/Touch Events
 
+You can handle `click`, `over` (hover), `out`, `down`, `downFromOutside`, `up`, `upOutside`, `upAnywhere`, `move`, `moveAnywhere`, `moveOutside` and `exit` mouse events.
+
 For example:
+
 ```kotlin
 view.mouse {
     click { /*...*/ }
+    over { /*...*/ } // hover
+    out { /*...*/ }
     down { /*...*/ }
+    downFromOutside { /*...*/ }
     up { /*...*/ }
+    upOutside { /*...*/ }
+    upAnywhere { /*...*/ }
+    move { /*...*/ }
+    moveAnywhere { /*...*/ }
+    moveOutside { /*...*/ }
+    exit { /*...*/ }
 }
 ```
 or
