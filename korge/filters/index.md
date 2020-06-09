@@ -52,6 +52,9 @@ container {
 
 ## ColorMatrixFilter
 
+The color matrix filter allows to transform the colors in your views
+using a full 4x4 matrix. It already provides a computed matrix to show images as greyscale.
+
 ```kotlin
 class ColorMatrixFilter(var colorMatrix: Matrix3D, var blendRatio: Double) : Filter() {
     companion object {
@@ -81,6 +84,8 @@ view.filter = ColorMatrixFilter(ColorMatrixFilter.GRAYSCALE_MATRIX)
 ## Convolute3Filter
 
 Allows to apply 3x3 convolution filters (also called [Kernel](https://en.wikipedia.org/wiki/Kernel_(image_processing))) in realtime to the View.
+
+This filter exposes matrices for making 3x3 gaussian blurs, box blurs, and edge detection.
 
 ```kotlin
 class Convolute3Filter(var kernel: Matrix3D) : Filter() {
@@ -154,7 +159,7 @@ class WaveFilter(
 
 ## SwizzleColorsFilter
 
-Serves to do component swizzling (RGBA) per pixel:
+Serves to do component swizzling (RGBA) per pixel (that's interchanging component colors):
 
 ```kotlin
 class SwizzleColorsFilter(var swizzle: String = "rgba") : Filter()
