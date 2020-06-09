@@ -131,7 +131,7 @@ you to create your own easings.
 
 ![](/korge/swf/logo.png)
 
-Korge supports [SWF Adobe Flash/Animate files](/swf) and can support
+Korge supports [SWF Adobe Flash/Animate files](/korge/swf) and can support
 other custom formats through extensions/plugins.
 For example it would be possible to create an exporter for *After Effects* or *Apple Motion*.
 
