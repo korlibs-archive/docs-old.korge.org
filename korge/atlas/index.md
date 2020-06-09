@@ -10,7 +10,28 @@ priority: 35
 
 ## Overview
 
+Atlases are a way to pack several images into a single bigger image
+while being able to reference smaller parts of that image.
+
+Why would one want to do that? Well, in computer graphics there is
+a thing called batch rendering (each batch is one communication with the GPU),
+when using fragments of a single big image
+you can reduce the number of those batches and making the game to perform much better.
+
 ![](/korge/atlas/atlas.png)
+
+![](/korge/atlas/logos.atlas.png)
+
+```json
+{
+	"frames": [
+		{ "filename": "korge.png", "frame": {"x": 2,"y": 2,"w": 64,"h": 64}, "rotated": false, "sourceSize": {"w": 64,"h": 64}, "spriteSourceSize": {"x": 0,"y": 0,"w": 64,"h": 64}, "trimmed": false },
+		{ "filename": "korim.png", "frame": {"x": 2,"y": 70,"w": 64,"h": 64}, "rotated": false, "sourceSize": {"w": 64,"h": 64}, "spriteSourceSize": {"x": 0,"y": 0,"w": 64,"h": 64}, "trimmed": false },
+		{ "filename": "korau.png", "frame": {"x": 2,"y": 138,"w": 64,"h": 64}, "rotated": false, "sourceSize": {"w": 64,"h": 64}, "spriteSourceSize": {"x": 0,"y": 0,"w": 64,"h": 64}, "trimmed": false}
+	],
+	"meta": { "app": "korge", "format": "RGBA8888", "image": "logos.atlas.png", "scale": 1.0, "size": { "w": 68,"h": 204}, "version": "1.0.0" }
+}
+```
 
 ## Loading atlases
 
