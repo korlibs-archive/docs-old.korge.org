@@ -9,6 +9,23 @@ status: new
 
 {% include toc_include.md %}
 
+## [1.13.1.0 (2020-06-11)](https://github.com/korlibs/korge-plugins/releases/tag/1.13.1.0)
+
+### KorIM:
+* Optimized ColorTransform to prevent recomputing when values not changed
+* Implemented remaining SVG path commands: `T` and `A` (arcs)
+* Some SVG path fixes
+
+### KorGE:
+* Support an additional XML-based atlas format
+* Adds `Ellipse` View (similar to `Circle`)
+* Fixes `View.onCollisionShape`
+* Unifies hitTest and supports hitShape on all the cases
+* Added `View.hitShape { }` extension extension using the buildPath builder
+* TiledMap supports image and object layers visualization
+* TiledMap supports point objects
+* TiledMap fixes object layer position with decimals
+* TiledMap sets properties: name, position, alpha, visibility, type, custom props and rotation
 
 ## [1.13.0.1 (2020-06-09)](https://github.com/korlibs/korge-plugins/releases/tag/1.13.0.1)
 
