@@ -20,9 +20,9 @@ as well as define a Scene entry point, and configure the asynchronous injector.
 
 ```kotlin
 object MyModule : Module() {
-    override val mainScene: KClass<out Scene> = MyScene::class
+    override val mainScene = MyScene::class
 
-    override suspend fun init(injector: AsyncInjector): Unit = injector.run {
+    override suspend fun AsyncInjector.configure() {
         mapInstance(MyDependency("HELLO WORLD"))
         mapPrototype { MyScene(get()) }
     }

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Basics
+title: Entry Point
 title_prefix: KorGE
 fa-icon: fa-sort-alpha-down
 priority: 4
@@ -26,7 +26,7 @@ But larger applications define a module, scenes and use the [Korinject's asynchr
 suspend fun main() = Korge(Korge.Config(module = MyModule))
 
 object MyModule : Module() {
-    override val mainScene: KClass<out Scene> = MyScene1::class
+    override val mainScene = MyScene1::class
 
     override suspend fun AsyncInjector.configure(): Unit {
         mapInstance(MyDependency("HELLO WORLD"))
