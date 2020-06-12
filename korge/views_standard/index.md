@@ -50,19 +50,80 @@ open class FixedSizeContainer(override var width: Double = 100.0, override var h
 
 ## SolidRect
 
-A SolidRect is a View that is a rectangle of a solid color. In the end it acts like a 1x1 white image with a tint.
+`SolidRect` is a View that is a rectangle of a solid color. In the end it acts like a 1x1 white image with a tint.
 
 ```kotlin
-inline fun Container.solidRect(width: Number, height: Number, color: RGBA, callback: @ViewsDslMarker SolidRect.() -> Unit = {})
+inline fun Container.solidRect(width: Double, height: Double, color: RGBA, callback: @ViewsDslMarker SolidRect.() -> Unit = {})
 
-class SolidRect {
-    companion object {
-        inline operator fun invoke(width: Number, height: Number, color: RGBA) = SolidRect(width.toDouble(), height.toDouble(), color)
-    }
-    
+class SolidRect(width: Double, height: Double, color: RGBA) : View {
     var width: Double
     var height: Double
 }
+```
+
+## RoundRect
+
+`RoundRect` is a View that is a rectangle of a solid color with its borders rounded. It uses the `Graphics` class under the hood.
+
+```kotlin
+inline fun Container.roundRect(
+    width: Double,
+    height: Double,
+    rx: Double,
+    ry: Double = rx,
+    color: RGBA = Colors.WHITE,
+    autoScaling: Boolean = true,
+    callback: @ViewsDslMarker RoundRect.() -> Unit = {}
+)
+
+class RoundRect(
+    var width: Double,
+    var height: Double,
+    var rx: Double,
+    var ry: Double = rx,
+    var color: RGBA = Colors.WHITE,
+    var autoScaling: Boolean = true
+) : View
+```
+
+## Circle
+
+`Circle` is a View that is a circle of a solid color. It uses the `Graphics` class under the hood.
+
+```kotlin
+inline fun Container.circle(
+    radius: Double = 16.0,
+    color: RGBA = Colors.WHITE,
+    autoScaling: Boolean = true,
+    callback: Circle.() -> Unit = {}
+): Circle
+
+open class Circle(
+    var radius: Double = 16.0,
+    var color: RGBA = Colors.WHITE,
+    var autoScaling: Boolean = true
+) : View
+```
+
+## Ellipse
+
+`Ellipse` is a View that is an ellipse of a solid color. It uses the `Graphics` class under the hood.
+
+```kotlin
+inline fun Container.ellipse(
+    radiusX: Double = 16.0,
+    radiusY: Double = 16.0,
+    color: RGBA = Colors.WHITE,
+    autoScaling: Boolean = true,
+    callback: Ellipse.() -> Unit = {}
+): Ellipse
+
+open class Ellipse(
+    var radiusX: Double = 16.0,
+    var radiusY: Double = 16.0,
+    var color: RGBA = Colors.WHITE,
+    var autoScaling: Boolean = true
+) : View
 ```
 
 ## Image
