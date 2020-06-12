@@ -28,7 +28,7 @@ suspend fun main() = Korge(Korge.Config(module = MyModule))
 object MyModule : Module() {
     override val mainScene: KClass<out Scene> = MyScene1::class
 
-    override suspend fun init(injector: AsyncInjector): Unit = injector.run {
+    override suspend fun AsyncInjector.init(): Unit {
         mapInstance(MyDependency("HELLO WORLD"))
         mapPrototype { MyScene1(get()) }
     }
