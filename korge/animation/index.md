@@ -85,9 +85,9 @@ You can control the start time, duration and easing per interpolated property. U
 
 ```
 view.tween(
-  view::x[100.0].delay(100).duration(500).easing(Easings.EASE_IN_OUT_QUAD),
-  view::y[0.0, 200.0].delay(50),
-  time = 1000
+    view::x[100.0].delay(100.milliseconds).duration(500.milliseconds).easing(Easing.EASE_IN_OUT_QUAD),
+    view::y[0.0, 200.0].delay(50.milliseconds),
+    time = 1000.milliseconds
 )
 ```
 
