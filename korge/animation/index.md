@@ -106,6 +106,24 @@ The tween execution will be attached as a component to the receiver View that ho
 
 *PRO Tip:* You can even interpolate the `View.speed` property to get some cool time effects.
 
+## Animator
+
+You can also use an animator, which is almost as potent as the tweens. Check the [animate sample here](https://github.com/korlibs/korge-samples/blob/master/animations/src/commonMain/kotlin/main.kt)
+```
+animate {
+    parallel {
+        view.moveToWithSpeed(500.0, 500.0, 300.0, Easing.EASE_IN_OUT)
+        view.scaleTo(5.0, 5.0)
+    }
+    parallel {
+        view.moveTo(0.0, 0.0)
+    }
+    block {
+        rotateTo(10.degrees)
+    }
+}
+```
+
 ### Easings
 
 Korge provides an Easing class with the most common easings. And allows
