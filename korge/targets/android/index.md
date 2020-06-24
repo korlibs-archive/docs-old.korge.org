@@ -17,11 +17,27 @@ proguard, so the resulting application is really small.
 
 ## Executing
 
-Using gradle tasks on the terminal:
+Using gradle tasks on the terminal.
+
+### To installs an APK on all the connected devices (debug/release variants)
+
+Even if cannot install it, it generates the APK file available in `build/platforms/android/build/...`
 
 ```bash
-./gradlew installAndroidDebug      # Installs an APK on all the connected devices
-./gradlew runAndroidEmulatorDebug  # Runs the application in an emulator
+./gradlew installAndroidDebug   
+./gradlew installAndroidRelease 
+```
+
+### To run the application in an available emulator/device (debug/release variants) 
+
+```bash
+./gradlew runAndroidDebug          
+./gradlew runAndroidEmulatorDebug  
+./gradlew runAndroidDeviceDebug    
+
+./gradlew runAndroidRelease         
+./gradlew runAndroidEmulatorRelease 
+./gradlew runAndroidDeviceRelease   
 ```
 
 Triggering these tasks, it generates a separate android project into `build/platforms/android`.
@@ -33,6 +49,7 @@ delegates gradle tasks to that gradle project.
 To generate AAR package files to upload the store:
 
 ```bash
+./gradlew bundleAndroid
 ./gradlew bundleDebug
 ./gradlew bundleRelease
 ```
