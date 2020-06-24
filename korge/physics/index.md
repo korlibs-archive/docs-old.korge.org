@@ -58,6 +58,16 @@ fun View.onCollision(filter: (View) -> Boolean = { true }, root: View? = null, k
 fun View.onDescendantCollision(root: View = this, filterSrc: (View) -> Boolean = { true }, filterDst: (View) -> Boolean = { true }, kind: CollisionKind = CollisionKind.GLOBAL_RECT, callback: View.(View) -> Unit): Cancellable
 ```
 
+Be sure to filter out collision with the stage.
+```
+view.onCollision(filter = { it != this }) { // filters out collisions with the stage itself
+	circle2.color = Colors.RED
+}
+```
+
+If you use `onCollision` the collision will be triggered by the rectangular bounding box of the corresponding view.
+![](/korge/physics/onCollision.png)
+
 Handy extensions for checking with shape precision:
 
 ```kotlin
@@ -66,6 +76,11 @@ fun View.collidesWithShape(otherList: List<View>): Boolean
 fun View.onCollisionShape(filter: (View) -> Boolean = { true }, root: View? = null, callback: View.(View) -> Unit): Cancellable
 ```
 
+Using `onCollisionShape` a collision will be triggered using the `hitShape` of a view. 
+
+![](/korge/physics/onCollisionShape.png)
+
+You can define your own `hitShapes` for costum views.
 ### Video-tutorials
 
 {% include youtube.html video_id="F1AXdD5bLjA" %}
