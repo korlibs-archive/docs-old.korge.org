@@ -60,8 +60,6 @@ Korge integrates tweens and easings, and it is fully integrated with coroutines 
 Games require tweening visual properties in order to be appealing.
 Korge provides a simple, yet powerful interface for creating tweens.
 
-![](tween.png)
-
 ### Simple interface
 
 ![](animation.jpg)
@@ -81,15 +79,24 @@ view.tween(view::x[10.0, 100.0], time = 1000)
 
 ### delay + duration + easing
 
-You can control the start time, duration and easing per interpolated property. Using theesee V2 extensions:
+You can control the start time, duration and easing per interpolated property by chaining them in the parameter call, using these V2 extensions:
 
-`V2.delay(timeMs:Int):V2`, `V2.duration(timeMs:Int):V2`, `V2.easing(easing:Easing):V2`
+`V2.delay(timeMs:TimeSpan):V2`, `V2.duration(timeMs:TimeSpan):V2`, `V2.easing(easing:Easing):V2`
 
 ```
 view.tween(
-  view::x[100.0].delay(100).duration(500).easing(Easings.EASE_IN_OUT_QUAD),
-  view::y[0.0, 200.0].delay(50),
-  time = 1000
+    view::x[100.0].delay(100.milliseconds).duration(500.milliseconds).easing(Easing.EASE_IN_OUT_QUAD),
+    view::y[0.0, 200.0].delay(50.milliseconds),
+    time = 1000.milliseconds
+)
+```
+
+If you want to apply one easing for all subtweens defined in the paramters, just add an extra easing parameter to the `tween` call:
+
+```
+view.tween(
+    //...
+    easing = Easing.EASE_IN
 )
 ```
 
@@ -98,6 +105,24 @@ view.tween(
 The tween execution will be attached as a component to the receiver View that holds the tween method. That means that the view has to be in the stage or be manually updated. Also means that any `View.speed` changes in that view or ancestors will affect the tween.
 
 *PRO Tip:* You can even interpolate the `View.speed` property to get some cool time effects.
+
+## Animator
+
+You can also use an animator, which is almost as potent as the tweens. Check the [animate sample here](https://github.com/korlibs/korge-samples/blob/master/animations/src/commonMain/kotlin/main.kt)
+```
+animate {
+    parallel {
+        view.moveToWithSpeed(500.0, 500.0, 300.0, Easing.EASE_IN_OUT)
+        view.scaleTo(5.0, 5.0)
+    }
+    parallel {
+        view.moveTo(0.0, 0.0)
+    }
+    block {
+        rotateTo(10.degrees)
+    }
+}
+```
 
 ### Easings
 
