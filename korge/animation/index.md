@@ -79,15 +79,24 @@ view.tween(view::x[10.0, 100.0], time = 1000)
 
 ### delay + duration + easing
 
-You can control the start time, duration and easing per interpolated property. Using theesee V2 extensions:
+You can control the start time, duration and easing per interpolated property by chaining them in the parameter call, using these V2 extensions:
 
-`V2.delay(timeMs:Int):V2`, `V2.duration(timeMs:Int):V2`, `V2.easing(easing:Easing):V2`
+`V2.delay(timeMs:TimeSpan):V2`, `V2.duration(timeMs:TimeSpan):V2`, `V2.easing(easing:Easing):V2`
 
 ```
 view.tween(
     view::x[100.0].delay(100.milliseconds).duration(500.milliseconds).easing(Easing.EASE_IN_OUT_QUAD),
     view::y[0.0, 200.0].delay(50.milliseconds),
     time = 1000.milliseconds
+)
+```
+
+If you want to apply one easing for all subtweens defined in the paramters, just add an extra easing parameter to the `tween` call:
+
+```
+view.tween(
+    //...
+    easing = Easing.EASE_IN
 )
 ```
 
