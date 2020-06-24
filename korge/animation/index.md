@@ -60,8 +60,6 @@ Korge integrates tweens and easings, and it is fully integrated with coroutines 
 Games require tweening visual properties in order to be appealing.
 Korge provides a simple, yet powerful interface for creating tweens.
 
-![](tween.png)
-
 ### Simple interface
 
 ![](animation.jpg)
