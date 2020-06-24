@@ -80,7 +80,11 @@ Using `onCollisionShape` a collision will be triggered using the `hitShape` of a
 
 ![](/korge/physics/onCollisionShape.png)
 
-You can define your own `hitShapes` for costum views.
+You can define your own `hitShapes` for costum views. Notice in the following sample animation, that the image view would originally have a rectangular boundingbox.
+
+![](/korge/physics/onCollisionShapeImage.png)
+
+
 ### Video-tutorials
 
 {% include youtube.html video_id="F1AXdD5bLjA" %}
