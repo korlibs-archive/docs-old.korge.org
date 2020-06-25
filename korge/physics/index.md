@@ -83,6 +83,13 @@ Using `onCollisionShape` a collision will be triggered using the `hitShape` of a
 
 You can define your own `hitShapes` for costum views. Notice in the following sample animation, that the image view would originally have a rectangular boundingbox.
 
+```
+val planet = image(resourcesVfs["planet.png"].readBitmap())
+	planet.hitShape {
+		circle(planet.width/2, planet.width/2, 500.0)
+	}
+```
+
 ![](/korge/physics/onCollisionShapeImage.gif)
 
 
