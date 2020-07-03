@@ -74,8 +74,9 @@ You have to use [bound callable references](https://kotlinlang.org/docs/referenc
 
 If you want to linearly interpolate `view.x` from `10.0` to `100.0` in one second you would write:
 ```
-view.tween(view::x[10.0, 100.0], time = 1000)
+view.tween(view::x[10.0, 100.0], time = 1000.milliseconds)
 ```
+Tip: import `import com.soywiz.korge.tween.get` for this to compile. In IntelliJ place the caret in the \[ and press ALT+enter.
 
 ### delay + duration + easing
 
