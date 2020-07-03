@@ -76,7 +76,7 @@ If you want to linearly interpolate `view.x` from `10.0` to `100.0` in one secon
 ```
 view.tween(view::x[10.0, 100.0], time = 1000.milliseconds)
 ```
-Tip: import `import com.soywiz.korge.tween.get` for this to compile. In IntelliJ place the caret in the \[ and press ALT+enter.
+Tip: import `com.soywiz.korge.tween.get` for this to compile. In IntelliJ place the caret in the \[ and press ALT+enter.
 
 ### delay + duration + easing
 
