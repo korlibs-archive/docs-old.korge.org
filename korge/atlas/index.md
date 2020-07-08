@@ -10,7 +10,7 @@ priority: 35
 
 ## Overview
 
-Atlases are a way to pack several images into a single bigger image
+Atlas is a way to pack several images into a single bigger image
 while being able to reference smaller parts of that image.
 
 Why would one want to do that? Well, in computer graphics there is
@@ -63,12 +63,19 @@ val entries: List<Atlas.Entry> = atlas.entries
 
 ## Automatic atlas generation
 
-KorGE build system gradle plugin, support generating atlases from
+KorGE build plugin supports generating an atlas from
 a set of images directly. Just create a file with the `.atlas` extension
-in your resources folder. In that file you have to place a folder name
-whose images will be included in the atlas.
+in your `resources` folder. In that file you have to place a name of the 
+folder whose images will be included in the atlas. Then you need to refer
+to the generated `.atlas.json` file.
 
-## Extract several `SpriteAnimation` from an Atlas
+For example, if you have a `logos` folder in your resources, you can get
+the atlas this way:
+```kotlin
+val atlas: Atlas = resourcesVfs["logos.atlas.json"].readAtlas()
+```
+
+## Extract several `SpriteAnimation`s from an Atlas
 
 You can use atlases to store one or several animations.
 KorGE allows you to build `SpriteAnimation` from an Atlas easily
@@ -79,4 +86,3 @@ val animation1 = atlas.getSpriteAnimation() // Includes all the images
 val animation2 = atlas.getSpriteAnimation("RunRight") // Includes the images starting with RunRight 
 val animation3 = atlas.getSpriteAnimation(Regex("beam\\d+.png")) // Includes the images starting with beam, following a number and ending with .png
 ```
-
