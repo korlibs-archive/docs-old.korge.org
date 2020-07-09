@@ -146,6 +146,9 @@ open class Image : View() {
 }
 ```
 
+All the views extending `BaseRect` like `Image`, has a property called `smoothing`, to configure how sampling works.
+When smoothing is true (its default value), the texture is sampled using linear interpolation, and when the smoothing is false, it uses a nearest neighborhood sampling approach.
+
 ## SceneContainer
 
 See the [Scenes page](/korge/basics/scene/#SceneContainer) for more information.
