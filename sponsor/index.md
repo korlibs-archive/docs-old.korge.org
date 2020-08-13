@@ -17,6 +17,6 @@ in addition to ensure the continuity of these project, you will get exclusive co
 <div style="clear:both;"></div>
 
 ## Sponsoring channels
-
+* <https://www.patreon.com/korgegameengine>{:target="_blank",:rel="noopener"}
 * <https://github.com/sponsors/soywiz>{:target="_blank",:rel="noopener"}
 * <https://opencollective.com/korge>{:target="_blank",:rel="noopener"}
