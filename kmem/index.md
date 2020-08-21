@@ -65,7 +65,7 @@ assertEquals(0x3f800000, ia[0])
 
 ## MemBuffer, DataBuffer, Int8Buffer, Int16Buffer, Int32Buffer, Float32Buffer, Float64Buffer
 
-Analogous to JavaScript typed arrays. `MemBuffer` is like an ArrayBuffer. `DataBuffer` (DataBuffer) and `*TypeBuffer`, works like viewws of a single ArrayBuffer. And they do a single thing: provide a view of the data in a fast way in an immutable way. It doesn't work like the JVM Buffers that do too much in a mutable way (providing the data and mutating a pointer).
+Analogous to JavaScript typed arrays. `MemBuffer` is like an ArrayBuffer. `DataBuffer` (DataBuffer) and `*TypeBuffer`, works like views of a single ArrayBuffer. And they do a single thing: provide a view of the data in a fast way in an immutable way. It doesn't work like the JVM Buffers that do too much in a mutable way (providing the data and mutating a pointer).
 
 ## FBuffer
 
