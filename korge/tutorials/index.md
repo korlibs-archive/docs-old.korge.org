@@ -31,7 +31,7 @@ Our YouTube channel:
 We have a section in our blog with showcases showing games done with KorGE and with Source Code that
 can be used as a learning source:
 
-* <https://blog.korge.org/search/label/showcases> 
+* <https://blog.korge.org/tag/showcases/> 
 
 ## Samples
 
