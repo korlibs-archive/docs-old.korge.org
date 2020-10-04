@@ -62,8 +62,4 @@ KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlib
 
 ## Where to start:
 
-You can start reading about [setup](/korge/setup) and [basics](/korge/basics).
-
-<!--
-You can start reading about [setup](/korge/setup), [basics](/korge/basics), [reading tutorials](/korge/tutorials) or [watching video tutorials](/korge/tutorials).
--->
+You can start reading about [setup](/korge/gettingstarted/setup) and start [making your first game](/korge/gettingstarted/firstgame).
