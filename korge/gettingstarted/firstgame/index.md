@@ -18,6 +18,8 @@ Now let's try to build a more complex and realistic game with a step-by-step tut
 
 - [Writing 2048 game. Step 3 - Animation](https://blog.korge.org/korge-tutorial-writing-2048-game-step-3-animation/)
 
+- [Writing 2048 game. Step 4 - Data saving](https://blog.korge.org/korge-tutorial-writing-2048-game-step-4-data-saving/)
+
 In this tutorial you'll learn to build a 2048 game:
 
 ![](sample-1.gif)
