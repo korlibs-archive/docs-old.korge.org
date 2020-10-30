@@ -28,7 +28,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/" style="padding:10px;">
           <img alt="Korlibs" src="/i/logos/korlibs.svg" width="32" height="32" style="display: inline;" />
-		  Korlibs
+		      Korlibs
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -36,7 +36,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,62 +54,62 @@
     </div>
   </nav>
 
-    <div id="wrapper">
-		<div id="page-content-wrapper">
-		<aside id="page-content-search" style="margin-bottom:0.5em;">
-			<form role="search" action="/search">
-				<input type="search" class="form-control" placeholder="Search... (press 't' to focus)" id="searchq" name="q" />
-			</form>
-		</aside>
-        <article id="page-content-wrapper2">
-			<div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12" id="page-content2">
-                        <div id="page-content">
-                            <div class="github_edit_page print_hide" style="float: right;position:relative;top:-0.6em;">
-                                <a href="https://github.com/korlibs/korlibs.soywiz.com/edit/master/{{ page.path }}" class="btn btn-default" target="_blank" rel="noopener">
-                                    <i class="fab fa-github" aria-hidden="true" style="font-size:1.5em;"></i> Suggest Change / Typo
-                                </a>
-                            </div>
-                            <h1 class="{% if page.hide_title == true %}hide_title{% endif %}">{% if page.title_icon %}<i class="{{ page.title_icon }}" aria-hidden="true"></i> {% endif %}{{ page.title_prefix }} {{ page.title }}</h1>
-                            {% case page.status %}
-                              {% when 'todo' %}<div class="alert alert-warning" role="alert">This page has to be written</div>
-                              {% when 'outdated' %}<div class="alert alert-warning" role="alert">This page is outdated</div>
-                              {% when 'incomplete' %}<div class="alert alert-warning" role="alert">This page is incomplete</div>
-                              {% else %}
-                            {% endcase %}
-                            {{ content }}
-                        </div>
+  <div id="wrapper">
+    <div id="page-content-wrapper">
+      <aside id="page-content-search" style="margin-bottom:0.5em;">
+        <form role="search" action="/search">
+          <input type="search" class="form-control" placeholder="Search... (press 't' to focus)" id="searchq" name="q" />
+        </form>
+      </aside>
+      <article id="page-content-wrapper2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12" id="page-content2">
+              <div id="page-content">
+                  <div class="github_edit_page print_hide" style="float: right;position:relative;top:-0.6em;">
+                      <a href="https://github.com/korlibs/korlibs.soywiz.com/edit/master/{{ page.path }}" class="btn btn-default" target="_blank" rel="noopener">
+                          <i class="fab fa-github" aria-hidden="true" style="font-size:1.5em;"></i> Suggest Change / Typo
+                      </a>
+                  </div>
+                  <h1 class="{% if page.hide_title == true %}hide_title{% endif %}">{% if page.title_icon %}<i class="{{ page.title_icon }}" aria-hidden="true"></i> {% endif %}{{ page.title_prefix }} {{ page.title }}</h1>
+                  {% case page.status %}
+                    {% when 'todo' %}<div class="alert alert-warning" role="alert">This page has to be written</div>
+                    {% when 'outdated' %}<div class="alert alert-warning" role="alert">This page is outdated</div>
+                    {% when 'incomplete' %}<div class="alert alert-warning" role="alert">This page is incomplete</div>
+                    {% else %}
+                  {% endcase %}
+                  {{ content }}
+              </div>
 
-						{% unless hide_comments %}
-						{% if site.disqus_id %}
-							<div id="disqus_thread" class="print_hide" style="margin-top:80px;"></div>
-							<script type="text/javascript" id="disqus-script">
-								var disqus_config = function () {
-									this.page.url = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";
-									this.page.identifier = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";
-								};
-								(function() {
-									var d = document, s = d.createElement('script');
-									s.src = '//{{ site.disqus_id }}.disqus.com/embed.js';
-									s.setAttribute('data-timestamp', +new Date());
-									(d.head || d.body).appendChild(s);
-								})();
-							</script>
-							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-						{% endif %}
-						{% endunless %}
-                    </div>
-                </div>
+              {% unless hide_comments %}
+              {% if site.disqus_id %}
+              <div id="disqus_thread" class="print_hide" style="margin-top:80px;"></div>
+              <script type="text/javascript" id="disqus-script">
+                var disqus_config = function () {
+                  this.page.url = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";
+                  this.page.identifier = "{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}";
+                };
+                (function() {
+                  var d = document, s = d.createElement('script');
+                  s.src = '//{{ site.disqus_id }}.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+              {% endif %}
+              {% endunless %}
             </div>
-        </article>
-		</div>
-		<aside id="sidebar-wrapper" class="print_hide">
-			<div class="sidebar-nav" style="padding-top:16px;margin-bottom:1em;" >
-				{{ toc }}
-			</div>
-		</aside>
+          </div>
+        </div>
+      </article>
     </div>
+    <aside id="sidebar-wrapper" class="print_hide">
+      <div class="sidebar-nav" style="padding-top:16px;margin-bottom:1em;" >
+        {{ toc }}
+      </div>
+    </aside>
+  </div>
 
 
 <script src="{{ '/js/jquery-2.2.4.min.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
