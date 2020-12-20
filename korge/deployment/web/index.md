@@ -26,20 +26,19 @@ Can also be used along the [Cordova Target](/korge/targets/cordova) to create fu
 To compile, start an http-server and open a browser, use the gradle task:
 
 ```bash
-./gradlew runJs
+./gradlew jsRun
 ```
 
 ## Packaging
 
 ```bash
-./gradlew jsWeb            # Outputs to /build/web
-./gradlew jsWebMin         # Outputs to /build/web-min (applying Dead Code Elimination)
-./gradlew jsWebMinWebpack  # Outputs to /build/web-min-webpack (minimizing and grouping into a single bundle.js file)
+./gradlew jsBrowserProductionWebpack # Outputs to /build/distributions
 ```
 
 You can use any HTTP server to serve the files in your browser.
-For example using: `npm -g install http-server` and then executing `hs build/web`.
-Or using live-server: `npm -g install live-server` and then executing `live-server build/web`.
+For example using: `npm -g install http-server` and then executing `hs build/distributions`.
+Or using live-server: `npm -g install live-server` and then executing `live-server build/distributions`.
+Or using Python3: changing directory to `build/distributions` and then executing `python -m http.server`.
 
 You can also use `./gradlew -t jsWeb` to continuously building the JS sources and running
 `hs build/web` in another terminal.
