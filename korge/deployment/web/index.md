@@ -32,16 +32,16 @@ To compile, start an http-server and open a browser, use the gradle task:
 ## Packaging
 
 ```bash
-./gradlew jsBrowserProductionWebpack # Outputs to /build/distributions
+./gradlew jsBrowserDistribution # Outputs to /build/distributions
 ```
 
 You can use any HTTP server to serve the files in your browser.
-For example using: `npm -g install http-server` and then executing `hs build/distributions`.
-Or using live-server: `npm -g install live-server` and then executing `live-server build/distributions`.
-Or using Python3: changing directory to `build/distributions` and then executing `python -m http.server`.
+For example using http-server: `npm -g install http-server` and then `hs build/distributions`.
+Or using live-server: `npm -g install live-server` and then `live-server build/distributions`.
+Or using Python3: change directory to `build/distributions` and then `python -m http.server`.
 
-You can also use `./gradlew -t jsWeb` to continuously building the JS sources and running
-`hs build/web` in another terminal.
+You can also use `./gradlew -t jsBrowserDistribution` to continuously build the JS sources and run
+`hs build/distributions` in another terminal.
 Here you can find a `testJs.sh` script doing exactly this for convenience.
 
 You can run your tests using Node.JS by calling jsTest or in a headless chrome with jsTestChrome.
