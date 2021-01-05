@@ -11,7 +11,7 @@ The plugin works on Android Studio and IntelliJ IDEA Community and Ultimate.
 
 {% include toc_include.md %}
 
-## Intalling KorGE IntelliJ Plugin
+## Installing KorGE IntelliJ Plugin
 {:#install}
 
 First we open IntelliJ. If we don't have it installed, check the [Toolbox section](#toolbox).
