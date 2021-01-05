@@ -60,12 +60,12 @@ korge {
 
 ## Project structure
 
-Three small files (plus gradle {{ site.data.versions.gradle }}) is all you need to get started:
+Three small files (plus Gradle {{ site.data.versions.gradle }}) is all you need to get started:
 
 ### settings.gradle.kts
 
-This file is used to preconfigure gradle. You will need to `enableFeaturePreview` with `GRADLE_METADATA` for KorGE to work.
-It uses gradle metadata to determine where are the artifacts that it will need. This need might be removed in the future,
+This file is used to preconfigure Gradle. You will need to `enableFeaturePreview` with `GRADLE_METADATA` for KorGE to work.
+It uses Gradle metadata to determine the location of the artifacts it will need. This might be removed in the future,
 but for now it is required.
 
 ```kotlin
@@ -74,14 +74,14 @@ enableFeaturePreview("GRADLE_METADATA")
 
 ### build.gradle.kts
 
-In this file you include and configure the KorGE gradle plugin.
+In this file you include and configure the KorGE Gradle plugin.
 
 The plugin does:
 
 * Choose and configure the right supported `kotlin-multiplatform`. At this point, it uses `1.3.61`.
 * Include all the artifacts required for KorGE.
 * Add tasks to compile, install and run all the supported targets by the platform.
-* Enable a extension called `korge` where you can configure properties of your application (application title, id, icon...)
+* Enable an extension called `korge` where you can configure properties of your application (application title, id, icon...)
 
 ```kotlin
 import com.soywiz.korge.gradle.*
