@@ -3,7 +3,6 @@ layout: default
 title: KMiniOrm
 fa-icon: fa-database
 priority: 100
-status: new
 ---
 
 KMiniOrm is a ORM (only JVM at the moment).
