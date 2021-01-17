@@ -42,8 +42,12 @@ so the tests can run super fast without having to wait for animations, so it is 
 open class ViewsForTesting(val frameTime: TimeSpan = 10.milliseconds, val size: SizeInt = SizeInt(640, 480)) {
     val elapsed get() = time - startTime
     
-    // Method to call in our tests
+    // Methods to call in our tests
     fun viewsTest(block: suspend Stage.() -> Unit): Unit
+    inline fun <reified S : Scene> sceneTest(module: Module? = null,
+        timeout: TimeSpan? = DEFAULT_SUSPEND_TEST_TIMEOUT,
+        frameTime: TimeSpan = this.frameTime,
+        crossinline block: suspend S.() -> Unit): Unit
     
     // Simulate mouse actions
     suspend fun mouseMoveTo(x: Number, y: Number)
@@ -60,10 +64,10 @@ open class ViewsForTesting(val frameTime: TimeSpan = 10.milliseconds, val size: 
 }
 ```
 
-### Example
+### Example with views
 
 ```kotlin
-class MyTest : ViewsForTesting() {
+class MyViewsTest : ViewsForTesting() {
     @Test
     fun test() = viewsTest {
         val log = arrayListOf<String>()
@@ -78,6 +82,46 @@ class MyTest : ViewsForTesting() {
         assertEquals(Rectangle(x=-102, y=0, width=100, height=100), rect.globalBounds)
         assertEquals(false, rect.isVisibleToUser())
         assertEquals(listOf("clicked"), log)
+    }
+}
+```
+
+### Example with a scene
+
+```kotlin
+class MySceneTest : ViewsForTesting() {
+    object DummyModule : Module() {
+        override suspend fun AsyncInjector.configure() {
+            mapSingleton {
+                MyDependency()
+            }
+            
+            mapPrototype {
+                MyScene(get())
+            }
+        }
+    }
+
+    class MyScene(private val myDependency: MyDependency) : Scene() {
+        lateinit var textView : Text
+
+        override suspend fun Container.sceneInit() {
+            textView = text("Hello World!")
+        }
+    }
+
+    @Test
+    fun sceneTestRunsScene() = sceneTest<MyScene>(DummyModule) {
+        assertTrue(textView.isVisibleToUser())
+    }
+
+    @Test
+    fun sceneTestCanOverrideBindingsForTesting() = sceneTest<MyScene>(DummyModule, {
+        mapSingleton<MyDependency> {
+            MyMockDependency()
+        }
+    }) {
+        assertTrue(textView.isVisibleToUser())
     }
 }
 ```
