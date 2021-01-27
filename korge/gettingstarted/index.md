@@ -19,9 +19,10 @@ Getting started with KorGE is really simple.
 
    <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/9676"></iframe>
 
-2. Download the **HelloWorld** KorGE project from [here](https://github.com/korlibs/korge-hello-world/archive/master.zip)
+2. Either
 
-3. Clone the **HelloWorld** Repository via `git clone https://github.com/korlibs/korge-hello-world`
+    - Download the **HelloWorld** KorGE project from [here](https://github.com/korlibs/korge-hello-world/archive/master.zip), or 
+    - Clone the **HelloWorld** Repository via `git clone https://github.com/korlibs/korge-hello-world`
 
 After downloading or cloning, open it in IntelliJ as a project
 
