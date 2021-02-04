@@ -159,6 +159,13 @@ The whole project stack is opensource, so you can contribute to this project its
 Think that this is a huge project that has been initially developed by a single person, and that requires a lot of time.
 So probably it will have some rough edges. But you can help to improve it!
 
+### How can I close a KorGE Game Window programatically?
+{:#close_window}
+
+```korge
+views.gameWindow.close()
+```
+
 ### e: Unable to compile C bridges
 
 ```shell script
