@@ -188,4 +188,10 @@ In order to make it easier to contribute, each page of the documentation contain
 
 Since this was not specified from the very beginning, we used up to three different pronunciations for it.
 
-The original pronounciation is like saying Jorge in Spanish but starting with K. Can you listen it here: <https://translate.google.com/?sl=es&tl=en&text=jorge&op=translate>
+The original pronounciation is like saying Jorge in Spanish but starting with K.
+
+Can you listen it here:
+
+<audio controls="controls">
+ <source src="/i/sound/korge.mp3" />
+</audio>
