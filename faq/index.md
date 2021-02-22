@@ -182,3 +182,10 @@ All the documentation is hosted at github using github pages and [jekyll](https:
 <https://github.com/korlibs/korlibs.soywiz.com>
 
 In order to make it easier to contribute, each page of the documentation contains a pencil link, that sends you to the github page of the documentation to modify the file itself.
+
+## How is KorGE pronounced
+{:#korge-pronunciation}
+
+Since this was not specified from the very beginning, we used up to three different pronunciations for it.
+
+The original pronounciation is like saying Jorge in Spanish but starting with K. Can you listen it here: <https://translate.google.com/?sl=es&tl=en&text=jorge&op=translate>
