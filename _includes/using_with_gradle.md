@@ -2,7 +2,7 @@
 
 ### `build.gradle.kts`
 
-Requires `Gradle 6.2.2` (`JVM 8~13`) for building and `Kotlin >=1.3.71` for running:
+Requires `Gradle {{ site.data.versions.gradle }}` (`JVM 8~13`) for building and `Kotlin >={{ site.data.versions.kotlin }}` for running:
 
 ```kotlin
 val {{ include.name }}Version = "{{ site.data.versions[include.name] }}"
