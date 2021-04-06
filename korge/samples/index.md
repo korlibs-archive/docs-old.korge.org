@@ -27,6 +27,10 @@ status: updated
 * [KorGE Tutorial #6 - Resolution handling and coordinate system](https://www.youtube.com/watch?v=81IG0ld5w-8)
 * [KorGE Tutorial #7 - Sprites and SpriteAnimations from XML or JSON files](https://www.youtube.com/watch?v=atElzA2jYkQ)
 
+Game tutorials:
+
+* [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)
+* [Testable Connect-4 game mostly doing TDD](https://www.youtube.com/watch?v=F2UmKH0L-6A) [(Spanish)](https://www.youtube.com/watch?v=_lZbvVJyhGc)
 
 ## Cookbook & samples projects
 
