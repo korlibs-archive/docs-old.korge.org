@@ -172,6 +172,16 @@ views.gameWindow.close()
 sudo apt install libncurses5
 ```
 
+### e: This declaration is experimental and its usage must be marked with '@kotlin.time.ExperimentalTime' 
+
+```
+/build/platforms/native-desktop/bootstrap.kt: (5, 98): This declaration is experimental and its usage must be marked with '@kotlin.time.ExperimentalTime' or '@OptIn(kotlin.time.ExperimentalTime::class)'
+```
+
+If you main entry point of Korge is using `@ExperimentalTime` or other experimental APIs
+you have to replace it with `@OptIn(ExperimentalClass::class)` eg. `@OptIn(ExperimentalTime::class)`.
+
+
 ### Contributing to the documentation
 {:#contributing-docs}
 
