@@ -109,6 +109,8 @@ dependencies {
 
 ### Sample
 
+{% include sample.html sample="SimpleBox2dScene" %}
+
 ```kotlin
 suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "My Awesome Box2D Game!") {
 	views.clearColor = Colors.DARKGREEN
