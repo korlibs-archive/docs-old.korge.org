@@ -14,6 +14,8 @@ var View.filter: Filter? = null
 
 {% include toc_include.md %}
 
+{% include sample.html sample="FiltersScene" %}
+
 ## ComposedFilter
 
 You can apply several filters to a view using this:
