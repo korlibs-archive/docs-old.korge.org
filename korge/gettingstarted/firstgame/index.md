@@ -5,8 +5,8 @@ fa-icon: fa-object-ungroup
 priority: 2
 ---
 
-So, you [installed KorGE](../setup) and wrote a [test game with simple shapes](../firststeps). You even got
-it [deployed to some supported platform](/korge/deployment/).
+So, you [installed KorGE](../setup) and wrote a [test game with simple shapes](../firststeps). You might even get
+it [deployed to some supported platforms](/korge/deployment/).
 
 Now let's try to build a more complex and realistic game with a step-by-step tutorial:
 
@@ -20,7 +20,7 @@ Now let's try to build a more complex and realistic game with a step-by-step tut
 
 - [Writing 2048 game. Step 4 - Data saving](https://blog.korge.org/korge-tutorial-writing-2048-game-step-4-data-saving/)
 
-In this tutorial you'll learn to build a 2048 game:
+In this tutorial you'll learn how to build a 2048 game:
 
 ![](sample-1.gif)
 
