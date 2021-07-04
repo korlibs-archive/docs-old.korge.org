@@ -13,6 +13,8 @@ Library for Big Numbers
 
 {% include toc_include.md %}
 
+{% include using_with_gradle.md name="kbignum" %}
+
 ## KBigNum
 
 This class allow to represent precise Big Numbers (fixed point numbers) that do not overflow.

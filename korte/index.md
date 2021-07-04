@@ -31,8 +31,6 @@ Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/bl
 
 {% include toc_include.md %}
 
-{% include using_with_gradle.md name="korte" %}
-
 {% raw %}
 
 ## Usage
@@ -589,3 +587,5 @@ config.register(Tag("switch", setOf("case", "default"), setOf("endswitch")) {
 ```
 
 {% endraw %}
+
+{% include using_with_gradle.md name="korte" %}

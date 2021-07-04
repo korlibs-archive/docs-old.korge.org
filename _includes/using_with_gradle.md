@@ -1,8 +1,8 @@
 ## Using with gradle
 
-### `build.gradle.kts`
-
 Requires `Gradle {{ site.data.versions.gradle }}` (`JVM 8~13`) for building and `Kotlin >={{ site.data.versions.kotlin }}` for running:
+
+`build.gradle.kts`
 
 ```kotlin
 val {{ include.name }}Version = "{{ site.data.versions[include.name] }}"
@@ -32,10 +32,4 @@ dependencies {
     implementation("com.soywiz.korlibs.{{ include.name }}:{{ include.name }}-js:${{ include.name }}Version") 
 }
 
-```
-
-### `settings.gradle.kts`
-
-```kotlin
-enableFeaturePreview("GRADLE_METADATA")
 ```

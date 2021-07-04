@@ -15,6 +15,8 @@ This library provides a simple interface to do logging into suitable outputs lik
 
 {% include toc_include.md %}
 
+{% include using_with_gradle.md name="klogger" %}
+
 ## Console
 
 Klogger provides a common way for logging into JavaScript console with fallback to stdout and stderr.

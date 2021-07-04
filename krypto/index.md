@@ -59,3 +59,5 @@ object AES {
     fun encryptEes128Cbc(plainMessage: ByteArray, cipherKey: ByteArray): ByteArray
 }
 ```
+
+{% include using_with_gradle.md name="krypto" %}

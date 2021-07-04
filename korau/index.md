@@ -15,6 +15,8 @@ It supports playing sounds, creating dynamic audio streams and decoding audio fi
 
 {% include toc_include.md %}
 
+{% include using_with_gradle.md name="korau" %}
+
 ## AudioFormat
 
 ```kotlin

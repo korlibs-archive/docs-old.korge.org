@@ -18,8 +18,6 @@ Korma is a mathematic library for multiplatform Kotlin 1.3 mostly focused on geo
 
 {% include toc_include.md %}
 
-{% include using_with_gradle.md name="korma" %}
-
 ```
 // Additional funcionality using Clipper and poly2try code (with separate licenses):
 // - https://github.com/korlibs/korma/blob/master/korma-shape/LICENSE
@@ -427,3 +425,5 @@ println(points)
 ### Path finding in vectors and polygons
 
 Check the **Shape2d: Triangulation-based Node and Point Path Finding** section.
+
+{% include using_with_gradle.md name="korma" %}
