@@ -41,7 +41,7 @@ If you are using Ubuntu or other Debian-based distro, you can execute
 the following command to install the required libraries:
 
 ```bash
-sudo apt-get -y install freeglut3-dev libopenal-dev
+sudo apt-get -y install freeglut3-dev libopenal-dev libncurses5
 ```
 
 You can find this command in the [Targets -> Desktop](/targets/desktop) section.
@@ -168,7 +168,7 @@ views.gameWindow.close()
 
 ### e: Unable to compile C bridges
 
-```shell script
+```bash
 sudo apt install libncurses5
 ```
 
