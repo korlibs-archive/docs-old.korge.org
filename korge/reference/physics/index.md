@@ -102,10 +102,12 @@ val planet = image(resourcesVfs["planet.png"].readBitmap())
 You can use a port to Kotlin of the Box2D library:
 
 ```kotlin
-dependencies {
-    commonMainApi "com.soywiz.korlibs.korge:korge-box2d:$korgeVersion"
+korge {
+...
+	bundle("https://github.com/korlibs/korge-bundles.git::korge-box2d::7439e5c7de7442f2cd33a1944846d44aea31af0a##9fd9d54abd8abc4736fd3439f0904141d9b6a26e9e2f1e1f8e2ed10c51f490fd")
 }
 ```
+[Example Project](https://github.com/korlibs/korge-samples/blob/master/samples/box2d)
 
 ### Sample
 
