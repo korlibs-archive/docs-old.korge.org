@@ -46,6 +46,13 @@ sudo apt-get -y install freeglut3-dev libopenal-dev libncurses5
 
 You can find this command in the [Targets -> Desktop](/targets/desktop) section.
 
+On Solus, you can use this command:
+
+```bash
+sudo eopkg install glfw-devel freeglut openal-soft-devel ncurses libglu-devel
+sudo eopkg install -c system.devel
+```
+
 ## How do I include these libraries in my multiplatform projects?
 {:#include-multi}
 
