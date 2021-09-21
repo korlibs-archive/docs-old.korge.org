@@ -18,4 +18,4 @@ All Bitmaps have the following properties:
 * `premultiplied: Boolean` specifies if the color pixels in this image are premultiplied or not
 * `backingArray: Any?` an optional array reference containing the raw pixels in the internal format of the Bitmap
 
-...
+You can get the area in pixels of the bitmap with `bitmap.area` (`width * height`).
