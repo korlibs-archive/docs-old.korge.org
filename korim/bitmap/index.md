@@ -6,7 +6,11 @@ fa-icon: fa-image
 priority: 60
 ---
 
-## Bitmap
+KorIM support several Bitmap formats and operations.
+
+{% include toc_include.md max_level=2 %}
+
+## `Bitmap`
 
 `Bitmap` is an abstract class used to represent images, as a bidimensional matrix with a set of RGBA pixels.
 
@@ -131,3 +135,67 @@ bitmap.forEach { n, x, y ->
 }
 ```
 
+## `BitmapIndexed`, `Bitmap1`, `Bitmap2`, `Bitmap4`, `Bitmap8`
+
+KorIM also supports indexed bitmaps, that are bitmaps whose pixels are determined by an integer of an specific amount of bits.
+
+```kotlin
+// Getting a pixel value
+val pixel: Int = bitmap[x, y] // equivalent to bitmap.getInt(x, y)
+// Setting a pixel value // equivalent to bitmap.setInt(x, y, pixel)
+bitmap[x, y] = pixel
+```
+
+### Constructing a new BitmapIndexed
+
+```kotlin
+val bitmap1 = Bitmap1(width, height)
+val bitmap2 = Bitmap2(width, height)
+val bitmap4 = Bitmap4(width, height)
+val bitmap8 = Bitmap8(width, height)
+
+// You can specify a palette with:
+val bitmap = Bitmap4(width, height, palette = RgbaArray(16))
+
+// For Bitmap8 you can use a value provider when constructing
+val bitmap = Bitmap8(width, height) { x, y ->
+    (x + y).toByte()
+}
+```
+
+### Setting a grayscale palette:
+
+```kotlin
+// This will update the palette with a gradient from pitch black, to clear white
+bitmap.setWhitescalePalette()
+```
+
+### Convert to String
+
+By specifying a character for each possible color, you can convert a BitmapIndexed into a String like this:
+
+```kotlin
+val paletteString = ".*" // 0=. 1=*
+println(bitmap1.toLines(paletteString).joinToString("\n")()
+```
+
+### Bitmap32 to Bitmap1
+
+You can construct a Bitmap1 by using a Bitmap32 as reference, and providing a function determining if each pixel is going to be 0 (false) or 1 (true).
+
+```kotlin
+bitmap32.toBitmap1 { color: RGBA -> color.a >= 0x3F }
+```
+
+## `NativeImage`
+
+Native image is a special type of `Bitmap` that usually represents a Bitmap in a native platform. For example in JS, it would be represented as a `<canvas>` or `<img>`, and in the JVM it would be a `BufferedImage`. Some implementations require for setting and getting the color bits to copy memory from the GPU, and that might be slow to perform pixel by pixel.
+
+This bitmap however, when using the `Context2D`, it uses native operations for vector rendering, which is usually faster.
+
+You can construct an empty NativeImage with:
+`NativeImage(width, height)`.
+
+## `Bitmap32`
+
+...TO WRITE...
