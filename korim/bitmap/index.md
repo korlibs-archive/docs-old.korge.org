@@ -77,11 +77,11 @@ bitmap.lock {
 // starting here, the texture will be reuploaded
 ```
 
-## Flipping the Bitmap
+### Flipping the Bitmap
 
 You can flip your image with `bitmap.flipX()` and `bitmap.flipY()`.
 
-## Swapping rows and columns
+### Swapping rows and columns
 
 You can swap two rows or two columns together with:
 
@@ -90,11 +90,11 @@ bitmap.swapRows(y0, y0)
 bitmap.swapColumns(x0, x0)
 ```
 
-## Converting into Bitmap32
+### Converting into Bitmap32
 
 You can call the `bitmap.toBMP32()` method to convert any `Bitmap` into a `Bitmap32`, if you prefer to not create a new instance if it is already a Bitmap32, you can call `bitmap.toBMP32IfRequired()`
 
-## Cloning, extracting and creating bitmaps with the same format
+### Cloning, extracting and creating bitmaps with the same format
 
 To create a bitmap with the same content you can use:
 
@@ -112,11 +112,11 @@ To create a new bitmap with part of the contents of the original image:
 val newBitmap = bitmap.extract(x, y, width, height)
 ```
 
-## Comparing contents
+### Comparing contents
 
 You can check if two bitmaps have exactly the same pixels by calling `bitmap.contentEquals(otherBitmap)`.
 
-## Context2d
+### Context2d
 
 You can create a context2d for drawing vectors, and stuff with a HTML-like API, with:
 
@@ -126,7 +126,7 @@ bitmap.context2d { context2d ->
 }
 ```
 
-## Iterating over all the positions
+### Iterating over all the positions
 
 ```kotlin
 bitmap.forEach { n, x, y ->
