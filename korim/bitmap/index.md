@@ -10,7 +10,7 @@ KorIM support several Bitmap formats and operations.
 
 {% include toc_include.md max_level=2 %}
 
-## `Bitmap`
+## Bitmap
 
 `Bitmap` is an abstract class used to represent images, as a bidimensional matrix with a set of RGBA pixels.
 
@@ -135,7 +135,7 @@ bitmap.forEach { n, x, y ->
 }
 ```
 
-## `BitmapIndexed`, `Bitmap1`, `Bitmap2`, `Bitmap4`, `Bitmap8`
+## BitmapIndexed, Bitmap1, Bitmap2, Bitmap4, Bitmap8
 
 KorIM also supports indexed bitmaps, that are bitmaps whose pixels are determined by an integer of an specific amount of bits.
 
@@ -187,7 +187,7 @@ You can construct a Bitmap1 by using a Bitmap32 as reference, and providing a fu
 bitmap32.toBitmap1 { color: RGBA -> color.a >= 0x3F }
 ```
 
-## `NativeImage`
+## NativeImage
 
 Native image is a special type of `Bitmap` that usually represents a Bitmap in a native platform. For example in JS, it would be represented as a `<canvas>` or `<img>`, and in the JVM it would be a `BufferedImage`. Some implementations require for setting and getting the color bits to copy memory from the GPU, and that might be slow to perform pixel by pixel.
 
@@ -196,6 +196,190 @@ This bitmap however, when using the `Context2D`, it uses native operations for v
 You can construct an empty NativeImage with:
 `NativeImage(width, height)`.
 
-## `Bitmap32`
+## Bitmap32
+
+The Bitmap32 class is a Bitmap ideal for manipulating the image pixel by pixel. It has 8 bits for red, green, blue and alpha channels.
+
+* The Bitmap32 class has a `data: RgbaArray`, `dataPremult: RgbaPremultipliedArray` and `intData: IntArray` representing the colors as linear array.
+
+### Construct a Bitmap32
+
+You can construct a Bitmap32 with:
+
+```kotlin
+val bitmap = Bitmap32(width, height)
+val bitmap = Bitmap32(width, height, RgbaArray(width * height), premultiplied = false)
+val bitmap = Bitmap32(width, height, Colors.RED)
+val bitmap = Bitmap32(width, height) { x, y -> Colors.RED }
+```
+
+### Getting and setting Pixels
+
+```kotlin
+val color: RGBA = bitmap[x, y]
+val color: RGBA = bitmap.getRgba(x, y)
+val colorInt: Int = bitmap.getInt(x, y)
+
+bitmap[x, y] = color
+bitmap.setRgba(x, y, color)
+bitmap.setInt(x, y, colorInt)
+```
+
+### Getting historiogram
+
+```kotlin
+val redHistoriogram = bitmap32.historiogram(BitmapChannel.RED)
+```
+
+### Filling the whole bitmap or a slice with a specific color
+
+```kotlin
+bitmap32.fill(Colors.BLACK_TRANSPARENT)
+bitmap32.fill(Colors.BLACK_TRANSPARENT, x, y, width, height)
+```
+
+### Drawing or copying another Bitmap32
+
+```kotlin
+bitmap32.put(bmp32OrSlice, dx, dy) // Replace pixels
+bitmap32.draw(bmp32OrSlice, dx, dy) // Blend pixels
+```
+
+### Transferring channel (RED, GREEN, BLUE or ALPHA) data individually
+
+```kotlin
+bitmap32.writeChannel(BitmapChannel.RED, sourceBitmap, source = BitmapChannel.ALPHA)
+bitmap32.writeChannel(BitmapChannel.RED, sourceBitmap8)
+
+val channelData: Bitmap8 = bitmap32.extractChannel(BitmapChannel.BLUE)
+
+// Static variants
+Bitmap32.copyChannel(src, srcChannel, dst, dstChannel)
+Bitmap32.copyChannel(src, dst, channel)
+```
+
+### XOR and INVERT oixels
+
+```kotlin
+// Mutating variants
+bitmap32.invert()
+bitmap32.xor(RGBA(255, 255, 255, 0))
+
+// Copy variants
+val newBitmap = bitmap32.inverted()
+val newBitmap = bitmap32.xored(RGBA(255, 255, 255, 0))
+```
+
+### Handling premultiplied
+
+```kotlin
+val newBitmap = bitmap.premultiplied()
+val newOrSameBitmap = bitmap.premultipliedIfRequired()
+
+val newBitmap = bitmap.depremultiplied()
+val newOrSameBitmap = bitmap.depremultipliedIfRequired()
+
+bitmap.premultiplyInplaceIfRequired()
+bitmap.depremultiplyInplace()
+```
+
+### Aplying ColorTransform and ColorMatrix
+
+```kotlin
+val newBitmap = bmp32.withColorTransform(colorTransform)
+val newBitmap = bmp32.withColorTransform(colorTransform, x, y, width, height)
+
+bmp32.applyColorTransform(colorTransform, x, y, width, height)
+
+bmp32.applyColorMatrix(Matrix3D())
+```
+
+### Generating a mipmap of the current bitmap
+
+```kotlin
+val halfSizeBitmap = bitmap.mipmap(1) // [width,height] / 2
+val quarterSizeBitmap = bitmap.mipmap(2) // [width,height] / 4
+```
+
+### Generate a scaled image
+
+```kotlin
+val scaled = scaleNearest(0.5, 0.5) // half the size nearest neighborhood
+val scaled = scaleLinear(0.5, 0.5) // half the size linear interpolation
+val scaled = scaled(newWidth, newHeight, smooth = true)
+```
+
+### Compare bitmaps
+
+```kotlin
+Bitmap32.matches(bitmap1, bitmap2, threshold = 32)
+val result: MatchResult = Bitmap32.matchesWithResult(bitmap1, bitmap2)
+val diffBitmap32 = Bitmap32.diff(bitmap1, bitmap2)
+```
+
+### Generate a new bitmap with the edges expanded
+
+When generating atlases it is useful to extrude the edges of slices so when sampled with OpenGL, there are no artifacts.
+
+```kotlin
+bitmap32.expandBorder(RectangleInt(2, 2, 50, 50), border = 2)
+```
+
+## BitmapChannel
+
+This is an enum `BitmapChannel.RED`, `BitmapChannel.GREEN`, `BitmapChannel.BLUE`, `BitmapChannel.ALPHA`. It is used to manipulate specific channels usually in Bitmap32,
+
+You can extract and insert each component in a RGBA color with:
+
+```kotlin
+val red: Int = BitmapChannel.RED.extract(color)
+val newColor: RGBA = BitmapChannel.RED.insert(color, 0x7F)
+```
+
+## FloatBitmap32
+
+...TO WRITE...
+
+## DistanceBitmap
+
+...TO WRITE...
+
+## PSNR
+
+...TO WRITE...
+
+## BitmapSlice
+
+...TO WRITE...
+
+## Bitmap Extensions
+
+...TO WRITE...
+
+## Palette
+
+...TO WRITE...
+
+## Bitmap Tracing
+
+...TO WRITE...
+
+## Bitmap Effects
+
+...TO WRITE...
+
+### Blur
+
+...TO WRITE...
+
+### Border
+
+...TO WRITE...
+
+### DropShadow
+
+...TO WRITE...
+
+### Glow
 
 ...TO WRITE...
