@@ -81,7 +81,7 @@ bitmap.lock {
 
 You can flip your image with `bitmap.flipX()` and `bitmap.flipY()`.
 
-### Swapping rows and columns
+### Swapping rows and columns
 
 You can swap two rows or two columns together with:
 
@@ -134,6 +134,23 @@ bitmap.forEach { n, x, y ->
     val pixel: RGBA = bitmap32.data[n]
 }
 ```
+
+### Scaling a Bitmap
+
+You can create a new image scaling another image, to a new size, and using a `ScaleMode` and an `Anchor` to do so.
+
+```kotlin
+val resized = bitmap.resized(width, height, ScaleMode.COVER, Anchor.CENTER, native = true)
+```
+
+## ScaleMode
+
+For resizing we have different ScaleMode strategies
+
+* `ScaleMode.COVER` - Keeps the aspect ratio, covers all the space cutting some parts of the image if the aspect ratio doesn't fit
+* `ScaleMode.SHOW_ALL` / `ScaleMode.FIT` - Shows the whole image without losing the aspect ratio, some parts of the destination won't have pixels
+* `ScaleMode.EXACT` - This will distort the image, and will fill all the pixels
+* `ScaleMode.NO_SCALE` - Doesn't scale the image at all
 
 ## BitmapIndexed, Bitmap1, Bitmap2, Bitmap4, Bitmap8
 
@@ -258,7 +275,7 @@ Bitmap32.copyChannel(src, srcChannel, dst, dstChannel)
 Bitmap32.copyChannel(src, dst, channel)
 ```
 
-### XOR and INVERT oixels
+### XOR and INVERT pixels
 
 ```kotlin
 // Mutating variants
@@ -338,48 +355,121 @@ val newColor: RGBA = BitmapChannel.RED.insert(color, 0x7F)
 
 ## FloatBitmap32
 
-...TO WRITE...
+FloatBitmap32 is like Bitmap32 but stores its components as floats in the range of [0f, 1f].
+
+### Constructing a FloatBitmap32
+
+```kotlin
+// A New Bitmap
+
+val floatBitmap32 = FloatBitmap32(width, height)
+val floatBitmap32 = FloatBitmap32(width, height, FloatArray(width * height * 4), premultiplied = false)
+
+// From other Bitmap
+val floatBitmap32 = bitmap.toFloatBMP32()
+```
+
+### Setting / getting pixels
+
+```kotlin
+bmp.setRgba(x, y, rgbaColor)
+bmp.setRgba(x, y, rf, gf, bf, af)
+bmp.setRgbaf(x, y, rgbafColor)
+
+val color: RGBA = bmp.getRgba(x, y)
+val color: RGBAf = bmp.getRgbaf(x, y)
+```
 
 ## DistanceBitmap
 
-...TO WRITE...
+A DistanceBitmap is a Bitmap that measures distances to an specific pixel in each pixel. Used for example to compute borders, shadows etc.
 
+### Creating a DistanceBitmap
+
+```kotlin
+val dist: DistanceBitmap = bitmap.distanceMap(thresold = 0.5) // alpha thresold
+```
+
+### Getting distances
+
+You can get the distance for each position:
+
+```kotlin
+val dist: Float = getDist(x, y) // hypot
+val x: Int = getPosX(x, y) // nearest absolute position (X)
+val y: Int = getPosY(x, y) // nearest absolute position (Y)
+val rx: Int = getRPosX(x, y) // nearest relative position (X)
+val ry: Int = getRPosY(x, y) // nearest relative position (Y)
+```
+
+### Converting into Bitmap8
+
+To visualize the distance map, you can generate a Bitmap8.
+
+```kotlin
+val pixels = distanceBitmap.toNormalizedDistanceBitmap8()
+```
+ 
 ## PSNR
 
-...TO WRITE...
+Utils to compute Peak Signal-to-Noise Ratio
+
+```kotlin
+// PSNR
+val psnr: Double = PSNR(bitmap1, bitmap2)
+val psnr: Double = PSNR(bitmap1, bitmap2, BitmapChannel.RED)
+val psnr: Double = bitmap1.psnrDiffTo(bitmap2)
+val psnr: Double = Bitmap32.computePsnr(bitmap1, bitmap2)
+```
+
+## Palette
+
+Palette is mainly a wrapper of `RgbaArray` but supports some optional extra properties, like names for each color.
+
+```kotlin
+val palette = Palette(RgbaArray)(16)
+val palette = Palette(colors = RgbaArray(16), names = Array(16) { "name$it" })
+```
+
+## Bitmap Tracing
+
+You can get an approximate contourn of a Bitmap with the trace methods.
+
+```kotlin
+val path: VectorPath = bitmap.trace()
+val path: VectorPath = bitmap.trace { rgba -> rgba.a >) 9x3F }
+```
+
+## Bitmap Effects
+
+KorIM supports applying Bitmap effects.
+
+```kotlin
+data class BitmapEffect(
+    // Blur
+    var blurRadius: Int = 0,
+  
+    // Drop Shadow
+    var dropShadowX: Int = 0,
+    var dropShadowY: Int = 0,
+    var dropShadowRadius: Int = 0,
+    var dropShadowColor: RGBA = Colors.BLACK,
+  
+    // Border
+    var borderSize: Int = 0,
+    var borderColor: RGBA = Colors.BLACK
+) 
+```
+
+### Applying Bitmap Effects
+
+```kotlin
+bitmap.applyEffectInline(effect)
+val newBitmap = bitmap.applyEffect(effect)
+```
+
 
 ## BitmapSlice
 
 ...TO WRITE...
 
-## Bitmap Extensions
-
-...TO WRITE...
-
-## Palette
-
-...TO WRITE...
-
-## Bitmap Tracing
-
-...TO WRITE...
-
-## Bitmap Effects
-
-...TO WRITE...
-
-### Blur
-
-...TO WRITE...
-
-### Border
-
-...TO WRITE...
-
-### DropShadow
-
-...TO WRITE...
-
-### Glow
-
-...TO WRITE...
