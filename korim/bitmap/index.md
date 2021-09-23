@@ -469,7 +469,79 @@ val newBitmap = bitmap.applyEffect(effect)
 ```
 
 
-## BitmapSlice
+## BitmapSlice<T>, BmpSlice and BmpCoords
 
-...TO WRITE...
+The `BmpSlice` class is used to declare a region inside a `Bitmap`. There is a typed subtype called `BitmapSlice<TBitmap>`, and there is an interface implementd by them called `BmpCoords` that is used maily for textures.
 
+### BmpCoords
+
+The interface of BmpCoords, defines the following properties:
+
+* `tl_x: Float` and `tl_y: Float`, that specifies the top left coordinates
+* `tr_x: Float` and `tr_y: Float`, that specifies the top right coordinates
+* `br_x: Float` and `br_y: Float`, that specifies the bottom right coordinates
+* `bl_x: Float` and `bl_y: Float`, that specifies the bottom left coordinates
+
+### BmpSlice
+
+* `bmpBase: Bitmap`
+* `bounds: RectangleInt`
+* `name: String? = null`
+* `rotated: Boolean = false`
+* `virtFrame: RectangleInt? = null`
+* `bmpWidth: Int` and `bmpHeight: Int` specifies the width and height of the original bitmap
+* `left: Int`, `top: Int`, `right: Int`, `bottom: Int`, `width: Int` and `height: Int` specifies the integral region of the slice
+
+### Reading pixels from a BmpSlice
+
+```kotlin
+// Individual pixels
+val color: RGBA = bmpSlice.getRgba(x, y)
+bmpSlice.setRgba(x, y, color)
+
+// A region of pixels
+val pixels: RgbaArray = bmpSlice.readPixels(x, y, width, height)
+
+// As a bitmap
+val pixels: Bitmap = bmpSlice.extract()
+```
+
+### Getting a slice from a Bitmap
+
+All method variants have an optional `name: String? = null` parameter, no set a name for the slice.
+
+```kotlin
+val bmpSlice: BitmapSlice<T> = bitmap.slice() // A slice covering the whole region
+val bmpSlice = bitmap.slice(bounds = RectangleInt(x, y, width, height), name = "name of the slice")
+val bmpSlice = bitmap.sliceWithBounds(left, top, right, bottom)
+val bmpSlice = bitmap.sliceWithSize(x, y, width, height)
+```
+
+### Sub-slicing BmpSlice
+
+Similar to slicing a Bitmap, you can also sub-slice a BmpSlice:
+
+```kotlin
+val subBmpSlice = bmpSlice.slice(Rectangle())
+val subBmpSlice = bmpSlice.slice(RectangleInt())
+val subBmpSlice = bmpSlice.sliceWithSize(x, y, width, height)
+val subBmpSlice = bmpSlice.sliceWithBounds(left, top, right, bottom)
+```
+
+### Splitting a BitmapSlice<T> in an array of smaller slices
+
+For example, when we have a bitmap representing TileSet, with regions of a specified size, we want to create an arbitrary number of slices of an specified size.
+
+```kotlin
+val slices: List<BitmapSlice<T>> = bmpSlice.splitInRows(16, 16)
+```
+
+For example if we have an image of 256x256, and we split in 64x64, we will have a list of 4*4 slices.
+
+It will have the following order:
+```
+ 0  1  2  3
+ 4  5  6  7
+ 8  9 10 11
+12 13 14 15
+```
