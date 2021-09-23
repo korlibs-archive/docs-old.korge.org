@@ -4,6 +4,7 @@ title: "Vector Rendering"
 title_prefix: KorIM
 fa-icon: fa-image
 priority: 60
+status: todo
 ---
 
 KorIM support vector rendering by the `Context2d` class. This class is meant to simulate the JS HTML Canvas API, but hypervitaminated.
