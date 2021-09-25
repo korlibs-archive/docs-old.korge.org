@@ -443,6 +443,7 @@ val path: VectorPath = bitmap.trace { rgba -> rgba.a >) 9x3F }
 ## Bitmap Effects
 
 KorIM supports applying Bitmap effects.
+It supports adding border to the pixels of images, it supports adding a gaussian blur effect to the bitmap, and support adding drop shadows to the bitmaps.
 
 ```kotlin
 data class BitmapEffect(
