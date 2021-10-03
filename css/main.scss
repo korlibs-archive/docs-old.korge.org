@@ -411,3 +411,10 @@ h2 {
 h1.hide_title {
   display: none;
 }
+
+h1:hover::after, h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after {
+  font-family: 'Font Awesome 5 Free';
+  font-size: 0.7em;
+  opacity: 0.7;
+  content: ' \f0c1'
+}
