@@ -2,7 +2,7 @@
 layout: default
 title: "Klogger"
 fa-icon: fa-bell
-priority: 15
+priority: 60
 ---
 
 [https://github.com/korlibs/klogger](https://github.com/korlibs/klogger)

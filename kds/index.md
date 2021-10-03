@@ -3,7 +3,7 @@ layout: default
 title: Kds
 permalink: /kds/
 fa-icon: fa-tree
-priority: 20
+priority: 58
 ---
 
 <img src="/i/logos/kds.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="KDS: Data Structures" />

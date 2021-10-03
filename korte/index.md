@@ -3,7 +3,7 @@ layout: default
 title: "KorTE"
 fa-icon: far fa-file-code
 children: /korte/
-priority: 0
+priority: 52
 status: updated
 ---
 

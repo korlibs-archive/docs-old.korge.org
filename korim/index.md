@@ -2,7 +2,7 @@
 layout: default
 title: "KorIM"
 fa-icon: fa-image
-priority: 60
+priority: 51
 children: /korim/
 status: new
 ---

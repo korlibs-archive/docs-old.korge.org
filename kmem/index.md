@@ -2,7 +2,7 @@
 layout: default
 title: Kmem
 fa-icon: fa-microchip
-priority: 30
+priority: 59
 ---
 
 <img src="/i/logos/kmem.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="KMEM: Memory Utilities" />
