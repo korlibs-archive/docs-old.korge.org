@@ -11,7 +11,7 @@ status: updated
 
 KorTE is a asynchronous template engine for Multiplatform Kotlin 1.3.
 
-It is a non-strict super set of [twig](https://twig.symfony.com/) / [django](https://docs.djangoproject.com/en/2.1/topics/templates/) / [atpl.js](https://github.com/soywiz/atpl.js) template engines and can support [liquid templaet engine](https://shopify.github.io/liquid/) too with frontmatter.
+It is a non-strict super set of [twig](https://twig.symfony.com/) / [django](https://docs.djangoproject.com/en/2.1/topics/templates/) / [atpl.js](https://github.com/soywiz/atpl.js) / [jinjava](https://github.com/HubSpot/jinjava) template engines and can support [liquid templaet engine](https://shopify.github.io/liquid/) too with frontmatter.
 
 It has out of the box support for [ktor](https://ktor.io/) and [vert.x](https://vertx.io/).
 
