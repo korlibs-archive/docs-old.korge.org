@@ -5,6 +5,7 @@ title: "KorGE 2nd Game JAM"
 fa-icon: fas fa-trophy 
 entryclass: entry-starred
 priority: -99
+disabled: true
 ---
 
 ## Due date 5th September 2021

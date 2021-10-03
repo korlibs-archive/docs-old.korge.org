@@ -1,5 +1,6 @@
 {%- assign next_level = include.level + 1 -%}
-{%- assign entries = site.pages | sort: "priority", "last" -%}
+{%- assign entries_unfiltered = site.pages | sort: "priority", "last" -%}
+{%- assign entries = entries_unfiltered | where_exp:"item","item.disabled != true" -%}
 <ul>
 {%- for entry in entries -%}
     {%- assign entry_url=entry.url -%}
