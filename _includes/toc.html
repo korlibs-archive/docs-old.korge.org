@@ -34,6 +34,9 @@
                 {% when "todo" %}<span title="Missing Documentation">❓</span>
             {% endcase %}
         </a>
+		{% if include.description and entry.description %}
+		- {{ entry.description }}
+		{% endif %}
 
         {%- if entry.children and is_active -%}
             {%- include toc.html context=entry.children level=next_level -%}

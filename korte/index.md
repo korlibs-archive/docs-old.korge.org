@@ -35,6 +35,10 @@ Live demo (editable) [[source code]](https://github.com/korlibs/korte-samples/bl
 
 {% raw %}
 
+## Pages
+
+{% include toc.html context="/korte/" %}
+
 ## Usage
 
 ### Raw Usage
