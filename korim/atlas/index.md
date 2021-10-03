@@ -2,8 +2,8 @@
 layout: default
 title: "Atlas"
 title_prefix: KorIM
-fa-icon: fa-image
-priority: 60
+fa-icon: fa-atlas
+priority: 50
 ---
 
 KorIM supports creating, loading and saving atlases.

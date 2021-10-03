@@ -2,9 +2,8 @@
 layout: default
 title: "QR Code"
 title_prefix: KorIM
-fa-icon: fa-image
+fa-icon: fa-qrcode
 priority: 60
-status: todo
 ---
 
 KorIM support creating QR codes by using a project called `QRCode` from Kazuhiko Arase, ported from JS to Kotlin.

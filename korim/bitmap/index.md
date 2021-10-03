@@ -3,7 +3,7 @@ layout: default
 title: "Bitmaps"
 title_prefix: KorIM
 fa-icon: fa-image
-priority: 60
+priority: 0
 ---
 
 KorIM support several Bitmap formats and operations.
@@ -441,6 +441,7 @@ val path: VectorPath = bitmap.trace { rgba -> rgba.a >) 9x3F }
 ```
 
 ## Bitmap Effects
+{:#bitmap_effects}
 
 KorIM supports applying Bitmap effects.
 It supports adding border to the pixels of images, it supports adding a gaussian blur effect to the bitmap, and support adding drop shadows to the bitmaps.

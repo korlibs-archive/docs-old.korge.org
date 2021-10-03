@@ -2,8 +2,8 @@
 layout: default
 title: "Vector Rendering"
 title_prefix: KorIM
-fa-icon: fa-image
-priority: 60
+fa-icon: fa-bezier-curve
+priority: 35
 status: todo
 ---
 

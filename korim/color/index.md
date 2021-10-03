@@ -2,8 +2,8 @@
 layout: default
 title: "Colors"
 title_prefix: KorIM
-fa-icon: fa-image
-priority: 60
+fa-icon: fa-palette
+priority: 10
 ---
 
 KorIM support several color formats, packed inline classes and conversion between them
