@@ -142,13 +142,15 @@ class DocIndex {
         allWords.sortBy(it => this.getRepetition(it));
         if (allWords.length == 0)
             return [];
+        console.info(allWords);
         const sectionsToSearch = [...(this.wordsToSection.get(allWords[0]) || [])];
-        const intersectionSections = sectionsToSearch
+        const intersectionSections = [...sectionsToSearch]
             .filterUpTo(maxResults, (section) => {
             return tokenizedText
                 .all((token) => {
                 let words = this.findWords(token);
-                const res = words.any((word) => section.words.has(word));
+                const res = words.any((word) => section.hasWord(word));
+                console.log("words", words, "res", res, section, "match", section.matches(tokenizedText));
                 if (!res)
                     return false;
                 return true;
@@ -207,8 +209,15 @@ class DocSection {
             this.titles = [...parentSection.titles, title];
         }
         else {
-            this.titles = [title];
+            this.titles = (title.length) ? [title] : [];
         }
+    }
+    hasWord(word) {
+        for (const w of this.words.keys()) {
+            if (w.indexOf(word) >= 0)
+                return true;
+        }
+        return false;
     }
     addText(text) {
         const words = TextProcessor.tokenize(text.toLowerCase());
@@ -310,9 +319,14 @@ async function getIndex() {
     }
     return index;
 }
-async function main() {
-    const index = await getIndex();
-    window.searchIndex = index;
+async function getIndexOnce() {
+    var _a;
+    (_a = window).searchIndexPromise || (_a.searchIndexPromise = getIndex());
+    window.searchIndex = await window.searchIndexPromise;
+    return window.searchIndex;
+}
+async function newSearchMain() {
+    const index = await getIndexOnce();
     console.log("ready");
     const searchBox = document.querySelector("input#searchbox");
     if (searchBox) {
@@ -322,7 +336,10 @@ async function main() {
             if (lastText != currentText) {
                 lastText = currentText;
                 console.clear();
+                const time0 = Date.now();
                 const results = index.query(currentText, 7);
+                const time1 = Date.now();
+                console.info("Results in", time1 - time0);
                 for (const result of results) {
                     console.log("###", result.doc.url, result.doc.title, result.score);
                     for (const res of result.results) {
@@ -333,4 +350,3 @@ async function main() {
         });
     }
 }
-main();

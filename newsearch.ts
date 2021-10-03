@@ -162,15 +162,17 @@ class DocIndex {
 		allWords.sortBy(it => this.getRepetition(it))
 		if (allWords.length == 0) return []
 
+		console.info(allWords)
+
 		const sectionsToSearch = [...(this.wordsToSection.get(allWords[0]) || [])]
 
-		const intersectionSections = sectionsToSearch
+		const intersectionSections = [...sectionsToSearch]
 			.filterUpTo(maxResults, (section) => {
 				return tokenizedText
 					.all((token) => {
 						let words = this.findWords(token);
-						const res = words.any((word) => section.words.has(word))
-						//console.log("words", words, "res", res, section, "match", section.matches(tokenizedText))
+						const res = words.any((word) => section.hasWord(word))
+						console.log("words", words, "res", res, section, "match", section.matches(tokenizedText))
 						if (!res) return false
 						//return section.matches(tokenizedText) != null
 						return true
@@ -229,8 +231,16 @@ class DocSection {
 		if (parentSection) {
 			this.titles = [...parentSection.titles, title]
 		} else {
-			this.titles = [title]
+			this.titles = (title.length) ? [title] : []
 		}
+	}
+
+	hasWord(word: string): boolean {
+		for (const w of this.words.keys()) {
+			if (w.indexOf(word) >= 0) return true
+		}
+		//return this.words.has(word)
+		return false
 	}
 
 	addText(text: string) {
@@ -345,9 +355,14 @@ async function getIndex() {
 	return index
 }
 
-async function main() {
-	const index = await getIndex();
-	(window as any).searchIndex = index
+async function getIndexOnce() {
+	(window as any).searchIndexPromise ||= getIndex();
+	(window as any).searchIndex = await (window as any).searchIndexPromise;
+	return (window as any).searchIndex;
+}
+
+async function newSearchMain() {
+	const index = await getIndexOnce();
 	console.log("ready")
 
 	const searchBox: HTMLInputElement|undefined = document.querySelector("input#searchbox") as any;
@@ -358,7 +373,10 @@ async function main() {
 			if (lastText != currentText) {
 				lastText = currentText
 				console.clear()
+				const time0 = Date.now()
 				const results = index.query(currentText, 7)
+				const time1 = Date.now()
+				console.info("Results in", time1 - time0)
 				for (const result of results) {
 					console.log("###", result.doc.url, result.doc.title, result.score)
 					for (const res of result.results) {
@@ -370,4 +388,3 @@ async function main() {
 		})
 	}
 }
-main()
