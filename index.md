@@ -5,7 +5,7 @@ fa-icon: fa-home
 permalink: /
 ---
 
-<img src="/i/logos/korlibs.svg" width="180" height="180" style="float:left;margin-right:16px;"/>
+<img src="/i/logos/korlibs.svg" width="64" height="64" style="float:left;margin-right:16px;"/>
 
 **Korlibs** is a set of Kotlin Common modern libraries to do full stack development aiming Kotlin 1.3.
 

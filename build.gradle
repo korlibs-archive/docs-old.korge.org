@@ -1,7 +1,0 @@
-apply plugin: 'idea'
-
-idea {
-    module {
-        excludeDirs = [".gradle", ".idea", ".sass-cache", ".vscode", "_site", "@old"].collect { new File(it) }
-    }
-}
