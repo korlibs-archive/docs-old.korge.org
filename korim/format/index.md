@@ -236,7 +236,7 @@ Supports reading krita image files.
 
 Supports reading and writing PNG (Portable Network Graphics) files.
 
-### PSD
+### PSD
 
 Supports reading PSD files (only the flattened global layer for now)
 

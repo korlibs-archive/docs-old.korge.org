@@ -143,7 +143,7 @@ You can create a new image scaling another image, to a new size, and using a `Sc
 val resized = bitmap.resized(width, height, ScaleMode.COVER, Anchor.CENTER, native = true)
 ```
 
-## ScaleMode
+## ScaleMode
 
 For resizing we have different ScaleMode strategies
 
@@ -318,7 +318,7 @@ val halfSizeBitmap = bitmap.mipmap(1) // [width,height] / 2
 val quarterSizeBitmap = bitmap.mipmap(2) // [width,height] / 4
 ```
 
-### Generate a scaled image
+### Generate a scaled image
 
 ```kotlin
 val scaled = scaleNearest(0.5, 0.5) // half the size nearest neighborhood
