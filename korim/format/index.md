@@ -4,6 +4,7 @@ title: "Image Formats"
 title_prefix: KorIM
 fa-icon: fa-file-image
 priority: 20
+status: new
 ---
 
 KorIM support creating, loading and saving different image formats.

@@ -4,6 +4,7 @@ title: "Text"
 title_prefix: KorIM
 fa-icon: fa-font
 priority: 40
+status: new
 ---
 
 KorIM support creating, rendering, and measuring TTF Vector fonts and Bitmap fonts. In addition it support generating bitmap fonts on the fly, and storing them.

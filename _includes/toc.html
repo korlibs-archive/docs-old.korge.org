@@ -26,12 +26,12 @@
             {%- endif -%}
             {{ entry.title }}
             {% case entry.status %}
-                {% when "new" %}<span class="label label-success" style="opacity: 0.9">New</span>
-                {% when "updated" %}<span class="label label-info" style="opacity: 0.9">Updated</span>
-                {% when "outdated" %}<span class="label label-default" style="opacity: 0.2">Outdated Doc.</span>
-                {% when "incomplete" %}<span class="label label-warning" style="opacity: 0.2">Partial Doc.</span>
-                {% when "experimental" %}<span class="label label-warning" style="opacity: 0.2">Experimental</span>
-                {% when "todo" %}<span class="label label-danger" style="opacity: 0.2">Missing Doc.</span>
+                {% when "new" %}<span title="New Documentation">🆕</span>
+                {% when "updated" %}<span title="Updated">🌟</span>
+                {% when "outdated" %}<span title="Outdated Documentation">🕰</span>
+                {% when "incomplete" %}<span title="Partial Documentation">🧩</span>
+                {% when "experimental" %}<span title="Experimental">🛠</span>
+                {% when "todo" %}<span title="Missing Documentation">❓</span>
             {% endcase %}
         </a>
 

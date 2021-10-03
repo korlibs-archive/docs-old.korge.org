@@ -4,6 +4,7 @@ title: "Atlas"
 title_prefix: KorIM
 fa-icon: fa-atlas
 priority: 50
+status: new
 ---
 
 KorIM supports creating, loading and saving atlases.
