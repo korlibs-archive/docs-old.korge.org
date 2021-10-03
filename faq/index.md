@@ -156,30 +156,20 @@ In normal circumstances, bugs and sponsored tickets coming from sponsors are don
 There is a Kanban board at GitHub here where you can see the progress and the current prioritization:
 <https://github.com/orgs/korlibs/projects/1>
 
-## Contributing
-{:#contributing}
-
-This is an Opensource project.
-That means that it is **free of charge**, and that you can **see**, **modify** and **suggest changes** to the source code.
-The whole project stack is opensource, so you can contribute to this project itself, the documentation or even the blog.
-
-Think that this is a huge project that has been initially developed by a single person, and that requires a lot of time.
-So probably it will have some rough edges. But you can help to improve it!
-
-### How can I close a KorGE Game Window programatically?
+## How can I close a KorGE Game Window programatically?
 {:#close_window}
 
 ```korge
 views.gameWindow.close()
 ```
 
-### e: Unable to compile C bridges
+## e: Unable to compile C bridges
 
 ```bash
 sudo apt install libncurses5
 ```
 
-### e: This declaration is experimental and its usage must be marked with '@kotlin.time.ExperimentalTime' 
+## e: This declaration is experimental and its usage must be marked with '@kotlin.time.ExperimentalTime' 
 
 ```
 /build/platforms/native-desktop/bootstrap.kt: (5, 98): This declaration is experimental and its usage must be marked with '@kotlin.time.ExperimentalTime' or '@OptIn(kotlin.time.ExperimentalTime::class)'
@@ -187,18 +177,6 @@ sudo apt install libncurses5
 
 If you main entry point of Korge is using `@ExperimentalTime` or other experimental APIs
 you have to replace it with `@OptIn(ExperimentalClass::class)` eg. `@OptIn(ExperimentalTime::class)`.
-
-
-### Contributing to the documentation
-{:#contributing-docs}
-
-Did you find **something wrong**,  **misleading** or **confusing**? Or just want to add more content to the documentation?
-
-All the documentation is hosted at github using github pages and [jekyll](https://jekyllrb.com/):
-
-<https://github.com/korlibs/korlibs.soywiz.com>
-
-In order to make it easier to contribute, each page of the documentation contains a pencil link, that sends you to the github page of the documentation to modify the file itself.
 
 ## How is KorGE pronounced
 {:#korge-pronunciation}
