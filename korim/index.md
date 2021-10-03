@@ -22,7 +22,7 @@ Also allows to use native image loaders for fastest performance.
 
 {% include toc_include.md %}
 
-## Pages:
+## Pages
 
 {% include toc.html context="/korim/" %}
 
