@@ -200,13 +200,12 @@ class DocIndex {
 	query(text: string, maxResults: number = 7, debug: boolean = false): DocQueryResult[] {
 		const tokenizedText = this.tokenize(text)
 		let allWordsSep = tokenizedText.map(it => this.findWords(it));
-		let allWords = tokenizedText.flatMap(it => this.findWords(it)).unique().slice(0, 20);
 		// Find the less frequent word
 		//allWords.sortBy(it => this.getRepetition(it))
 
 		if (debug) console.info(JSON.stringify(allWordsSep), tokenizedText)
 
-		if (allWords.length == 0) return []
+		if (allWordsSep.length == 0) return []
 
 		let intersectionSections = new Set<DocSection>()
 
@@ -397,8 +396,12 @@ class DocIndexer {
 		if (tagName == 'title') {
 			this.doc.title = element.textContent || ""
 		}
-		if (tagName == 'code') {
-		//if (false) {
+		if (tagName == 'pre') {
+			for (const line of (element.textContent || "").split(/\n/g)) {
+				this.section.addText(line);
+			}
+
+			//if (false) {
 			// Skip
 		} else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
 			this.section.addText(element.textContent || "");

@@ -173,10 +173,9 @@ class DocIndex {
     query(text, maxResults = 7, debug = false) {
         const tokenizedText = this.tokenize(text);
         let allWordsSep = tokenizedText.map(it => this.findWords(it));
-        let allWords = tokenizedText.flatMap(it => this.findWords(it)).unique().slice(0, 20);
         if (debug)
             console.info(JSON.stringify(allWordsSep), tokenizedText);
-        if (allWords.length == 0)
+        if (allWordsSep.length == 0)
             return [];
         let intersectionSections = new Set();
         let exploredSections = new Set();
@@ -355,7 +354,10 @@ class DocIndexer {
         if (tagName == 'title') {
             this.doc.title = element.textContent || "";
         }
-        if (tagName == 'code') {
+        if (tagName == 'pre') {
+            for (const line of (element.textContent || "").split(/\n/g)) {
+                this.section.addText(line);
+            }
         }
         else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
             this.section.addText(element.textContent || "");
