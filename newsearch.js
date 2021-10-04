@@ -77,13 +77,22 @@ const replacements = new Map();
 replacements.set("an", "a");
 class TextProcessor {
     static tokenize(text) {
-        return text.split(/\W+/g)
-            .map(it => it.trim())
-            .map(it => it.replace(/c/g, 'k'))
-            .map(it => it.replace(/l+/g, 'l'))
-            .map(it => it.replace(/s+$/g, ''))
-            .map(it => replacements.get(it) || it)
-            .filter(it => it.length > 0);
+        const out = [];
+        for (const it of text.toLowerCase().split(/\W+/g)) {
+            const res = it.trim().replace(/c/g, 'k').replace(/l+/g, 'l').replace(/s+$/g, '');
+            const res2 = replacements.get(res) || res;
+            if (res2.length > 0) {
+                out.push(res2);
+            }
+        }
+        return out;
+    }
+}
+class TokenizedText {
+    constructor(text, words = TextProcessor.tokenize(text).unique()) {
+        this.text = text;
+        this.words = words;
+        this.length = words.length;
     }
 }
 class QueryResult {
@@ -91,7 +100,7 @@ class QueryResult {
         this.text = text;
         this.words = words;
         this.section = section;
-        this.paragraph = section.matches(words) ?? section.matchesAny(words);
+        this.paragraph = section.matches(words) ?? section.matchesAnyOrder(words) ?? section.matchesAny(words);
         this.score = 0;
         const sectionFullTitle = section.titles.join(" ").toLowerCase();
         for (const word of words) {
@@ -128,11 +137,8 @@ class DocIndex {
         this.allWords = new Set();
         this.wordsToSection = new Map();
     }
-    tokenize(text) {
-        return TextProcessor.tokenize(text.toLowerCase()).unique();
-    }
     addWords(section, text) {
-        const words = new Set(this.tokenize(text));
+        const words = new Set(text.words);
         for (const word of words) {
             if (word.length == 0)
                 continue;
@@ -171,7 +177,7 @@ class DocIndex {
         return sum;
     }
     query(text, maxResults = 7, debug = false) {
-        const tokenizedText = this.tokenize(text);
+        const tokenizedText = new TokenizedText(text).words;
         let allWordsSep = tokenizedText.map(it => this.findWords(it));
         if (debug)
             console.info(JSON.stringify(allWordsSep), tokenizedText);
@@ -224,10 +230,11 @@ class DocParagraphResult {
     }
 }
 class DocParagraph {
-    constructor(text, words = TextProcessor.tokenize(text.toLowerCase())) {
-        this.text = text;
-        this.words = words;
+    constructor(texts) {
+        this.texts = texts;
     }
+    get text() { return this.texts.text; }
+    get words() { return this.texts.words; }
     matchesWord(word, origin) {
         return origin.toLowerCase().indexOf(word.toLowerCase()) >= 0;
     }
@@ -247,12 +254,19 @@ class DocParagraph {
         }
         return null;
     }
-    matchesAny(words) {
+    matchesAnyOrder(words) {
         for (const word of words) {
             if (!this.words.any(it => this.matchesWord(word, it)))
                 return null;
         }
         return new DocParagraphResult(this, 0, this.words.length);
+    }
+    matchesAny(words) {
+        for (const word of words) {
+            if (this.words.any(it => this.matchesWord(word, it)))
+                return new DocParagraphResult(this, 0, this.words.length);
+        }
+        return null;
     }
 }
 class DocSection {
@@ -281,14 +295,18 @@ class DocSection {
         return false;
     }
     addText(text) {
-        const words = TextProcessor.tokenize(text.toLowerCase());
+        if (text.length == 0)
+            return;
         this.paragraphs.push(new DocParagraph(text));
         this.doc.index.addWords(this, text);
-        for (const word of words) {
+        for (const word of text.words) {
             if (!this.words.has(word))
                 this.words.set(word, 0);
             this.words.set(word, this.words.get(word) + 1);
         }
+    }
+    addRawText(text) {
+        this.addText(new TokenizedText(text));
     }
     matches(words) {
         for (const p of this.paragraphs) {
@@ -298,13 +316,24 @@ class DocSection {
         }
         return null;
     }
-    matchesAny(words) {
+    matchesAnyOrder(words) {
         for (const p of this.paragraphs) {
-            const result = p.matchesAny(words);
+            const result = p.matchesAnyOrder(words);
             if (result)
                 return result;
         }
         return null;
+    }
+    matchesAny(words) {
+        if (this.paragraphs.length == 0)
+            return null;
+        for (let n = 1; n < this.paragraphs.length; n++) {
+            const p = this.paragraphs[n];
+            const result = p.matchesAny(words);
+            if (result)
+                return result;
+        }
+        return this.paragraphs[0].matchesAny(words);
     }
 }
 class Doc {
@@ -346,7 +375,11 @@ class DocIndexer {
             const headerNum = this.getHNum(tagName);
             const textContent = element.textContent || "";
             this.section = this.doc.createSection(id, textContent, this.hSections[headerNum - 1]);
-            this.section.addText(textContent);
+            this.section.addRawText(this.doc.title);
+            for (const title of this.section.titles) {
+                this.section.addRawText(title);
+            }
+            this.section.addRawText(textContent);
             if (headerNum >= 0) {
                 this.hSections[headerNum] = this.section;
             }
@@ -356,11 +389,11 @@ class DocIndexer {
         }
         if (tagName == 'pre') {
             for (const line of (element.textContent || "").split(/\n/g)) {
-                this.section.addText(line);
+                this.section.addRawText(line);
             }
         }
         else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
-            this.section.addText(element.textContent || "");
+            this.section.addRawText(element.textContent || "");
         }
         else {
             for (let n = 0; n < children.length; n++) {
@@ -371,12 +404,15 @@ class DocIndexer {
     }
 }
 async function fetchParts() {
+    const time0 = Date.now();
     let response = await fetch("/all.html");
     let text = await response.text();
+    const time1 = Date.now();
+    console.log("Fetched all.html in", time1 - time0);
     return text.split("!!!$PAGE$!!!");
 }
-async function getIndex() {
-    let parts = await fetchParts();
+function createIndexFromParts(parts) {
+    const time0 = Date.now();
     const parser = new DOMParser();
     const index = new DocIndex();
     for (const part of parts) {
@@ -389,7 +425,13 @@ async function getIndex() {
         const indexer = new DocIndexer(index, url);
         indexer.index(xmlDoc.documentElement);
     }
+    const time1 = Date.now();
+    console.log("Created index in", time1 - time0);
     return index;
+}
+async function getIndex() {
+    const parts = await fetchParts();
+    return createIndexFromParts(parts);
 }
 async function getIndexOnce() {
     var _a;

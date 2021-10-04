@@ -92,14 +92,22 @@ replacements.set("an", "a")
 
 class TextProcessor {
 	static tokenize(text: string): string[] {
-		return text.split(/\W+/g)
-			.map(it => it.trim())
-			.map(it => it.replace(/c/g, 'k'))
-			.map(it => it.replace(/l+/g, 'l'))
-			.map(it => it.replace(/s+$/g, ''))
-			//.map(it => it.replace(/(ly|ive|s+)+$/, ''))
-			.map(it => replacements.get(it) || it)
-			.filter(it => it.length > 0)
+		const out = []
+		for (const it of text.toLowerCase().split(/\W+/g)) {
+			const res = it.trim().replace(/c/g, 'k').replace(/l+/g, 'l').replace(/s+$/g, '')
+			const res2 = replacements.get(res) || res
+			if (res2.length > 0) {
+				out.push(res2)
+			}
+		}
+		return out
+	}
+}
+
+class TokenizedText {
+	public length: number
+	constructor(public text: string, public words: string[] = TextProcessor.tokenize(text).unique()) {
+		this.length = words.length
 	}
 }
 
@@ -109,7 +117,7 @@ class QueryResult {
 	public score: number
 
 	constructor(public text: string, public words: string[], public section: DocSection) {
-		this.paragraph = section.matches(words) ?? section.matchesAny(words)
+		this.paragraph = section.matches(words) ?? section.matchesAnyOrder(words) ?? section.matchesAny(words)
 		this.score = 0
 		const sectionFullTitle = section.titles.join(" ").toLowerCase()
 		for (const word of words) {
@@ -147,12 +155,8 @@ class DocIndex {
 	wordsToSection = new Map<string, Set<DocSection>>()
 	//wordsToDoc = new Map<string, Set<Doc>>()
 
-	tokenize(text: string): string[] {
-		return TextProcessor.tokenize(text.toLowerCase()).unique()
-	}
-
-	addWords(section: DocSection, text: string) {
-		const words = new Set(this.tokenize(text))
+	addWords(section: DocSection, text: TokenizedText) {
+		const words = new Set(text.words)
 		for (const word of words) {
 			if (word.length == 0) continue
 			if (!this.wordsToSection.has(word)) this.wordsToSection.set(word, new Set())
@@ -198,7 +202,7 @@ class DocIndex {
 	}
 
 	query(text: string, maxResults: number = 7, debug: boolean = false): DocQueryResult[] {
-		const tokenizedText = this.tokenize(text)
+		const tokenizedText = new TokenizedText(text).words
 		let allWordsSep = tokenizedText.map(it => this.findWords(it));
 		// Find the less frequent word
 		//allWords.sortBy(it => this.getRepetition(it))
@@ -263,8 +267,11 @@ class DocParagraphResult {
 }
 
 class DocParagraph {
-	constructor(public text: string, public words: string[] = TextProcessor.tokenize(text.toLowerCase())) {
+	constructor(public texts: TokenizedText) {
 	}
+
+	get text() { return this.texts.text }
+	get words() { return this.texts.words }
 
 	matchesWord(word: string, origin: string): boolean {
 		return origin.toLowerCase().indexOf(word.toLowerCase()) >= 0
@@ -287,11 +294,17 @@ class DocParagraph {
 		return null
 	}
 
-	matchesAny(words: string[]): DocParagraphResult|null {
+	matchesAnyOrder(words: string[]): DocParagraphResult|null {
 		for (const word of words) {
 			if (!this.words.any(it => this.matchesWord(word, it))) return null
 		}
 		return new DocParagraphResult(this, 0, this.words.length)
+	}
+	matchesAny(words: string[]): DocParagraphResult|null {
+		for (const word of words) {
+			if (this.words.any(it => this.matchesWord(word, it))) return new DocParagraphResult(this, 0, this.words.length)
+		}
+		return null
 	}
 }
 
@@ -316,14 +329,18 @@ class DocSection {
 		return false
 	}
 
-	addText(text: string) {
-		const words = TextProcessor.tokenize(text.toLowerCase())
+	addText(text: TokenizedText) {
+		if (text.length == 0) return
 		this.paragraphs.push(new DocParagraph(text))
 		this.doc.index.addWords(this, text);
-		for (const word of words) {
+		for (const word of text.words) {
 			if (!this.words.has(word)) this.words.set(word, 0)
 			this.words.set(word, this.words.get(word)! + 1)
 		}
+	}
+
+	addRawText(text: string) {
+		this.addText(new TokenizedText(text))
 	}
 
 	matches(words: string[]): DocParagraphResult|null {
@@ -334,12 +351,22 @@ class DocSection {
 		return null
 	}
 
-	matchesAny(words: string[]): DocParagraphResult|null {
+	matchesAnyOrder(words: string[]): DocParagraphResult|null {
 		for (const p of this.paragraphs) {
-			const result = p.matchesAny(words)
+			const result = p.matchesAnyOrder(words)
 			if (result) return result
 		}
 		return null
+	}
+
+	matchesAny(words: string[]): DocParagraphResult|null {
+		if (this.paragraphs.length == 0) return null
+		for (let n = 1; n < this.paragraphs.length; n++) {
+			const p = this.paragraphs[n]
+			const result = p.matchesAny(words)
+			if (result) return result
+		}
+		return this.paragraphs[0].matchesAny(words)
 	}
 }
 
@@ -388,7 +415,11 @@ class DocIndexer {
 			const headerNum = this.getHNum(tagName)
 			const textContent = element.textContent || ""
 			this.section = this.doc.createSection(id, textContent, this.hSections[headerNum - 1])
-			this.section.addText(textContent)
+			this.section.addRawText(this.doc.title)
+			for (const title of this.section.titles) {
+				this.section.addRawText(title)
+			}
+			this.section.addRawText(textContent)
 			if (headerNum >= 0) {
 				this.hSections[headerNum] = this.section
 			}
@@ -398,13 +429,13 @@ class DocIndexer {
 		}
 		if (tagName == 'pre') {
 			for (const line of (element.textContent || "").split(/\n/g)) {
-				this.section.addText(line);
+				this.section.addRawText(line);
 			}
 
 			//if (false) {
 			// Skip
 		} else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
-			this.section.addText(element.textContent || "");
+			this.section.addRawText(element.textContent || "");
 		} else {
 			for (let n = 0; n < children.length; n++) {
 				const child = children[n];
@@ -416,13 +447,16 @@ class DocIndexer {
 }
 
 async function fetchParts() {
+	const time0 = Date.now()
 	let response = await fetch("/all.html");
 	let text = await response.text()
+	const time1 = Date.now()
+	console.log("Fetched all.html in", time1 - time0)
 	return text.split("!!!$PAGE$!!!")
 }
 
-async function getIndex(): Promise<DocIndex> {
-	let parts = await fetchParts()
+function createIndexFromParts(parts: string[]) {
+	const time0 = Date.now()
 	//console.log(parts.length);
 	const parser = new DOMParser();
 	const index = new DocIndex();
@@ -437,7 +471,15 @@ async function getIndex(): Promise<DocIndex> {
 		const indexer = new DocIndexer(index, url);
 		indexer.index(xmlDoc.documentElement)
 	}
+	const time1 = Date.now()
+	console.log("Created index in", time1 - time0)
 	return index
+}
+
+async function getIndex(): Promise<DocIndex> {
+	const parts = await fetchParts()
+	//setInterval(() => { createIndexFromParts(parts) }, 500)
+	return createIndexFromParts(parts)
 }
 
 async function getIndexOnce(): Promise<DocIndex> {
