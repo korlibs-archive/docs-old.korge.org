@@ -1,0 +1,32 @@
+.newsearch {
+	border: 2px solid black;
+	padding: 16px;
+	min-width: 200px;
+	max-width: 40vw;
+	width: 400px;
+}
+.newsearch h2 {
+	border-bottom: 1px solid black;
+}
+.newsearch .block {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 1em;
+}
+.newsearch .block.active {
+	background: #999;
+}
+.newsearch .block .section {
+	min-width: 40%;
+	max-width: 40%;
+	padding-right: 1em;
+	box-sizing: border-box;
+}
+.newsearch .block .content {
+	box-sizing: border-box;
+	min-width: 60%;
+	max-width: 60%;
+	text-wrap: normal;
+	white-space: pre-wrap;
+}

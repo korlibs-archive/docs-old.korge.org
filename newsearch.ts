@@ -145,6 +145,15 @@ class DocQueryResult {
 	}
 }
 
+interface DocStats {
+	iterations: number
+}
+
+class DocQueryResultResult implements DocStats {
+	constructor(public results: DocQueryResult[], public wordsInIndex: number, public iterations: number = 0, public queryTimeMs: number = 0) {
+	}
+}
+
 class WordWithVariants {
 	constructor(public words: string[]) {
 	}
@@ -201,7 +210,8 @@ class DocIndex {
 		return sum
 	}
 
-	query(text: string, maxResults: number = 7, debug: boolean = false): DocQueryResult[] {
+	query(text: string, maxResults: number = 7, debug: boolean = false): DocQueryResultResult {
+		const time0 = Date.now()
 		const tokenizedText = new TokenizedText(text).words
 		let allWordsSep = tokenizedText.map(it => this.findWords(it));
 		// Find the less frequent word
@@ -209,7 +219,7 @@ class DocIndex {
 
 		if (debug) console.info(JSON.stringify(allWordsSep), tokenizedText)
 
-		if (allWordsSep.length == 0) return []
+		if (allWordsSep.length == 0) return new DocQueryResultResult([], this.wordsToSection.size)
 
 		let intersectionSections = new Set<DocSection>()
 
@@ -249,12 +259,14 @@ class DocIndex {
 
 
 		//console.log(intersectionSections)
-		return [...intersectionSections]
+		const results = [...intersectionSections]
 			.slice(0, maxResults)
 			.map(it => new QueryResult(text, tokenizedText, it))
 			.groupBy(it => it.doc)
 			.map((key, value) => new DocQueryResult(key, value))
 			.sortedBy(it => -it.score)
+		const time1 = Date.now()
+		return new DocQueryResultResult(results, this.wordsToSection.size, 0, time1 - time0)
 	}
 }
 
@@ -266,8 +278,12 @@ class DocParagraphResult {
 	}
 }
 
+enum DocParagraphKind {
+	TEXT, PRE, TITLE, SUBTITLE
+}
+
 class DocParagraph {
-	constructor(public texts: TokenizedText) {
+	constructor(public texts: TokenizedText, public kind: DocParagraphKind) {
 	}
 
 	get text() { return this.texts.text }
@@ -329,9 +345,9 @@ class DocSection {
 		return false
 	}
 
-	addText(text: TokenizedText) {
+	addText(text: TokenizedText, kind: DocParagraphKind) {
 		if (text.length == 0) return
-		this.paragraphs.push(new DocParagraph(text))
+		this.paragraphs.push(new DocParagraph(text, kind))
 		this.doc.index.addWords(this, text);
 		for (const word of text.words) {
 			if (!this.words.has(word)) this.words.set(word, 0)
@@ -339,8 +355,8 @@ class DocSection {
 		}
 	}
 
-	addRawText(text: string) {
-		this.addText(new TokenizedText(text))
+	addRawText(text: string, kind: DocParagraphKind) {
+		this.addText(new TokenizedText(text), kind)
 	}
 
 	matches(words: string[]): DocParagraphResult|null {
@@ -415,11 +431,11 @@ class DocIndexer {
 			const headerNum = this.getHNum(tagName)
 			const textContent = element.textContent || ""
 			this.section = this.doc.createSection(id, textContent, this.hSections[headerNum - 1])
-			this.section.addRawText(this.doc.title)
+			this.section.addRawText(this.doc.title, DocParagraphKind.TITLE)
 			for (const title of this.section.titles) {
-				this.section.addRawText(title)
+				this.section.addRawText(title, DocParagraphKind.SUBTITLE)
 			}
-			this.section.addRawText(textContent)
+			this.section.addRawText(textContent, DocParagraphKind.TEXT)
 			if (headerNum >= 0) {
 				this.hSections[headerNum] = this.section
 			}
@@ -429,13 +445,13 @@ class DocIndexer {
 		}
 		if (tagName == 'pre') {
 			for (const line of (element.textContent || "").split(/\n/g)) {
-				this.section.addRawText(line);
+				this.section.addRawText(line, DocParagraphKind.PRE);
 			}
 
 			//if (false) {
 			// Skip
 		} else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
-			this.section.addRawText(element.textContent || "");
+			this.section.addRawText(element.textContent || "", DocParagraphKind.TEXT);
 		} else {
 			for (let n = 0; n < children.length; n++) {
 				const child = children[n];
@@ -488,30 +504,77 @@ async function getIndexOnce(): Promise<DocIndex> {
 	return (window as any).searchIndex;
 }
 
-async function newSearchMain() {
+interface HTMLElement {
+	createChild<K extends keyof HTMLElementTagNameMap>(tagName: K, gen?: (e: HTMLElementTagNameMap[K]) => void): void;
+	createChild(tagName: string, gen?: (e: HTMLElement) => void): HTMLElement
+}
+
+HTMLElement.prototype.createChild = (function(tagName: string, gen?: (e: HTMLElement) => void): HTMLElement {
+	const element = document.createElement(tagName)
+	if (gen) {
+		gen(element)
+	}
+	this.appendChild(element)
+	return element
+})
+
+function html(name: string) {
+
+}
+
+async function newSearchHook(query: string) {
 	const index = await getIndexOnce();
 	console.log("ready")
 
-	const searchBox: HTMLInputElement|undefined = document.querySelector("input#searchbox") as any;
+	const searchBox: HTMLInputElement|undefined = document.querySelector(query) as any;
+
+	const searchResults = document.createElement("div")
+	searchResults.classList.add("newsearch")
+	document.body.appendChild(searchResults)
+
 	if (searchBox) {
 		let lastText = ''
 		searchBox.addEventListener("keyup", (e) => {
 			const currentText = searchBox.value
-			if (lastText != currentText) {
-				lastText = currentText
-				console.clear()
-				const time0 = Date.now()
-				const results = index.query(currentText, 7, true)
-				const time1 = Date.now()
-				console.info("Results in", time1 - time0)
-				for (const result of results) {
-					console.log("###", result.doc.url, result.doc.title, result.score)
-					for (const res of result.results) {
-						console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text)
-					}
+			if (lastText == currentText) return
+
+			searchResults.innerHTML = ''
+
+			lastText = currentText
+			console.clear()
+			const results = index.query(currentText, 7, true)
+			console.info("Results in", results.queryTimeMs, "words in index", results.wordsInIndex)
+			for (const result of results.results) {
+				searchResults.createChild("h2", (it) => {
+					it.innerText = result.doc.title
+				})
+
+				console.log("###", result.doc.url, result.doc.title, result.score)
+				for (const res of result.results) {
+					console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text)
+					searchResults.createChild("div", (it) => {
+						it.className = "block"
+						it.createChild("div", (it) => {
+							it.className = "section"
+							it.createChild("a", (it) => {
+								it.href = `${res.doc.url}#${res.section.id}`
+								it.innerText = res.section.titles.join(" > ")
+							})
+						})
+						const isPre = res.paragraph?.paragraph?.kind == DocParagraphKind.PRE
+						it.createChild(isPre ? "pre" : "div", (it) => {
+							it.className = "content"
+							it.innerText = res.paragraph?.paragraph?.text || ""
+						})
+					})
 				}
-				//console.log(searchBox.value)
 			}
+			//console.log(searchBox.value)
 		})
 	}
+}
+
+
+async function newSearchMain() {
+	await newSearchHook("input#searchbox")
 }

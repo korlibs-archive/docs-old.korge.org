@@ -127,6 +127,14 @@ class DocQueryResult {
             this.score += result.score;
     }
 }
+class DocQueryResultResult {
+    constructor(results, wordsInIndex, iterations = 0, queryTimeMs = 0) {
+        this.results = results;
+        this.wordsInIndex = wordsInIndex;
+        this.iterations = iterations;
+        this.queryTimeMs = queryTimeMs;
+    }
+}
 class WordWithVariants {
     constructor(words) {
         this.words = words;
@@ -177,12 +185,13 @@ class DocIndex {
         return sum;
     }
     query(text, maxResults = 7, debug = false) {
+        const time0 = Date.now();
         const tokenizedText = new TokenizedText(text).words;
         let allWordsSep = tokenizedText.map(it => this.findWords(it));
         if (debug)
             console.info(JSON.stringify(allWordsSep), tokenizedText);
         if (allWordsSep.length == 0)
-            return [];
+            return new DocQueryResultResult([], this.wordsToSection.size);
         let intersectionSections = new Set();
         let exploredSections = new Set();
         const allWordsSepSorted = allWordsSep.sortedBy(it => this.getTotalDocuments(it));
@@ -213,12 +222,14 @@ class DocIndex {
                 break;
             }
         }
-        return [...intersectionSections]
+        const results = [...intersectionSections]
             .slice(0, maxResults)
             .map(it => new QueryResult(text, tokenizedText, it))
             .groupBy(it => it.doc)
             .map((key, value) => new DocQueryResult(key, value))
             .sortedBy(it => -it.score);
+        const time1 = Date.now();
+        return new DocQueryResultResult(results, this.wordsToSection.size, 0, time1 - time0);
     }
 }
 class DocParagraphResult {
@@ -229,9 +240,17 @@ class DocParagraphResult {
         this.words = paragraph.words.slice(index, index + count);
     }
 }
+var DocParagraphKind;
+(function (DocParagraphKind) {
+    DocParagraphKind[DocParagraphKind["TEXT"] = 0] = "TEXT";
+    DocParagraphKind[DocParagraphKind["PRE"] = 1] = "PRE";
+    DocParagraphKind[DocParagraphKind["TITLE"] = 2] = "TITLE";
+    DocParagraphKind[DocParagraphKind["SUBTITLE"] = 3] = "SUBTITLE";
+})(DocParagraphKind || (DocParagraphKind = {}));
 class DocParagraph {
-    constructor(texts) {
+    constructor(texts, kind) {
         this.texts = texts;
+        this.kind = kind;
     }
     get text() { return this.texts.text; }
     get words() { return this.texts.words; }
@@ -294,10 +313,10 @@ class DocSection {
         }
         return false;
     }
-    addText(text) {
+    addText(text, kind) {
         if (text.length == 0)
             return;
-        this.paragraphs.push(new DocParagraph(text));
+        this.paragraphs.push(new DocParagraph(text, kind));
         this.doc.index.addWords(this, text);
         for (const word of text.words) {
             if (!this.words.has(word))
@@ -305,8 +324,8 @@ class DocSection {
             this.words.set(word, this.words.get(word) + 1);
         }
     }
-    addRawText(text) {
-        this.addText(new TokenizedText(text));
+    addRawText(text, kind) {
+        this.addText(new TokenizedText(text), kind);
     }
     matches(words) {
         for (const p of this.paragraphs) {
@@ -375,11 +394,11 @@ class DocIndexer {
             const headerNum = this.getHNum(tagName);
             const textContent = element.textContent || "";
             this.section = this.doc.createSection(id, textContent, this.hSections[headerNum - 1]);
-            this.section.addRawText(this.doc.title);
+            this.section.addRawText(this.doc.title, DocParagraphKind.TITLE);
             for (const title of this.section.titles) {
-                this.section.addRawText(title);
+                this.section.addRawText(title, DocParagraphKind.SUBTITLE);
             }
-            this.section.addRawText(textContent);
+            this.section.addRawText(textContent, DocParagraphKind.TEXT);
             if (headerNum >= 0) {
                 this.hSections[headerNum] = this.section;
             }
@@ -389,11 +408,11 @@ class DocIndexer {
         }
         if (tagName == 'pre') {
             for (const line of (element.textContent || "").split(/\n/g)) {
-                this.section.addRawText(line);
+                this.section.addRawText(line, DocParagraphKind.PRE);
             }
         }
         else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
-            this.section.addRawText(element.textContent || "");
+            this.section.addRawText(element.textContent || "", DocParagraphKind.TEXT);
         }
         else {
             for (let n = 0; n < children.length; n++) {
@@ -439,28 +458,61 @@ async function getIndexOnce() {
     window.searchIndex = await window.searchIndexPromise;
     return window.searchIndex;
 }
-async function newSearchMain() {
+HTMLElement.prototype.createChild = (function (tagName, gen) {
+    const element = document.createElement(tagName);
+    if (gen) {
+        gen(element);
+    }
+    this.appendChild(element);
+    return element;
+});
+function html(name) {
+}
+async function newSearchHook(query) {
     const index = await getIndexOnce();
     console.log("ready");
-    const searchBox = document.querySelector("input#searchbox");
+    const searchBox = document.querySelector(query);
+    const searchResults = document.createElement("div");
+    searchResults.classList.add("newsearch");
+    document.body.appendChild(searchResults);
     if (searchBox) {
         let lastText = '';
         searchBox.addEventListener("keyup", (e) => {
             const currentText = searchBox.value;
-            if (lastText != currentText) {
-                lastText = currentText;
-                console.clear();
-                const time0 = Date.now();
-                const results = index.query(currentText, 7, true);
-                const time1 = Date.now();
-                console.info("Results in", time1 - time0);
-                for (const result of results) {
-                    console.log("###", result.doc.url, result.doc.title, result.score);
-                    for (const res of result.results) {
-                        console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text);
-                    }
+            if (lastText == currentText)
+                return;
+            searchResults.innerHTML = '';
+            lastText = currentText;
+            console.clear();
+            const results = index.query(currentText, 7, true);
+            console.info("Results in", results.queryTimeMs, "words in index", results.wordsInIndex);
+            for (const result of results.results) {
+                searchResults.createChild("h2", (it) => {
+                    it.innerText = result.doc.title;
+                });
+                console.log("###", result.doc.url, result.doc.title, result.score);
+                for (const res of result.results) {
+                    console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text);
+                    searchResults.createChild("div", (it) => {
+                        it.className = "block";
+                        it.createChild("div", (it) => {
+                            it.className = "section";
+                            it.createChild("a", (it) => {
+                                it.href = `${res.doc.url}#${res.section.id}`;
+                                it.innerText = res.section.titles.join(" > ");
+                            });
+                        });
+                        const isPre = res.paragraph?.paragraph?.kind == DocParagraphKind.PRE;
+                        it.createChild(isPre ? "pre" : "div", (it) => {
+                            it.className = "content";
+                            it.innerText = res.paragraph?.paragraph?.text || "";
+                        });
+                    });
                 }
             }
         });
     }
+}
+async function newSearchMain() {
+    await newSearchHook("input#searchbox");
 }
