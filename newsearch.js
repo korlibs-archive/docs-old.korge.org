@@ -8,6 +8,17 @@ Map.prototype.map = (function (gen) {
     }
     return out;
 });
+Array.prototype.unique = (function () {
+    const set = new Set();
+    const out = [];
+    for (const it of this) {
+        if (set.has(it))
+            continue;
+        set.add(it);
+        out.push(it);
+    }
+    return out;
+});
 Array.prototype.sorted = (function () {
     const array = this.slice();
     array.sort();
@@ -62,9 +73,17 @@ Array.prototype.groupBy = (function (gen) {
     }
     return out;
 });
+const replacements = new Map();
+replacements.set("an", "a");
 class TextProcessor {
     static tokenize(text) {
-        return text.split(/\W+/g).map(it => it.trim()).filter(it => it.length > 0);
+        return text.split(/\W+/g)
+            .map(it => it.trim())
+            .map(it => it.replace(/c/g, 'k'))
+            .map(it => it.replace(/l+/g, 'l'))
+            .map(it => it.replace(/s+$/g, ''))
+            .map(it => replacements.get(it) || it)
+            .filter(it => it.length > 0);
     }
 }
 class QueryResult {
@@ -72,7 +91,7 @@ class QueryResult {
         this.text = text;
         this.words = words;
         this.section = section;
-        this.paragraph = section.matches(words);
+        this.paragraph = section.matches(words) ?? section.matchesAny(words);
         this.score = 0;
         const sectionFullTitle = section.titles.join(" ").toLowerCase();
         for (const word of words) {
@@ -99,13 +118,18 @@ class DocQueryResult {
             this.score += result.score;
     }
 }
+class WordWithVariants {
+    constructor(words) {
+        this.words = words;
+    }
+}
 class DocIndex {
     constructor() {
         this.allWords = new Set();
         this.wordsToSection = new Map();
     }
     tokenize(text) {
-        return TextProcessor.tokenize(text.toLowerCase());
+        return TextProcessor.tokenize(text.toLowerCase()).unique();
     }
     addWords(section, text) {
         const words = new Set(this.tokenize(text));
@@ -120,43 +144,72 @@ class DocIndex {
     }
     findWords(word) {
         let lcWord = word.toLowerCase();
-        if (this.wordsToSection.has(lcWord)) {
-            return [lcWord];
-        }
         const out = [];
         for (const key of this.allWords.keys()) {
             if (key.indexOf(lcWord) >= 0) {
-                out.push(key);
+                const score = Math.abs(word.length - key.length);
+                out.push([key, score]);
             }
         }
-        return out;
+        out.sortBy(it => {
+            return it[1];
+        });
+        return new WordWithVariants(out.map(it => it[0]).slice(0, 5));
     }
     getRepetition(word) {
         if (!this.wordsToSection.has(word))
             return 0;
         return this.wordsToSection.get(word).size;
     }
-    query(text, maxResults = 7) {
+    getTotalDocuments(words) {
+        let sum = 0;
+        for (const word of words.words) {
+            if (this.wordsToSection.has(word)) {
+                sum += this.wordsToSection.get(word).size;
+            }
+        }
+        return sum;
+    }
+    query(text, maxResults = 7, debug = false) {
         const tokenizedText = this.tokenize(text);
-        let allWords = tokenizedText.flatMap(it => this.findWords(it));
-        allWords.sortBy(it => this.getRepetition(it));
+        let allWordsSep = tokenizedText.map(it => this.findWords(it));
+        let allWords = tokenizedText.flatMap(it => this.findWords(it)).unique().slice(0, 20);
+        if (debug)
+            console.info(JSON.stringify(allWordsSep), tokenizedText);
         if (allWords.length == 0)
             return [];
-        console.info(allWords);
-        const sectionsToSearch = [...(this.wordsToSection.get(allWords[0]) || [])];
-        const intersectionSections = [...sectionsToSearch]
-            .filterUpTo(maxResults, (section) => {
-            return tokenizedText
-                .all((token) => {
-                let words = this.findWords(token);
-                const res = words.any((word) => section.hasWord(word));
-                console.log("words", words, "res", res, section, "match", section.matches(tokenizedText));
-                if (!res)
-                    return false;
-                return true;
+        let intersectionSections = new Set();
+        let exploredSections = new Set();
+        const allWordsSepSorted = allWordsSep.sortedBy(it => this.getTotalDocuments(it));
+        for (const searchWord of allWordsSepSorted[0].words) {
+            const sectionsToSearch = [...(this.wordsToSection.get(searchWord) || [])];
+            const toExploreSections = [];
+            for (const section of sectionsToSearch) {
+                if (exploredSections.has(section))
+                    continue;
+                exploredSections.add(section);
+                toExploreSections.push(section);
+            }
+            const intersectionSectionsPart = [...toExploreSections]
+                .filterUpTo(maxResults, (section) => {
+                return tokenizedText
+                    .all((token) => {
+                    let words = this.findWords(token).words;
+                    const res = words.any((word) => section.hasWord(word));
+                    if (!res)
+                        return false;
+                    return true;
+                });
             });
-        });
-        return intersectionSections
+            for (const part of intersectionSectionsPart) {
+                intersectionSections.add(part);
+            }
+            if (intersectionSections.size >= maxResults) {
+                break;
+            }
+        }
+        return [...intersectionSections]
+            .slice(0, maxResults)
             .map(it => new QueryResult(text, tokenizedText, it))
             .groupBy(it => it.doc)
             .map((key, value) => new DocQueryResult(key, value))
@@ -195,6 +248,13 @@ class DocParagraph {
         }
         return null;
     }
+    matchesAny(words) {
+        for (const word of words) {
+            if (!this.words.any(it => this.matchesWord(word, it)))
+                return null;
+        }
+        return new DocParagraphResult(this, 0, this.words.length);
+    }
 }
 class DocSection {
     constructor(doc, id, title, parentSection) {
@@ -213,6 +273,8 @@ class DocSection {
         }
     }
     hasWord(word) {
+        if (this.words.has(word))
+            return true;
         for (const w of this.words.keys()) {
             if (w.indexOf(word) >= 0)
                 return true;
@@ -232,6 +294,14 @@ class DocSection {
     matches(words) {
         for (const p of this.paragraphs) {
             const result = p.matches(words);
+            if (result)
+                return result;
+        }
+        return null;
+    }
+    matchesAny(words) {
+        for (const p of this.paragraphs) {
+            const result = p.matchesAny(words);
             if (result)
                 return result;
         }
@@ -337,13 +407,13 @@ async function newSearchMain() {
                 lastText = currentText;
                 console.clear();
                 const time0 = Date.now();
-                const results = index.query(currentText, 7);
+                const results = index.query(currentText, 7, true);
                 const time1 = Date.now();
                 console.info("Results in", time1 - time0);
                 for (const result of results) {
                     console.log("###", result.doc.url, result.doc.title, result.score);
                     for (const res of result.results) {
-                        console.log("->", res.section.titles, res.paragraph?.paragraph?.text);
+                        console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text);
                     }
                 }
             }

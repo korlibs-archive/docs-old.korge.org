@@ -24,7 +24,19 @@ interface Array<T> {
 	sortBy<R>(gen: (value: T) => R): void
 	sorted(): T[]
 	sortedBy<R>(gen: (value: T) => R): T[]
+	unique(): T[]
 }
+
+Array.prototype.unique = (function(): any[] {
+	const set = new Set();
+	const out = []
+	for (const it of this) {
+		if (set.has(it)) continue
+		set.add(it)
+		out.push(it)
+	}
+	return out
+})
 
 Array.prototype.sorted = (function(): any[] {
 	const array = this.slice()
@@ -75,9 +87,19 @@ Array.prototype.groupBy = (function (gen: (value: any) => any): Map<any, any> {
 	return out
 })
 
+const replacements = new Map<string, string>()
+replacements.set("an", "a")
+
 class TextProcessor {
 	static tokenize(text: string): string[] {
-		return text.split(/\W+/g).map(it => it.trim()).filter(it => it.length > 0)
+		return text.split(/\W+/g)
+			.map(it => it.trim())
+			.map(it => it.replace(/c/g, 'k'))
+			.map(it => it.replace(/l+/g, 'l'))
+			.map(it => it.replace(/s+$/g, ''))
+			//.map(it => it.replace(/(ly|ive|s+)+$/, ''))
+			.map(it => replacements.get(it) || it)
+			.filter(it => it.length > 0)
 	}
 }
 
@@ -87,7 +109,7 @@ class QueryResult {
 	public score: number
 
 	constructor(public text: string, public words: string[], public section: DocSection) {
-		this.paragraph = section.matches(words)
+		this.paragraph = section.matches(words) ?? section.matchesAny(words)
 		this.score = 0
 		const sectionFullTitle = section.titles.join(" ").toLowerCase()
 		for (const word of words) {
@@ -115,13 +137,18 @@ class DocQueryResult {
 	}
 }
 
+class WordWithVariants {
+	constructor(public words: string[]) {
+	}
+}
+
 class DocIndex {
 	allWords = new Set<string>();
 	wordsToSection = new Map<string, Set<DocSection>>()
 	//wordsToDoc = new Map<string, Set<Doc>>()
 
 	tokenize(text: string): string[] {
-		return TextProcessor.tokenize(text.toLowerCase())
+		return TextProcessor.tokenize(text.toLowerCase()).unique()
 	}
 
 	addWords(section: DocSection, text: string) {
@@ -136,18 +163,23 @@ class DocIndex {
 		}
 	}
 
-	findWords(word: string): string[] {
+	findWords(word: string): WordWithVariants {
 		let lcWord = word.toLowerCase();
-		if (this.wordsToSection.has(lcWord)) {
-			return [lcWord]
-		}
-		const out: string[] = []
+		//if (this.wordsToSection.has(lcWord)) {
+		//	return [lcWord]
+		//}
+		const out: [string, number][] = []
 		for (const key of this.allWords.keys()) {
 			if (key.indexOf(lcWord) >= 0) {
-				out.push(key)
+				const score = Math.abs(word.length - key.length)
+				out.push([key, score])
 			}
 		}
-		return out
+		//console.warn(out)
+		out.sortBy(it => {
+			return it[1]
+		})
+		return new WordWithVariants(out.map(it => it[0]).slice(0, 5))
 	}
 
 	getRepetition(word: string): number {
@@ -155,32 +187,67 @@ class DocIndex {
 		return this.wordsToSection.get(word)!.size
 	}
 
-	query(text: string, maxResults: number = 7): DocQueryResult[] {
+	getTotalDocuments(words: WordWithVariants): number {
+		let sum = 0
+		for (const word of words.words) {
+			if (this.wordsToSection.has(word)) {
+				sum += this.wordsToSection.get(word)!.size
+			}
+		}
+		return sum
+	}
+
+	query(text: string, maxResults: number = 7, debug: boolean = false): DocQueryResult[] {
 		const tokenizedText = this.tokenize(text)
-		let allWords = tokenizedText.flatMap(it => this.findWords(it));
+		let allWordsSep = tokenizedText.map(it => this.findWords(it));
+		let allWords = tokenizedText.flatMap(it => this.findWords(it)).unique().slice(0, 20);
 		// Find the less frequent word
-		allWords.sortBy(it => this.getRepetition(it))
+		//allWords.sortBy(it => this.getRepetition(it))
+
+		if (debug) console.info(JSON.stringify(allWordsSep), tokenizedText)
+
 		if (allWords.length == 0) return []
 
-		console.info(allWords)
+		let intersectionSections = new Set<DocSection>()
 
-		const sectionsToSearch = [...(this.wordsToSection.get(allWords[0]) || [])]
+		let exploredSections = new Set<DocSection>()
 
-		const intersectionSections = [...sectionsToSearch]
-			.filterUpTo(maxResults, (section) => {
-				return tokenizedText
-					.all((token) => {
-						let words = this.findWords(token);
-						const res = words.any((word) => section.hasWord(word))
-						console.log("words", words, "res", res, section, "match", section.matches(tokenizedText))
-						if (!res) return false
-						//return section.matches(tokenizedText) != null
-						return true
-					})
-			})
+		const allWordsSepSorted = allWordsSep.sortedBy(it => this.getTotalDocuments(it))
+
+		for (const searchWord of allWordsSepSorted[0].words) {
+			const sectionsToSearch = [...(this.wordsToSection.get(searchWord) || [])]
+			const toExploreSections = []
+
+			for (const section of sectionsToSearch) {
+				if (exploredSections.has(section)) continue
+				exploredSections.add(section)
+				toExploreSections.push(section)
+			}
+
+			const intersectionSectionsPart = [...toExploreSections]
+				.filterUpTo(maxResults, (section) => {
+					return tokenizedText
+						.all((token) => {
+							let words = this.findWords(token).words;
+							const res = words.any((word) => section.hasWord(word))
+							//console.log("words", words, "res", res, section, "match", section.matches(tokenizedText))
+							if (!res) return false
+							//return section.matches(tokenizedText) != null
+							return true
+						})
+				})
+			for (const part of intersectionSectionsPart) {
+				intersectionSections.add(part)
+			}
+			if (intersectionSections.size >= maxResults) {
+				break
+			}
+		}
+
 
 		//console.log(intersectionSections)
-		return intersectionSections
+		return [...intersectionSections]
+			.slice(0, maxResults)
 			.map(it => new QueryResult(text, tokenizedText, it))
 			.groupBy(it => it.doc)
 			.map((key, value) => new DocQueryResult(key, value))
@@ -220,6 +287,13 @@ class DocParagraph {
 		}
 		return null
 	}
+
+	matchesAny(words: string[]): DocParagraphResult|null {
+		for (const word of words) {
+			if (!this.words.any(it => this.matchesWord(word, it))) return null
+		}
+		return new DocParagraphResult(this, 0, this.words.length)
+	}
 }
 
 class DocSection {
@@ -236,10 +310,10 @@ class DocSection {
 	}
 
 	hasWord(word: string): boolean {
+		if (this.words.has(word)) return true
 		for (const w of this.words.keys()) {
 			if (w.indexOf(word) >= 0) return true
 		}
-		//return this.words.has(word)
 		return false
 	}
 
@@ -256,6 +330,14 @@ class DocSection {
 	matches(words: string[]): DocParagraphResult|null {
 		for (const p of this.paragraphs) {
 			const result = p.matches(words)
+			if (result) return result
+		}
+		return null
+	}
+
+	matchesAny(words: string[]): DocParagraphResult|null {
+		for (const p of this.paragraphs) {
+			const result = p.matchesAny(words)
 			if (result) return result
 		}
 		return null
@@ -336,7 +418,7 @@ async function fetchParts() {
 	return text.split("!!!$PAGE$!!!")
 }
 
-async function getIndex() {
+async function getIndex(): Promise<DocIndex> {
 	let parts = await fetchParts()
 	//console.log(parts.length);
 	const parser = new DOMParser();
@@ -355,7 +437,7 @@ async function getIndex() {
 	return index
 }
 
-async function getIndexOnce() {
+async function getIndexOnce(): Promise<DocIndex> {
 	(window as any).searchIndexPromise ||= getIndex();
 	(window as any).searchIndex = await (window as any).searchIndexPromise;
 	return (window as any).searchIndex;
@@ -374,13 +456,13 @@ async function newSearchMain() {
 				lastText = currentText
 				console.clear()
 				const time0 = Date.now()
-				const results = index.query(currentText, 7)
+				const results = index.query(currentText, 7, true)
 				const time1 = Date.now()
 				console.info("Results in", time1 - time0)
 				for (const result of results) {
 					console.log("###", result.doc.url, result.doc.title, result.score)
 					for (const res of result.results) {
-						console.log("->", res.section.titles, res.paragraph?.paragraph?.text)
+						console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text)
 					}
 				}
 				//console.log(searchBox.value)
