@@ -204,7 +204,8 @@ class DocIndex {
 		out.sortBy(it => {
 			return it[1]
 		})
-		return new WordWithVariants(out.map(it => it[0]).slice(0, 5))
+		//return new WordWithVariants(out.map(it => it[0]).slice(0, 5))
+		return new WordWithVariants(out.map(it => it[0]).slice(0, 15))
 	}
 
 	getRepetition(word: string): number {
@@ -580,8 +581,10 @@ async function newSearchHook(query: string) {
 	}
 
 	let lastText = ''
+	let lastTimeout = 0
 
 	searchBox.addEventListener("keydown", (e) => {
+		clearTimeout(lastTimeout)
 		switch (e.key) {
 			case 'ArrowUp':
 			case 'ArrowDown':
@@ -605,8 +608,6 @@ async function newSearchHook(query: string) {
 			}
 		}
 	})
-
-	let lastTimeout = 0
 
 	searchBox.addEventListener("blur", (e) => {
 		lastTimeout = setTimeout(() => {
@@ -678,8 +679,11 @@ async function newSearchHook(query: string) {
 				div.onmousedown = (e) => {
 					clearTimeout(lastTimeout)
 				}
-				div.onmouseover = (e) => {
+				div.onmousemove = (e) => {
 					setSelectedResult(index)
+				}
+				div.onmouseover = (e) => {
+					//setSelectedResult(index)
 				}
 				foundResults.push(div)
 			})

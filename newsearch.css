@@ -29,7 +29,12 @@
 	margin: 0;
 	margin-bottom: 8px;
 	border-bottom: 1px solid #dddddd;
+	background: transparent;
 }
+.newsearch h2:hover::after {
+	content: ''
+}
+
 .newsearch .block {
 	display: flex;
 	flex-direction: row;
@@ -62,4 +67,10 @@
 	background: #313443;
 	color: #aebcff;
 	font-weight: bold;
+}
+.newsearch pre {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	color: inherit;
 }

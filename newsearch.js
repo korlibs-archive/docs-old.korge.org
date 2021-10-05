@@ -174,7 +174,7 @@ class DocIndex {
         out.sortBy(it => {
             return it[1];
         });
-        return new WordWithVariants(out.map(it => it[0]).slice(0, 5));
+        return new WordWithVariants(out.map(it => it[0]).slice(0, 15));
     }
     getRepetition(word) {
         if (!this.wordsToSection.has(word))
@@ -515,7 +515,9 @@ async function newSearchHook(query) {
         }
     }
     let lastText = '';
+    let lastTimeout = 0;
     searchBox.addEventListener("keydown", (e) => {
+        clearTimeout(lastTimeout);
         switch (e.key) {
             case 'ArrowUp':
             case 'ArrowDown':
@@ -538,7 +540,6 @@ async function newSearchHook(query) {
                 }
         }
     });
-    let lastTimeout = 0;
     searchBox.addEventListener("blur", (e) => {
         lastTimeout = setTimeout(() => {
             searchResults.classList.remove('search-show');
@@ -596,8 +597,10 @@ async function newSearchHook(query) {
                 div.onmousedown = (e) => {
                     clearTimeout(lastTimeout);
                 };
-                div.onmouseover = (e) => {
+                div.onmousemove = (e) => {
                     setSelectedResult(index);
+                };
+                div.onmouseover = (e) => {
                 };
                 foundResults.push(div);
             });
