@@ -16,8 +16,8 @@ Yes. All these libraries are dual licensed under MIT and Apache 2.0 or CC0 Publi
 {:#repos}
 
 * You can find the source code of my libraries: <https://github.com/korlibs> and <https://github.com/soywiz>.
-* I publish all my library binaries at bintray: <https://bintray.com/korlibs/korlibs>.
-* The libraries are also synchronized to jcenter automatically
+* I publish all my library binaries at maven central: <https://search.maven.org/search?q=g:com.soywiz.korlibs.*>.
+* The libraries are also synchronized to maven central automatically
 
 ## I get an error: unable to find library -lGL on Linux
 
@@ -66,10 +66,6 @@ enableFeaturePreview('GRADLE_METADATA')
 
 ### `build.gradle`
 ```groovy
-repositories {
-    jcenter()
-    maven { url = uri("https://dl.bintray.com/korlibs/korlibs/") }
-}
 dependencies {
     implementation("com.soywiz.korlibs.klock:klock:1.6.1")
 }
@@ -109,16 +105,6 @@ You can update it with:
 
 ```bash
 ./gradlew wrapper --gradle-version=5.5.1
-```
-
-### Check that you have the repositories set
-{:#unresolved-repositories}
-
-```groovy
-repositories {
-    jcenter()
-    maven { url = uri("https://dl.bintray.com/korlibs/korlibs/") }
-}
 ```
 
 ## How do I get the current's device resolution on KorGE?

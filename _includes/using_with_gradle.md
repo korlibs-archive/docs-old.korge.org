@@ -7,11 +7,6 @@ Requires `Gradle {{ site.data.versions.gradle }}` (`JVM 8~13`) for building and 
 ```kotlin
 val {{ include.name }}Version = "{{ site.data.versions[include.name] }}"
 
-repositories {
-    maven { url("https://dl.bintray.com/korlibs/korlibs") }
-    jcenter()
-}
-
 // For multiplatform projects
 kotlin {
     sourceSets {

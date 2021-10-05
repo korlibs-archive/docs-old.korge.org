@@ -11,8 +11,8 @@ priority: 1000
 ## Understanding versions and the `.m2` folder
 
 Korlibs use Gradle and Kotlin-Multiplatform.
-All the libraries check and use the Maven Local `.m2` folder first, then check jcenter
-and then bintray. All the projects have a `gradle.properties` file describing the versions.
+All the libraries check and use the Maven Local `.m2` folder first, then check Maven Central.
+All the projects have a `gradle.properties` file describing the versions.
 
 In order to try changes locally you have to compile the libraries via gradle and publish them
 into your `.m2` folder.

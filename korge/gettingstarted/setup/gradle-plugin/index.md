@@ -79,7 +79,6 @@ import com.soywiz.korge.gradle.*
 buildscript {
 	repositories {
 		mavenLocal()
-		maven { url = uri("https://dl.bintray.com/korlibs/korlibs") }
 		maven { url = uri("https://plugins.gradle.org/m2/") }
 		mavenCentral()
 	}
@@ -94,10 +93,6 @@ korge {
 	id = "com.sample.demo"
 }
 ```
-
-Right now, the plugin is stored at my `bintray`, so you have to include this line for it to work: `maven { url = uri("https://dl.bintray.com/korlibs/korlibs") }`.
-
-Later I will publish the artifacts to `Maven Central` and the plugin to the `Gradle Plugins` repository.
 
 ### src/commonMain/kotlin
 
