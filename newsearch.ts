@@ -1,5 +1,11 @@
 /** soywiz 2021 */
 
+// @TODO: Proper stemming
+// @TODO: Proper scoring and sorting
+// @TODO: Cleanups
+// @TODO: Testing
+// @TODO: Provide it as a service in a separate repository for jekyll-based projects
+
 interface Map<K, V> {
 	map<R>(gen: (key: K, value: V) => R): R[]
 }
