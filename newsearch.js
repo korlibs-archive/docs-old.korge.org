@@ -313,6 +313,9 @@ class DocSection {
             this.titles = (title.length) ? [title] : [];
         }
     }
+    get anyImage() {
+        return this.image || this.parentSection?.anyImage;
+    }
     hasWord(word) {
         if (this.words.has(word))
             return true;
@@ -386,7 +389,7 @@ class DocIndexer {
     constructor(index, url) {
         this.doc = new Doc(index, url);
         this.section = this.doc.createSection("", "", null);
-        this.hSections = [];
+        this.hSections = [this.section, this.section];
     }
     getHNum(tagName) {
         switch (tagName) {
@@ -593,6 +596,7 @@ async function newSearchHook(query, allLink = '/all.html') {
         const results = index.query(currentText, 7, debug);
         searchResults.classList.toggle('search-no-results', results.results.length == 0);
         let resultIndex = 0;
+        const usedImages = new Set();
         for (const result of results.results) {
             searchResults.createChild("h2", (it) => {
                 it.title = `Title: ${result.doc.title}, Score: ${result.score}`;
@@ -614,10 +618,12 @@ async function newSearchHook(query, allLink = '/all.html') {
                     it.createChild("div", (it) => {
                         it.className = "section";
                         it.innerText = section.titles.join(" > ");
-                        if (section.image) {
-                            console.error("section.image", section.image);
+                        const sectionImage = section.anyImage;
+                        if (sectionImage && !usedImages.has(sectionImage)) {
+                            usedImages.add(sectionImage);
+                            console.error("section.image", sectionImage);
                             it.createChild("img", (it) => {
-                                it.src = section.image;
+                                it.src = sectionImage;
                                 it.style.display = 'block';
                                 it.style.maxHeight = '100px';
                             });

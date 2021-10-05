@@ -356,6 +356,10 @@ class DocSection {
 		}
 	}
 
+	get anyImage(): string | null | undefined {
+		return this.image || this.parentSection?.anyImage
+	}
+
 	hasWord(word: string): boolean {
 		if (this.words.has(word)) return true
 		for (const w of this.words.keys()) {
@@ -432,7 +436,7 @@ class DocIndexer {
 	constructor(index: DocIndex, url: string) {
 		this.doc = new Doc(index, url);
 		this.section = this.doc.createSection("", "", null)
-		this.hSections = []
+		this.hSections = [this.section, this.section]
 	}
 
 	getHNum(tagName: string): number {
@@ -679,6 +683,7 @@ async function newSearchHook(query: string, allLink: string = '/all.html') {
 
 		//console.info("Results in", results.queryTimeMs, "words in index", results.wordsInIndex)
 		let resultIndex = 0
+		const usedImages = new Set<string>()
 		for (const result of results.results) {
 			searchResults.createChild("h2", (it) => {
 				it.title = `Title: ${result.doc.title}, Score: ${result.score}`
@@ -702,10 +707,12 @@ async function newSearchHook(query: string, allLink: string = '/all.html') {
 					it.createChild("div", (it) => {
 						it.className = "section"
 						it.innerText = section.titles.join(" > ")
-						if (section.image) {
-							console.error("section.image", section.image)
+						const sectionImage = section.anyImage;
+						if (sectionImage && !usedImages.has(sectionImage)) {
+							usedImages.add(sectionImage)
+							console.error("section.image", sectionImage)
 							it.createChild("img", (it) => {
-								it.src = section.image!
+								it.src = sectionImage
 								it.style.display = 'block'
 								//it.style.width = "30%"
 								//it.style.height = "auto"
