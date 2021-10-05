@@ -16,6 +16,12 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
+.newsearch::-webkit-scrollbar { width: 14px; height: 14px; }
+.newsearch::-webkit-scrollbar-track { background: #494755; }
+.newsearch::-webkit-scrollbar-thumb { background: #757688; border-radius: 5px; border: 2px solid #494755; }
+.newsearch::-webkit-scrollbar-thumb:hover { background: #89879a; }
+
 .newsearch.search-show {
 	display: block;
 }
