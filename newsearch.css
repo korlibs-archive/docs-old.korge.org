@@ -1,9 +1,9 @@
 .newsearch {
 	border: 2px solid black;
 	padding: 8px;
-	min-width: 200px;
-	max-width: 40vw;
-	width: 400px;
+	min-width: 300px;
+	max-width: 50vw;
+	width: 720px;
 	background: #223;
 	color: #bbb;
 	position: absolute;
