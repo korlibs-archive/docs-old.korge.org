@@ -10,7 +10,7 @@ priority: 2000
 ## Are these libraries free?
 {:#free}
 
-Yes. All these libraries are dual licensed under MIT and Apache 2.0, except some libraries that I have ported from other languages and were not licensed as MIT, that propagate their own license. But in any case, all the licenses used are free and permissive.
+Yes. All these libraries are dual licensed under MIT and Apache 2.0 or CC0 Public Domain, except some libraries that I have ported from other languages and were not licensed as MIT, that propagate their own license. But in any case, all the licenses used are free and permissive.
 
 ## Where can I find the libraries?
 {:#repos}
