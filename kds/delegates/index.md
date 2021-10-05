@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Delegates"
-title_prefix: Klock
+title_prefix: KDS
 description: "Extra, Computed, WeakProperty"
 fa-icon: fa-swatchbook
 priority: 10

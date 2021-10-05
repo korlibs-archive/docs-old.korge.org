@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Sets"
-title_prefix: Klock
+title_prefix: KDS
 description: "IntSet, BitSet"
 fa-icon: fa-layer-group
 priority: 2

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Maps"
-title_prefix: Klock
+title_prefix: KDS
 description: "FastMap, IntMap, IntIntMap, IntFloatMap, CacheMap, CaseInsensitiveStringMap, WeakMap, MapList extensions..."
 fa-icon: fa-sitemap
 priority: 3

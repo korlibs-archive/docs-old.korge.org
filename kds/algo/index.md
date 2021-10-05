@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Algorithms"
-title_prefix: Klock
+title_prefix: KDS
 description: "genericBinarySearch, genericSort, mapWhile, getCyclic"
 fa-icon: fa-hat-wizard
 priority: 10

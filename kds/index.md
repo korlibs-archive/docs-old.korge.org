@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Kds
+title: KDS
 permalink: /kds/
 fa-icon: fa-tree
 children: /kds/
