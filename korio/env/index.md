@@ -111,3 +111,11 @@ enum class Language(val iso6391: String, val iso6392: String) {
 	}
 }
 ```
+
+### Getting current user language
+
+To get the language of the current user / the language of the system:
+
+```kotlin
+val language = Language.CURRENT
+```
