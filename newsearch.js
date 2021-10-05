@@ -305,6 +305,7 @@ class DocSection {
         this.words = new Map();
         this.paragraphs = [];
         this.titles = [];
+        this.image = null;
         if (parentSection) {
             this.titles = [...parentSection.titles, title];
         }
@@ -361,6 +362,11 @@ class DocSection {
                 return result;
         }
         return this.paragraphs[0].matchesAny(words);
+    }
+    addImage(src) {
+        if (!this.image) {
+            this.image = src;
+        }
     }
 }
 class Doc {
@@ -421,12 +427,24 @@ class DocIndexer {
         }
         else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
             this.section.addRawText(element.textContent || "", DocParagraphKind.TEXT, 1.0);
+            this.indexParagraph(element);
         }
         else {
             for (let n = 0; n < children.length; n++) {
                 const child = children[n];
                 this.index(child);
             }
+        }
+    }
+    indexParagraph(element) {
+        const tagName = element.tagName.toLowerCase();
+        const children = element.children;
+        if (tagName == 'img') {
+            this.section.addImage(element.src);
+        }
+        for (let n = 0; n < children.length; n++) {
+            const child = children[n];
+            this.indexParagraph(child);
         }
     }
 }
@@ -587,14 +605,23 @@ async function newSearchHook(query, allLink = '/all.html') {
             });
             result.results.forEach((res) => {
                 const index = resultIndex++;
-                const href = `${res.doc.url}#${res.section.id}`;
+                const section = res.section;
+                const href = `${res.doc.url}#${section.id}`;
                 const div = searchResults.createChild("a", (it) => {
                     it.href = href;
                     it.id = `result${index}`;
                     it.className = "block";
                     it.createChild("div", (it) => {
                         it.className = "section";
-                        it.innerText = res.section.titles.join(" > ");
+                        it.innerText = section.titles.join(" > ");
+                        if (section.image) {
+                            console.error("section.image", section.image);
+                            it.createChild("img", (it) => {
+                                it.src = section.image;
+                                it.style.display = 'block';
+                                it.style.maxHeight = '100px';
+                            });
+                        }
                     });
                     const isPre = res.paragraph?.paragraph?.kind == DocParagraphKind.PRE;
                     it.createChild(isPre ? "pre" : "div", (it) => {
