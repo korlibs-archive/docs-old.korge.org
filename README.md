@@ -1,3 +1,3 @@
-# korlibs.soywiz.com
+# docs.korge.org
 
-[![](korlibs-deps.svg)](https://korlibs.soywiz.com/)
+[![](korlibs-deps.svg)](https://docs.korge.org/)
