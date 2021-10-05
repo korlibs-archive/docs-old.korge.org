@@ -183,9 +183,10 @@ class StrReader(val str: String, val file: String = "file", var pos: Int = 0) {
 fun UUID(str: String): UUID
 
 class UUID(val data: UByteArrayInt) {
+	constructor(str: String)
+	
 	companion object {
-        // NOTE: You should provide the SecureRandom from Krypto here
-		fun randomUUID(random: Random = Random): UUID
+		fun randomUUID(random: Random = SecureRandom): UUID
 	}
 
 	val version: Int
