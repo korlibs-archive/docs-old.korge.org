@@ -475,9 +475,9 @@ class DocIndexer {
 	}
 }
 
-async function fetchParts() {
+async function fetchParts(allLink: string) {
 	const time0 = Date.now()
-	let response = await fetch("/all.html");
+	let response = await fetch(allLink);
 	let text = await response.text()
 	const time1 = Date.now()
 	console.log("Fetched all.html in", time1 - time0)
@@ -507,14 +507,14 @@ function createIndexFromParts(parts: string[]) {
 	return index
 }
 
-async function getIndex(): Promise<DocIndex> {
-	const parts = await fetchParts()
+async function getIndex(allLink: string): Promise<DocIndex> {
+	const parts = await fetchParts(allLink)
 	//setInterval(() => { createIndexFromParts(parts) }, 500)
 	return createIndexFromParts(parts)
 }
 
-async function getIndexOnce(): Promise<DocIndex> {
-	(window as any).searchIndexPromise ||= getIndex();
+async function getIndexOnce(allLink: string): Promise<DocIndex> {
+	(window as any).searchIndexPromise ||= getIndex(allLink);
 	(window as any).searchIndex = await (window as any).searchIndexPromise;
 	return (window as any).searchIndex;
 }
@@ -533,7 +533,7 @@ HTMLElement.prototype.createChild = (function(tagName: string, gen?: (e: HTMLEle
 	return element
 })
 
-async function newSearchHook(query: string) {
+async function newSearchHook(query: string, allLink: string = '/all.html') {
 	console.log("ready")
 
 	const searchBox: HTMLInputElement|undefined = document.querySelector(query) as any;
@@ -630,7 +630,7 @@ async function newSearchHook(query: string) {
 
 		//console.log('ev', e)
 		searchResults.classList.add('search-loading')
-		const index = await getIndexOnce();
+		const index = await getIndexOnce(allLink);
 		searchResults.classList.remove('search-loading')
 
 		switch (e.key) {

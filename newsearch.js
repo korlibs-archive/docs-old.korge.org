@@ -428,9 +428,9 @@ class DocIndexer {
         }
     }
 }
-async function fetchParts() {
+async function fetchParts(allLink) {
     const time0 = Date.now();
-    let response = await fetch("/all.html");
+    let response = await fetch(allLink);
     let text = await response.text();
     const time1 = Date.now();
     console.log("Fetched all.html in", time1 - time0);
@@ -456,13 +456,13 @@ function createIndexFromParts(parts) {
     console.log("Created index in", time1 - time0);
     return index;
 }
-async function getIndex() {
-    const parts = await fetchParts();
+async function getIndex(allLink) {
+    const parts = await fetchParts(allLink);
     return createIndexFromParts(parts);
 }
-async function getIndexOnce() {
+async function getIndexOnce(allLink) {
     var _a;
-    (_a = window).searchIndexPromise || (_a.searchIndexPromise = getIndex());
+    (_a = window).searchIndexPromise || (_a.searchIndexPromise = getIndex(allLink));
     window.searchIndex = await window.searchIndexPromise;
     return window.searchIndex;
 }
@@ -474,7 +474,7 @@ HTMLElement.prototype.createChild = (function (tagName, gen) {
     this.appendChild(element);
     return element;
 });
-async function newSearchHook(query) {
+async function newSearchHook(query, allLink = '/all.html') {
     console.log("ready");
     const searchBox = document.querySelector(query);
     const searchResults = document.createElement("div");
@@ -558,7 +558,7 @@ async function newSearchHook(query) {
         if (lastText == currentText)
             return;
         searchResults.classList.add('search-loading');
-        const index = await getIndexOnce();
+        const index = await getIndexOnce(allLink);
         searchResults.classList.remove('search-loading');
         switch (e.key) {
             case 'ArrowUp':

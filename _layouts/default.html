@@ -173,7 +173,7 @@ ga('send', 'pageview');
 
 <script type="text/javascript" src="/newsearch.js" defer onload="
 	window.addEventListener('DOMContentLoaded', () => {
-		newSearchHook('#searchq')
+		newSearchHook('#searchq', '/all.html?{{ site.time | date: '%s' }}')
 	});
 "></script>
 
