@@ -8,6 +8,12 @@ Map.prototype.map = (function (gen) {
     }
     return out;
 });
+Number.prototype.mod = function (n) {
+    return ((this % n) + n) % n;
+};
+Array.prototype.clear = function () {
+    this.length = 0;
+};
 Array.prototype.unique = (function () {
     const set = new Set();
     const out = [];
@@ -439,7 +445,9 @@ function createIndexFromParts(parts) {
         if (breakPos < 0)
             continue;
         const url = part.substr(0, breakPos);
-        const content = part.substr(breakPos + 1);
+        const content = part
+            .substr(breakPos + 1)
+            .replace(/{%\s*include\s*(.*?)\s*%}/g, '');
         const xmlDoc = parser.parseFromString(content, "text/html");
         const indexer = new DocIndexer(index, url);
         indexer.index(xmlDoc.documentElement);
@@ -466,52 +474,137 @@ HTMLElement.prototype.createChild = (function (tagName, gen) {
     this.appendChild(element);
     return element;
 });
-function html(name) {
-}
 async function newSearchHook(query) {
-    const index = await getIndexOnce();
     console.log("ready");
     const searchBox = document.querySelector(query);
     const searchResults = document.createElement("div");
     searchResults.classList.add("newsearch");
     document.body.appendChild(searchResults);
-    if (searchBox) {
-        let lastText = '';
-        searchBox.addEventListener("keyup", (e) => {
-            const currentText = searchBox.value;
-            if (lastText == currentText)
-                return;
-            searchResults.innerHTML = '';
-            lastText = currentText;
-            console.clear();
-            const results = index.query(currentText, 7, true);
-            console.info("Results in", results.queryTimeMs, "words in index", results.wordsInIndex);
-            for (const result of results.results) {
-                searchResults.createChild("h2", (it) => {
-                    it.innerText = result.doc.title;
-                });
-                console.log("###", result.doc.url, result.doc.title, result.score);
-                for (const res of result.results) {
-                    console.log("->", `SCORE:`, res.score, res.section.titles, res.paragraph?.paragraph?.text);
-                    searchResults.createChild("div", (it) => {
-                        it.className = "block";
-                        it.createChild("div", (it) => {
-                            it.className = "section";
-                            it.createChild("a", (it) => {
-                                it.href = `${res.doc.url}#${res.section.id}`;
-                                it.innerText = res.section.titles.join(" > ");
-                            });
-                        });
-                        const isPre = res.paragraph?.paragraph?.kind == DocParagraphKind.PRE;
-                        it.createChild(isPre ? "pre" : "div", (it) => {
-                            it.className = "content";
-                            it.innerText = res.paragraph?.paragraph?.text || "";
-                        });
-                    });
-                }
-            }
-        });
+    if (!searchBox)
+        return;
+    function updatePositions() {
+        searchResults.style.left = `${searchBox?.offsetLeft}px`;
+        searchResults.style.top = `${searchBox.offsetTop + searchBox.offsetHeight + 2}px`;
     }
+    updatePositions();
+    const foundResults = [];
+    let selectedIndex = 0;
+    function setSelectedResult(newIndex = selectedIndex) {
+        for (const result of foundResults) {
+            result.classList.remove('active');
+        }
+        selectedIndex = newIndex;
+        let selectedItem = foundResults[selectedIndex];
+        if (selectedItem) {
+            selectedItem.classList.add('active');
+        }
+        return selectedItem;
+    }
+    function highlightText(node, text) {
+        if (node.children.length == 0) {
+            const textContent = node.textContent || "";
+            node.innerHTML = textContent.replace(new RegExp(text, "gi"), (r) => {
+                return `<span class="search-highlight">${r}</span>`;
+            });
+        }
+        else {
+            for (let n = 0; n < node.children.length; n++) {
+                const child = node.children[n];
+                highlightText(child, text);
+            }
+        }
+    }
+    let lastText = '';
+    searchBox.addEventListener("keydown", (e) => {
+        switch (e.key) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+                {
+                    e.preventDefault();
+                    const up = e.key == 'ArrowUp';
+                    const offset = up ? -1 : +1;
+                    const element = setSelectedResult((selectedIndex + offset).mod(foundResults.length));
+                    element?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    return;
+                }
+            case 'Enter':
+                {
+                    e.preventDefault();
+                    const element = setSelectedResult();
+                    if (element) {
+                        element.click();
+                    }
+                    return;
+                }
+        }
+    });
+    let lastTimeout = 0;
+    searchBox.addEventListener("blur", (e) => {
+        lastTimeout = setTimeout(() => {
+            searchResults.classList.remove('search-show');
+        }, 200);
+    });
+    searchBox.addEventListener("focus", (e) => {
+        updatePositions();
+        const currentText = searchBox.value;
+        searchResults.classList.toggle('search-show', currentText != '');
+    });
+    searchBox.addEventListener("keyup", async (e) => {
+        if (e.key == 'F5')
+            return;
+        const currentText = searchBox.value;
+        searchResults.classList.toggle('search-show', currentText != '');
+        if (lastText == currentText)
+            return;
+        searchResults.classList.add('search-loading');
+        const index = await getIndexOnce();
+        searchResults.classList.remove('search-loading');
+        switch (e.key) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+                e.preventDefault();
+                return;
+        }
+        searchResults.innerHTML = '';
+        foundResults.clear();
+        lastText = currentText;
+        const debug = false;
+        const results = index.query(currentText, 7, debug);
+        searchResults.classList.toggle('search-no-results', results.results.length == 0);
+        let resultIndex = 0;
+        for (const result of results.results) {
+            searchResults.createChild("h2", (it) => {
+                it.innerText = result.doc.title;
+            });
+            result.results.forEach((res) => {
+                const index = resultIndex++;
+                const href = `${res.doc.url}#${res.section.id}`;
+                const div = searchResults.createChild("a", (it) => {
+                    it.href = href;
+                    it.id = `result${index}`;
+                    it.className = "block";
+                    it.createChild("div", (it) => {
+                        it.className = "section";
+                        it.innerText = res.section.titles.join(" > ");
+                    });
+                    const isPre = res.paragraph?.paragraph?.kind == DocParagraphKind.PRE;
+                    it.createChild(isPre ? "pre" : "div", (it) => {
+                        it.className = "content";
+                        it.innerText = res.paragraph?.paragraph?.text || "";
+                    });
+                });
+                div.onmousedown = (e) => {
+                    clearTimeout(lastTimeout);
+                };
+                div.onmouseover = (e) => {
+                    setSelectedResult(index);
+                };
+                foundResults.push(div);
+            });
+        }
+        highlightText(searchResults, new RegExp("(" + currentText.split(" ").join("|") + ")"));
+        setSelectedResult(0);
+    });
 }
 async function newSearchMain() {
     await newSearchHook("input#searchbox");

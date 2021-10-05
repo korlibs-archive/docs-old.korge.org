@@ -10,6 +10,7 @@
 	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
 	<link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+	<link rel="stylesheet" href="{{ '/newsearch.css' | prepend: site.baseurl }}">
 
 	<link rel="icon" href="{{ "/i/icon.png" | prepend: site.baseurl }}" />
 
@@ -153,6 +154,7 @@ ga('send', 'pageview');
 <script src="{{ '/js/replacer.js' | prepend: site.baseurl }}" type="text/javascript" defer></script>
 {% endif %}
 
+<!--
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" defer onload="
 	window.addEventListener('DOMContentLoaded', () => {
 		// https://docsearch.algolia.com/docs/behavior/
@@ -167,6 +169,14 @@ ga('send', 'pageview');
 		});
 	});
 "></script>
+-->
+
+<script type="text/javascript" src="/newsearch.js" defer onload="
+	window.addEventListener('DOMContentLoaded', () => {
+		newSearchHook('#searchq')
+	});
+"></script>
+
 <script type="text/javascript">
 	window.addEventListener('DOMContentLoaded', () => {
 		document.addEventListener('keyup', (e) => {
