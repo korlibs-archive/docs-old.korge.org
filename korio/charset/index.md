@@ -13,8 +13,6 @@ KorIO has utilities for handling different charsets.
 
 ## Charset
 
-Only UTF8 supported at the moment.
-
 ```kotlin
 val ISO_8859_1: Charset
 val LATIN1: SingleByteCharset
@@ -36,3 +34,7 @@ abstract class Charset(val name: String) {
 
 open class SingleByteCharset(name: String, val conv: String) : Charset(name)
 ```
+
+## UTF8
+
+Only UTF8 supported at the moment.

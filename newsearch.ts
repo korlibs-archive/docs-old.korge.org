@@ -1,9 +1,5 @@
 /** soywiz 2021 */
 
-class AsyncStorage {
-
-}
-
 interface Map<K, V> {
 	map<R>(gen: (key: K, value: V) => R): R[]
 }
@@ -133,11 +129,13 @@ class QueryResult {
 		this.score = 0
 		const sectionFullTitle = section.titles.join(" ").toLowerCase()
 		for (const word of words) {
-			if (sectionFullTitle.indexOf(word) >= 0) {
+			let wordInTitle = sectionFullTitle.toLowerCase().indexOf(word.toLowerCase()) >= 0;
+			let scoreMultiplier = wordInTitle ? 2 : 1
+			if (wordInTitle) {
 				this.score += 10
 			}
 			if (section.words.has(word)) {
-				this.score += Number(section.words.get(word))
+				this.score += Number(section.words.get(word)) * scoreMultiplier
 			}
 		}
 	}
@@ -251,7 +249,8 @@ class DocIndex {
 			}
 
 			const intersectionSectionsPart = [...toExploreSections]
-				.filterUpTo(maxResults, (section) => {
+				//.filterUpTo(maxResults, (section) => {
+				.filterUpTo(maxResults * 5, (section) => {
 					return tokenizedText
 						.all((token) => {
 							let words = this.findWords(token).words;
@@ -265,16 +264,16 @@ class DocIndex {
 			for (const part of intersectionSectionsPart) {
 				intersectionSections.add(part)
 			}
-			if (intersectionSections.size >= maxResults) {
+			if (intersectionSections.size >= maxResults * 5) {
 				break
 			}
 		}
 
-
 		//console.log(intersectionSections)
 		const results = [...intersectionSections]
-			.slice(0, maxResults)
 			.map(it => new QueryResult(text, tokenizedText, it))
+			.sortedBy(it => -it.score)
+			.slice(0, maxResults)
 			.groupBy(it => it.doc)
 			.map((key, value) => new DocQueryResult(key, value))
 			.sortedBy(it => -it.score)
@@ -296,7 +295,7 @@ enum DocParagraphKind {
 }
 
 class DocParagraph {
-	constructor(public texts: TokenizedText, public kind: DocParagraphKind) {
+	constructor(public texts: TokenizedText, public kind: DocParagraphKind, public scoreMultiplier: number) {
 	}
 
 	get text() { return this.texts.text }
@@ -358,9 +357,9 @@ class DocSection {
 		return false
 	}
 
-	addText(text: TokenizedText, kind: DocParagraphKind) {
+	addText(text: TokenizedText, kind: DocParagraphKind, scoreMultiplier: number) {
 		if (text.length == 0) return
-		this.paragraphs.push(new DocParagraph(text, kind))
+		this.paragraphs.push(new DocParagraph(text, kind, scoreMultiplier))
 		this.doc.index.addWords(this, text);
 		for (const word of text.words) {
 			if (!this.words.has(word)) this.words.set(word, 0)
@@ -368,8 +367,8 @@ class DocSection {
 		}
 	}
 
-	addRawText(text: string, kind: DocParagraphKind) {
-		this.addText(new TokenizedText(text), kind)
+	addRawText(text: string, kind: DocParagraphKind, scoreMultiplier: number) {
+		this.addText(new TokenizedText(text), kind, scoreMultiplier)
 	}
 
 	matches(words: string[]): DocParagraphResult|null {
@@ -444,11 +443,11 @@ class DocIndexer {
 			const headerNum = this.getHNum(tagName)
 			const textContent = element.textContent || ""
 			this.section = this.doc.createSection(id, textContent, this.hSections[headerNum - 1])
-			this.section.addRawText(this.doc.title, DocParagraphKind.TITLE)
+			this.section.addRawText(this.doc.title, DocParagraphKind.TITLE, 10.0)
 			for (const title of this.section.titles) {
-				this.section.addRawText(title, DocParagraphKind.SUBTITLE)
+				this.section.addRawText(title, DocParagraphKind.SUBTITLE, 2.0)
 			}
-			this.section.addRawText(textContent, DocParagraphKind.TEXT)
+			this.section.addRawText(textContent, DocParagraphKind.TEXT, 1.0)
 			if (headerNum >= 0) {
 				this.hSections[headerNum] = this.section
 			}
@@ -458,13 +457,13 @@ class DocIndexer {
 		}
 		if (tagName == 'pre') {
 			for (const line of (element.textContent || "").split(/\n/g)) {
-				this.section.addRawText(line, DocParagraphKind.PRE);
+				this.section.addRawText(line, DocParagraphKind.PRE, 0.9);
 			}
 
 			//if (false) {
 			// Skip
 		} else if (children.length == 0 || tagName == 'p' || tagName == 'code') {
-			this.section.addRawText(element.textContent || "", DocParagraphKind.TEXT);
+			this.section.addRawText(element.textContent || "", DocParagraphKind.TEXT, 1.0);
 		} else {
 			for (let n = 0; n < children.length; n++) {
 				const child = children[n];
@@ -647,6 +646,7 @@ async function newSearchHook(query: string, allLink: string = '/all.html') {
 		lastText = currentText
 		//console.clear()
 		const debug = false
+		//const debug = true
 		const results = index.query(currentText, 7, debug)
 		searchResults.classList.toggle('search-no-results', results.results.length == 0)
 
@@ -654,7 +654,12 @@ async function newSearchHook(query: string, allLink: string = '/all.html') {
 		let resultIndex = 0
 		for (const result of results.results) {
 			searchResults.createChild("h2", (it) => {
-				it.innerText = result.doc.title
+				it.title = `Title: ${result.doc.title}, Score: ${result.score}`
+				if (debug) {
+					it.innerText = `${result.doc.title} (${result.score})`
+				} else {
+					it.innerText = `${result.doc.title}`
+				}
 			})
 
 			//console.log("###", result.doc.url, result.doc.title, result.score)
