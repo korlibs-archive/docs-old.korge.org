@@ -59,3 +59,18 @@ To generate AAR package files to upload the store:
 This target requires a separate installation of the Android SDK.
 When installed with Android Studio it is usually detected directly, but you can use
 the `ANDROID_SDK` environment variable, or the `sdk.dir` on the `local.properties` file.
+
+## Setting Android API Level
+
+In the case you need to change the android API level, you can do that by changing the `build.gradle.kts` file:
+
+```kotlin
+korge {
+	androidMinSdk = 16
+	androidCompileSdk = 28
+	androidTargetSdk = 28
+
+	// Shortcut to change all of them at once
+	androidSdk(compileSdk = 28, minSdk = 16, targetSdk = 28)
+}
+```

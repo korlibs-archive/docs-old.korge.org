@@ -132,3 +132,13 @@ class DockingComponent(override val view: View, var anchor: Anchor) : ResizeComp
 	}
 }
 ```
+
+### Taking a screenshot
+
+Sometimes you will want to take a screenshot, or save a View in a Bitmap, or render the view in a Bitmap. To do so, you can use the `View.renderToBitmap(views)` method.
+
+To save the whole screen:
+
+```kotlin
+val bitmap: Bitmap32 = stage.renderToBitmap(stange.views)
+```
