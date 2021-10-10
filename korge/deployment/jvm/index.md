@@ -33,6 +33,43 @@ korge {
 }
 ```
 
+### Multiple entry points
+
+In some cases, like editors and so, we might want to have multiple entry points to share a code base with a single module
+but being able to execute different scenarios, without mixing code. To do so, we can define multiple entry points for the JVM
+target, that will create one gradle task for each entry point.
+
+```kotlin
+korge {
+    entrypoint("Editor", "com.my.project.MyEditor") // ./gradlew runJvmEditor
+	entrypoint("Debug", "com.my.project.Debug") // ./gradlew runJvmDebug
+}
+```
+
+Extra mains:
+
+```kotlin
+package com.my.project
+
+object Debug {
+    @JvmStatic fun main(args: Array<String>) = runBlocking { Korge(width = 512, height = 512, bgcolor = Colors["#2b2b2b"]) {
+		// ...
+    } }
+}
+
+object MyEditor {
+	@JvmStatic fun main(args: Array<String>) = runBlocking { Korge(width = 512, height = 512, bgcolor = Colors["#2b2b2b"]) {
+			// ...
+    } }
+}
+```
+
+Gradlew tasks:
+
+```bash
+./gradlew runJvmEditor
+./gradlew runJvmDebug
+```
 ## Executing
 
 For running, use the gradle task:
