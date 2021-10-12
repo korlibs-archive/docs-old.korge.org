@@ -39,7 +39,6 @@ Checkout our continously growing samples repository on GitHub.
 
 Here are some examples from the Repository
 * [Animations](https://github.com/korlibs/korge-samples/tree/master/samples/animations)
-* [Asteroids](https://github.com/korlibs/korge-samples/tree/master/samples/asteroids)
 * [Atlas, SpriteMaps](https://github.com/korlibs/korge-samples/tree/master/samples/atlas)
 * [BMP Fonts](https://github.com/korlibs/korge-samples/tree/master/samples/bmpfont)
 * [Box2D](https://github.com/korlibs/korge-samples/tree/master/samples/box2d)
@@ -49,12 +48,10 @@ Here are some examples from the Repository
 * [Input](https://github.com/korlibs/korge-samples/tree/master/samples/input)
 * [LipSync](https://github.com/korlibs/korge-samples/tree/master/samples/lipsync)
 * [luak](https://github.com/korlibs/korge-samples/tree/master/samples/luak)
-* [Minesweeper](https://github.com/korlibs/korge-samples/tree/master/samples/minesweeper)
 * [Ninepatch](https://github.com/korlibs/korge-samples/tree/master/samples/ninepatch)
 * [OnScreen Controller](https://github.com/korlibs/korge-samples/tree/master/samples/onscreen-controller)
 * [Particles](https://github.com/korlibs/korge-samples/tree/master/samples/particles)
 * [Polyphonic Audio](https://github.com/korlibs/korge-samples/tree/master/samples/polyphonic)
-* [Pong](https://github.com/korlibs/korge-samples/tree/master/samples/pong)
 * [S3D](https://github.com/korlibs/korge-samples/tree/master/samples/s3d)
 * [Scenes](https://github.com/korlibs/korge-samples/tree/master/samples/scenes)
 * [Shapes](https://github.com/korlibs/korge-samples/tree/master/samples/shapes)
@@ -68,3 +65,10 @@ Here are some examples from the Repository
 * [Triangulation](https://github.com/korlibs/korge-samples/tree/master/samples/triangulation)
 * [UI](https://github.com/korlibs/korge-samples/tree/master/samples/ui)
 * [Video](https://github.com/korlibs/korge-samples/tree/master/samples/video)
+
+Game-like examples:
+* [Asteroids](https://github.com/korlibs/korge-samples/tree/master/game/asteroids)
+* [Pong](https://github.com/korlibs/korge-samples/tree/master/game/pong)
+* [Connect4](https://github.com/korlibs/korge-samples/tree/master/game/connect4)
+* [Minesweeper](https://github.com/korlibs/korge-samples/tree/master/game/minesweeper)
+* [TicTacToe KTree](https://github.com/korlibs/korge-samples/tree/master/game/tictactoe-ktree)
