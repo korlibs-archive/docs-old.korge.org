@@ -20,7 +20,7 @@ You can see a small presentation of KorGE here: <https://korge.org/>
 
 ## Tools:
 
-KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up the environment here](/korge/setup).
+KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up the environment here](/korge/gettingstarted/setup/).
 
 <img alt="Gradle" src="/i/logos/gradle.svg" style="width:128px;height:128px;" />
 <img alt="IntelliJ" src="/i/logos/intellij.svg" style="width:128px;height:128px;" />
