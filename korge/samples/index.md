@@ -1,14 +1,9 @@
----
-layout: default
-title: "Samples"
-title_prefix: KorGE
-fa-icon: fa-chalkboard-teacher
-priority: 2
-status: updated
+**---
+layout: default title: "Samples"
+title_prefix: KorGE fa-icon: fa-chalkboard-teacher priority: 2 status: updated
 ---
 
 ## Showcases
-
 
 - [RezMike's 2048 clone](https://blog.korge.org/showcase-2048-clone/) ([play it NOW](https://rezmike.github.io/2048/)) ([code](https://github.com/RezMike/2048))
 
@@ -16,8 +11,9 @@ status: updated
 
 - [Tobse's HitKlack Remake](https://blog.korge.org/showcase-tobses-hitklack-remake/) ([play it NOW](https://tobsef.github.io/HitKlack/webstart/index.html)) ([code](https://github.com/TobseF/HitKlack))
 
-
 ## YouTube tutorials
+
+### Korge main channel
 
 * [KorGE Tutorial #1 - Installing KorGE](https://www.youtube.com/watch?v=ANMiHx3z_No)
 * [KorGE Tutorial #2 - The addupdater() function gets called on every frame](https://www.youtube.com/watch?v=ebW4Hr97h_I)
@@ -27,7 +23,12 @@ status: updated
 * [KorGE Tutorial #6 - Resolution handling and coordinate system](https://www.youtube.com/watch?v=81IG0ld5w-8)
 * [KorGE Tutorial #7 - Sprites and SpriteAnimations from XML or JSON files](https://www.youtube.com/watch?v=atElzA2jYkQ)
 
-Game tutorials:
+### XenoTactic Korge Tips
+
+XenoTactic is a community member who frequently creates videos on Korge. Check his channel
+out [here](https://www.youtube.com/channel/UCBYUdPtTwJvOOlUXPbygZhQ/videos).
+
+## Game tutorials:
 
 * [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)
 * [Testable Connect-4 game mostly doing TDD](https://www.youtube.com/watch?v=F2UmKH0L-6A) [(Spanish)](https://www.youtube.com/watch?v=_lZbvVJyhGc)
@@ -38,6 +39,7 @@ Checkout our continously growing samples repository on GitHub.
 <https://github.com/korlibs/korge-samples/>{:target="_blank",:rel="noopener"}
 
 Here are some examples from the Repository
+
 * [Animations](https://github.com/korlibs/korge-samples/tree/master/samples/animations)
 * [Atlas, SpriteMaps](https://github.com/korlibs/korge-samples/tree/master/samples/atlas)
 * [BMP Fonts](https://github.com/korlibs/korge-samples/tree/master/samples/bmpfont)
@@ -67,8 +69,9 @@ Here are some examples from the Repository
 * [Video](https://github.com/korlibs/korge-samples/tree/master/samples/video)
 
 Game-like examples:
+
 * [Asteroids](https://github.com/korlibs/korge-samples/tree/master/game/asteroids)
 * [Pong](https://github.com/korlibs/korge-samples/tree/master/game/pong)
 * [Connect4](https://github.com/korlibs/korge-samples/tree/master/game/connect4)
 * [Minesweeper](https://github.com/korlibs/korge-samples/tree/master/game/minesweeper)
-* [TicTacToe KTree](https://github.com/korlibs/korge-samples/tree/master/game/tictactoe-ktree)
+* [TicTacToe KTree](https://github.com/korlibs/korge-samples/tree/master/game/tictactoe-ktree)**
