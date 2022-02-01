@@ -28,6 +28,25 @@ title_prefix: KorGE fa-icon: fa-chalkboard-teacher priority: 2 status: updated
 XenoTactic is a community member who frequently creates videos on Korge. Check his channel
 out [here](https://www.youtube.com/channel/UCBYUdPtTwJvOOlUXPbygZhQ/videos).
 
+* [Korge Tip 1: Scene container, pushTo(), changeTo(), back() guide](https://www.youtube.com/watch?v=YPsNP9uOROc&ab_channel=XenoTactic)
+* [
+  Korge Tip 2: Alignment, centering, grouping of elements](https://www.youtube.com/watch?v=rdcdYirCuHo&ab_channel=XenoTactic)
+* [
+  Korge Tip 3: How to get the Views object, renderToBitmap(), and saving bitmap to file system](https://www.youtube.com/watch?v=XJhSZ6YEi3w&ab_channel=XenoTactic)
+* [Korge Tip 4: How to create a simple UI component](https://www.youtube.com/watch?v=AY3o2EaPnyA&ab_channel=XenoTactic)
+* [
+  Korge Tip 5: Event handlers get unintendedly activated across multiple overlapping components](https://www.youtube.com/watch?v=komXVYMWPBA&ab_channel=XenoTactic)
+* [Korge Tip 6: Invisible container is eating up my onClick event listeners!](https://www.youtube.com/watch?v=jnNJiz4YNPs&ab_channel=XenoTactic)
+* [
+  Korge Tip 7: Container overview](https://www.youtube.com/watch?v=o4wu_WfKNRU&ab_channel=XenoTactic)
+* [
+  Korge Tip 8: How to create your own custom event listener methods for your UI components](https://www.youtube.com/watch?v=78-ZLiy7sM4&ab_channel=XenoTactic)
+* [
+  Korge Tip 9: Adding kotlinx json serialization to your project + Example of how to use it](https://www.youtube.com/watch?v=WPRWbqGypu4&ab_channel=XenoTactic)
+* [Korge Tip 10: Rendering views in specific layers using containers](https://www.youtube.com/watch?v=y7whzUU-HCg&ab_channel=XenoTactic)
+* [Korge Tip 11: Rendering views in order using properties](https://www.youtube.com/watch?v=38cuHDry-84&ab_channel=XenoTactic)
+* [Korge Tip 12: Separating game logic into it's own dependency via mavenLocal()](https://www.youtube.com/watch?v=6G_4tRRdFvQ&ab_channel=XenoTactic)
+
 ## Game tutorials:
 
 * [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)
