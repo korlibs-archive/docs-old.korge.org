@@ -1,5 +1,9 @@
 ---
-layout: default title: Standard Views title_prefix: KorGE Views fa-icon: fa-object-ungroup priority: 6
+layout: default 
+title: Standard Views 
+title_prefix: KorGE Views 
+fa-icon: fa-object-ungroup 
+priority: 6
 ---
 
 Each kind of standard view provides a normal constructor, plus a DSL constructor that have `Container` as receiver.
