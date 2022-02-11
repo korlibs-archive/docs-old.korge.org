@@ -50,7 +50,8 @@ out [here](https://www.youtube.com/channel/UCBYUdPtTwJvOOlUXPbygZhQ/videos).
 * [Korge Tip 10: Rendering views in specific layers using containers](https://www.youtube.com/watch?v=y7whzUU-HCg&ab_channel=XenoTactic)
 * [Korge Tip 11: Rendering views in order using properties](https://www.youtube.com/watch?v=38cuHDry-84&ab_channel=XenoTactic)
 * [Korge Tip 12: Separating game logic into it's own dependency via mavenLocal()](https://www.youtube.com/watch?v=6G_4tRRdFvQ&ab_channel=XenoTactic)
-
+* [Korge Tip 13: Implementing event handlers via components](https://www.youtube.com/watch?v=LlGs5g3O860)
+* [Korge Tip 14: How to read and render SVG files](https://www.youtube.com/watch?v=UKGSBZ965-w)
 ## Game tutorials:
 
 * [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)
