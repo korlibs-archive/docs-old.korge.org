@@ -44,8 +44,6 @@ the following command to install the required libraries:
 sudo apt-get -y install freeglut3-dev libopenal-dev libncurses5
 ```
 
-You can find this command in the [Targets -> Desktop](/targets/desktop) section.
-
 On Solus, you can use this command:
 
 ```bash
