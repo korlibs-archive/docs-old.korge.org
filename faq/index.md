@@ -51,6 +51,11 @@ sudo eopkg install glfw-devel freeglut openal-soft-devel ncurses libglu-devel
 sudo eopkg install -c system.devel
 ```
 
+On Arch, you can use this command to install [lglut](https://archlinux.org/packages/extra/x86_64/freeglut/) and [lopenal](https://archlinux.org/packages/extra/x86_64/openal/). For the rest install [ncurses5-compat-libs](https://aur.archlinux.org/packages/ncurses5-compat-libs) from the AUR repo.
+```bash
+pacman -S freeglut openal
+```
+
 ## How do I include these libraries in my multiplatform projects?
 {:#include-multi}
 
