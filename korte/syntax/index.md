@@ -17,6 +17,9 @@ KorTE has two kind of markers:
 * `{% block %}...{% endblock %}`
 * `{{ expression_marker }}`.
 
+Comment:
+* `{# This is a comment #}`
+
 Space trimming:
 
 * Left: `{%- block_marker %}`
