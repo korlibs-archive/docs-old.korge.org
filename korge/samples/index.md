@@ -52,6 +52,10 @@ out [here](https://www.youtube.com/channel/UCBYUdPtTwJvOOlUXPbygZhQ/videos).
 * [Korge Tip 12: Separating game logic into it's own dependency via mavenLocal()](https://www.youtube.com/watch?v=6G_4tRRdFvQ&ab_channel=XenoTactic)
 * [Korge Tip 13: Implementing event handlers via components](https://www.youtube.com/watch?v=LlGs5g3O860)
 * [Korge Tip 14: How to read and render SVG files](https://www.youtube.com/watch?v=UKGSBZ965-w)
+* [Korge Multiplayer Demo Using Ktor Websockets!](https://www.youtube.com/watch?v=ubNeTW8fhoo)
+* [Korge Tip 15: How to add multiple entry points to your Korge project](https://www.youtube.com/watch?v=wH9Cbb88lRg)
+* [Korge Tip 16: How to change the font size of a UIButton and also walkthrough on UISkin
+](https://www.youtube.com/watch?v=EejiBDXQSf0)
 ## Game tutorials:
 
 * [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)
