@@ -109,7 +109,7 @@ The tween execution will be attached as a component to the receiver View that ho
 
 ## Animator
 
-You can also use an animator, which is almost as potent as the tweens. Check the [animate sample here](https://github.com/korlibs/korge-samples/blob/master/animations/src/commonMain/kotlin/main.kt)
+You can also use an animator, which is almost as potent as the tweens. Check the [animate sample here](https://github.com/korlibs/korge-samples/blob/master/samples/animations/src/commonMain/kotlin/main.kt)
 ```
 animate {
     parallel {
