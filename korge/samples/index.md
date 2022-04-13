@@ -56,6 +56,9 @@ out [here](https://www.youtube.com/channel/UCBYUdPtTwJvOOlUXPbygZhQ/videos).
 * [Korge Tip 15: How to add multiple entry points to your Korge project](https://www.youtube.com/watch?v=wH9Cbb88lRg)
 * [Korge Tip 16: How to change the font size of a UIButton and also walkthrough on UISkin
 ](https://www.youtube.com/watch?v=EejiBDXQSf0)
+* [Korge Tip 17: How to get sharper pixels when zooming in](https://www.youtube.com/watch?v=kkkcHNBtrk0)
+* [Korge Tip 18: How to easily make your views draggable](https://www.youtube.com/watch?v=Uj1x7GZ0hqY)
+* [Korge Tip 19: How to re-render bitmap after updating it](https://www.youtube.com/watch?v=JUEI_HsoMZw)
 ## Game tutorials:
 
 * [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)
