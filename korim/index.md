@@ -11,10 +11,10 @@ status: new
 
 **[KorIM](https://github.com/soywiz/korim)** is a library for image loading, writing and processing. It allows to convert between image and color formats. Also includes tools for vector images and fonts.
 
-This library is able to load PNG, JPEGs, BMPs, TGAs, PSDs. And SVG vector images.
+This library is able to load PNG, JPEGs, BMPs, TGAs, PSDs and SVG vector images.
 Also allows rendering vectorial images using native rasterizers. The rasterizing
 capabilities is used by the [Adobe Flash/Animate SWF loader](/animation/swf).
-Also allows to use native image loaders for fastest performance.
+Also allows to use native image loaders for the fastest performance.
 
 [https://github.com/korlibs/korim](https://github.com/korlibs/korim)
 
