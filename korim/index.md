@@ -9,7 +9,7 @@ status: new
 
 <img alt="KorIM" src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />
 
-**[KorIM](https://github.com/soywiz/korim)** is a library for image loading, writting and processing. It allows to convert between image and color formats. Also include tools for vector images and fonts.
+**[KorIM](https://github.com/soywiz/korim)** is a library for image loading, writing and processing. It allows to convert between image and color formats. Also include tools for vector images and fonts.
 
 This library is able to load PNG, JPEGs, BMPs, TGAs, PSDs. And SVG vector images.
 Also allows rendering vectorial images using native rasterizers. The rasterizing
