@@ -39,9 +39,7 @@ view.addUpdater {
 ### Keys
 
 ```kotlin
-import com.soywiz.klock.milliseconds
-import com.soywiz.klogger.Console
-import com.soywiz.korev.Key
+
 
 
 view.addUpdater { timespan: TimeSpan ->
