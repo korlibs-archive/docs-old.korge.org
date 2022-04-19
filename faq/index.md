@@ -15,9 +15,9 @@ Yes. All these libraries are dual licensed under MIT and Apache 2.0 or CC0 Publi
 ## Where can I find the libraries?
 {:#repos}
 
-* You can find the source code of my libraries: <https://github.com/korlibs> and <https://github.com/soywiz>.
-* I publish all my library binaries at maven central: <https://search.maven.org/search?q=g:com.soywiz.korlibs.*>.
-* The libraries are also synchronized to maven central automatically
+* You can find the source code of my libraries on <https://github.com/korlibs> and <https://github.com/soywiz>.
+* I publish all my library binaries at maven central too: <https://search.maven.org/search?q=g:com.soywiz.korlibs.*>.
+* The libraries are also synchronized to maven central automatically.
 
 ## I get an error: unable to find library -lGL on Linux
 
@@ -142,8 +142,8 @@ screen coordinates, but with the dimensions defined by you.
 
 In normal circumstances, bugs and sponsored tickets coming from sponsors are done first.
 
-There is a Kanban board at GitHub here where you can see the progress and the current prioritization:
-<https://github.com/orgs/korlibs/projects/1>
+There is a Kanban board at GitHub where you can see the progress and the current prioritizations:
+<https://github.com/orgs/korlibs/projects/19>
 
 ## How can I close a KorGE Game Window programatically?
 {:#close_window}

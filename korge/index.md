@@ -10,7 +10,7 @@ fa-icon: fa-gamepad
 
 **KorGE Game Engine** is an [Open Source](https://github.com/soywiz/korge) modern Game Engine created in [<img alt="Kotlin" src="/i/logos/kotlin.svg" style="width:1.4em;height:1.4em;margin-top:-0.2em;" />Kotlin](https://kotlinlang.org/) designed to be extremely portable and really enjoyable to use.
 
-It works on **Desktop**, **Web** and **Mobile**. And it is full asynchronous, so it is also nice for the web.
+It works on **Desktop**, **Web** and **Mobile**. And it is fully asynchronous, so it is also nice for the web.
 
 You can see a small presentation of KorGE here: <https://korge.org/>
 
@@ -27,7 +27,7 @@ KorGE uses intelliJ as IDE + Gradle for building. You can check how to [set-up t
 
 ## Dependencies:
 
-KorGE uses [Kotlin](https://kotlinlang.org/), and several other [soywiz's Korlibs libraries](https://github.com/korlibs/korlibs):
+KorGE uses [Kotlin](https://kotlinlang.org/) and several other [soywiz's Korlibs libraries](https://github.com/korlibs/korlibs):
 
 <a href="https://kotlinlang.org/">
   <img alt="Kotlin" src="/i/logos/kotlin.svg" width="128" height="128" style="padding:4px;" />
