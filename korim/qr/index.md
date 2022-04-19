@@ -15,7 +15,7 @@ KorIM support creating QR codes by using a project called `QRCode` from Kazuhiko
 
 ### Constructing a builder
 
-First we have to construct a `QR` instance or use the companion object This class can be constructed with a `correctionLevel` parameter, and colors for the dark and light areas: `colorDark` and `colorLight`.
+First we have to construct a `QR` instance or use the companion object. This class can be constructed with a `correctionLevel` parameter, and colors for the dark and light areas: `colorDark` and `colorLight`.
 
 ```kotlin
 val qr = QR // Singleton
