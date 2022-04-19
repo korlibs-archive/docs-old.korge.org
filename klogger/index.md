@@ -7,9 +7,9 @@ priority: 60
 
 [https://github.com/korlibs/klogger](https://github.com/korlibs/klogger)
 
-Klogger is a logger library for multiplatform Kotlin
+Klogger is a logger library for multiplatform Kotlin.
 
-This library provides a simple interface to do logging into suitable outputs like javascript's console, or stdout/stderr.
+This library provides a simple interface to do logging into suitable outputs like javascript's console or stdout/stderr.
 
 {% include stars.html project="klogger" %}
 
@@ -83,7 +83,7 @@ object Logger.ConsoleLogOutput : Logger.Output
 
 ### Externally configuring loggers
 
-Since klogger do not have dependencies, by default it do not configure the loggers from any config file or environment. But here you have some ideas for configuring the loggers without recompiling:
+Since klogger does not have dependencies, by default it doesn't configure the loggers from any config file or environment. But here you have some ideas for configuring the loggers without recompiling:
 
 ```kotlin
 fun configureLoggerFromProperties(str: String) {
