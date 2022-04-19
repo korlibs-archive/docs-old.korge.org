@@ -5,7 +5,7 @@ fa-icon: fa-bolt
 priority: 980
 ---
 
-KTCC is a C Compiler and small IDE written in Kotlin that generates Kotlin. You can use it directly in your browser, or the CLI with the JVM version, the Kotlin/Native version, or the docker image. It is specially useful to port C libraries to Kotlin Common.
+KTCC is a C Compiler and small IDE written in Kotlin that generates Kotlin code. You can use it directly in your browser, or the CLI with the JVM version, the Kotlin/Native version, or the docker image. It is especially useful to port C libraries to Kotlin Common.
 
 * <https://github.com/soywiz/ktcc>
 * <https://soywiz.github.io/ktcc/>
