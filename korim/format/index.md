@@ -7,7 +7,7 @@ priority: 20
 status: new
 ---
 
-KorIM support creating, loading and saving different image formats.
+KorIM supports creating, loading and saving different image formats.
 
 {% include toc_include.md max_level=2 %}
 
