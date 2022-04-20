@@ -231,6 +231,38 @@ class Camera : Container() {
 }
 ```
 
+## CameraContainer
+```
+inline fun Container.cameraContainer(content: @ViewDslMarker Container.() -> Unit = {})
+class CameraContainer(){
+    private fun manualSet() {
+        elapsedTime = transitionTime
+        sync()
+    }
+    fun follow(view: View?, setImmediately: Boolean = false) {
+        following = view
+        if (setImmediately) {
+            val point = getFollowingXY(tempPoint)
+            cameraX = point.x
+            cameraY = point.y
+            sourceCamera.x = cameraX
+            sourceCamera.y = cameraY
+        }
+    }
+
+    fun unfollow() {
+        following = null
+    }
+
+    fun updateCamera(block: Camera.() -> Unit) {
+        block(currentCamera)
+    }
+    suspend fun tweenCamera(camera: Camera, time: TimeSpan = 1.seconds, easing: Easing = Easing.LINEAR) {
+        setTargetCamera(camera, time, easing)
+        onCompletedTransition.waitOne()
+    }
+}
+```
 ## Mesh
 
 Mesh allows to render a raw set of points as triangles or triangle strips. Used for example by the skeleton-based
