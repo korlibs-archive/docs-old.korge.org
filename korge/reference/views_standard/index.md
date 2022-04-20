@@ -235,32 +235,12 @@ class Camera : Container() {
 ```
 inline fun Container.cameraContainer(content: @ViewDslMarker Container.() -> Unit = {})
 class CameraContainer(){
-    private fun manualSet() {
-        elapsedTime = transitionTime
-        sync()
-    }
-    fun follow(view: View?, setImmediately: Boolean = false) {
-        following = view
-        if (setImmediately) {
-            val point = getFollowingXY(tempPoint)
-            cameraX = point.x
-            cameraY = point.y
-            sourceCamera.x = cameraX
-            sourceCamera.y = cameraY
-        }
-    }
+    fun follow(view: View?, setImmediately: Boolean = false)
 
-    fun unfollow() {
-        following = null
-    }
+    fun unfollow() 
 
-    fun updateCamera(block: Camera.() -> Unit) {
-        block(currentCamera)
-    }
-    suspend fun tweenCamera(camera: Camera, time: TimeSpan = 1.seconds, easing: Easing = Easing.LINEAR) {
-        setTargetCamera(camera, time, easing)
-        onCompletedTransition.waitOne()
-    }
+    fun updateCamera(block: Camera.() -> Unit) 
+    suspend fun tweenCamera(camera: Camera, time: TimeSpan = 1.seconds, easing: Easing = Easing.LINEAR)
 }
 ```
 ## Mesh
