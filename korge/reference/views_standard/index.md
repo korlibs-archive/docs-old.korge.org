@@ -231,6 +231,18 @@ class Camera : Container() {
 }
 ```
 
+## CameraContainer
+```
+inline fun Container.cameraContainer(content: @ViewDslMarker Container.() -> Unit = {})
+class CameraContainer(){
+    fun follow(view: View?, setImmediately: Boolean = false)
+
+    fun unfollow() 
+
+    fun updateCamera(block: Camera.() -> Unit) 
+    suspend fun tweenCamera(camera: Camera, time: TimeSpan = 1.seconds, easing: Easing = Easing.LINEAR)
+}
+```
 ## Mesh
 
 Mesh allows to render a raw set of points as triangles or triangle strips. Used for example by the skeleton-based

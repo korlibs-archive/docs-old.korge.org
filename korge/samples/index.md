@@ -59,6 +59,7 @@ out [here](https://www.youtube.com/channel/UCBYUdPtTwJvOOlUXPbygZhQ/videos).
 * [Korge Tip 17: How to get sharper pixels when zooming in](https://www.youtube.com/watch?v=kkkcHNBtrk0)
 * [Korge Tip 18: How to easily make your views draggable](https://www.youtube.com/watch?v=Uj1x7GZ0hqY)
 * [Korge Tip 19: How to re-render bitmap after updating it](https://www.youtube.com/watch?v=JUEI_HsoMZw)
+* [Korge Tip 20: How to pass data between scenes](https://youtu.be/B91eH1rh3nw)
 ## Game tutorials:
 
 * [Tic-Tac-Toe using KorGE KTree](https://www.youtube.com/watch?v=z2IjuyFl7yc)

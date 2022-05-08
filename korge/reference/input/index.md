@@ -39,12 +39,19 @@ view.addUpdater {
 ### Keys
 
 ```kotlin
-view.addHrUpdater { dt ->
-    val scale = dt / 16.hrMilliseconds
-    if (input.keys[Key.LEFT]) x -= 2.0 * scale
+
+import com.soywiz.klock.milliseconds
+
+import com.soywiz.klogger.Console
+
+import com.soywiz.korev.Key
+
+view.addUpdater { timespan: TimeSpan ->
+    val scale = timespan / 16.milliseconds
+    if (input.keys[Key.LEFT]) x -= 2.0 * scale  // Same as `input.keys.pressing(Key.LEFT)`
     if (input.keys.pressing(Key.RIGHT)) x += 2.0 * scale
-    if (input.keys.justPressed(Key.ESC)) exit = true
-    if (input.keys.justReleased(Key.ENTER)) sendText("hello")
+    if (input.keys.justPressed(Key.ESCAPE)) views.gameWindow.close(0)
+    if (input.keys.justReleased(Key.ENTER)) Console.info("I'm working!")
 }
 ```
 
