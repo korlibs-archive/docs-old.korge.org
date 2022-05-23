@@ -7,7 +7,15 @@ priority: 901
 status: experimental
 ---
 
-KorGE-3D is currently a preview. The documentation will come soon.
-If you want to give it a try, give feedback or help with the project.
-
+KorGE-3D is currently a preview. The documentation is in the beginning.
 * Sample: <https://github.com/korlibs/korge-samples/tree/master/samples/s3d>
+If you want to give it a try, you can include it in your project:
+```kotlin
+korge {
+  ...
+	supportExperimental3d()
+```
+
+
+
+
