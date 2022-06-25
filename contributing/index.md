@@ -10,19 +10,19 @@ status: updated
 
 ## Code
 
-All new development happens in the `korge-next` repository:
+All new development happens in the `korge` repository:
 
-<https://github.com/korlibs/korge-next>
+<https://github.com/korlibs/korge>
 
 You can fork the repository, make changes and create a PR proposing them.
 
 ### Building
 
-You can build `korge-next` with:
+You can build `korge` with:
 
 ```kotlin
-git clone https://github.com/korlibs/korge-next.git
-cd korge-next
+git clone https://github.com/korlibs/korge.git
+cd korge
 ./gradlew publishToMavenLocal
 ```
 
