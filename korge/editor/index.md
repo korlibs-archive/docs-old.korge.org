@@ -6,7 +6,7 @@ fa-icon: fa-palette
 priority: 2
 status: outdated
 ---
-**DEPRECIATED**
+**DEPRECATED**
 
 The visual editor is part of the KorGE IntelliJ plugin and will automatically be started, when you open a `.ktree`  file.
 In this video, we show you a simple use case.
