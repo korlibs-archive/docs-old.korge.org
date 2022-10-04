@@ -39,7 +39,7 @@
 		- {{ entry.description }}
 		{% endif %}
 
-        {%- if entry.children and is_active -%}
+        {%- if entry.children and (is_active or entry.always_open) -%}
             {%- include toc.html context=entry.children level=next_level -%}
         {%- endif -%}
     </li>

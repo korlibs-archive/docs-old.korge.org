@@ -5,6 +5,7 @@ title_prefix: KorGE
 fa-icon: fa-book
 children: /korge/reference/
 priority: 3
+always_open: true
 ---
 
 ## Reference documentation
