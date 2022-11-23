@@ -30,7 +30,7 @@ After downloading or cloning, open it in IntelliJ as a project
 
 1. Download the **Samples** KorGE project from [here](https://github.com/korlibs/korge-samples/archive/master.zip)
 
-2. Clone the **HelloWorld** Repository via `git clone https://github.com/korlibs/korge-samples.git`
+2. Clone the **Samples** Repository via `git clone https://github.com/korlibs/korge-samples.git`
 
 After downloading or cloning, open it in IntelliJ as a project
 
