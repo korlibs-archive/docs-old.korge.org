@@ -1,7 +1,6 @@
 # docs.korge.org
-This is th offical documentation of the framework Korlibs.
+This is the offical documentation of the framework Korlibs.
 Contributions in every way are welcome.
-[![](korlibs-deps.svg)](https://docs.korge.org/)
 
 To launch the documentation locally on your PC you have 2 options:
 
