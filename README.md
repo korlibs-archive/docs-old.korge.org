@@ -2,7 +2,7 @@
 This is the offical documentation of the framework Korlibs.
 Contributions in every way are welcome.
 
-To launch the documentation locally on your PC you have 2 options:
+To launch the documentation locally on your PC there are 2 options:
 
 
 ## Option 1: [Install jekyll](https://jekyllrb.com/docs/installation/)
