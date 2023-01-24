@@ -113,7 +113,6 @@ All the targets support `WAV` and `MP3` files by default.
 
 JavaScript uses the WebAudio API. Almost all the browsers limit this API after a first interaction.
 So you won't be able to play sounds before the user clicks or taps.
-This restriction doesn't apply to Apache Cordova targets, but only to normal browsers.
 
 The most widely format supported in the browsers via JavaScript is MP3. You can check the compatibility tables here:
 

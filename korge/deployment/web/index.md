@@ -17,7 +17,6 @@ that is almost modern web browser nowadays.
 
 Features fast compilation time, small output size, fast startup time
 and widely array of supported of devices with a single target.
-Can also be used along the [Cordova Target](/korge/targets/cordova) to create full APPs.
 
 {% include toc_include.md %}
 

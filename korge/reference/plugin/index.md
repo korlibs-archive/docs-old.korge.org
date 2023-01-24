@@ -8,8 +8,7 @@ priority: 900
 ---
 
 KorGE allows to create compile-time extensions to process resources and to do special stuff
-like adding cordova plugins or describing the `AndroidManifest.xml` programmatically by just including
-a library.
+like describing the `AndroidManifest.xml` programmatically by just including a library.
 
 ## `ResourceProcessor` plugin
 
@@ -51,7 +50,7 @@ korge {
 
 ## `KorgePluginExtension` plugin
 
-In some cases, you will need to configure extra stuff like cordova plugins or the `AndroidManifest.xml`. 
+In some cases, you will need to configure extra stuff like the `AndroidManifest.xml`. 
 
 ```kotlin
 class AdmobKorgePluginExtension : KorgePluginExtension(
@@ -67,14 +66,6 @@ class AdmobKorgePluginExtension : KorgePluginExtension(
 
 	override fun getAndroidDependencies() =
 		listOf("com.google.android.gms:play-services-ads:16.0.0")
-
-	override fun getCordovaPlugins(): List<CordovaPlugin> = listOf(
-		CordovaPlugin(
-			"cordova-plugin-admob-free", mapOf(
-				"ADMOB_APP_ID" to ADMOB_APP_ID
-			)
-		)
-	)
 }
 ```
 

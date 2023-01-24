@@ -39,7 +39,6 @@ KorGE uses [Kotlin](https://kotlinlang.org/) several other [soywiz's Korlibs lib
 ## Targets:
 
 * Right now with Korge you can target JVM, Android and JavaScript.
-* And with JavaScript you can generate iOS/Android using Apache Cordova.
 
 ### Kotlin.JS and Kotlin.Native
 

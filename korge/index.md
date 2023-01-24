@@ -57,8 +57,8 @@ KorGE uses [Kotlin](https://kotlinlang.org/) and several other [soywiz's Korlibs
 ## Targets:
 
 * You can target JVM Desktop and Android using Kotlin/JVM.
-* With JavaScript you can generate iOS/Android using Apache Cordova, as well as Web and PWA applications.
-* With Kotlin/Native you can generate native Windows, Linux and macOS executables, as well as native iOS applications.
+* With JavaScript you can generate Web and PWA applications.
+* With Kotlin/Native you can generate native Windows, Linux, macOS executables, as well as native iOS applications.
 
 ## Where to start:
 

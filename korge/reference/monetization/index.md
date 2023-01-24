@@ -15,7 +15,7 @@ Or [create a korge-plugin](/korge/plugin/) if that library require configuring t
 
 ## AdMob
 
-KorGE supports admob out of the box on Android and when using Cordova (Android and iOS).
+KorGE supports admob out of the box on Android.
 On the rest of the targets this API is mocked and does nothing.
 
 To use it you have to include the KorGE plugin korge-admob:
@@ -38,7 +38,7 @@ korge {
 }
 ```
 
-Any of these add the `korge-admob` dependency but also does additional configuration in Android and Cordova XML files.
+Any of these add the `korge-admob` dependency but also does additional configuration in Android XML files.
 
 ### The Admob instance
 

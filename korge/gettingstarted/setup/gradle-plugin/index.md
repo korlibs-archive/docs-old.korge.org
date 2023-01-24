@@ -45,16 +45,12 @@ korge {
     jvmMainClassName = "MainKt"
     androidMinSdk = null
 
-    cordovaPlugin("name", mapOf("arg1" to "value1"), version = "version")
-
     //androidAppendBuildGradle("...code...")
     config("MYPROP", "MYVALUE")
 
     // Korge Plugins
     plugin("com.soywiz:korge-admob:$korgeVersion", mapOf("ADMOB_APP_ID" to ADMOB_APP_ID))
     admob(ADMOB_APP_ID) // Shortcut for admob
-
-    cordovaUseCrosswalk()
 }
 ```
 
