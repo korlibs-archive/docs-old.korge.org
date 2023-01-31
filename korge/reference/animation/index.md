@@ -132,6 +132,8 @@ you to create your own easings.
 
 ![](easing.png)
 
+{% include sample.html sample="EasingsScene" %}
+
 * Easings.EASE_IN_ELASTIC
 * Easings.EASE_OUT_ELASTIC
 * Easings.EASE_OUT_BOUNCE
