@@ -7,7 +7,7 @@ priority: 70
 
 <img alt="KorAU" src="/i/logos/korau.svg" width="128" height="128" style="float: left;margin-right:1em;" />
 
-[KorAU](https://github.com/korlibs/korau), Kotlin cORoutines AUdio - Audio playing, and sound file decoding
+[KorAU](https://github.com/korlibs/korge/tree/main/korau), Kotlin cORoutines AUdio - Audio playing, and sound file decoding
 
 It supports playing sounds, creating dynamic audio streams and decoding audio file formats: wav, mp3 and ogg.
 
