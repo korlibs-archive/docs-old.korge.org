@@ -15,7 +15,7 @@ It is designed to be as allocation-free as possible using Kotlin inline classes,
 to be consistent and portable across targets since all the code is written in Common Kotlin,
 and to provide an API that is powerful, fun and easy to use.
 
-[https://github.com/korlibs/klock](https://github.com/korlibs/klock)
+[https://github.com/korlibs/korge/tree/main/klock](https://github.com/korlibs/korge/tree/main/klock)
 
 {% include stars.html project="klock" %}
 
