@@ -29,10 +29,12 @@ fun ByteArray.hash(algo: HashFactory): ByteArray
 fun ByteArray.md5()
 fun ByteArray.sha1()
 fun ByteArray.sha256()
+fun ByteArray.sha512()
 
 object MD5 : HashFactory
 object SHA1 : HashFactory
 object SHA256 : HashFactory
+object SHA512 : HashFactory
 
 open class HashFactory() {
     fun create(): Hash
