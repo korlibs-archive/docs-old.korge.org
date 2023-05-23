@@ -1,6 +1,7 @@
 title: Korlibs
 email: soywiz@gmail.com
 description: Modern Kotlin Common Libraries for Full Stack development
+analytics_id: G-KV32JER3MJ
 exclude:
   - ".gradle"
   - ".idea"

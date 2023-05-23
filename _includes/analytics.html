@@ -24,7 +24,7 @@
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBK854DB2D"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -32,7 +32,7 @@
     if (readCookie('my-brand-new-cookie-notice-decline')!='true') {
         gtag('js', new Date());
     
-        gtag('config', 'G-RBK854DB2D', { 'anonymize_ip': true });
+        gtag('config', '{{ site.analytics_id }}', { 'anonymize_ip': true });
     }
 </script>
 
