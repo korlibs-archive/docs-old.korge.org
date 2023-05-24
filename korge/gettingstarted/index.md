@@ -9,41 +9,80 @@ priority: 0
 
 ## Welcome to KorGE
 
-Korge is a multiplatform game development toolset.
+<img alt="Korge" src="/i/logos/korge.svg" width="120" height="120" style="float:left;margin-right:16px;"/>
+
+Korge is a multiplatform game engine, 
+that includes libraries for game development and other areas, 
+an [asset & library store](https://store.korge.org/),
+starter kits,
+and an [IntellIJ plugin](https://plugins.jetbrains.com/plugin/9676-korge) to improve the workflow.
 
 Getting started with KorGE is really simple.
 
-### Quickstart
+<div style="clear:both;"></div>
 
-1. Install the KorGE **IntelliJ plugin** and create a project with the project wizard (check [here](https://youtu.be/qw5ja1fnbSo) for a video description)
+## Quickstart
 
-   <iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/9676"></iframe>
+### 1. Install IntelliJ IDEA
 
-2. Either
+* <https://www.jetbrains.com/idea/download/> - Community Edition will work
 
-    - Download the **HelloWorld** KorGE project from [here](https://github.com/korlibs/korge-hello-world/archive/master.zip), or 
-    - Clone the **HelloWorld** Repository via `git clone https://github.com/korlibs/korge-hello-world`
+![](install-intellij-idea.png)
 
-After downloading or cloning, open it in IntelliJ as a project
+### 2. Install the KorGE **IntelliJ IDEA plugin**:
 
-### Check some samples
+You can click here to install the plugin:
 
-1. Download the **Samples** KorGE project from [here](https://github.com/korlibs/korge-samples/archive/master.zip)
+<iframe frameborder="none" width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/9676"></iframe>
 
-2. Clone the **Samples** Repository via `git clone https://github.com/korlibs/korge-samples.git`
+Or download the plugin from the [KorGE Plugin page](https://plugins.jetbrains.com/plugin/9676-korge).
 
-After downloading or cloning, open it in IntelliJ as a project
+### 3. Install one of the starter kits or samples available using the `New Project...` Wizard:
 
+You can select one of the `Starter Kits` or one of the `Showcases` with a full game:
 
-### Learning KorGE
+![](korge-new-project.png)
+
+### 4. Access the KorGE Store
+
+In order to access some KorGE features, you can install them via the KorGE Store.
+
+You can access that store via: <https://store.korge.org/>
+
+Or inside the IntelliJ Plugin navigation bar:
+
+![](jitto-korge-store.png)
+
+Or when opening your `build.gradle.kts` or your `deps.kproject.yml`:
+
+![](jitto-korge-store2.png)
+
+### 5. Running your code
+
+When creating a new project a new run configuration `runJvmAutoreload` should be available:
+
+![](runJvmAutoreload.png)
+
+You can also `double click` on the `Gradle` → `Tasks` → `run` → `runJvmAutoreload`
+to create a run configuration and execute your program:
+
+![](gradle-panel-runJvmAutoreload.png)
+
+## Next Steps
+
+Now that you have a working environment, let's explore other concepts. 
 
 1. Take your [first steps](firststeps) learning to create a sample game with basic shapes.
-
 2. Then build a more complex and realistic game with a [step-by-step tutorial to build a 2048 game](firstgame).
-
 3. Finally, [deploy it in one of our supported platforms](/korge/deployment).
 
+From there you can get a deep look to the [reference documentation](/korge/reference).
 
-From there you can get a deep look to the [reference documentation](/korge/reference),
-and have a look at creating your own KorGE [bundles](/features/bundles) to see how others have built
-games and learn from them.
+## Asking Questions and Solving Doubts
+
+You can ask questions in:
+
+* [Discord Community](https://discord.korge.org/)
+* [Github Discussions](https://github.com/korlibs/korge/discussions)
+
+We have a nice and welcoming community! Feel free to drop in.
