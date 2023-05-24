@@ -17,7 +17,7 @@ Then execute `./jekyll.sh` on linux or `jekyll2.bat` on Windows
 
 To simplify image illustration and editing. I recommend:
 
-* Snagit - Configured with cmd+shift+2 on mac
+* Snagit - Configured with `cmd+shift+2` on MacOS
   * After creating and editing, you can press `cmd+c` to copy and use the Paste Images into Markdown plugin to create an image
 * Webstorm
   * [Paste Images into Markdown Webstorm plugin](https://github.com/holgerbrandl/pasteimages)
