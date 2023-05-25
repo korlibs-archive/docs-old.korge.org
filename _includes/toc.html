@@ -15,7 +15,7 @@
     {%- assign is_active = false -%}
     {%- endif -%}
 
-    {%- if current == include.context -%}
+    {%- if current == include.context and entry.enabled != false -%}
     <li class="{% if is_active %}active{% endif %} {{ entry.entryclass }}">
         <a href="{{ entry.url | relative_url }}" class="{% if is_active %}active{% endif %} entry-item {% if entry.children and is_active %}active-children{% endif %}">
             <span class="{% if entry.children %}children{% endif %} {% if is_active %}active{% else %}inactive{% endif %}"></span>
