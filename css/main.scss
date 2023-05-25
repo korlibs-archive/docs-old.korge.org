@@ -61,7 +61,6 @@ h2 {
 }
 
 h3 {
-  font-style: italic;
   font-weight: normal;
 }
 
@@ -194,6 +193,10 @@ body {
   }
   h3 {
 	text-shadow: 2px 2px 0 #000;
+    border-left: 4px solid rgba(125, 122, 199, 0.51);
+    border-radius: 4px;
+    padding-left: 8px;
+    margin-left: -10px;
     color: #7d7ac7;
   }
   
@@ -263,6 +266,7 @@ pre {
   border-radius: 0.5em;
   box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.35);
   padding: 1em;
+  /*margin: 0 !important;*/
   @include customScrollbar;
   code {
 	color: #bfb6cf;
