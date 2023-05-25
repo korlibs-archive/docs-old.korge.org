@@ -4,7 +4,6 @@ title: "KorIO"
 children: /korio/
 fa-icon: fa-copy
 priority: 40
-status: updated
 ---
 
 <img alt="KorIO" src="/i/logos/korio.svg" width="128" height="128" style="float: left;" />

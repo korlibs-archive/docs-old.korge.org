@@ -4,7 +4,6 @@ title: "KorIM"
 fa-icon: fa-image
 priority: 51
 children: /korim/
-status: new
 ---
 
 <img alt="KorIM" src="/i/logos/korim.svg" style="float:left;width:128px;height:128px;" />

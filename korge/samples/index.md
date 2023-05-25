@@ -4,7 +4,6 @@ title: "Samples"
 title_prefix: KorGE 
 fa-icon: fa-chalkboard-teacher 
 priority: 2 
-status: updated
 ---
 
 ## Showcases

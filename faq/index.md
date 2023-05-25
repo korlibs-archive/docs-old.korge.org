@@ -179,3 +179,7 @@ Can you listen it here:
 <audio controls="controls">
  <source src="/i/sound/korge.mp3" />
 </audio>
+
+## Where's the privacy page
+
+[Here it is](/privacy)

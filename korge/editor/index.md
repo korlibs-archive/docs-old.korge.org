@@ -5,6 +5,7 @@ title_prefix: KorGE
 fa-icon: fa-palette
 priority: 2
 status: outdated
+enabled: false
 ---
 **DEPRECATED**
 

@@ -4,7 +4,6 @@ title: "KorMA"
 fa-icon: fa-calculator
 children: /korma/
 priority: 50
-status: updated
 ---
 
 <img src="/i/logos/korma.svg" width="128" height="128" alt="KorMA" style="float:left; margin: 0 16px 16px 0;" />

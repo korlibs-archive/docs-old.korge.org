@@ -4,7 +4,6 @@ title: "KorTE"
 fa-icon: far fa-file-code
 children: /korte/
 priority: 52
-status: updated
 ---
 
 <img alt="KorTE" src="/i/logos/korte.svg" width="128" height="128" style="float: left;" />

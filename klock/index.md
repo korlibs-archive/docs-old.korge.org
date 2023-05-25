@@ -4,7 +4,6 @@ title: Klock
 fa-icon: fa-clock
 priority: 10
 children: /klock/
-status: updated
 ---
 
 <img src="/i/logos/klock.svg" width="196" height="196" style="float: left;margin: 0 16px 16px 0;" alt="Klock Date and Time" />
