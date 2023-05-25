@@ -15,22 +15,44 @@ Krypto is a cryptography library for Multiplatform Kotlin 1.3.
 
 ## SecureRandom
 
-Krypto provides a `SecureRandom` class that extends the `kotlin.random.Random` class,
-but generating cryptographic secure values.
+Krypto provides a `SecureRandom` object that extends the `kotlin.random.Random` class,
+but it generates cryptographic secure values. It is a singleton, and you cannot provide an initial seed.
+
+Instead of a pseudo-random and reproducible, its result values are fully random,
+making it suitable for cryptographic purposes, and not suitable for reproductible results.
 
 It uses `SecureRandom` on the JVM + [`PRNGFixes`](https://android-developers.googleblog.com/2013/08/some-securerandom-thoughts.html){:target="_blank",:rel="noopener"} on Android.
 On Native POSIX (including Linux, macOS and iOS), it uses `/dev/urandom`, on Windows
 [`BCryptGenRandom`](https://docs.microsoft.com/en-us/windows/desktop/api/bcrypt/nf-bcrypt-bcryptgenrandom){:target="_blank",:rel="noopener"}
 
-## Hash (MD5/SHA1/SHA256)
+### Using the SecureRandom instance
+
+Since it is an object, you can use it directly as a `Random` instance:
+
+```kotlin
+val random: Random = SecureRandom
+```
+
+### Seeding extra bytes
+
+In addition to the standard kotlin `Random` interface, SecureRandom provides a method for seeding extra random bytes.
+
+```kotlin
+val bytes = byteArrayOf(1, 2, 3)
+SecureRandom.addSeed(bytes)
+```
+
+## Hash (MD4/MD5/SHA1/SHA256/SHA512)
 
 ```kotlin
 fun ByteArray.hash(algo: HashFactory): ByteArray
+fun ByteArray.md4()
 fun ByteArray.md5()
 fun ByteArray.sha1()
 fun ByteArray.sha256()
 fun ByteArray.sha512()
 
+object MD4 : HashFactory
 object MD5 : HashFactory
 object SHA1 : HashFactory
 object SHA256 : HashFactory
@@ -52,6 +74,10 @@ abstract class Hash {
     fun digestOut(out: ByteArray)
 }
 ```
+
+## HMAC
+
+## PBKDF2
 
 ## AES
 
