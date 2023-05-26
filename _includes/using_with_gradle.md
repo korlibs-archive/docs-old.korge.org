@@ -1,6 +1,6 @@
 ## Using with gradle
 
-Requires `Gradle {{ site.data.versions.gradle }}` (`JVM 8~13`) for building and `Kotlin >={{ site.data.versions.kotlin }}` for running:
+Requires `Gradle {{ site.data.versions.gradle }}` (`JVM 11~17`) for building and `Kotlin >={{ site.data.versions.kotlin }}` for running:
 
 `build.gradle.kts`
 
