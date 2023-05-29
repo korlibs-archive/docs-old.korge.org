@@ -81,3 +81,54 @@ For lists and arrays Kds defines a `getCyclic` extension method to get an elemen
 assertEquals("a", arrayOf("a", "b").getCyclic(2))
 assertEquals("b", arrayOf("a", "b").getCyclic(-1))
 ```
+
+## RLE
+
+KorGE provides a `RLE` (Run-Length-Encoding) implementation, that supports emitting and iterating over RLE chunks.
+An RLE chunk is a pair of value + count. So for example 77, 33, 33, 9, 9, 9, 9,
+could be represented in RLE as: 1 times 77, 2 times 33, 4 times 9. This is one of the simplest compression algorithms.
+In this RLE implementation we store not only the value + count, but also the position in the stream.
+
+### Getting an `RLE` instance from an `IntArray`
+
+```kotlin
+val data: IntArray = intArrayOf(77, 33, 33, 9, 9, 9, 9)
+val rle = RLE.compute(data, 0, data.size)
+
+rle.fastForEach { n, start, count, value ->
+    println("$n, start=$start, count=$count, value=$value")
+}
+
+// 0, start=0, count=1, value=77
+// 1, start=1, count=2, value=33
+// 2, start=3, count=4, value=9
+```
+
+### Manually emitting `RLE` segments:
+
+```kotlin
+val rle = RLE(capacity = 10)
+rle.emit(start = 0, count = 1, value = 77)
+rle.emit(start = 1, count = 2, value = 33)
+rle.emit(start = 3, count = 4, value = 9)
+```
+
+### Determining the number of chunks in a `RLE`
+
+```kotlin
+val rle: RLE
+println(rle.size) // Number of chunks
+```
+
+### Getting an `RLE` instance from an arbitrary source
+
+```kotlin
+val str = "aBBBccccc"
+val rle = RLE.compute(str.length) { str[it].code }
+rle.fastForEach { n, start, count, value ->
+    println("$n, start=$start, count=$count, value=${value.toChar()}")
+}
+// 0, start=0, count=1, value=a
+// 1, start=1, count=3, value=B
+// 2, start=4, count=5, value=c
+```
